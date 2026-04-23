@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SML Developer | Portfolio</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <script>
         tailwind.config = {
@@ -24,7 +21,7 @@
         }
     </script>
     <style>
-        /* Animações e estilos do botão hambúrguer */
+        /* Botão Hambúrguer - Transformação RÁPIDA */
         .hamburger {
             cursor: pointer;
             width: 32px;
@@ -42,22 +39,14 @@
             position: absolute;
             left: 0;
             border-radius: 10px;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
-        .hamburger-line:nth-child(1) {
-            top: 6px;
-        }
+        .hamburger-line:nth-child(1) { top: 6px; }
+        .hamburger-line:nth-child(2) { top: 14px; }
+        .hamburger-line:nth-child(3) { top: 22px; }
 
-        .hamburger-line:nth-child(2) {
-            top: 14px;
-        }
-
-        .hamburger-line:nth-child(3) {
-            top: 22px;
-        }
-
-        /* Estado aberto (X girando) */
+        /* Estado aberto (X girando - RÁPIDO) */
         .hamburger.active .hamburger-line:nth-child(1) {
             top: 14px;
             transform: rotate(135deg);
@@ -77,12 +66,12 @@
 
         .hamburger.active {
             transform: rotate(360deg);
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.3s ease-in-out;
         }
 
         .hamburger:not(.active) {
             transform: rotate(0deg);
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.3s ease-in-out;
         }
 
         .hamburger:hover .hamburger-line {
@@ -90,14 +79,8 @@
         }
 
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(100%); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes spin-slow {
@@ -126,24 +109,15 @@
         .string { color: #f1fa8c; }
         .comment { color: #6272a4; font-style: italic; }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0f1e;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #00ffff;
-            border-radius: 4px;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0f1e; }
+        ::-webkit-scrollbar-thumb { background: #00ffff; border-radius: 4px; }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="bg-dark text-white font-mono overflow-x-hidden">
 
-    <!-- Overlay VS Code - Efeito de código digitando -->
+    <!-- Overlay VS Code -->
     <div id="code-overlay" class="fixed inset-0 pointer-events-none z-0 opacity-20 hidden md:block">
         <div class="h-full w-full overflow-hidden bg-black/50 backdrop-blur-sm">
             <div class="p-4 font-mono text-sm text-neon h-full overflow-hidden">
@@ -166,12 +140,11 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">SML_Developer</h1>
             <ul class="hidden md:flex gap-8">
-                <li><a href="#home" class="hover:text-neon transition duration-300">Início</a></li>
-                <li><a href="#projetos" class="hover:text-neon transition duration-300">Projetos</a></li>
-                <li><a href="#sobre" class="hover:text-neon transition duration-300">Sobre</a></li>
-                <li><a href="#contato" class="hover:text-neon transition duration-300">Contato</a></li>
+                <li><a href="#home" class="hover:text-neon transition">Início</a></li>
+                <li><a href="#projetos" class="hover:text-neon transition">Projetos</a></li>
+                <li><a href="#sobre" class="hover:text-neon transition">Sobre</a></li>
+                <li><a href="#contato" class="hover:text-neon transition">Contato</a></li>
             </ul>
-            <!-- Botão Hambúrguer Animado -->
             <button id="menu-btn" class="md:hidden hamburger" aria-label="Menu">
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>
@@ -197,8 +170,8 @@
             </h1>
             <p class="text-xl md:text-2xl text-gray-300 mb-8">💻 Web Developer | 🌊 Trairi-CE</p>
             <div class="flex gap-4 justify-center">
-                <a href="#projetos" class="px-8 py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition duration-300">Ver Projetos</a>
-                <a href="#contato" class="px-8 py-3 border border-neon rounded-lg font-bold hover:bg-neon/20 transition duration-300">Contato</a>
+                <a href="#projetos" class="px-8 py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition">Ver Projetos</a>
+                <a href="#contato" class="px-8 py-3 border border-neon rounded-lg font-bold hover:bg-neon/20 transition">Contato</a>
             </div>
         </div>
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
@@ -209,12 +182,9 @@
     <!-- Projetos Section -->
     <section id="projetos" class="py-20 px-6 relative z-10">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12">
-                <span class="bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📁 Projetos Realizados</span>
-            </h2>
+            <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📁 Projetos Realizados</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon hover:shadow-neon transition duration-300 transform hover:-translate-y-2">
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition transform hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
                         <i class="fas fa-code text-5xl text-white/50"></i>
                     </div>
@@ -226,31 +196,27 @@
                     </div>
                     <a href="#" class="text-neon hover:underline">Ver mais →</a>
                 </div>
-                <!-- Card 2 -->
-                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon hover:shadow-neon transition duration-300 transform hover:-translate-y-2">
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition transform hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
                         <i class="fas fa-server text-5xl text-white/50"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">API REST</h3>
-                    <p class="text-gray-400 mb-4">Backend completo com autenticação e banco de dados</p>
+                    <p class="text-gray-400 mb-4">Backend completo com autenticação</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">Node.js</span>
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">Express</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">MongoDB</span>
                     </div>
                     <a href="#" class="text-neon hover:underline">Ver mais →</a>
                 </div>
-                <!-- Card 3 -->
-                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon hover:shadow-neon transition duration-300 transform hover:-translate-y-2">
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition transform hover:-translate-y-2">
                     <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
                         <i class="fas fa-shopping-cart text-5xl text-white/50"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">E-commerce</h3>
-                    <p class="text-gray-400 mb-4">Loja virtual completa com carrinho e pagamentos</p>
+                    <p class="text-gray-400 mb-4">Loja virtual completa</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">React</span>
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">Redux</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Stripe</span>
                     </div>
                     <a href="#" class="text-neon hover:underline">Ver mais →</a>
                 </div>
@@ -276,10 +242,10 @@
         <div class="container mx-auto max-w-2xl">
             <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📩 Contato</h2>
             <form id="form-contato" class="space-y-6">
-                <input type="text" placeholder="Seu nome" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition">
-                <input type="email" placeholder="Seu e-mail" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition">
-                <textarea placeholder="Sua mensagem" rows="5" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition"></textarea>
-                <button type="submit" class="w-full py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition duration-300">Enviar mensagem</button>
+                <input type="text" placeholder="Seu nome" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none">
+                <input type="email" placeholder="Seu e-mail" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none">
+                <textarea placeholder="Sua mensagem" rows="5" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none"></textarea>
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition">Enviar mensagem</button>
             </form>
             <div class="flex justify-center gap-6 mt-8">
                 <a href="#" class="text-3xl hover:text-neon transition"><i class="fab fa-github"></i></a>
@@ -289,11 +255,117 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="py-6 text-center text-gray-500 border-t border-white/10 relative z-10">
         <p>© 2024 SML Developer | Todos os direitos reservados</p>
     </footer>
 
-    <script src="assets/js/script.js"></script>
+    <script>
+        // Menu hambúrguer com transformação RÁPIDA
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let menuOpen = false;
+
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                menuOpen = !menuOpen;
+                
+                if (menuOpen) {
+                    menuBtn.classList.add('active');
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    menuBtn.classList.remove('active');
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Fechar menu ao clicar em link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (menuOpen) {
+                    menuBtn.classList.remove('active');
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                    document.body.style.overflow = 'auto';
+                    menuOpen = false;
+                }
+            });
+        });
+
+        // Cursor personalizado
+        const cursor = document.getElementById('cursor-glow');
+        if (cursor) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+        }
+
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Formulário
+        const form = document.getElementById('form-contato');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('🚀 Mensagem enviada! Entrarei em contato em breve.');
+                form.reset();
+            });
+        }
+
+        // Efeito VS Code digitando (simplificado)
+        const codeLines = [
+            '// SML Developer - Portfolio',
+            'const dev = {',
+            '    nome: "SML Developer",',
+            '    local: "Trairi-CE",',
+            '    skills: ["HTML", "CSS", "JS", "React"]',
+            '};',
+            'console.log("Portfólio online!");'
+        ];
+        
+        let lineIndex = 0;
+        let charIndex = 0;
+        const container = document.getElementById('code-lines');
+        
+        function typeCode() {
+            if (!container || lineIndex >= codeLines.length) return;
+            
+            if (charIndex === 0) {
+                const lineDiv = document.createElement('div');
+                lineDiv.className = 'code-line';
+                lineDiv.id = `line-${lineIndex}`;
+                container.appendChild(lineDiv);
+            }
+            
+            if (charIndex < codeLines[lineIndex].length) {
+                const lineDiv = document.getElementById(`line-${lineIndex}`);
+                if (lineDiv) {
+                    lineDiv.innerHTML = codeLines[lineIndex].substring(0, charIndex + 1);
+                }
+                charIndex++;
+                setTimeout(typeCode, 50);
+            } else {
+                lineIndex++;
+                charIndex = 0;
+                setTimeout(typeCode, 200);
+            }
+        }
+        
+        setTimeout(typeCode, 500);
+    </script>
 </body>
 </html>
