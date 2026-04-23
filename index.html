@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SML Developer | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
     <script>
         tailwind.config = {
             theme: {
@@ -23,21 +26,39 @@
 </head>
 <body class="bg-dark text-white font-mono overflow-x-hidden">
 
+    <!-- Overlay VS Code - Efeito de código digitando -->
+    <div id="code-overlay" class="fixed inset-0 pointer-events-none z-0 opacity-20 hidden md:block">
+        <div class="h-full w-full overflow-hidden bg-black/50 backdrop-blur-sm">
+            <div class="p-4 font-mono text-sm text-neon h-full overflow-hidden">
+                <div class="flex items-center gap-2 mb-4 border-b border-white/20 pb-2">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span class="text-gray-400 text-xs ml-2">sml_developer@portfolio: ~/projetos</span>
+                </div>
+                <div id="code-lines" class="overflow-hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cursor personalizado -->
     <div id="cursor-glow" class="fixed w-8 h-8 rounded-full pointer-events-none z-50 hidden md:block" style="background: radial-gradient(circle, rgba(0,255,255,0.6) 0%, rgba(0,255,255,0) 70%);"></div>
 
+    <!-- Navbar -->
     <nav class="fixed w-full z-50 bg-dark/80 backdrop-blur-md border-b border-white/10">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">SML_Developer</h1>
             <ul class="hidden md:flex gap-8">
-                <li><a href="#home" class="hover:text-neon transition">Início</a></li>
-                <li><a href="#projetos" class="hover:text-neon transition">Projetos</a></li>
-                <li><a href="#sobre" class="hover:text-neon transition">Sobre</a></li>
-                <li><a href="#contato" class="hover:text-neon transition">Contato</a></li>
+                <li><a href="#home" class="hover:text-neon transition duration-300">Início</a></li>
+                <li><a href="#projetos" class="hover:text-neon transition duration-300">Projetos</a></li>
+                <li><a href="#sobre" class="hover:text-neon transition duration-300">Sobre</a></li>
+                <li><a href="#contato" class="hover:text-neon transition duration-300">Contato</a></li>
             </ul>
             <button id="menu-btn" class="md:hidden text-2xl"><i class="fa-solid fa-bars"></i></button>
         </div>
     </nav>
 
+    <!-- Menu Mobile -->
     <div id="mobile-menu" class="fixed inset-0 bg-dark/95 backdrop-blur-lg z-40 hidden flex-col items-center justify-center gap-8 text-xl">
         <a href="#home" class="hover:text-neon">Início</a>
         <a href="#projetos" class="hover:text-neon">Projetos</a>
@@ -46,6 +67,7 @@
         <button id="close-menu" class="absolute top-6 right-6 text-2xl"><i class="fa-solid fa-xmark"></i></button>
     </div>
 
+    <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-neon/5 via-transparent to-neon-pink/5 animate-spin-slow" style="width: 200%; height: 200%;"></div>
         <div class="container mx-auto px-6 text-center relative z-10">
@@ -54,44 +76,60 @@
             </h1>
             <p class="text-xl md:text-2xl text-gray-300 mb-8">💻 Web Developer | 🌊 Trairi-CE</p>
             <div class="flex gap-4 justify-center">
-                <a href="#projetos" class="px-8 py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition">Ver Projetos</a>
-                <a href="#contato" class="px-8 py-3 border border-neon rounded-lg font-bold hover:bg-neon/20 transition">Contato</a>
+                <a href="#projetos" class="px-8 py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition duration-300">Ver Projetos</a>
+                <a href="#contato" class="px-8 py-3 border border-neon rounded-lg font-bold hover:bg-neon/20 transition duration-300">Contato</a>
             </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-2xl text-neon"></i>
         </div>
     </section>
 
-    <section id="projetos" class="py-20 px-6">
+    <!-- Projetos Section -->
+    <section id="projetos" class="py-20 px-6 relative z-10">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📁 Projetos Realizados</h2>
+            <h2 class="text-4xl font-bold text-center mb-12">
+                <span class="bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📁 Projetos Realizados</span>
+            </h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon hover:shadow-neon transition transform hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4"></div>
-                    <h3 class="text-xl font-bold mb-2">Projeto 1</h3>
-                    <p class="text-gray-400 mb-4">Descrição do seu projeto</p>
+                <!-- Card 1 -->
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon hover:shadow-neon transition duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
+                        <i class="fas fa-code text-5xl text-white/50"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Portfolio 3D</h3>
+                    <p class="text-gray-400 mb-4">Site interativo com efeitos 3D e animações</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">HTML</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">CSS</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">JS</span>
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Three.js</span>
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Tailwind</span>
                     </div>
                     <a href="#" class="text-neon hover:underline">Ver mais →</a>
                 </div>
-                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon hover:shadow-neon transition transform hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4"></div>
-                    <h3 class="text-xl font-bold mb-2">Projeto 2</h3>
-                    <p class="text-gray-400 mb-4">Descrição do seu projeto</p>
+                <!-- Card 2 -->
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon hover:shadow-neon transition duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
+                        <i class="fas fa-server text-5xl text-white/50"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">API REST</h3>
+                    <p class="text-gray-400 mb-4">Backend completo com autenticação e banco de dados</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Node.js</span>
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Express</span>
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">MongoDB</span>
+                    </div>
+                    <a href="#" class="text-neon hover:underline">Ver mais →</a>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon hover:shadow-neon transition duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
+                        <i class="fas fa-shopping-cart text-5xl text-white/50"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">E-commerce</h3>
+                    <p class="text-gray-400 mb-4">Loja virtual completa com carrinho e pagamentos</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">React</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Node</span>
-                    </div>
-                    <a href="#" class="text-neon hover:underline">Ver mais →</a>
-                </div>
-                <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon hover:shadow-neon transition transform hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4"></div>
-                    <h3 class="text-xl font-bold mb-2">Projeto 3</h3>
-                    <p class="text-gray-400 mb-4">Descrição do seu projeto</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Python</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Django</span>
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Redux</span>
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Stripe</span>
                     </div>
                     <a href="#" class="text-neon hover:underline">Ver mais →</a>
                 </div>
@@ -99,26 +137,28 @@
         </div>
     </section>
 
-    <section id="sobre" class="py-20 px-6 bg-white/5">
+    <!-- Sobre Section -->
+    <section id="sobre" class="py-20 px-6 bg-white/5 relative z-10">
         <div class="container mx-auto max-w-3xl text-center">
             <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">🌊 Sobre mim</h2>
             <div class="space-y-4 text-gray-300">
                 <p>💻 <strong class="text-white">Web Developer</strong> | SML Developer</p>
                 <p>🚀 Criando soluções limpas e funcionais</p>
                 <p>📍 Trairi - Ceará</p>
-                <p>🔗 <a href="#" class="text-neon hover:underline">sml-developer.onrender.com</a></p>
+                <p>🔗 <a href="https://sml-developer.onrender.com" class="text-neon hover:underline">sml-developer.onrender.com</a></p>
             </div>
         </div>
     </section>
 
-    <section id="contato" class="py-20 px-6">
+    <!-- Contato Section -->
+    <section id="contato" class="py-20 px-6 relative z-10">
         <div class="container mx-auto max-w-2xl">
             <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📩 Contato</h2>
             <form id="form-contato" class="space-y-6">
-                <input type="text" placeholder="Seu nome" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none">
-                <input type="email" placeholder="Seu e-mail" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none">
-                <textarea placeholder="Sua mensagem" rows="5" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none"></textarea>
-                <button type="submit" class="w-full py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition">Enviar mensagem</button>
+                <input type="text" placeholder="Seu nome" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition">
+                <input type="email" placeholder="Seu e-mail" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition">
+                <textarea placeholder="Sua mensagem" rows="5" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition"></textarea>
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition duration-300">Enviar mensagem</button>
             </form>
             <div class="flex justify-center gap-6 mt-8">
                 <a href="#" class="text-3xl hover:text-neon transition"><i class="fab fa-github"></i></a>
@@ -128,7 +168,8 @@
         </div>
     </section>
 
-    <footer class="py-6 text-center text-gray-500 border-t border-white/10">
+    <!-- Footer -->
+    <footer class="py-6 text-center text-gray-500 border-t border-white/10 relative z-10">
         <p>© 2024 SML Developer | Todos os direitos reservados</p>
     </footer>
 

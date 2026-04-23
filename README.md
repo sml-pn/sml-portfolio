@@ -1,85 +1,125 @@
-# SML Developer Portfolio
+# 🚀 SML Developer Portfolio
 
-💻 **Web Developer** | 🌊 Trairi-CE
+## 💻 Sobre Mim
+Olá! Eu sou **SML Developer**, um Web Developer apaixonado por criar soluções limpas, funcionais e visualmente atraentes.
 
-## 🛠️ Tecnologias
-- Tailwind CSS
-- HTML5
-- JavaScript
-- Font Awesome
+📍 **Localização:** Trairi-CE  
+🔗 **Site:** [sml-developer.onrender.com](https://sml-developer.onrender.com)
 
-## 🔗 Links
-- Instagram: [@sml_developer](https://instagram.com/sml_developer)
-- Site: [sml-developer.onrender.com](https://sml-developer.onrender.com)
+---
 
-## 🚀 Como rodar localmente
+## 🛠️ Tecnologias Utilizadas
+
+| Tecnologia | Descrição |
+|------------|-----------|
+| **Tailwind CSS** | Framework CSS para design rápido e responsivo |
+| **HTML5** | Estrutura semântica da página |
+| **JavaScript** | Interatividade, animações e efeito de digitação |
+| **Font Awesome** | Ícones profissionais |
+
+---
+
+## ✨ Funcionalidades
+
+- ✅ **Efeito VS Code** - Simulação de código sendo digitado automaticamente
+- ✅ Design responsivo (celular, tablet, desktop)
+- ✅ Efeito de cursor personalizado com glow
+- ✅ Menu mobile hambúrguer
+- ✅ Animações de scroll fade-in
+- ✅ Cards de projetos interativos com hover 3D
+- ✅ Formulário de contato com validação
+- ✅ Efeito glassmorphism (vidro fosco)
+- ✅ Scroll suave entre seções
+- ✅ Background com gradiente animado girando
+
+---
+
+## 🎯 Efeito de Destaque: VS Code Digitando
+
+O fundo do site possui uma simulação realista de um editor VS Code onde códigos JavaScript vão sendo digitados automaticamente, com destaque de sintaxe incluindo:
+- Palavras-chave em rosa (`class`, `const`, `function`)
+- Strings em amarelo
+- Funções em verde
+- Comentários em cinza itálico
+
+O código digitado representa **meu portfolio real** com informações sobre projetos, tecnologias e experiência profissional.
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+
+sml-portfolio/
+│
+├── index.html              # Página principal
+├── README.md               # Documentação
+├── assets/
+│   ├── css/
+│   │   └── style.css       # Estilos personalizados + animações
+│   └── js/
+│       └── script.js       # Efeito de digitação + interatividade
+└── pages/
+└── contato.html        # Página de contato extra
+
+```
+
+---
+
+## 🚀 Como executar localmente
+
+### Opção 1: Servidor Python
 ```bash
-# Abra o arquivo index.html no navegador
-# Ou use um servidor local:
 python -m http.server 8000
-cat > assets/js/script.js << 'EOF'
-// Cursor personalizado
-const cursor = document.getElementById('cursor-glow');
+```
 
-if (cursor) {
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-}
+Acesse: http://localhost:8000
 
-// Menu mobile
-const menuBtn = document.getElementById('menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-const closeMenu = document.getElementById('close-menu');
+Opção 2: Servidor Node.js
 
-if (menuBtn) {
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.remove('hidden');
-        mobileMenu.classList.add('flex');
-    });
-}
+```bash
+npx serve .
+```
 
-if (closeMenu) {
-    closeMenu.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('flex');
-    });
-}
+Opção 3: Apenas abrir
 
-// Fechar menu ao clicar em link
-document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('flex');
-    });
-});
+Abra o arquivo index.html diretamente no navegador.
 
-// Animação fade-in ao scroll
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, { threshold: 0.1 });
+---
 
-document.querySelectorAll('#projetos .bg-white\\/5, #sobre, #contato').forEach(el => {
-    if (el) {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = '0.6s';
-        observer.observe(el);
-    }
-});
+🌐 Deploy
 
-// Formulário de contato
-const form = document.getElementById('form-contato');
-if (form) {
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('🚀 Mensagem enviada! Entrarei em contato em breve.');
-        form.reset();
-    });
-}
+Render.com
+
+1. Conecte o repositório
+2. Configure como Static Site
+3. Deploy automático
+4. Site disponível em: https://sml-developer.onrender.com
+
+GitHub Pages
+
+```bash
+git push origin main
+```
+
+Ative o GitHub Pages nas configurações do repositório.
+
+---
+
+📞 Contato
+
+· Instagram: @sml_developer
+· GitHub: github.com/sml-pn
+· Site: sml-developer.onrender.com
+
+---
+
+📄 Licença
+
+© 2024 SML Developer | Todos os direitos reservados
+
+---
+
+Feito com 💻, ☕ e muito código em Trairi-CE
+
+"Transformando ideias em código, uma linha por vez."
