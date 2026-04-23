@@ -114,10 +114,10 @@
             animation: spin-slow 20s linear infinite;
         }
 
-        /* VS Code estilo - AGORA FUNCIONA EM TODOS OS DISPOSITIVOS */
+        /* VS Code estilo - funciona em todos os dispositivos */
         .code-line {
             font-family: 'Courier New', monospace;
-            font-size: 9px;
+            font-size: 10px;
             line-height: 1.4;
             opacity: 0;
             animation: fadeIn 0.3s forwards;
@@ -157,32 +157,11 @@
         .title-3d {
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
-
-        /* Ajustes para celular */
-        @media (max-width: 768px) {
-            .container {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-            h1 {
-                font-size: 2.5rem !important;
-            }
-            .text-xl {
-                font-size: 1.1rem !important;
-            }
-            .py-20 {
-                padding-top: 3rem !important;
-                padding-bottom: 3rem !important;
-            }
-            .gap-8 {
-                gap: 1.5rem !important;
-            }
-        }
     </style>
 </head>
 <body class="bg-dark text-white font-mono overflow-x-hidden">
 
-    <!-- Overlay VS Code - AGORA FUNCIONA NO MOBILE TAMBÉM -->
+    <!-- Overlay VS Code - Funciona em todos os dispositivos -->
     <div id="code-overlay" class="fixed inset-0 pointer-events-none z-0 opacity-15 md:opacity-20">
         <div class="h-full w-full overflow-hidden bg-black/50 backdrop-blur-sm">
             <div class="p-3 md:p-4 font-mono text-xs md:text-sm text-neon h-full overflow-hidden">
@@ -203,13 +182,14 @@
     <!-- Navbar -->
     <nav class="fixed w-full z-50 bg-dark/80 backdrop-blur-md border-b border-white/10">
         <div class="container mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
-            <h1 class="text-lg md:text-2xl font-bold bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent title-3d">SML_Developer</h1>
+            <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent title-3d">SML_Developer</h1>
             <ul class="hidden md:flex gap-8">
                 <li><a href="#home" class="hover:text-neon transition parallax-element">Início</a></li>
                 <li><a href="#projetos" class="hover:text-neon transition parallax-element">Projetos</a></li>
                 <li><a href="#sobre" class="hover:text-neon transition parallax-element">Sobre</a></li>
                 <li><a href="#contato" class="hover:text-neon transition parallax-element">Contato</a></li>
             </ul>
+            <!-- Botão Hambúrguer TAMANHO NORMAL -->
             <button id="menu-btn" class="md:hidden hamburger" aria-label="Menu">
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>
@@ -219,116 +199,117 @@
     </nav>
 
     <!-- Menu Mobile -->
-    <div id="mobile-menu" class="fixed inset-0 bg-dark/95 backdrop-blur-lg z-40 hidden flex-col items-center justify-center gap-6 md:gap-8 text-lg md:text-xl">
+    <div id="mobile-menu" class="fixed inset-0 bg-dark/95 backdrop-blur-lg z-40 hidden flex-col items-center justify-center gap-8 text-xl">
         <a href="#home" class="hover:text-neon transition">Início</a>
         <a href="#projetos" class="hover:text-neon transition">Projetos</a>
         <a href="#sobre" class="hover:text-neon transition">Sobre</a>
         <a href="#contato" class="hover:text-neon transition">Contato</a>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Hero Section com TÍTULO GRANDE original -->
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-neon/5 via-transparent to-neon-pink/5 animate-spin-slow" style="width: 200%; height: 200%;"></div>
-        <div class="container mx-auto px-4 md:px-6 text-center relative z-10">
-            <h1 class="text-4xl md:text-7xl font-bold mb-3 md:mb-4 title-3d parallax-element" data-parallax="0.05">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <!-- TÍTULO GRANDE restaurado -->
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 title-3d parallax-element" data-parallax="0.05">
                 <span class="bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent animate-pulse">SML Developer</span>
             </h1>
-            <p class="text-base md:text-2xl text-gray-300 mb-6 md:mb-8 parallax-element" data-parallax="0.03">💻 Web Developer | 🌊 Trairi-CE</p>
-            <div class="flex gap-3 md:gap-4 justify-center">
-                <a href="#projetos" class="px-4 md:px-8 py-2 md:py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition text-sm md:text-base parallax-element">Ver Projetos</a>
-                <a href="#contato" class="px-4 md:px-8 py-2 md:py-3 border border-neon rounded-lg font-bold hover:bg-neon/20 transition text-sm md:text-base parallax-element">Contato</a>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 parallax-element" data-parallax="0.03">💻 Web Developer | 🌊 Trairi-CE</p>
+            <div class="flex gap-4 justify-center">
+                <a href="#projetos" class="px-8 py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition parallax-element">Ver Projetos</a>
+                <a href="#contato" class="px-8 py-3 border border-neon rounded-lg font-bold hover:bg-neon/20 transition parallax-element">Contato</a>
             </div>
         </div>
-        <div class="absolute bottom-5 md:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-xl md:text-2xl text-neon"></i>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-2xl text-neon"></i>
         </div>
     </section>
 
     <!-- Projetos Section com CARDS 3D -->
-    <section id="projetos" class="py-12 md:py-20 px-4 md:px-6 relative z-10">
+    <section id="projetos" class="py-20 px-6 relative z-10">
         <div class="container mx-auto">
-            <h2 class="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📁 Projetos Realizados</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <!-- Card 1 3D -->
-                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/10 hover:border-neon transition hover:shadow-neon">
-                    <div class="h-36 md:h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-3 md:mb-4 flex items-center justify-center">
-                        <i class="fas fa-code text-4xl md:text-5xl text-white/50"></i>
+            <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📁 Projetos Realizados</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition hover:shadow-neon">
+                    <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
+                        <i class="fas fa-code text-5xl text-white/50"></i>
                     </div>
-                    <h3 class="text-lg md:text-xl font-bold mb-1 md:mb-2">Portfolio 3D</h3>
-                    <p class="text-gray-400 text-sm md:text-base mb-3 md:mb-4">Site interativo com efeitos 3D e animações</p>
-                    <div class="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-4">
-                        <span class="px-2 py-1 bg-neon/20 rounded text-xs md:text-sm">Three.js</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-xs md:text-sm">Tailwind</span>
+                    <h3 class="text-xl font-bold mb-2">Portfolio 3D</h3>
+                    <p class="text-gray-400 mb-4">Site interativo com efeitos 3D e animações</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Three.js</span>
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Tailwind</span>
                     </div>
-                    <a href="#" class="text-neon hover:underline text-sm md:text-base">Ver mais →</a>
+                    <a href="#" class="text-neon hover:underline">Ver mais →</a>
                 </div>
-                <!-- Card 2 3D -->
-                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/10 hover:border-neon transition hover:shadow-neon">
-                    <div class="h-36 md:h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-3 md:mb-4 flex items-center justify-center">
-                        <i class="fas fa-server text-4xl md:text-5xl text-white/50"></i>
+                <!-- Card 2 -->
+                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition hover:shadow-neon">
+                    <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
+                        <i class="fas fa-server text-5xl text-white/50"></i>
                     </div>
-                    <h3 class="text-lg md:text-xl font-bold mb-1 md:mb-2">API REST</h3>
-                    <p class="text-gray-400 text-sm md:text-base mb-3 md:mb-4">Backend completo com autenticação</p>
-                    <div class="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-4">
-                        <span class="px-2 py-1 bg-neon/20 rounded text-xs md:text-sm">Node.js</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-xs md:text-sm">Express</span>
+                    <h3 class="text-xl font-bold mb-2">API REST</h3>
+                    <p class="text-gray-400 mb-4">Backend completo com autenticação</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Node.js</span>
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Express</span>
                     </div>
-                    <a href="#" class="text-neon hover:underline text-sm md:text-base">Ver mais →</a>
+                    <a href="#" class="text-neon hover:underline">Ver mais →</a>
                 </div>
-                <!-- Card 3 3D -->
-                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/10 hover:border-neon transition hover:shadow-neon">
-                    <div class="h-36 md:h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-3 md:mb-4 flex items-center justify-center">
-                        <i class="fas fa-shopping-cart text-4xl md:text-5xl text-white/50"></i>
+                <!-- Card 3 -->
+                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition hover:shadow-neon">
+                    <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
+                        <i class="fas fa-shopping-cart text-5xl text-white/50"></i>
                     </div>
-                    <h3 class="text-lg md:text-xl font-bold mb-1 md:mb-2">E-commerce</h3>
-                    <p class="text-gray-400 text-sm md:text-base mb-3 md:mb-4">Loja virtual completa</p>
-                    <div class="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-4">
-                        <span class="px-2 py-1 bg-neon/20 rounded text-xs md:text-sm">React</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-xs md:text-sm">Redux</span>
+                    <h3 class="text-xl font-bold mb-2">E-commerce</h3>
+                    <p class="text-gray-400 mb-4">Loja virtual completa</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">React</span>
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Redux</span>
                     </div>
-                    <a href="#" class="text-neon hover:underline text-sm md:text-base">Ver mais →</a>
+                    <a href="#" class="text-neon hover:underline">Ver mais →</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Sobre Section -->
-    <section id="sobre" class="py-12 md:py-20 px-4 md:px-6 bg-white/5 relative z-10">
+    <section id="sobre" class="py-20 px-6 bg-white/5 relative z-10">
         <div class="container mx-auto max-w-3xl text-center">
-            <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-8 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">🌊 Sobre mim</h2>
-            <div class="space-y-2 md:space-y-4 text-gray-300 text-sm md:text-base">
+            <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">🌊 Sobre mim</h2>
+            <div class="space-y-4 text-gray-300">
                 <p>💻 <strong class="text-white">Web Developer</strong> | SML Developer</p>
                 <p>🚀 Criando soluções limpas e funcionais</p>
                 <p>📍 Trairi - Ceará</p>
-                <p>🔗 <a href="https://sml-developer.onrender.com" class="text-neon hover:underline break-all">sml-developer.onrender.com</a></p>
+                <p>🔗 <a href="https://sml-developer.onrender.com" class="text-neon hover:underline">sml-developer.onrender.com</a></p>
             </div>
         </div>
     </section>
 
     <!-- Contato Section -->
-    <section id="contato" class="py-12 md:py-20 px-4 md:px-6 relative z-10">
+    <section id="contato" class="py-20 px-6 relative z-10">
         <div class="container mx-auto max-w-2xl">
-            <h2 class="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📩 Contato</h2>
-            <form id="form-contato" class="space-y-4 md:space-y-6">
-                <input type="text" placeholder="Seu nome" required class="w-full px-3 md:px-4 py-2 md:py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition text-sm md:text-base">
-                <input type="email" placeholder="Seu e-mail" required class="w-full px-3 md:px-4 py-2 md:py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition text-sm md:text-base">
-                <textarea placeholder="Sua mensagem" rows="4 md:rows-5" required class="w-full px-3 md:px-4 py-2 md:py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition text-sm md:text-base"></textarea>
-                <button type="submit" class="w-full py-2 md:py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition text-sm md:text-base">Enviar mensagem</button>
+            <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📩 Contato</h2>
+            <form id="form-contato" class="space-y-6">
+                <input type="text" placeholder="Seu nome" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition">
+                <input type="email" placeholder="Seu e-mail" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition">
+                <textarea placeholder="Sua mensagem" rows="5" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition"></textarea>
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition">Enviar mensagem</button>
             </form>
-            <div class="flex justify-center gap-5 md:gap-6 mt-6 md:mt-8">
-                <a href="#" class="text-2xl md:text-3xl hover:text-neon transition"><i class="fab fa-github"></i></a>
-                <a href="#" class="text-2xl md:text-3xl hover:text-neon transition"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-2xl md:text-3xl hover:text-neon transition"><i class="fab fa-linkedin"></i></a>
+            <div class="flex justify-center gap-6 mt-8">
+                <a href="#" class="text-3xl hover:text-neon transition"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-3xl hover:text-neon transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-3xl hover:text-neon transition"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </section>
 
-    <footer class="py-4 md:py-6 text-center text-gray-500 border-t border-white/10 relative z-10 text-xs md:text-sm">
+    <footer class="py-6 text-center text-gray-500 border-t border-white/10 relative z-10">
         <p>© 2024 SML Developer | Todos os direitos reservados</p>
     </footer>
 
     <script>
-        // ===== MENU HAMBÚRGUER =====
+        // Menu hambúrguer
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         let menuOpen = false;
@@ -362,16 +343,16 @@
             });
         });
 
-        // ===== CURSOR PERSONALIZADO (SÓ DESKTOP) =====
+        // Cursor personalizado
         const cursor = document.getElementById('cursor-glow');
-        if (cursor) {
+        if (cursor && window.innerWidth >= 768) {
             document.addEventListener('mousemove', (e) => {
                 cursor.style.left = e.clientX + 'px';
                 cursor.style.top = e.clientY + 'px';
             });
         }
 
-        // ===== SCROLL SUAVE =====
+        // Scroll suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -382,7 +363,7 @@
             });
         });
 
-        // ===== FORMULÁRIO =====
+        // Formulário
         const form = document.getElementById('form-contato');
         if (form) {
             form.addEventListener('submit', (e) => {
@@ -392,7 +373,7 @@
             });
         }
 
-        // ===== EFEITO VS CODE DIGITANDO (INFINITO - AGORA NO MOBILE TAMBÉM) =====
+        // Efeito VS Code digitando
         const codeToType = [
             '// SML Developer - Portfolio Profissional',
             '// Desenvolvedor Web | Trairi-CE',
@@ -417,10 +398,9 @@
         let charIndex = 0;
         let currentLine = '';
         const container = document.getElementById('code-lines');
-        let isLooping = true;
 
         function typeCode() {
-            if (!container || !isLooping) return;
+            if (!container) return;
             
             if (lineIndex >= codeToType.length) {
                 setTimeout(() => {
@@ -463,14 +443,12 @@
             }
         }
 
-        // ===== EFEITO MOUSE PARALLAX 3D (SÓ DESKTOP) =====
+        // Parallax só desktop
         const parallaxElements = document.querySelectorAll('.parallax-element');
-        
         if (window.innerWidth >= 768) {
             document.addEventListener('mousemove', (e) => {
                 const mouseX = (e.clientX / window.innerWidth) - 0.5;
                 const mouseY = (e.clientY / window.innerHeight) - 0.5;
-                
                 parallaxElements.forEach(el => {
                     const speed = parseFloat(el.getAttribute('data-parallax')) || 0.02;
                     const moveX = mouseX * 20 * speed;
@@ -480,24 +458,7 @@
             });
         }
 
-        // ===== TÍTULO COM EFEITO 3D EXTRA =====
-        const titles = document.querySelectorAll('.title-3d');
-        titles.forEach(title => {
-            title.addEventListener('mousemove', (e) => {
-                if (window.innerWidth >= 768) {
-                    const rect = title.getBoundingClientRect();
-                    const x = (e.clientX - rect.left) / rect.width - 0.5;
-                    const y = (e.clientY - rect.top) / rect.height - 0.5;
-                    title.style.transform = `perspective(500px) rotateY(${x * 10}deg) rotateX(${-y * 5}deg)`;
-                }
-            });
-            
-            title.addEventListener('mouseleave', () => {
-                title.style.transform = 'perspective(500px) rotateY(0deg) rotateX(0deg)';
-            });
-        });
-
-        // ===== INICIAR EFEITOS =====
+        // Iniciar
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(typeCode, 500);
         });
