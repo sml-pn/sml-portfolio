@@ -23,6 +23,123 @@
             }
         }
     </script>
+    <style>
+        /* Animações e estilos do botão hambúrguer */
+        .hamburger {
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            position: relative;
+            background: transparent;
+            border: none;
+            z-index: 60;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+            position: absolute;
+            left: 0;
+            border-radius: 10px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .hamburger-line:nth-child(1) {
+            top: 6px;
+        }
+
+        .hamburger-line:nth-child(2) {
+            top: 14px;
+        }
+
+        .hamburger-line:nth-child(3) {
+            top: 22px;
+        }
+
+        /* Estado aberto (X girando) */
+        .hamburger.active .hamburger-line:nth-child(1) {
+            top: 14px;
+            transform: rotate(135deg);
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(3) {
+            top: 14px;
+            transform: rotate(-135deg);
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+        }
+
+        .hamburger.active {
+            transform: rotate(360deg);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .hamburger:not(.active) {
+            transform: rotate(0deg);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .hamburger:hover .hamburger-line {
+            box-shadow: 0 0 8px #00ffff;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .animate-spin-slow {
+            animation: spin-slow 20s linear infinite;
+        }
+
+        .code-line {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeIn 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .keyword { color: #ff79c6; font-weight: bold; }
+        .function { color: #50fa7b; }
+        .string { color: #f1fa8c; }
+        .comment { color: #6272a4; font-style: italic; }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0f1e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00ffff;
+            border-radius: 4px;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body class="bg-dark text-white font-mono overflow-x-hidden">
 
@@ -54,17 +171,21 @@
                 <li><a href="#sobre" class="hover:text-neon transition duration-300">Sobre</a></li>
                 <li><a href="#contato" class="hover:text-neon transition duration-300">Contato</a></li>
             </ul>
-            <button id="menu-btn" class="md:hidden text-2xl"><i class="fa-solid fa-bars"></i></button>
+            <!-- Botão Hambúrguer Animado -->
+            <button id="menu-btn" class="md:hidden hamburger" aria-label="Menu">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </button>
         </div>
     </nav>
 
     <!-- Menu Mobile -->
     <div id="mobile-menu" class="fixed inset-0 bg-dark/95 backdrop-blur-lg z-40 hidden flex-col items-center justify-center gap-8 text-xl">
-        <a href="#home" class="hover:text-neon">Início</a>
-        <a href="#projetos" class="hover:text-neon">Projetos</a>
-        <a href="#sobre" class="hover:text-neon">Sobre</a>
-        <a href="#contato" class="hover:text-neon">Contato</a>
-        <button id="close-menu" class="absolute top-6 right-6 text-2xl"><i class="fa-solid fa-xmark"></i></button>
+        <a href="#home" class="hover:text-neon transition">Início</a>
+        <a href="#projetos" class="hover:text-neon transition">Projetos</a>
+        <a href="#sobre" class="hover:text-neon transition">Sobre</a>
+        <a href="#contato" class="hover:text-neon transition">Contato</a>
     </div>
 
     <!-- Hero Section -->
