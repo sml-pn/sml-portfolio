@@ -4,22 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>SML Developer | Portfolio 3D</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS LOCAL -->
+    <link rel="stylesheet" href="assets/libs/tailwind/tailwind.min.css">
+    <!-- Lucide Icons LOCAL -->
+    <script src="assets/libs/lucide/lucide.min.js"></script>
+    <!-- Font Awesome como fallback -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'dark': '#0a0f1e',
-                        'neon': '#00ffff',
-                        'neon-pink': '#ff00ff'
-                    }
-                }
-            }
-        }
-    </script>
     <style>
+        /* Customizações adicionais - Tailwind não cobre tudo */
+        .bg-dark { background-color: #0a0f1e; }
+        .text-neon { color: #00ffff; }
+        .from-neon { --tw-gradient-from: #00ffff; }
+        .to-neon-pink { --tw-gradient-to: #ff00ff; }
+        .border-neon { border-color: #00ffff; }
+        
         /* ===== BOTÃO HAMBÚRGUER ===== */
         .hamburger {
             cursor: pointer;
@@ -72,16 +70,38 @@
             transition: transform 0.3s ease-in-out;
         }
 
-        .hamburger:hover .hamburger-line {
-            box-shadow: 0 0 8px #00ffff;
+        /* ===== ÍCONES PROFISSIONAIS ===== */
+        .icon-profissional {
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.3));
+            width: 64px;
+            height: 64px;
+            stroke-width: 1.5;
+        }
+
+        .icon-profissional:hover {
+            transform: scale(1.1) translateY(-5px);
+            filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.8));
+        }
+
+        .card-3d:hover .icon-profissional {
+            transform: scale(1.2) rotate(5deg);
+            filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.9));
+        }
+
+        .social-icon {
+            transition: all 0.3s ease;
+            width: 28px;
+            height: 28px;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.2);
+            stroke: url(#gradient);
+            filter: drop-shadow(0 0 8px #00ffff);
         }
 
         /* ===== ANIMAÇÕES ===== */
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(100%); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
         @keyframes spin-slow {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
@@ -91,7 +111,6 @@
             to { opacity: 1; }
         }
 
-        /* Efeito 3D nos cards */
         .card-3d {
             transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             transform-style: preserve-3d;
@@ -102,19 +121,10 @@
             transform: translateY(-5px) rotateX(3deg) rotateY(3deg);
         }
 
-        /* Mouse parallax só em desktop */
-        @media (min-width: 768px) {
-            .parallax-element {
-                transition: transform 0.1s ease-out;
-                will-change: transform;
-            }
-        }
-
         .animate-spin-slow {
             animation: spin-slow 20s linear infinite;
         }
 
-        /* VS Code estilo - funciona em todos os dispositivos */
         .code-line {
             font-family: 'Courier New', monospace;
             font-size: 10px;
@@ -126,26 +136,12 @@
         }
 
         @media (min-width: 768px) {
-            .code-line {
-                font-size: 12px;
-                line-height: 1.6;
-            }
+            .code-line { font-size: 12px; line-height: 1.6; }
         }
 
-        .keyword { color: #ff79c6; font-weight: bold; }
-        .function { color: #50fa7b; }
-        .string { color: #f1fa8c; }
-        .comment { color: #6272a4; font-style: italic; }
-
-        /* Ajuste da opacidade do overlay no mobile */
         @media (max-width: 768px) {
-            #code-overlay {
-                opacity: 0.12 !important;
-            }
-            .code-line {
-                font-size: 8px;
-                line-height: 1.3;
-            }
+            #code-overlay { opacity: 0.12 !important; }
+            .code-line { font-size: 8px; line-height: 1.3; }
         }
 
         ::-webkit-scrollbar { width: 8px; }
@@ -153,15 +149,21 @@
         ::-webkit-scrollbar-thumb { background: #00ffff; border-radius: 4px; }
         
         html { scroll-behavior: smooth; }
-
-        .title-3d {
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-        }
+        .title-3d { text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
     </style>
 </head>
 <body class="bg-dark text-white font-mono overflow-x-hidden">
 
-    <!-- Overlay VS Code - Funciona em todos os dispositivos -->
+    <svg style="display: none;">
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#ff00ff;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- Overlay VS Code -->
     <div id="code-overlay" class="fixed inset-0 pointer-events-none z-0 opacity-15 md:opacity-20">
         <div class="h-full w-full overflow-hidden bg-black/50 backdrop-blur-sm">
             <div class="p-3 md:p-4 font-mono text-xs md:text-sm text-neon h-full overflow-hidden">
@@ -176,20 +178,17 @@
         </div>
     </div>
 
-    <!-- Cursor personalizado (só desktop) -->
     <div id="cursor-glow" class="fixed w-8 h-8 rounded-full pointer-events-none z-50 hidden md:block" style="background: radial-gradient(circle, rgba(0,255,255,0.6) 0%, rgba(0,255,255,0) 70%);"></div>
 
-    <!-- Navbar -->
     <nav class="fixed w-full z-50 bg-dark/80 backdrop-blur-md border-b border-white/10">
         <div class="container mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
             <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent title-3d">SML_Developer</h1>
             <ul class="hidden md:flex gap-8">
-                <li><a href="#home" class="hover:text-neon transition parallax-element">Início</a></li>
-                <li><a href="#projetos" class="hover:text-neon transition parallax-element">Projetos</a></li>
-                <li><a href="#sobre" class="hover:text-neon transition parallax-element">Sobre</a></li>
-                <li><a href="#contato" class="hover:text-neon transition parallax-element">Contato</a></li>
+                <li><a href="#home" class="hover:text-neon transition">Início</a></li>
+                <li><a href="#projetos" class="hover:text-neon transition">Projetos</a></li>
+                <li><a href="#sobre" class="hover:text-neon transition">Sobre</a></li>
+                <li><a href="#contato" class="hover:text-neon transition">Contato</a></li>
             </ul>
-            <!-- Botão Hambúrguer TAMANHO NORMAL -->
             <button id="menu-btn" class="md:hidden hamburger" aria-label="Menu">
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>
@@ -198,7 +197,6 @@
         </div>
     </nav>
 
-    <!-- Menu Mobile -->
     <div id="mobile-menu" class="fixed inset-0 bg-dark/95 backdrop-blur-lg z-40 hidden flex-col items-center justify-center gap-8 text-xl">
         <a href="#home" class="hover:text-neon transition">Início</a>
         <a href="#projetos" class="hover:text-neon transition">Projetos</a>
@@ -206,34 +204,32 @@
         <a href="#contato" class="hover:text-neon transition">Contato</a>
     </div>
 
-    <!-- Hero Section com TÍTULO GRANDE original -->
+    <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-neon/5 via-transparent to-neon-pink/5 animate-spin-slow" style="width: 200%; height: 200%;"></div>
         <div class="container mx-auto px-6 text-center relative z-10">
-            <!-- TÍTULO GRANDE restaurado -->
-            <h1 class="text-5xl md:text-7xl font-bold mb-4 title-3d parallax-element" data-parallax="0.05">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 title-3d">
                 <span class="bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent animate-pulse">SML Developer</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-8 parallax-element" data-parallax="0.03">💻 Web Developer | 🌊 Trairi-CE</p>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8">💻 Web Developer | 🌊 Trairi-CE</p>
             <div class="flex gap-4 justify-center">
-                <a href="#projetos" class="px-8 py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition parallax-element">Ver Projetos</a>
-                <a href="#contato" class="px-8 py-3 border border-neon rounded-lg font-bold hover:bg-neon/20 transition parallax-element">Contato</a>
+                <a href="#projetos" class="px-8 py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition">Ver Projetos</a>
+                <a href="#contato" class="px-8 py-3 border border-neon rounded-lg font-bold hover:bg-neon/20 transition">Contato</a>
             </div>
         </div>
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-2xl text-neon"></i>
+            <i data-lucide="chevron-down" class="text-neon w-6 h-6"></i>
         </div>
     </section>
 
-    <!-- Projetos Section com CARDS 3D -->
+    <!-- Projetos Section -->
     <section id="projetos" class="py-20 px-6 relative z-10">
         <div class="container mx-auto">
             <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📁 Projetos Realizados</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition hover:shadow-neon">
+                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
                     <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
-                        <i class="fas fa-code text-5xl text-white/50"></i>
+                        <i data-lucide="code-2" class="icon-profissional text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Portfolio 3D</h3>
                     <p class="text-gray-400 mb-4">Site interativo com efeitos 3D e animações</p>
@@ -241,12 +237,14 @@
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">Three.js</span>
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">Tailwind</span>
                     </div>
-                    <a href="#" class="text-neon hover:underline">Ver mais →</a>
+                    <a href="#" class="text-neon hover:underline flex items-center gap-2 group">
+                        Ver mais <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+                    </a>
                 </div>
-                <!-- Card 2 -->
-                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition hover:shadow-neon">
+                
+                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
                     <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
-                        <i class="fas fa-server text-5xl text-white/50"></i>
+                        <i data-lucide="server" class="icon-profissional text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">API REST</h3>
                     <p class="text-gray-400 mb-4">Backend completo com autenticação</p>
@@ -254,12 +252,14 @@
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">Node.js</span>
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">Express</span>
                     </div>
-                    <a href="#" class="text-neon hover:underline">Ver mais →</a>
+                    <a href="#" class="text-neon hover:underline flex items-center gap-2 group">
+                        Ver mais <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+                    </a>
                 </div>
-                <!-- Card 3 -->
-                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition hover:shadow-neon">
+                
+                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
                     <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
-                        <i class="fas fa-shopping-cart text-5xl text-white/50"></i>
+                        <i data-lucide="shopping-bag" class="icon-profissional text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">E-commerce</h3>
                     <p class="text-gray-400 mb-4">Loja virtual completa</p>
@@ -267,13 +267,14 @@
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">React</span>
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">Redux</span>
                     </div>
-                    <a href="#" class="text-neon hover:underline">Ver mais →</a>
+                    <a href="#" class="text-neon hover:underline flex items-center gap-2 group">
+                        Ver mais <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sobre Section -->
     <section id="sobre" class="py-20 px-6 bg-white/5 relative z-10">
         <div class="container mx-auto max-w-3xl text-center">
             <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">🌊 Sobre mim</h2>
@@ -286,7 +287,6 @@
         </div>
     </section>
 
-    <!-- Contato Section -->
     <section id="contato" class="py-20 px-6 relative z-10">
         <div class="container mx-auto max-w-2xl">
             <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📩 Contato</h2>
@@ -296,10 +296,20 @@
                 <textarea placeholder="Sua mensagem" rows="5" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition"></textarea>
                 <button type="submit" class="w-full py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition">Enviar mensagem</button>
             </form>
-            <div class="flex justify-center gap-6 mt-8">
-                <a href="#" class="text-3xl hover:text-neon transition"><i class="fab fa-github"></i></a>
-                <a href="#" class="text-3xl hover:text-neon transition"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-3xl hover:text-neon transition"><i class="fab fa-linkedin"></i></a>
+            
+            <div class="flex justify-center gap-8 mt-8">
+                <a href="#" class="social-icon text-gray-400 hover:text-neon transition">
+                    <i data-lucide="github"></i>
+                </a>
+                <a href="#" class="social-icon text-gray-400 hover:text-neon transition">
+                    <i data-lucide="instagram"></i>
+                </a>
+                <a href="#" class="social-icon text-gray-400 hover:text-neon transition">
+                    <i data-lucide="linkedin"></i>
+                </a>
+                <a href="#" class="social-icon text-gray-400 hover:text-neon transition">
+                    <i data-lucide="twitter"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -309,6 +319,11 @@
     </footer>
 
     <script>
+        // Inicializar Lucide Icons (agora do arquivo local)
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
         // Menu hambúrguer
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -383,25 +398,17 @@
             'const sml = new WebDeveloper({',
             '    nome: "SML Developer",',
             '    localizacao: "Trairi-CE",',
-            '    cargo: "Web Developer Full Stack",',
-            '    tecnologias: [',
-            '        "HTML5", "CSS3", "JavaScript",',
-            '        "React", "Node.js", "Tailwind"',
-            '    ]',
+            '    tecnologias: ["React", "Node.js", "Tailwind"]',
             '});',
             '',
-            'console.log("✅ Portfólio carregado!");',
-            'console.log("🚀 Site: sml-developer.onrender.com");'
+            'console.log("🚀 Portfólio carregado!");'
         ];
 
-        let lineIndex = 0;
-        let charIndex = 0;
-        let currentLine = '';
+        let lineIndex = 0, charIndex = 0;
         const container = document.getElementById('code-lines');
 
         function typeCode() {
             if (!container) return;
-            
             if (lineIndex >= codeToType.length) {
                 setTimeout(() => {
                     container.innerHTML = '';
@@ -411,31 +418,18 @@
                 }, 5000);
                 return;
             }
-            
             const targetLine = codeToType[lineIndex];
-            
             if (charIndex === 0) {
-                currentLine = '';
                 const lineDiv = document.createElement('div');
                 lineDiv.className = 'code-line';
                 lineDiv.id = `line-${lineIndex}`;
                 container.appendChild(lineDiv);
-                lineDiv.scrollIntoView({ behavior: 'smooth', block: 'end' });
             }
-            
             if (charIndex < targetLine.length) {
-                currentLine += targetLine[charIndex];
                 const lineDiv = document.getElementById(`line-${lineIndex}`);
-                if (lineDiv) {
-                    let highlighted = currentLine;
-                    highlighted = highlighted.replace(/(\/\/.*)$/gm, match => `<span class="comment">${match}</span>`);
-                    highlighted = highlighted.replace(/\b(const|let|class|function|return|new|import|console|log)\b/g, match => `<span class="keyword">${match}</span>`);
-                    highlighted = highlighted.replace(/(["'].*?["'])/g, match => `<span class="string">${match}</span>`);
-                    highlighted = highlighted.replace(/(\w+(?=\())/g, match => `<span class="function">${match}</span>`);
-                    lineDiv.innerHTML = highlighted;
-                }
+                if (lineDiv) lineDiv.innerHTML = targetLine.substring(0, charIndex + 1);
                 charIndex++;
-                setTimeout(typeCode, 30 + Math.random() * 40);
+                setTimeout(typeCode, 40);
             } else {
                 lineIndex++;
                 charIndex = 0;
@@ -443,25 +437,7 @@
             }
         }
 
-        // Parallax só desktop
-        const parallaxElements = document.querySelectorAll('.parallax-element');
-        if (window.innerWidth >= 768) {
-            document.addEventListener('mousemove', (e) => {
-                const mouseX = (e.clientX / window.innerWidth) - 0.5;
-                const mouseY = (e.clientY / window.innerHeight) - 0.5;
-                parallaxElements.forEach(el => {
-                    const speed = parseFloat(el.getAttribute('data-parallax')) || 0.02;
-                    const moveX = mouseX * 20 * speed;
-                    const moveY = mouseY * 15 * speed;
-                    el.style.transform = `translate(${moveX}px, ${moveY}px)`;
-                });
-            });
-        }
-
-        // Iniciar
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(typeCode, 500);
-        });
+        document.addEventListener('DOMContentLoaded', () => setTimeout(typeCode, 500));
     </script>
 </body>
 </html>
