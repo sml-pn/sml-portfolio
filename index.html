@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>SML Developer | Portfolio 3D</title>
-    <!-- Tailwind CSS LOCAL -->
-    <link rel="stylesheet" href="assets/libs/tailwind/tailwind.min.css">
-    <!-- Lucide Icons LOCAL -->
-    <script src="assets/libs/lucide/lucide.min.js"></script>
-    <!-- Font Awesome como fallback -->
+    <title>SML Developer | Web Developer Profissional</title>
+    <meta name="description" content="Crio sites profissionais e sistemas web. Atendimento rápido em Trairi-CE. Solicite seu orçamento agora!">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark': '#0a0f1e',
+                        'neon': '#00ffff',
+                        'neon-pink': '#ff00ff'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Customizações adicionais - Tailwind não cobre tudo */
-        .bg-dark { background-color: #0a0f1e; }
-        .text-neon { color: #00ffff; }
-        .from-neon { --tw-gradient-from: #00ffff; }
-        .to-neon-pink { --tw-gradient-to: #ff00ff; }
-        .border-neon { border-color: #00ffff; }
-        
-        /* ===== BOTÃO HAMBÚRGUER ===== */
         .hamburger {
             cursor: pointer;
             width: 32px;
@@ -70,47 +73,6 @@
             transition: transform 0.3s ease-in-out;
         }
 
-        /* ===== ÍCONES PROFISSIONAIS ===== */
-        .icon-profissional {
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.3));
-            width: 64px;
-            height: 64px;
-            stroke-width: 1.5;
-        }
-
-        .icon-profissional:hover {
-            transform: scale(1.1) translateY(-5px);
-            filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.8));
-        }
-
-        .card-3d:hover .icon-profissional {
-            transform: scale(1.2) rotate(5deg);
-            filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.9));
-        }
-
-        .social-icon {
-            transition: all 0.3s ease;
-            width: 28px;
-            height: 28px;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-5px) scale(1.2);
-            stroke: url(#gradient);
-            filter: drop-shadow(0 0 8px #00ffff);
-        }
-
-        /* ===== ANIMAÇÕES ===== */
-        @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
         .card-3d {
             transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             transform-style: preserve-3d;
@@ -121,73 +83,46 @@
             transform: translateY(-5px) rotateX(3deg) rotateY(3deg);
         }
 
-        .animate-spin-slow {
-            animation: spin-slow 20s linear infinite;
-        }
-
-        .code-line {
-            font-family: 'Courier New', monospace;
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+            padding: 4px 10px;
+            border-radius: 20px;
             font-size: 10px;
-            line-height: 1.4;
-            opacity: 0;
-            animation: fadeIn 0.3s forwards;
-            white-space: pre-wrap;
-            word-break: break-word;
+            font-weight: bold;
+            color: #0a0f1e;
         }
 
-        @media (min-width: 768px) {
-            .code-line { font-size: 12px; line-height: 1.6; }
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
         }
-
-        @media (max-width: 768px) {
-            #code-overlay { opacity: 0.12 !important; }
-            .code-line { font-size: 8px; line-height: 1.3; }
+        .btn-whatsapp:hover {
+            transform: scale(1.05);
+            background: #128C7E;
         }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0f1e; }
-        ::-webkit-scrollbar-thumb { background: #00ffff; border-radius: 4px; }
-        
-        html { scroll-behavior: smooth; }
-        .title-3d { text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
     </style>
 </head>
 <body class="bg-dark text-white font-mono overflow-x-hidden">
 
-    <svg style="display: none;">
-        <defs>
-            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#ff00ff;stop-opacity:1" />
-            </linearGradient>
-        </defs>
-    </svg>
-
-    <!-- Overlay VS Code -->
-    <div id="code-overlay" class="fixed inset-0 pointer-events-none z-0 opacity-15 md:opacity-20">
-        <div class="h-full w-full overflow-hidden bg-black/50 backdrop-blur-sm">
-            <div class="p-3 md:p-4 font-mono text-xs md:text-sm text-neon h-full overflow-hidden">
-                <div class="flex items-center gap-2 mb-3 md:mb-4 border-b border-white/20 pb-2">
-                    <div class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-red-500"></div>
-                    <div class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-yellow-500"></div>
-                    <div class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-green-500"></div>
-                    <span class="text-gray-400 text-[10px] md:text-xs ml-2">sml_developer@portfolio: ~/projetos</span>
-                </div>
-                <div id="code-lines" class="overflow-hidden"></div>
-            </div>
-        </div>
-    </div>
-
     <div id="cursor-glow" class="fixed w-8 h-8 rounded-full pointer-events-none z-50 hidden md:block" style="background: radial-gradient(circle, rgba(0,255,255,0.6) 0%, rgba(0,255,255,0) 70%);"></div>
 
     <nav class="fixed w-full z-50 bg-dark/80 backdrop-blur-md border-b border-white/10">
-        <div class="container mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
-            <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent title-3d">SML_Developer</h1>
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">SML_Developer</h1>
             <ul class="hidden md:flex gap-8">
                 <li><a href="#home" class="hover:text-neon transition">Início</a></li>
                 <li><a href="#projetos" class="hover:text-neon transition">Projetos</a></li>
                 <li><a href="#sobre" class="hover:text-neon transition">Sobre</a></li>
-                <li><a href="#contato" class="hover:text-neon transition">Contato</a></li>
+                <li><a href="#contato" class="hover:text-neon transition">Contratar</a></li>
             </ul>
             <button id="menu-btn" class="md:hidden hamburger" aria-label="Menu">
                 <div class="hamburger-line"></div>
@@ -201,75 +136,77 @@
         <a href="#home" class="hover:text-neon transition">Início</a>
         <a href="#projetos" class="hover:text-neon transition">Projetos</a>
         <a href="#sobre" class="hover:text-neon transition">Sobre</a>
-        <a href="#contato" class="hover:text-neon transition">Contato</a>
+        <a href="#contato" class="hover:text-neon transition">Contratar</a>
     </div>
 
-    <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-neon/5 via-transparent to-neon-pink/5 animate-spin-slow" style="width: 200%; height: 200%;"></div>
         <div class="container mx-auto px-6 text-center relative z-10">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4 title-3d">
+            <div class="inline-block mb-4 px-4 py-1 bg-neon/20 rounded-full text-sm text-neon border border-neon/30">
+                🟢 DISPONÍVEL PARA PROJETOS
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">
                 <span class="bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent animate-pulse">SML Developer</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-300 mb-8">💻 Web Developer | 🌊 Trairi-CE</p>
-            <div class="flex gap-4 justify-center">
-                <a href="#projetos" class="px-8 py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition">Ver Projetos</a>
-                <a href="#contato" class="px-8 py-3 border border-neon rounded-lg font-bold hover:bg-neon/20 transition">Contato</a>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="#projetos" class="px-8 py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition">Ver Portfólio</a>
+                <a href="#contato" class="px-8 py-3 border border-neon rounded-lg font-bold hover:bg-neon/20 transition">📩 Contratar Agora</a>
             </div>
+            <p class="text-gray-400 text-sm mt-4">⚡ Atendimento rápido • Entrega garantida</p>
         </div>
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i data-lucide="chevron-down" class="text-neon w-6 h-6"></i>
+            <i class="fas fa-chevron-down text-2xl text-neon"></i>
         </div>
     </section>
 
-    <!-- Projetos Section -->
     <section id="projetos" class="py-20 px-6 relative z-10">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📁 Projetos Realizados</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
+            <h2 class="text-4xl font-bold text-center mb-4 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📁 Projetos Realizados</h2>
+            <p class="text-center text-gray-400 mb-12">+5 projetos entregues com excelência</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition relative">
+                    <div class="badge">✓ Finalizado</div>
                     <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
-                        <i data-lucide="code-2" class="icon-profissional text-white"></i>
+                        <i class="fas fa-code text-5xl text-white/50"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Portfolio 3D</h3>
-                    <p class="text-gray-400 mb-4">Site interativo com efeitos 3D e animações</p>
+                    <p class="text-gray-400 mb-4">Site profissional com efeitos 3D e animações</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">Three.js</span>
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">Tailwind</span>
                     </div>
-                    <a href="#" class="text-neon hover:underline flex items-center gap-2 group">
-                        Ver mais <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
-                    </a>
+                    <a href="#" class="text-neon hover:underline">Ver projeto →</a>
                 </div>
-                
-                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
+
+                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition relative">
+                    <div class="badge">✓ Finalizado</div>
                     <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
-                        <i data-lucide="server" class="icon-profissional text-white"></i>
+                        <i class="fas fa-server text-5xl text-white/50"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">API REST</h3>
-                    <p class="text-gray-400 mb-4">Backend completo com autenticação</p>
+                    <p class="text-gray-400 mb-4">Backend completo e escalável</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">Node.js</span>
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">Express</span>
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">MongoDB</span>
                     </div>
-                    <a href="#" class="text-neon hover:underline flex items-center gap-2 group">
-                        Ver mais <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
-                    </a>
+                    <a href="#" class="text-neon hover:underline">Ver projeto →</a>
                 </div>
-                
-                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
+
+                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition relative">
+                    <div class="badge">✓ Finalizado</div>
                     <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
-                        <i data-lucide="shopping-bag" class="icon-profissional text-white"></i>
+                        <i class="fas fa-shopping-cart text-5xl text-white/50"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">E-commerce</h3>
-                    <p class="text-gray-400 mb-4">Loja virtual completa</p>
+                    <p class="text-gray-400 mb-4">Loja virtual completa e responsiva</p>
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">React</span>
                         <span class="px-2 py-1 bg-neon/20 rounded text-sm">Redux</span>
+                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Stripe</span>
                     </div>
-                    <a href="#" class="text-neon hover:underline flex items-center gap-2 group">
-                        Ver mais <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
-                    </a>
+                    <a href="#" class="text-neon hover:underline">Ver projeto →</a>
                 </div>
             </div>
         </div>
@@ -280,8 +217,9 @@
             <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">🌊 Sobre mim</h2>
             <div class="space-y-4 text-gray-300">
                 <p>💻 <strong class="text-white">Web Developer</strong> | SML Developer</p>
-                <p>🚀 Criando soluções limpas e funcionais</p>
+                <p>🚀 Criando soluções limpas, funcionais e que vendem</p>
                 <p>📍 Trairi - Ceará</p>
+                <p class="text-neon">✅ Atendimento personalizado • Entrega ágil • Suporte pós-projeto</p>
                 <p>🔗 <a href="https://sml-developer.onrender.com" class="text-neon hover:underline">sml-developer.onrender.com</a></p>
             </div>
         </div>
@@ -289,155 +227,42 @@
 
     <section id="contato" class="py-20 px-6 relative z-10">
         <div class="container mx-auto max-w-2xl">
-            <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📩 Contato</h2>
+            <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📩 Solicite seu Orçamento</h2>
             <form id="form-contato" class="space-y-6">
                 <input type="text" placeholder="Seu nome" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition">
                 <input type="email" placeholder="Seu e-mail" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition">
-                <textarea placeholder="Sua mensagem" rows="5" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition"></textarea>
-                <button type="submit" class="w-full py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition">Enviar mensagem</button>
+                <textarea placeholder="Conte-me sobre seu projeto..." rows="5" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition"></textarea>
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition">📩 Enviar Mensagem</button>
             </form>
-            
-            <div class="flex justify-center gap-8 mt-8">
-                <a href="#" class="social-icon text-gray-400 hover:text-neon transition">
-                    <i data-lucide="github"></i>
-                </a>
-                <a href="#" class="social-icon text-gray-400 hover:text-neon transition">
-                    <i data-lucide="instagram"></i>
-                </a>
-                <a href="#" class="social-icon text-gray-400 hover:text-neon transition">
-                    <i data-lucide="linkedin"></i>
-                </a>
-                <a href="#" class="social-icon text-gray-400 hover:text-neon transition">
-                    <i data-lucide="twitter"></i>
+            <div class="flex justify-center gap-6 mt-8">
+                <a href="#" class="text-3xl hover:text-neon transition"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-3xl hover:text-neon transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-3xl hover:text-neon transition"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="text-center mt-8">
+                <a href="#" class="btn-whatsapp inline-flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-xl"></i> 
+                    Fale comigo no WhatsApp
                 </a>
             </div>
         </div>
     </section>
 
     <footer class="py-6 text-center text-gray-500 border-t border-white/10 relative z-10">
-        <p>© 2024 SML Developer | Todos os direitos reservados</p>
+        <p>© 2024 SML Developer | Disponíveis para novos projetos 🚀</p>
     </footer>
 
+    <script src="assets/js/script.js"></script>
     <script>
-        // Inicializar Lucide Icons (agora do arquivo local)
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-
-        // Menu hambúrguer
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        let menuOpen = false;
-
-        if (menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                menuOpen = !menuOpen;
-                if (menuOpen) {
-                    menuBtn.classList.add('active');
-                    mobileMenu.classList.remove('hidden');
-                    mobileMenu.classList.add('flex');
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    menuBtn.classList.remove('active');
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('flex');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        }
-
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (menuOpen) {
-                    menuBtn.classList.remove('active');
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('flex');
-                    document.body.style.overflow = 'auto';
-                    menuOpen = false;
-                }
-            });
-        });
-
-        // Cursor personalizado
-        const cursor = document.getElementById('cursor-glow');
-        if (cursor && window.innerWidth >= 768) {
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            });
-        }
-
-        // Scroll suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Formulário
+        // Ajuste do texto do formulário para orçamento
         const form = document.getElementById('form-contato');
         if (form) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
-                alert('🚀 Mensagem enviada! Entrarei em contato em breve.');
+                alert('📩 Recebi sua mensagem! Entrarei em contato em até 2 horas para falarmos do seu projeto.');
                 form.reset();
             });
         }
-
-        // Efeito VS Code digitando
-        const codeToType = [
-            '// SML Developer - Portfolio Profissional',
-            '// Desenvolvedor Web | Trairi-CE',
-            '',
-            'import { WebDeveloper } from "./modules/skills.js";',
-            '',
-            'const sml = new WebDeveloper({',
-            '    nome: "SML Developer",',
-            '    localizacao: "Trairi-CE",',
-            '    tecnologias: ["React", "Node.js", "Tailwind"]',
-            '});',
-            '',
-            'console.log("🚀 Portfólio carregado!");'
-        ];
-
-        let lineIndex = 0, charIndex = 0;
-        const container = document.getElementById('code-lines');
-
-        function typeCode() {
-            if (!container) return;
-            if (lineIndex >= codeToType.length) {
-                setTimeout(() => {
-                    container.innerHTML = '';
-                    lineIndex = 0;
-                    charIndex = 0;
-                    typeCode();
-                }, 5000);
-                return;
-            }
-            const targetLine = codeToType[lineIndex];
-            if (charIndex === 0) {
-                const lineDiv = document.createElement('div');
-                lineDiv.className = 'code-line';
-                lineDiv.id = `line-${lineIndex}`;
-                container.appendChild(lineDiv);
-            }
-            if (charIndex < targetLine.length) {
-                const lineDiv = document.getElementById(`line-${lineIndex}`);
-                if (lineDiv) lineDiv.innerHTML = targetLine.substring(0, charIndex + 1);
-                charIndex++;
-                setTimeout(typeCode, 40);
-            } else {
-                lineIndex++;
-                charIndex = 0;
-                setTimeout(typeCode, 150);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => setTimeout(typeCode, 500));
     </script>
 </body>
 </html>
