@@ -13,9 +13,9 @@ Olá! Eu sou **SML Developer**, um Web Developer apaixonado por criar soluções
 | Tecnologia | Descrição |
 |------------|-----------|
 | **Tailwind CSS** | Framework CSS para design rápido e responsivo |
+| **Lucide Icons** | Biblioteca de ícones profissionais moderna |
 | **HTML5** | Estrutura semântica da página |
 | **JavaScript** | Interatividade, animações e efeito de digitação |
-| **Font Awesome** | Ícones profissionais |
 
 ---
 
@@ -24,25 +24,28 @@ Olá! Eu sou **SML Developer**, um Web Developer apaixonado por criar soluções
 - ✅ **Efeito VS Code** - Simulação de código sendo digitado automaticamente
 - ✅ Design responsivo (celular, tablet, desktop)
 - ✅ Efeito de cursor personalizado com glow
-- ✅ Menu mobile hambúrguer
+- ✅ Menu mobile hambúrguer com animação 3D
 - ✅ Animações de scroll fade-in
 - ✅ Cards de projetos interativos com hover 3D
 - ✅ Formulário de contato com validação
 - ✅ Efeito glassmorphism (vidro fosco)
 - ✅ Scroll suave entre seções
 - ✅ Background com gradiente animado girando
+- ✅ Ícones profissionais Lucide
 
 ---
 
-## 🎯 Efeito de Destaque: VS Code Digitando
+## 🎯 Destaques
 
+### VS Code Digitando
 O fundo do site possui uma simulação realista de um editor VS Code onde códigos JavaScript vão sendo digitados automaticamente, com destaque de sintaxe incluindo:
 - Palavras-chave em rosa (`class`, `const`, `function`)
 - Strings em amarelo
 - Funções em verde
 - Comentários em cinza itálico
 
-O código digitado representa **meu portfolio real** com informações sobre projetos, tecnologias e experiência profissional.
+### Ícones Profissionais
+Utilizamos a biblioteca **Lucide Icons**, a mesma usada por empresas como Vercel, GitHub e Linear.
 
 ---
 
@@ -56,9 +59,12 @@ sml-portfolio/
 ├── README.md               # Documentação
 ├── assets/
 │   ├── css/
-│   │   └── style.css       # Estilos personalizados + animações
-│   └── js/
-│       └── script.js       # Efeito de digitação + interatividade
+│   │   └── style.css       # Estilos personalizados
+│   ├── js/
+│   │   └── script.js       # Interatividade
+│   └── libs/
+│       ├── lucide.min.js   # Biblioteca de ícones
+│       └── tailwind.min.css # Tailwind CSS local
 └── pages/
 └── contato.html        # Página de contato extra
 
@@ -68,22 +74,18 @@ sml-portfolio/
 
 ## 🚀 Como executar localmente
 
-### Opção 1: Servidor Python
+### Servidor Python
 ```bash
 python -m http.server 8000
 ```
 
 Acesse: http://localhost:8000
 
-Opção 2: Servidor Node.js
+Servidor Node.js
 
 ```bash
 npx serve .
 ```
-
-Opção 3: Apenas abrir
-
-Abra o arquivo index.html diretamente no navegador.
 
 ---
 
