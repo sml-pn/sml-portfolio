@@ -1,159 +1,158 @@
-/* Animações personalizadas */
 @keyframes spin-slow {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
-
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
+.fade-in-up { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
 
-.animate-spin-slow {
-    animation: spin-slow 20s linear infinite;
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0f1e; }
+::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #00ffff, #ff00ff); border-radius: 4px; }
+html { scroll-behavior: smooth; }
+
+.glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+
+.hamburger {
+    cursor: pointer; width: 32px; height: 32px; position: relative;
+    background: transparent; border: none; z-index: 60;
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
-.fade-in-up {
-    animation: fadeInUp 0.6s ease-out;
+.hamburger-line {
+    width: 100%; height: 3px; background: linear-gradient(90deg, #00ffff, #ff00ff);
+    position: absolute; left: 0; border-radius: 10px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+.hamburger-line:nth-child(1) { top: 6px; }
+.hamburger-line:nth-child(2) { top: 14px; }
+.hamburger-line:nth-child(3) { top: 22px; }
+.hamburger.active { transform: rotate(180deg); }
+.hamburger.active .hamburger-line:nth-child(1) { top: 14px; transform: rotate(45deg); background: linear-gradient(90deg, #ff00ff, #00ffff); }
+.hamburger.active .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active .hamburger-line:nth-child(3) { top: 14px; transform: rotate(-45deg); background: linear-gradient(90deg, #ff00ff, #00ffff); }
 
-/* Scroll suave */
-html {
-    scroll-behavior: smooth;
+.card-3d {
+    transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    transform-style: preserve-3d; perspective: 1000px;
 }
+.card-3d:hover { transform: translateY(-8px) rotateX(2deg) rotateY(2deg); }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
+[data-lucide] { transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1); }
+
+.social-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease; color: #9ca3af;
 }
+.social-icon svg { width: 24px; height: 24px; display: block; }
+.social-icon:hover { background: rgba(0, 255, 255, 0.1); border-color: #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); color: #00ffff; }
+.social-icon:hover svg { transform: translateY(-3px); filter: drop-shadow(0 0 6px currentColor); }
 
-::-webkit-scrollbar-track {
-    background: #0a0f1e;
-}
+#mobile-menu { animation: fadeIn 0.3s ease-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-::-webkit-scrollbar-thumb {
-    background: #00ffff;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #ff00ff;
-}
-
-/* Efeito glassmorphism */
-.glass {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Hover glow */
-.hover-glow:hover {
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-}
-
-/* Esconder cursor glow em mobile */
-@media (max-width: 768px) {
-    #cursor-glow {
-        display: none;
-    }
-}
-
-/* VS Code overlay */
-#code-overlay {
-    transition: opacity 0.5s;
-}
-
+#code-overlay { transition: opacity 0.5s; }
 .code-line {
-    font-family: 'Courier New', 'Fira Code', monospace;
-    color: #00ffff;
-    white-space: pre-wrap;
-    line-height: 1.6;
-    opacity: 0;
-    animation: fadeInUp 0.3s forwards;
-    font-size: 12px;
+    font-family: 'Courier New', monospace; font-size: 10px; line-height: 1.6;
+    opacity: 0; animation: fadeInUp 0.3s forwards; white-space: pre-wrap; word-break: break-word;
 }
 
-@media (max-width: 768px) {
-    .code-line {
-        font-size: 8px;
-        line-height: 1.3;
-    }
-}
-
-/* Destaque de sintaxe */
 .keyword { color: #ff79c6; font-weight: bold; }
 .function { color: #50fa7b; }
 .string { color: #f1fa8c; }
 .comment { color: #6272a4; font-style: italic; }
 .property { color: #8be9fd; }
-.number { color: #bd93f9; }
 
-/* Animações de entrada */
-.fade-in-section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+@media (min-width: 768px) { .code-line { font-size: 12px; line-height: 1.8; } }
+@media (max-width: 768px) {
+    #code-overlay { opacity: 0.12 !important; }
+    .code-line { font-size: 8px; line-height: 1.3; }
+    #cursor-glow { display: none !important; }
+    .social-icon { width: 40px; height: 40px; }
+    .social-icon svg { width: 20px; height: 20px; }
 }
 
-.fade-in-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+:focus-visible { outline: 2px solid #00ffff; outline-offset: 2px; border-radius: 4px; }
 
-/* Menu mobile animação */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
+/* ============================================
+   BOTÃO WHATSAPP - PULSE COM GLOW PROFISSIONAL
+   ============================================ */
+@keyframes pulse-glow-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+        transform: scale(1);
     }
-    to {
-        opacity: 1;
-        transform: translateX(0);
+    50% {
+        box-shadow: 0 0 0 15px rgba(34, 197, 94, 0);
+        transform: scale(1.03);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+        transform: scale(1);
     }
 }
 
-#mobile-menu {
-    animation-duration: 0.4s;
-    animation-timing-function: ease-out;
+.btn-whatsapp-pulse {
+    animation: pulse-glow-green 2s infinite;
+    position: relative;
+    overflow: visible;
 }
 
-#mobile-menu.flex {
-    animation: slideIn 0.4s ease-out;
+.btn-whatsapp-pulse::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 999px;
+    background: transparent;
+    z-index: -1;
+    animation: pulse-glow-green 2s infinite;
+    animation-delay: 0.3s;
 }
 
-/* Pulse animation */
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.7; }
-    50% { transform: scale(1.05); opacity: 1; }
+/* Respeita preferência de redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+    .btn-whatsapp-pulse,
+    .btn-whatsapp-pulse::after {
+        animation: none !important;
+    }
 }
 
-.animate-pulse {
-    animation: pulse 2s infinite;
+
+/* Efeito Shimmer - Lâmina de Luz */
+.shine-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shine-lamina 2.5s infinite;
 }
 
-/* Bounce animation */
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+@keyframes shine-lamina {
+  0% { left: -100%; }
+  20% { left: 100%; }
+  100% { left: 100%; }
 }
 
-.animate-bounce {
-    animation: bounce 2s infinite;
+/* Efeito Shimmer Intenso */
+.shine-btn-intenso::before {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 100%;
+  top: 0;
+  left: -100px;
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%);
+  animation: shine-intenso 1.8s linear infinite;
 }
 
-/* Ícones hover */
-[data-lucide] {
-    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-
-[data-lucide]:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+@keyframes shine-intenso {
+  0% { left: -100px; }
+  100% { left: 100%; }
 }

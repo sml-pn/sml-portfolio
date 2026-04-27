@@ -1,7 +1,7 @@
 # 🚀 SML Developer Portfolio
 
 ## 💻 Sobre Mim
-Olá! Eu sou **SML Developer**, um Web Developer apaixonado por criar soluções limpas, funcionais e visualmente atraentes.
+Olá! Eu sou **SML Developer**, um Web Developer Full Stack apaixonado por criar soluções limpas, funcionais e visualmente atraentes.
 
 📍 **Localização:** Trairi-CE  
 🔗 **Site:** [sml-developer.onrender.com](https://sml-developer.onrender.com)
@@ -27,11 +27,11 @@ Olá! Eu sou **SML Developer**, um Web Developer apaixonado por criar soluções
 - ✅ Menu mobile hambúrguer com animação 3D
 - ✅ Animações de scroll fade-in
 - ✅ Cards de projetos interativos com hover 3D
-- ✅ Formulário de contato com validação
+- ✅ Formulário de contato com validação e feedback
 - ✅ Efeito glassmorphism (vidro fosco)
 - ✅ Scroll suave entre seções
 - ✅ Background com gradiente animado girando
-- ✅ Ícones profissionais Lucide
+- ✅ Ícones profissionais Lucide em toda a interface
 
 ---
 
@@ -50,78 +50,3 @@ Utilizamos a biblioteca **Lucide Icons**, a mesma usada por empresas como Vercel
 ---
 
 ## 📁 Estrutura do Projeto
-
-```
-
-sml-portfolio/
-│
-├── index.html              # Página principal
-├── README.md               # Documentação
-├── assets/
-│   ├── css/
-│   │   └── style.css       # Estilos personalizados
-│   ├── js/
-│   │   └── script.js       # Interatividade
-│   └── libs/
-│       ├── lucide.min.js   # Biblioteca de ícones
-│       └── tailwind.min.css # Tailwind CSS local
-└── pages/
-└── contato.html        # Página de contato extra
-
-```
-
----
-
-## 🚀 Como executar localmente
-
-### Servidor Python
-```bash
-python -m http.server 8000
-```
-
-Acesse: http://localhost:8000
-
-Servidor Node.js
-
-```bash
-npx serve .
-```
-
----
-
-🌐 Deploy
-
-Render.com
-
-1. Conecte o repositório
-2. Configure como Static Site
-3. Deploy automático
-4. Site disponível em: https://sml-developer.onrender.com
-
-GitHub Pages
-
-```bash
-git push origin main
-```
-
-Ative o GitHub Pages nas configurações do repositório.
-
----
-
-📞 Contato
-
-· Instagram: @sml_developer
-· GitHub: github.com/sml-pn
-· Site: sml-developer.onrender.com
-
----
-
-📄 Licença
-
-© 2024 SML Developer | Todos os direitos reservados
-
----
-
-Feito com 💻, ☕ e muito código em Trairi-CE
-
-"Transformando ideias em código, uma linha por vez."

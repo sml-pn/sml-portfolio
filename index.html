@@ -2,482 +2,118 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <meta name="description" content="SML Developer - Web Developer profissional em Trairi-CE. Criação de sites, sistemas web e e-commerces. Atendimento rápido e personalizado.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SML Developer - Web Developer profissional em Trairi-CE">
+    <meta name="theme-color" content="#0a0f1e">
     <title>SML Developer | Web Developer Profissional</title>
-    
-    <!-- Tailwind CSS LOCAL -->
-    <link rel="stylesheet" href="assets/libs/tailwind.min.css">
-    
-    <!-- Lucide Icons LOCAL -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="assets/libs/lucide.min.js"></script>
-    
-    <!-- Font Awesome Fallback -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'dark': '#0a0f1e',
-                        'neon': '#00ffff',
-                        'neon-pink': '#ff00ff'
-                    }
-                }
-            }
-        }
-    </script>
-    
     <style>
-        /* Reset e estilos base */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        /* Animações globais */
-        @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-spin-slow {
-            animation: spin-slow 20s linear infinite;
-        }
-        
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        
-        /* Botão Hambúrguer */
-        .hamburger {
-            cursor: pointer;
-            width: 32px;
-            height: 32px;
-            position: relative;
-            background: transparent;
-            border: none;
-            z-index: 60;
-        }
-        
-        .hamburger-line {
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #00ffff, #ff00ff);
-            position: absolute;
-            left: 0;
-            border-radius: 10px;
-            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-        
-        .hamburger-line:nth-child(1) { top: 6px; }
-        .hamburger-line:nth-child(2) { top: 14px; }
-        .hamburger-line:nth-child(3) { top: 22px; }
-        
-        .hamburger.active .hamburger-line:nth-child(1) {
-            top: 14px;
-            transform: rotate(135deg);
-            background: linear-gradient(90deg, #ff00ff, #00ffff);
-        }
-        
-        .hamburger.active .hamburger-line:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-        
-        .hamburger.active .hamburger-line:nth-child(3) {
-            top: 14px;
-            transform: rotate(-135deg);
-            background: linear-gradient(90deg, #ff00ff, #00ffff);
-        }
-        
-        .hamburger.active {
-            transform: rotate(360deg);
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        .hamburger:not(.active) {
-            transform: rotate(0deg);
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        /* Cards 3D */
-        .card-3d {
-            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-        
-        .card-3d:hover {
-            transform: translateY(-5px) rotateX(3deg) rotateY(3deg);
-        }
-        
-        /* Ícones Lucide */
-        [data-lucide] {
-            transition: all 0.3s ease;
-            stroke-width: 1.5;
-        }
-        
-        .card-3d:hover [data-lucide] {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 8px #00ffff);
-        }
-        
-        .social-icon [data-lucide] {
-            width: 28px;
-            height: 28px;
-        }
-        
-        .social-icon:hover [data-lucide] {
-            transform: translateY(-3px);
-            filter: drop-shadow(0 0 8px #00ffff);
-        }
-        
-        /* Menu mobile */
-        #mobile-menu {
-            transition: all 0.3s ease;
-        }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0f1e; }
-        ::-webkit-scrollbar-thumb { background: #00ffff; border-radius: 4px; }
-        
-        html { scroll-behavior: smooth; }
-        
-        /* VS Code overlay */
-        #code-overlay {
-            transition: opacity 0.5s;
-        }
-        
-        .code-line {
-            font-family: 'Courier New', monospace;
-            font-size: 10px;
-            line-height: 1.4;
-            opacity: 0;
-            animation: fadeInUp 0.3s forwards;
-            white-space: pre-wrap;
-            word-break: break-word;
-        }
-        
-        @media (min-width: 768px) {
-            .code-line { font-size: 12px; line-height: 1.6; }
-        }
-        
-        @media (max-width: 768px) {
-            #code-overlay { opacity: 0.12 !important; }
-        }
-        
-        .keyword { color: #ff79c6; font-weight: bold; }
-        .function { color: #50fa7b; }
-        .string { color: #f1fa8c; }
-        .comment { color: #6272a4; font-style: italic; }
+        @keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}.animate-spin-slow{animation:spin-slow 20s linear infinite}.fade-in-up{opacity:0;animation:fadeInUp 0.8s ease-out forwards}::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#0a0f1e}::-webkit-scrollbar-thumb{background:linear-gradient(to bottom,#00ffff,#ff00ff);border-radius:4px}html{scroll-behavior:smooth}.glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1)}.hamburger{cursor:pointer;width:32px;height:32px;position:relative;background:0 0;border:none;z-index:60;transition:transform .5s cubic-bezier(0.68,-0.55,0.265,1.55)}.hamburger-line{width:100%;height:3px;background:linear-gradient(90deg,#00ffff,#ff00ff);position:absolute;left:0;border-radius:10px;transition:all .4s cubic-bezier(0.68,-0.55,0.265,1.55)}.hamburger-line:nth-child(1){top:6px}.hamburger-line:nth-child(2){top:14px}.hamburger-line:nth-child(3){top:22px}.hamburger.active{transform:rotate(180deg)}.hamburger.active .hamburger-line:nth-child(1){top:14px;transform:rotate(45deg);background:linear-gradient(90deg,#ff00ff,#00ffff)}.hamburger.active .hamburger-line:nth-child(2){opacity:0;transform:scaleX(0)}.hamburger.active .hamburger-line:nth-child(3){top:14px;transform:rotate(-45deg);background:linear-gradient(90deg,#ff00ff,#00ffff)}.card-3d{transition:transform .4s cubic-bezier(0.2,0.9,0.4,1.1);transform-style:preserve-3d;perspective:1000px}.card-3d:hover{transform:translateY(-8px) rotateX(2deg) rotateY(2deg)}.social-icon{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);transition:all .3s ease;color:#9ca3af}.social-icon svg{width:24px;height:24px;display:block}.social-icon:hover{background:rgba(0,255,255,0.1);border-color:#00ffff;box-shadow:0 0 20px rgba(0,255,255,0.3);color:#00ffff}.social-icon:hover svg{transform:translateY(-3px);filter:drop-shadow(0 0 6px currentColor)}#mobile-menu{animation:fadeIn .3s ease-out}@keyframes fadeIn{from{opacity:0}to{opacity:1}}.code-line{font-family:'Courier New',monospace;font-size:10px;line-height:1.6;opacity:0;animation:fadeInUp .3s forwards;white-space:pre-wrap;word-break:break-word}.keyword{color:#ff79c6;font-weight:700}.function{color:#50fa7b}.string{color:#f1fa8c}.comment{color:#6272a4;font-style:italic}.property{color:#8be9fd}
+
+        /* Efeito Radar */
+        .{position:relative;animation:radar-pulse 2s infinite}
+        .dot-pulse{animation:pulse-dot 2s infinite}
+        @keyframes pulse-dot{0%{box-shadow:0 0 8px rgba(34,197,94,0.7),0 0 16px rgba(34,197,94,0.6)}50%{box-shadow:0 0 20px rgba(34,197,94,1),0 0 40px rgba(34,197,94,0.9),0 0 60px rgba(34,197,94,0.5)}100%{box-shadow:0 0 8px rgba(34,197,94,0.7),0 0 16px rgba(34,197,94,0.6)}}
+
+        @media(min-width:768px){.code-line{font-size:12px;line-height:1.8}}
+        @media(max-width:768px){.code-line{font-size:8px;line-height:1.3}#cursor-glow{display:none!important}.social-icon{width:40px;height:40px}.social-icon svg{width:20px;height:20px}}
     </style>
+    <script>tailwind.config={theme:{extend:{colors:{dark:'#0a0f1e',neon:'#00ffff','neon-pink':'#ff00ff','neon-purple':'#8b5cf6'}}}}</script>
 </head>
 <body class="bg-dark text-white font-mono overflow-x-hidden">
 
-    <!-- VS Code Overlay -->
-    <div id="code-overlay" class="fixed inset-0 pointer-events-none z-0 opacity-15 md:opacity-20">
-        <div class="h-full w-full overflow-hidden bg-black/50 backdrop-blur-sm">
-            <div class="p-3 md:p-4 font-mono text-xs md:text-sm text-neon h-full overflow-hidden">
-                <div class="flex items-center gap-2 mb-3 md:mb-4 border-b border-white/20 pb-2">
-                    <div class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-red-500"></div>
-                    <div class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-yellow-500"></div>
-                    <div class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-green-500"></div>
-                    <span class="text-gray-400 text-[10px] md:text-xs ml-2">sml_developer@portfolio: ~/projetos</span>
-                </div>
-                <div id="code-lines" class="overflow-hidden"></div>
+    <div id="code-overlay" class="fixed inset-0 pointer-events-none z-0 opacity-10 md:opacity-15">
+        <div class="p-3 md:p-4 text-xs md:text-sm text-neon h-full overflow-hidden">
+            <div class="flex items-center gap-2 mb-3 pb-2 border-b border-white/20">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div>
+                <span class="text-gray-400 text-xs ml-2">~/projetos</span>
             </div>
+            <div id="code-lines" class="overflow-hidden"></div>
         </div>
     </div>
 
-    <!-- Cursor Glow (Desktop) -->
-    <div id="cursor-glow" class="fixed w-8 h-8 rounded-full pointer-events-none z-50 hidden md:block" style="background: radial-gradient(circle, rgba(0,255,255,0.6) 0%, rgba(0,255,255,0) 70%);"></div>
+    <div id="cursor-glow" class="fixed w-64 h-64 rounded-full pointer-events-none z-50 hidden md:block" style="background:radial-gradient(circle,rgba(0,255,255,0.15) 0%,transparent 70%);transform:translate(-50%,-50%)"></div>
 
-    <!-- Navbar -->
     <nav class="fixed w-full z-50 bg-dark/80 backdrop-blur-md border-b border-white/10">
-        <div class="container mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
-            <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">SML_Developer</h1>
-            <ul class="hidden md:flex gap-8">
-                <li><a href="#home" class="hover:text-neon transition">Início</a></li>
-                <li><a href="#projetos" class="hover:text-neon transition">Projetos</a></li>
-                <li><a href="#sobre" class="hover:text-neon transition">Sobre</a></li>
-                <li><a href="#contato" class="hover:text-neon transition">Contato</a></li>
-            </ul>
-            <button id="menu-btn" class="md:hidden hamburger" aria-label="Menu">
-                <div class="hamburger-line"></div>
-                <div class="hamburger-line"></div>
-                <div class="hamburger-line"></div>
-            </button>
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">&lt;SML/Developer&gt;</a>
+            <ul class="hidden md:flex gap-8"><li><a href="#home" class="hover:text-neon transition">Início</a></li><li><a href="#projetos" class="hover:text-neon transition">Projetos</a></li><li><a href="#sobre" class="hover:text-neon transition">Sobre</a></li><li><a href="#contato" class="hover:text-neon transition">Contato</a></li></ul>
+            <button id="menu-btn" class="md:hidden hamburger" aria-label="Menu"><div class="hamburger-line"></div><div class="hamburger-line"></div><div class="hamburger-line"></div></button>
         </div>
     </nav>
 
-    <!-- Menu Mobile -->
-    <div id="mobile-menu" class="fixed inset-0 bg-dark/95 backdrop-blur-lg z-40 hidden flex-col items-center justify-center gap-8 text-xl">
-        <a href="#home" class="hover:text-neon transition">Início</a>
-        <a href="#projetos" class="hover:text-neon transition">Projetos</a>
-        <a href="#sobre" class="hover:text-neon transition">Sobre</a>
-        <a href="#contato" class="hover:text-neon transition">Contato</a>
-        <button id="close-menu" class="absolute top-6 right-6 text-2xl"><i class="fas fa-times"></i></button>
+    <div id="mobile-menu" class="fixed inset-0 bg-dark/98 backdrop-blur-lg z-40 hidden flex-col items-center justify-center gap-8 text-xl">
+        <a href="#home" class="hover:text-neon transition text-2xl"><i data-lucide="home" class="inline w-6 h-6 mr-1"></i>Início</a>
+        <a href="#projetos" class="hover:text-neon transition text-2xl"><i data-lucide="folder-git-2" class="inline w-6 h-6 mr-1"></i>Projetos</a>
+        <a href="#sobre" class="hover:text-neon transition text-2xl"><i data-lucide="user" class="inline w-6 h-6 mr-1"></i>Sobre</a>
+        <a href="#contato" class="hover:text-neon transition text-2xl"><i data-lucide="mail" class="inline w-6 h-6 mr-1"></i>Contato</a>
+        <button id="close-menu" class="absolute top-6 right-6 text-2xl hover:text-neon transition"><i data-lucide="x-circle"></i></button>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-neon/5 via-transparent to-neon-pink/5 animate-spin-slow" style="width: 200%; height: 200%;"></div>
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4">
-                <span class="bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent animate-pulse">SML Developer</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-8">💻 Web Developer | 🌊 Trairi-CE</p>
-            <div class="flex gap-4 justify-center">
-                <a href="#projetos" class="px-8 py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition">Ver Projetos</a>
-                <a href="#contato" class="px-8 py-3 border border-neon rounded-lg font-bold hover:bg-neon/20 transition">Contato</a>
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <div class="absolute inset-0 bg-gradient-to-br from-neon/5 via-transparent to-neon-pink/5 animate-spin-slow" style="width:200%;height:200%"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <a href="https://wa.me/558586121078" target="_blank" rel="noopener noreferrer" class=" inline-flex items-center gap-2 px-4 py-2 bg-slate-950 border border-green-500/50 rounded-full text-green-400 text-sm font-medium mb-6 hover:border-green-400 transition">
+                <span class="w-3 h-3 bg-green-400 rounded-full inline-block dot-pulse"></span> Online agora · Peça seu orçamento
+            </a>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 fade-in-up"><span class="bg-gradient-to-r from-neon via-neon-pink to-neon-purple bg-clip-text text-transparent">SML Developer</span></h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 fade-in-up"><i data-lucide="code-2" class="inline w-5 h-5 mr-1"></i>Web Developer Full Stack | <i data-lucide="map-pin" class="inline w-5 h-5 mr-1"></i>Trairi-CE</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center flex-wrap fade-in-up">
+                <a href="#projetos" class="px-8 py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition"><i data-lucide="rocket" class="inline w-5 h-5 mr-2"></i>Ver Projetos</a>
+                <a href="#contato" class="px-8 py-3 border-2 border-neon rounded-lg font-bold hover:bg-neon/20 transition"><i data-lucide="message-circle" class="inline w-5 h-5 mr-2"></i>Contato</a>
             </div>
         </div>
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i data-lucide="chevron-down" class="text-neon w-6 h-6"></i>
-        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"><i data-lucide="chevrons-down" class="text-neon w-8 h-8"></i></div>
     </section>
 
-    <!-- Projetos Section -->
-    <section id="projetos" class="py-20 px-6 relative z-10">
+    <section id="projetos" class="py-20 px-4 relative z-10">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📁 Projetos Realizados</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
-                    <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
-                        <i data-lucide="code-2" class="text-white w-12 h-12"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Portfolio 3D</h3>
-                    <p class="text-gray-400 mb-4">Site interativo com efeitos 3D e animações</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Three.js</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Tailwind</span>
-                    </div>
-                    <a href="#" class="text-neon hover:underline">Ver mais →</a>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
-                    <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
-                        <i data-lucide="server" class="text-white w-12 h-12"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">API REST</h3>
-                    <p class="text-gray-400 mb-4">Backend completo com autenticação</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Node.js</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Express</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">MongoDB</span>
-                    </div>
-                    <a href="#" class="text-neon hover:underline">Ver mais →</a>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
-                    <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
-                        <i data-lucide="shopping-bag" class="text-white w-12 h-12"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">E-commerce</h3>
-                    <p class="text-gray-400 mb-4">Loja virtual completa</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">React</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Redux</span>
-                        <span class="px-2 py-1 bg-neon/20 rounded text-sm">Stripe</span>
-                    </div>
-                    <a href="#" class="text-neon hover:underline">Ver mais →</a>
-                </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent flex items-center justify-center gap-3"><i data-lucide="folder-git-2" class="text-neon w-8 md:w-10 h-8 md:h-10 flex-shrink-0"></i><span>Projetos Realizados</span></h2>
+            <p class="text-center text-gray-400 mb-12">Alguns dos meus trabalhos recentes</p>
+            <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition"><div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center"><i data-lucide="box" class="text-white w-12 md:w-16 h-12 md:h-16"></i></div><h3 class="text-lg md:text-xl font-bold mb-2"><i data-lucide="folder-git-2" class="inline w-5 md:w-6 h-5 md:h-6 mr-2 text-neon"></i>Portfolio 3D Interativo</h3><p class="text-gray-400 text-sm md:text-base mb-4">Site com efeitos 3D e animações fluidas</p><div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 bg-neon/20 rounded-full text-xs">Three.js</span><span class="px-3 py-1 bg-neon/20 rounded-full text-xs">Tailwind</span><span class="px-3 py-1 bg-neon/20 rounded-full text-xs">GSAP</span></div><a href="#" class="text-neon hover:underline inline-flex items-center gap-1">Ver mais <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div>
+                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition"><div class="h-48 bg-gradient-to-br from-neon-pink to-neon-purple rounded-lg mb-4 flex items-center justify-center"><i data-lucide="cloud-cog" class="text-white w-12 md:w-16 h-12 md:h-16"></i></div><h3 class="text-lg md:text-xl font-bold mb-2"><i data-lucide="folder-git-2" class="inline w-5 md:w-6 h-5 md:h-6 mr-2 text-neon"></i>API REST Completa</h3><p class="text-gray-400 text-sm md:text-base mb-4">Backend com autenticação JWT e Swagger</p><div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 bg-neon-pink/20 rounded-full text-xs">Node.js</span><span class="px-3 py-1 bg-neon-pink/20 rounded-full text-xs">Express</span><span class="px-3 py-1 bg-neon-pink/20 rounded-full text-xs">MongoDB</span></div><a href="#" class="text-neon hover:underline inline-flex items-center gap-1">Ver mais <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div>
+                <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition"><div class="h-48 bg-gradient-to-br from-neon-purple to-neon rounded-lg mb-4 flex items-center justify-center"><i data-lucide="shopping-cart" class="text-white w-12 md:w-16 h-12 md:h-16"></i></div><h3 class="text-lg md:text-xl font-bold mb-2"><i data-lucide="folder-git-2" class="inline w-5 md:w-6 h-5 md:h-6 mr-2 text-neon"></i>E-commerce Moderno</h3><p class="text-gray-400 text-sm md:text-base mb-4">Loja virtual com pagamento Stripe</p><div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 bg-neon-purple/20 rounded-full text-xs">React</span><span class="px-3 py-1 bg-neon-purple/20 rounded-full text-xs">Redux</span><span class="px-3 py-1 bg-neon-purple/20 rounded-full text-xs">Stripe</span></div><a href="#" class="text-neon hover:underline inline-flex items-center gap-1">Ver mais <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div>
             </div>
         </div>
     </section>
 
-    <!-- Sobre Section -->
-    <section id="sobre" class="py-20 px-6 bg-white/5 relative z-10">
+    <section id="sobre" class="py-20 px-4 bg-white/[0.02] relative z-10">
         <div class="container mx-auto max-w-3xl text-center">
-            <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">🌊 Sobre mim</h2>
-            <div class="space-y-4 text-gray-300">
-                <p>💻 <strong class="text-white">Web Developer</strong> | SML Developer</p>
-                <p>🚀 Criando soluções limpas e funcionais</p>
-                <p>📍 Trairi - Ceará</p>
-                <p>🔗 <a href="https://sml-developer.onrender.com" class="text-neon hover:underline">sml-developer.onrender.com</a></p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent flex items-center justify-center gap-3"><i data-lucide="user" class="text-neon w-8 h-8 flex-shrink-0"></i><span>Sobre Mim</span></h2>
+            <div class="glass rounded-xl p-8 space-y-6 text-gray-300">
+                <p class="text-lg md:text-xl"><strong class="text-white">Web Developer Full Stack</strong></p>
+                <p class="text-base md:text-lg">Desenvolvimento web full stack focado em performance, design limpo e experiência do usuário.</p>
+                <p class="flex items-center justify-center gap-2"><i data-lucide="map-pin" class="text-neon w-5 h-5 mr-2"></i>Trairi - Ceará</p>
+                <a href="https://sml-developer.onrender.com" target="_blank" rel="noopener noreferrer" class="text-neon hover:underline inline-flex items-center gap-2"><i data-lucide="globe" class="w-5 h-5"></i>sml-developer.onrender.com</a>
             </div>
         </div>
     </section>
 
-    <!-- Contato Section -->
-    <section id="contato" class="py-20 px-6 relative z-10">
-        <div class="container mx-auto max-w-2xl">
-            <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent">📩 Contato</h2>
-            <form id="form-contato" class="space-y-6">
-                <input type="text" placeholder="Seu nome" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition">
-                <input type="email" placeholder="Seu e-mail" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition">
-                <textarea placeholder="Sua mensagem" rows="5" required class="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:border-neon focus:outline-none transition"></textarea>
-                <button type="submit" class="w-full py-3 bg-gradient-to-r from-neon to-neon-pink rounded-lg font-bold hover:scale-105 transition">Enviar mensagem</button>
-            </form>
-            <div class="flex justify-center gap-6 mt-8">
-                <a href="#" class="social-icon text-gray-400 hover:text-neon transition"><i data-lucide="github"></i></a>
-                <a href="#" class="social-icon text-gray-400 hover:text-neon transition"><i data-lucide="instagram"></i></a>
-                <a href="#" class="social-icon text-gray-400 hover:text-neon transition"><i data-lucide="linkedin"></i></a>
+    <section id="contato" class="py-20 px-4 relative z-10">
+        <div class="container mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent"><i data-lucide="send" class="inline w-8 md:w-10 h-8 md:h-10 mr-2"></i>Entre em Contato</h2>
+            <p class="text-gray-400 mb-12">Tem um projeto em mente? Vamos conversar!</p>
+            <a href="https://wa.me/558586121078" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-green-500 rounded-lg font-bold text-white text-base md:text-lg hover:bg-green-600 hover:scale-105 transition shadow-lg"><i data-lucide="phone" class="w-6 md:w-7 h-6 md:h-7"></i> Falar no WhatsApp</a>
+            <div class="flex justify-center gap-4 md:gap-6 mt-12">
+                <a href="https://github.com/sml-pn" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><i data-lucide="github"></i></a>
+                <a href="https://instagram.com/sml_developer" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                <a href="https://wa.me/558586121078" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp"><i data-lucide="phone"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-6 text-center text-gray-500 border-t border-white/10 relative z-10">
-        <p>© 2024 SML Developer | Todos os direitos reservados</p>
+    <footer class="py-8 text-center text-gray-500 border-t border-white/10 relative z-10">
+        <p class="mb-2 text-sm md:text-base">© 2024 SML Developer | Todos os direitos reservados</p>
+        <p class="text-xs md:text-sm">Feito com <i data-lucide="code-2" class="inline w-4 h-4"></i>, <i data-lucide="coffee" class="inline w-4 h-4"></i> e muito código em Trairi-CE</p>
     </footer>
 
-    <!-- Scripts -->
     <script src="assets/js/script.js"></script>
-    <script>
-        // Inicializar Lucide Icons
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-        
-        // Menu Mobile
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMenu = document.getElementById('close-menu');
-        let menuOpen = false;
-        
-        if (menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                menuOpen = !menuOpen;
-                if (menuOpen) {
-                    menuBtn.classList.add('active');
-                    mobileMenu.classList.remove('hidden');
-                    mobileMenu.classList.add('flex');
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    menuBtn.classList.remove('active');
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('flex');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        }
-        
-        if (closeMenu) {
-            closeMenu.addEventListener('click', () => {
-                menuBtn.classList.remove('active');
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-                document.body.style.overflow = 'auto';
-                menuOpen = false;
-            });
-        }
-        
-        // Fechar ao clicar no link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (menuBtn) menuBtn.classList.remove('active');
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-                document.body.style.overflow = 'auto';
-                menuOpen = false;
-            });
-        });
-        
-        // Cursor personalizado
-        const cursor = document.getElementById('cursor-glow');
-        if (cursor && window.innerWidth >= 768) {
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            });
-        }
-        
-        // Scroll suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-        
-        // Formulário
-        const form = document.getElementById('form-contato');
-        if (form) {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('🚀 Mensagem enviada! Entrarei em contato em breve.');
-                form.reset();
-            });
-        }
-        
-        // VS Code Typewriter Effect
-        const codeToType = [
-            '// SML Developer - Portfolio Profissional',
-            '// Desenvolvedor Web | Trairi-CE',
-            '',
-            'import { WebDeveloper } from "./modules/skills.js";',
-            '',
-            'const sml = new WebDeveloper({',
-            '    nome: "SML Developer",',
-            '    localizacao: "Trairi-CE",',
-            '    cargo: "Web Developer Full Stack",',
-            '    tecnologias: [',
-            '        "HTML5", "CSS3", "JavaScript",',
-            '        "React", "Node.js", "Tailwind"',
-            '    ]',
-            '});',
-            '',
-            'console.log("🚀 Portfólio carregado com sucesso!");',
-            'console.log("💻 Disponível para novos projetos!");'
-        ];
-        
-        let lineIndex = 0;
-        let charIndex = 0;
-        const container = document.getElementById('code-lines');
-        
-        function typeCode() {
-            if (!container) return;
-            if (lineIndex >= codeToType.length) {
-                setTimeout(() => {
-                    container.innerHTML = '';
-                    lineIndex = 0;
-                    charIndex = 0;
-                    typeCode();
-                }, 6000);
-                return;
-            }
-            const targetLine = codeToType[lineIndex];
-            if (charIndex === 0) {
-                const lineDiv = document.createElement('div');
-                lineDiv.className = 'code-line';
-                lineDiv.id = `line-${lineIndex}`;
-                container.appendChild(lineDiv);
-                lineDiv.scrollIntoView({ behavior: 'smooth', block: 'end' });
-            }
-            if (charIndex < targetLine.length) {
-                const lineDiv = document.getElementById(`line-${lineIndex}`);
-                if (lineDiv) {
-                    let highlighted = targetLine.substring(0, charIndex + 1);
-                    highlighted = highlighted.replace(/(\/\/.*)$/gm, match => `<span class="comment">${match}</span>`);
-                    highlighted = highlighted.replace(/\b(const|let|class|function|return|new|import)\b/g, match => `<span class="keyword">${match}</span>`);
-                    highlighted = highlighted.replace(/(["'].*?["'])/g, match => `<span class="string">${match}</span>`);
-                    lineDiv.innerHTML = highlighted;
-                }
-                charIndex++;
-                setTimeout(typeCode, 35);
-            } else {
-                lineIndex++;
-                charIndex = 0;
-                setTimeout(typeCode, 150);
-            }
-        }
-        
-        setTimeout(typeCode, 500);
-    </script>
+    <script>document.addEventListener('DOMContentLoaded',()=>{if(typeof lucide!=='undefined'){lucide.createIcons();setTimeout(()=>lucide.createIcons(),500);}});</script>
 </body>
 </html>
+<style>
+.btn-radar{position:relative}
+.btn-radar::after{content:"";position:absolute;inset:-4px;border-radius:999px;border:2px solid rgba(34,197,94,0.5);animation:radar-ida 2s infinite}
+@keyframes radar-ida{0%{inset:-4px;opacity:1;border-width:2px}100%{inset:-30px;opacity:0;border-width:0}}
