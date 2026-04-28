@@ -1,0 +1,9 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Dados</title>
+<style>body{background:#0a0f1e;color:#fff;font-family:monospace;padding:20px}span{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;margin:2px}</style></head><body>
+<h2>📊 Dados salvos</h2><div id="r"></div>
+<script>
+const d=JSON.parse(localStorage.getItem('sml-projetos')||'[]');
+document.getElementById('r').innerHTML=d.length===0?'<p style=color:red>Nenhum projeto</p>':
+d.map((p,i)=>`<div style="margin:10px 0;padding:10px;background:#111;border-radius:8px">
+<b>${p.titulo}</b><br>Categoria: <span style="background:${p.categoria?'lime':'red'};color:#000">${p.categoria||'VAZIA ❌'}</span><br>Tecnologias: ${p.tecnologias||'-'}</div>`).join('')
+</script></body></html>
