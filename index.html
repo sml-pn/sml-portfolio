@@ -71,7 +71,7 @@
         <div class="container mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-neon to-neon-pink bg-clip-text text-transparent flex items-center justify-center gap-2 md:gap-3"><i data-lucide="folder-git-2" class="text-neon w-6 md:w-10 h-6 md:h-10 flex-shrink-0"></i><span>Projetos Realizados</span></h2>
             <p class="text-center text-gray-400 mb-12">Alguns dos meus trabalhos recentes</p>
-            <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div id="projetos-container" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition"><div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center"><i data-lucide="box" class="text-white w-12 md:w-16 h-12 md:h-16"></i></div><h3 class="text-lg md:text-xl font-bold mb-2"><i data-lucide="folder-git-2" class="inline w-5 md:w-6 h-5 md:h-6 mr-2 text-neon"></i>Portfolio 3D Interativo</h3><p class="text-gray-400 text-sm md:text-base mb-4">Site com efeitos 3D e animações fluidas</p><div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 bg-neon/20 rounded-full text-xs">Three.js</span><span class="px-3 py-1 bg-neon/20 rounded-full text-xs">Tailwind</span><span class="px-3 py-1 bg-neon/20 rounded-full text-xs">GSAP</span></div><a href="#" class="text-neon hover:underline inline-flex items-center gap-1">Ver mais <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div>
                 <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition"><div class="h-48 bg-gradient-to-br from-neon-pink to-neon-purple rounded-lg mb-4 flex items-center justify-center"><i data-lucide="cloud-cog" class="text-white w-12 md:w-16 h-12 md:h-16"></i></div><h3 class="text-lg md:text-xl font-bold mb-2"><i data-lucide="folder-git-2" class="inline w-5 md:w-6 h-5 md:h-6 mr-2 text-neon"></i>API REST Completa</h3><p class="text-gray-400 text-sm md:text-base mb-4">Backend com autenticação JWT e Swagger</p><div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 bg-neon-pink/20 rounded-full text-xs">Node.js</span><span class="px-3 py-1 bg-neon-pink/20 rounded-full text-xs">Express</span><span class="px-3 py-1 bg-neon-pink/20 rounded-full text-xs">MongoDB</span></div><a href="#" class="text-neon hover:underline inline-flex items-center gap-1">Ver mais <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div>
                 <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition"><div class="h-48 bg-gradient-to-br from-neon-purple to-neon rounded-lg mb-4 flex items-center justify-center"><i data-lucide="shopping-cart" class="text-white w-12 md:w-16 h-12 md:h-16"></i></div><h3 class="text-lg md:text-xl font-bold mb-2"><i data-lucide="folder-git-2" class="inline w-5 md:w-6 h-5 md:h-6 mr-2 text-neon"></i>E-commerce Moderno</h3><p class="text-gray-400 text-sm md:text-base mb-4">Loja virtual com pagamento Stripe</p><div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 bg-neon-purple/20 rounded-full text-xs">React</span><span class="px-3 py-1 bg-neon-purple/20 rounded-full text-xs">Redux</span><span class="px-3 py-1 bg-neon-purple/20 rounded-full text-xs">Stripe</span></div><a href="#" class="text-neon hover:underline inline-flex items-center gap-1">Ver mais <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div>
@@ -111,6 +111,20 @@
 
     <script src="assets/js/script.js"></script>
     <script>document.addEventListener('DOMContentLoaded',()=>{if(typeof lucide!=='undefined'){lucide.createIcons();setTimeout(()=>lucide.createIcons(),500);}});</script>
+    <script>
+        (function() {
+            const container = document.getElementById("projetos-container");
+            if (!container) return;
+            const projetos = JSON.parse(localStorage.getItem("sml-projetos") || "[]");
+            if (projetos.length > 0) {
+                container.innerHTML = projetos.map(p => {
+                    const techs = Array.isArray(p.tecnologias) ? p.tecnologias : p.tecnologias.split(",");
+                    return `<div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition"><div class="h-48 bg-gradient-to-br ${p.gradient} rounded-lg mb-4 flex items-center justify-center"><i data-lucide="${p.icone}" class="text-white w-12 md:w-16 h-12 md:h-16"></i></div><h3 class="text-lg md:text-xl font-bold mb-2"><i data-lucide="folder-git-2" class="inline w-5 md:w-6 h-5 md:h-6 mr-2 text-neon"></i>${p.titulo}</h3><p class="text-gray-400 text-sm md:text-base mb-4">${p.descricao}</p><div class="flex flex-wrap gap-2 mb-4">${techs.map(t => `<span class="px-3 py-1 ${p.bgTag || "bg-neon/20"} rounded-full text-xs">${t.trim()}</span>`).join("")}</div><a href="${p.link || "#"}" target="_blank" rel="noopener noreferrer" class="text-neon hover:underline inline-flex items-center gap-1">Ver mais <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div>`;
+                }).join("");
+                if (typeof lucide !== "undefined") lucide.createIcons();
+            }
+        })();
+    </script>
 </body>
 </html>
 <style>

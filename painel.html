@@ -8,78 +8,120 @@
     <style>
         body { background: #0a0f1e; font-family: 'Courier New', monospace; }
         .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
-        input, textarea, select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: white; }
-        input:focus, textarea:focus, select:focus { border-color: #00ffff; outline: none; }
-        .btn-neon { background: linear-gradient(90deg, #00ffff, #ff00ff); color: #0a0f1e; font-weight: bold; }
-        .btn-neon:hover { transform: scale(1.02); }
+        input, textarea, select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 12px; padding: 14px 18px; width: 100%; }
+        input:focus, textarea:focus, select:focus { border-color: #00ffff; outline: none; box-shadow: 0 0 15px rgba(0,255,255,0.15); }
+        label { color: #9ca3af; font-size: 13px; margin-bottom: 6px; display: block; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-neon { background: linear-gradient(90deg, #00ffff, #ff00ff); color: #0a0f1e; font-weight: bold; border-radius: 12px; padding: 14px; width: 100%; cursor: pointer; border: none; font-size: 16px; }
+        .btn-neon:hover { transform: scale(1.01); box-shadow: 0 0 30px rgba(0,255,255,0.3); }
+        .dica { background: rgba(0,255,255,0.05); border-left: 3px solid #00ffff; padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 12px; color: #9ca3af; margin-bottom: 16px; }
+        .tag { display: inline-block; padding: 6px 14px; background: rgba(0,255,255,0.1); border-radius: 20px; font-size: 12px; cursor: pointer; margin: 3px; }
+        .tag:hover { background: rgba(0,255,255,0.2); }
+        .tag.selecionada { background: #00ffff; color: #0a0f1e; font-weight: bold; }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
 
-    <div id="tela-login" class="glass rounded-xl p-8 w-full max-w-md">
-        <h1 class="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">
-            &lt;SML/Developer&gt;
-        </h1>
-        <p class="text-gray-400 text-center mb-8">Painel Administrativo</p>
-        <input type="password" id="senha" placeholder="Digite a senha..." class="w-full px-4 py-3 rounded-lg mb-4 text-center text-lg" onkeypress="if(event.key==='Enter')login()">
-        <button onclick="login()" class="btn-neon w-full py-3 rounded-lg transition">Acessar</button>
+    <!-- LOGIN -->
+    <div id="tela-login" class="glass rounded-2xl p-10 w-full max-w-md">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">&lt;SML/&gt;</h1>
+            <p class="text-gray-500 mt-2">Painel do Desenvolvedor</p>
+        </div>
+        <input type="password" id="senha" placeholder="Digite sua senha..." class="text-center text-lg" onkeypress="if(event.key==='Enter')login()">
+        <button onclick="login()" class="btn-neon mt-4">🔐 Acessar Painel</button>
         <p id="erro-login" class="text-red-400 text-center mt-4 hidden">Senha incorreta!</p>
     </div>
 
-    <div id="tela-painel" class="hidden w-full max-w-2xl">
+    <!-- PAINEL -->
+    <div id="tela-painel" class="hidden w-full max-w-3xl">
         <div class="flex justify-between items-center mb-8">
-            <h1 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">&lt;SML/Developer&gt; Painel</h1>
-            <button onclick="logout()" class="text-gray-400 hover:text-red-400 transition text-sm">Sair</button>
+            <div>
+                <h1 class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">&lt;SML/&gt; Painel</h1>
+                <p class="text-gray-500 text-sm mt-1">Gerencie seus projetos</p>
+            </div>
+            <button onclick="logout()" class="text-gray-400 hover:text-red-400 transition px-4 py-2 rounded-lg border border-gray-700">Sair</button>
         </div>
 
-        <div class="glass rounded-xl p-6 mb-8">
-            <h2 class="text-xl font-bold text-white mb-6">➕ Novo Projeto</h2>
-            <div class="space-y-4">
+        <!-- FORMULÁRIO -->
+        <div class="glass rounded-2xl p-6 md:p-8 mb-8">
+            <h2 class="text-xl font-bold text-white mb-6 flex items-center gap-2">➕ Novo Projeto</h2>
+            
+            <div class="space-y-5">
+                <!-- NOME -->
                 <div>
-                    <label class="text-gray-400 text-sm">Ícone</label>
-                    <select id="icone" class="w-full px-4 py-3 rounded-lg mt-1">
-                        <option value="box">📦 Box</option><option value="cloud-cog">☁️ Cloud</option><option value="shopping-cart">🛒 Shopping</option><option value="smartphone">📱 Smartphone</option><option value="monitor">🖥️ Monitor</option><option value="globe">🌐 Globe</option><option value="database">🗄️ Database</option><option value="server">🖧 Server</option><option value="code-2">💻 Code</option>
-                    </select>
+                    <label>📛 Nome do Projeto</label>
+                    <input type="text" id="titulo" placeholder="Ex: App de Delivery, Landing Page, Sistema de Estoque...">
+                    <p class="text-gray-600 text-xs mt-1">💡 Use um nome curto e descritivo</p>
                 </div>
+
+                <!-- DESCRIÇÃO -->
                 <div>
-                    <label class="text-gray-400 text-sm">Nome do Projeto</label>
-                    <input type="text" id="titulo" placeholder="Ex: App de Delivery" class="w-full px-4 py-3 rounded-lg mt-1">
+                    <label>📝 Descrição</label>
+                    <textarea id="descricao" rows="3" placeholder="Ex: Aplicativo mobile para entrega de comida com rastreamento em tempo real..."></textarea>
+                    <p class="text-gray-600 text-xs mt-1">💡 Explique o que o projeto faz em 1-2 frases</p>
                 </div>
+
+                <!-- ÍCONE -->
                 <div>
-                    <label class="text-gray-400 text-sm">Descrição</label>
-                    <textarea id="descricao" rows="3" placeholder="O que o projeto faz..." class="w-full px-4 py-3 rounded-lg mt-1"></textarea>
+                    <label>🎨 Ícone do Card</label>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <span class="tag selecionada" onclick="selecionarIcone('box', this)" data-icone="box">📦 App</span>
+                        <span class="tag" onclick="selecionarIcone('cloud-cog', this)" data-icone="cloud-cog">☁️ API</span>
+                        <span class="tag" onclick="selecionarIcone('shopping-cart', this)" data-icone="shopping-cart">🛒 Loja</span>
+                        <span class="tag" onclick="selecionarIcone('smartphone', this)" data-icone="smartphone">📱 Mobile</span>
+                        <span class="tag" onclick="selecionarIcone('monitor', this)" data-icone="monitor">🖥️ Site</span>
+                        <span class="tag" onclick="selecionarIcone('globe', this)" data-icone="globe">🌐 Web</span>
+                        <span class="tag" onclick="selecionarIcone('database', this)" data-icone="database">🗄️ Dados</span>
+                        <span class="tag" onclick="selecionarIcone('code-2', this)" data-icone="code-2">💻 Código</span>
+                    </div>
+                    <input type="hidden" id="icone" value="box">
                 </div>
+
+                <!-- TECNOLOGIAS -->
                 <div>
-                    <label class="text-gray-400 text-sm">Tecnologias (separadas por vírgula)</label>
-                    <input type="text" id="tecnologias" placeholder="React, Node.js, PostgreSQL" class="w-full px-4 py-3 rounded-lg mt-1">
+                    <label>🛠️ Tecnologias</label>
+                    <input type="text" id="tecnologias" placeholder="Ex: React, Node.js, PostgreSQL">
+                    <p class="text-gray-600 text-xs mt-1">💡 Separe por vírgulas: HTML, CSS, JavaScript</p>
                 </div>
+
+                <!-- LINK -->
                 <div>
-                    <label class="text-gray-400 text-sm">Link do Projeto</label>
-                    <input type="url" id="link" placeholder="https://..." class="w-full px-4 py-3 rounded-lg mt-1">
+                    <label>🔗 Link do Projeto</label>
+                    <input type="url" id="link" placeholder="https://meu-projeto.onrender.com">
+                    <p class="text-gray-600 text-xs mt-1">💡 Link do site publicado (deixe em branco se não tiver)</p>
                 </div>
+
+                <!-- GRADIENTE -->
                 <div>
-                    <label class="text-gray-400 text-sm">Gradiente</label>
-                    <select id="gradient" class="w-full px-4 py-3 rounded-lg mt-1">
-                        <option value="from-neon to-neon-pink">Ciano → Rosa</option>
-                        <option value="from-neon-pink to-neon-purple">Rosa → Roxo</option>
-                        <option value="from-neon-purple to-neon">Roxo → Ciano</option>
-                    </select>
+                    <label>🌈 Cor do Card</label>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <span class="tag selecionada" onclick="selecionarGradient('from-neon to-neon-pink', 'bg-neon/20', this)" style="background:linear-gradient(90deg,#00ffff,#ff00ff);color:#000;">Ciano → Rosa</span>
+                        <span class="tag" onclick="selecionarGradient('from-neon-pink to-neon-purple', 'bg-neon-pink/20', this)" style="background:linear-gradient(90deg,#ff00ff,#8b5cf6);color:#fff;">Rosa → Roxo</span>
+                        <span class="tag" onclick="selecionarGradient('from-neon-purple to-neon', 'bg-neon-purple/20', this)" style="background:linear-gradient(90deg,#8b5cf6,#00ffff);color:#fff;">Roxo → Ciano</span>
+                    </div>
+                    <input type="hidden" id="gradient" value="from-neon to-neon-pink">
+                    <input type="hidden" id="bg_tag" value="bg-neon/20">
                 </div>
-                <button onclick="salvarProjeto()" class="btn-neon w-full py-3 rounded-lg transition mt-4">💾 Salvar Projeto</button>
-                <p id="msg-sucesso" class="text-green-400 text-center hidden">✅ Projeto salvo com sucesso!</p>
+
+                <!-- BOTÃO SALVAR -->
+                <button onclick="salvarProjeto()" class="btn-neon text-lg">💾 Salvar Projeto</button>
+                <p id="msg-sucesso" class="text-green-400 text-center hidden">✅ Projeto salvo! <a href="/" class="underline">Ver no site</a></p>
             </div>
         </div>
 
-        <div class="glass rounded-xl p-6">
+        <!-- LISTA -->
+        <div class="glass rounded-2xl p-6 md:p-8">
             <h2 class="text-xl font-bold text-white mb-4">📁 Projetos Cadastrados</h2>
-            <div id="lista-projetos" class="space-y-3"><p class="text-gray-500">Carregando...</p></div>
+            <div id="lista-projetos" class="space-y-3"><p class="text-gray-500">Nenhum projeto ainda.</p></div>
         </div>
     </div>
 
     <script>
         const SENHA = 'sml2025';
-        const NEON_URL = 'https://ep-lingering-firefly-anfqpvp0-pooler.c-6.us-east-1.aws.neon.tech';
-        
+        let iconeAtual = 'box';
+        let gradientAtual = 'from-neon to-neon-pink';
+        let bgTagAtual = 'bg-neon/20';
+
         function login() {
             if (document.getElementById('senha').value === SENHA) {
                 document.getElementById('tela-login').classList.add('hidden');
@@ -93,30 +135,43 @@
         function logout() {
             document.getElementById('tela-login').classList.remove('hidden');
             document.getElementById('tela-painel').classList.add('hidden');
-            document.getElementById('senha').value = '';
+        }
+
+        function selecionarIcone(icone, el) {
+            document.querySelectorAll('[data-icone]').forEach(t => t.classList.remove('selecionada'));
+            el.classList.add('selecionada');
+            iconeAtual = icone;
+            document.getElementById('icone').value = icone;
+        }
+
+        function selecionarGradient(gradient, bgTag, el) {
+            document.querySelectorAll('#gradient').forEach(g => g.value = gradient);
+            document.querySelectorAll('#bg_tag').forEach(b => b.value = bgTag);
+            gradientAtual = gradient;
+            bgTagAtual = bgTag;
+            el.parentElement.querySelectorAll('.tag').forEach(t => t.classList.remove('selecionada'));
+            el.classList.add('selecionada');
         }
 
         function salvarProjeto() {
             const projeto = {
-                icone: document.getElementById('icone').value,
+                icone: iconeAtual,
                 titulo: document.getElementById('titulo').value,
                 descricao: document.getElementById('descricao').value,
                 tecnologias: document.getElementById('tecnologias').value,
                 link: document.getElementById('link').value,
-                gradient: document.getElementById('gradient').value,
-                bg_tag: document.getElementById('gradient').value.includes('pink') ? 'bg-neon-pink/20' : 
-                        document.getElementById('gradient').value.includes('purple') ? 'bg-neon-purple/20' : 'bg-neon/20'
+                gradient: gradientAtual,
+                bgTag: bgTagAtual
             };
 
-            if (!projeto.titulo) { alert('Preencha o nome do projeto!'); return; }
+            if (!projeto.titulo) { alert('⚠️ Preencha pelo menos o nome do projeto!'); return; }
 
-            // Salvar no localStorage (funciona offline + Render)
             const projetos = JSON.parse(localStorage.getItem('sml-projetos') || '[]');
             projetos.push(projeto);
             localStorage.setItem('sml-projetos', JSON.stringify(projetos));
 
             document.getElementById('msg-sucesso').classList.remove('hidden');
-            setTimeout(() => document.getElementById('msg-sucesso').classList.add('hidden'), 3000);
+            setTimeout(() => document.getElementById('msg-sucesso').classList.add('hidden'), 5000);
             document.getElementById('titulo').value = '';
             document.getElementById('descricao').value = '';
             document.getElementById('tecnologias').value = '';
@@ -128,25 +183,30 @@
             const projetos = JSON.parse(localStorage.getItem('sml-projetos') || '[]');
             const lista = document.getElementById('lista-projetos');
             if (projetos.length === 0) {
-                lista.innerHTML = '<p class="text-gray-500">Nenhum projeto cadastrado.</p>';
+                lista.innerHTML = '<div class="text-center py-8 text-gray-500">📭 Nenhum projeto cadastrado</div>';
                 return;
             }
             lista.innerHTML = projetos.map((p, i) => `
-                <div class="flex justify-between items-center bg-white/5 rounded-lg p-4">
-                    <div>
-                        <span class="text-white font-bold">${p.titulo}</span>
-                        <span class="text-gray-400 text-sm ml-2">${p.tecnologias}</span>
+                <div class="flex justify-between items-center bg-white/5 rounded-xl p-4 hover:bg-white/10 transition">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">${p.icone === 'box' ? '📦' : p.icone === 'cloud-cog' ? '☁️' : p.icone === 'shopping-cart' ? '🛒' : p.icone === 'smartphone' ? '📱' : p.icone === 'monitor' ? '🖥️' : p.icone === 'globe' ? '🌐' : p.icone === 'database' ? '🗄️' : '💻'}</span>
+                        <div>
+                            <p class="text-white font-bold">${p.titulo}</p>
+                            <p class="text-gray-400 text-xs">${p.tecnologias}</p>
+                        </div>
                     </div>
-                    <button onclick="excluirProjeto(${i})" class="text-red-400 hover:text-red-300 text-sm">🗑️</button>
+                    <button onclick="excluirProjeto(${i})" class="text-red-400 hover:text-red-300 text-lg px-3">🗑️</button>
                 </div>
             `).join('');
         }
 
         function excluirProjeto(index) {
-            const projetos = JSON.parse(localStorage.getItem('sml-projetos') || '[]');
-            projetos.splice(index, 1);
-            localStorage.setItem('sml-projetos', JSON.stringify(projetos));
-            carregarProjetos();
+            if (confirm('Tem certeza que deseja excluir este projeto?')) {
+                const projetos = JSON.parse(localStorage.getItem('sml-projetos') || '[]');
+                projetos.splice(index, 1);
+                localStorage.setItem('sml-projetos', JSON.stringify(projetos));
+                carregarProjetos();
+            }
         }
     </script>
 </body>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Teste Sync</title></head>
+<body style="background:#0a0f1e;color:white;font-family:monospace;padding:20px;">
+<h2>🔍 Diagnóstico de Sincronização</h2>
+<div id="resultado" style="margin-top:20px;padding:20px;background:#111;border-radius:10px;"></div>
+<script>
+const r = document.getElementById('resultado');
+const projetos = localStorage.getItem('sml-projetos');
+r.innerHTML = `
+    <p><b>Projetos no localStorage:</b> ${projetos ? '<span style="color:lime">ENCONTRADOS ✅</span>' : '<span style="color:red">VAZIO ❌</span>'}</p>
+    <p><b>Dados:</b> <pre>${projetos || 'Nenhum projeto salvo'}</pre></p>
+    <p style="margin-top:20px;"><b>👉 Acesse o painel:</b> <a href="painel.html" style="color:#00ffff;">painel.html</a> e cadastre um projeto.</p>
+    <p><b>👉 Depois volte aqui:</b> <a href="teste-sync.html" style="color:#00ffff;">teste-sync.html</a> para ver se salvou.</p>
+`;
+</script>
+</body></html>

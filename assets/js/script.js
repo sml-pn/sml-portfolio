@@ -172,3 +172,64 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('%c🚀 Site: %chttps://sml-developer.onrender.com', 'color: #ff00ff;', 'color: #00ffff;');
     console.log('%c💻 Pronto para novos projetos!', 'color: #50fa7b;');
 });
+
+// ============================================
+// SINCRONIZAR PROJETOS DO PAINEL
+// ============================================
+function carregarProjetosDoPainel() {
+    const container = document.getElementById('projetos-container');
+    if (!container) return;
+    
+    // Buscar projetos do localStorage do painel
+    const projetos = JSON.parse(localStorage.getItem('sml-projetos') || '[]');
+    
+    // Se não houver projetos cadastrados, manter os padrões
+    if (projetos.length === 0) {
+        container.innerHTML = `
+            <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
+                <div class="h-48 bg-gradient-to-br from-neon to-neon-pink rounded-lg mb-4 flex items-center justify-center">
+                    <i data-lucide="box" class="text-white w-12 md:w-16 h-12 md:h-16"></i>
+                </div>
+                <h3 class="text-lg md:text-xl font-bold mb-2"><i data-lucide="folder-git-2" class="inline w-5 md:w-6 h-5 md:h-6 mr-2 text-neon"></i>Portfolio 3D Interativo</h3>
+                <p class="text-gray-400 text-sm md:text-base mb-4">Site com efeitos 3D e animações fluidas</p>
+                <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 bg-neon/20 rounded-full text-xs">Three.js</span><span class="px-3 py-1 bg-neon/20 rounded-full text-xs">Tailwind</span><span class="px-3 py-1 bg-neon/20 rounded-full text-xs">GSAP</span></div>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="text-neon hover:underline inline-flex items-center gap-1">Ver mais <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            </div>
+            <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
+                <div class="h-48 bg-gradient-to-br from-neon-pink to-neon-purple rounded-lg mb-4 flex items-center justify-center">
+                    <i data-lucide="cloud-cog" class="text-white w-12 md:w-16 h-12 md:h-16"></i>
+                </div>
+                <h3 class="text-lg md:text-xl font-bold mb-2"><i data-lucide="folder-git-2" class="inline w-5 md:w-6 h-5 md:h-6 mr-2 text-neon"></i>API REST Completa</h3>
+                <p class="text-gray-400 text-sm md:text-base mb-4">Backend com autenticação JWT e Swagger</p>
+                <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 bg-neon-pink/20 rounded-full text-xs">Node.js</span><span class="px-3 py-1 bg-neon-pink/20 rounded-full text-xs">Express</span><span class="px-3 py-1 bg-neon-pink/20 rounded-full text-xs">MongoDB</span></div>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="text-neon hover:underline inline-flex items-center gap-1">Ver mais <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            </div>
+        `;
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+        return;
+    }
+    
+    // Gerar cards a partir dos projetos cadastrados
+    container.innerHTML = projetos.map(proj => `
+        <div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
+            <div class="h-48 bg-gradient-to-br ${proj.gradient} rounded-lg mb-4 flex items-center justify-center">
+                <i data-lucide="${proj.icone}" class="text-white w-12 md:w-16 h-12 md:h-16"></i>
+            </div>
+            <h3 class="text-lg md:text-xl font-bold mb-2">
+                <i data-lucide="folder-git-2" class="inline w-5 md:w-6 h-5 md:h-6 mr-2 text-neon"></i>${proj.titulo}
+            </h3>
+            <p class="text-gray-400 text-sm md:text-base mb-4">${proj.descricao}</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+                ${proj.tecnologias.split(',').map(t => `<span class="px-3 py-1 ${proj.bg_tag} rounded-full text-xs">${t.trim()}</span>`).join('')}
+            </div>
+            <a href="${proj.link || '#'}" target="_blank" rel="noopener noreferrer" class="text-neon hover:underline inline-flex items-center gap-1">
+                Ver mais <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    `).join('');
+    
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+// Carregar ao iniciar
+document.addEventListener('DOMContentLoaded', carregarProjetosDoPainel);
