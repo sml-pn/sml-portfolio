@@ -13,10 +13,9 @@
         label { color: #9ca3af; font-size: 13px; margin-bottom: 6px; display: block; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
         .btn-neon { background: linear-gradient(90deg, #00ffff, #ff00ff); color: #0a0f1e; font-weight: bold; border-radius: 12px; padding: 14px; width: 100%; cursor: pointer; border: none; font-size: 16px; }
         .btn-neon:hover { transform: scale(1.01); box-shadow: 0 0 30px rgba(0,255,255,0.3); }
-        .dica { background: rgba(0,255,255,0.05); border-left: 3px solid #00ffff; padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 12px; color: #9ca3af; margin-bottom: 16px; }
-        .tag { display: inline-block; padding: 6px 14px; background: rgba(0,255,255,0.1); border-radius: 20px; font-size: 12px; cursor: pointer; margin: 3px; }
-        .tag:hover { background: rgba(0,255,255,0.2); }
-        .tag.selecionada { background: #00ffff; color: #0a0f1e; font-weight: bold; }
+        .tag { display: inline-block; padding: 7px 16px; background: rgba(0,255,255,0.08); border-radius: 20px; font-size: 12px; cursor: pointer; margin: 3px; border: 1px solid transparent; }
+        .tag:hover { background: rgba(0,255,255,0.15); border-color: rgba(0,255,255,0.3); }
+        .tag.selecionada { background: #00ffff; color: #0a0f1e; font-weight: bold; border-color: #00ffff; }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
@@ -33,86 +32,87 @@
     </div>
 
     <!-- PAINEL -->
-    <div id="tela-painel" class="hidden w-full max-w-3xl">
+    <div id="tela-painel" class="hidden w-full max-w-2xl">
         <div class="flex justify-between items-center mb-8">
             <div>
                 <h1 class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">&lt;SML/&gt; Painel</h1>
-                <p class="text-gray-500 text-sm mt-1">Gerencie seus projetos</p>
+                <p class="text-gray-500 text-sm mt-1">Cadastre seus projetos</p>
             </div>
             <button onclick="logout()" class="text-gray-400 hover:text-red-400 transition px-4 py-2 rounded-lg border border-gray-700">Sair</button>
         </div>
 
-        <!-- FORMULÁRIO -->
         <div class="glass rounded-2xl p-6 md:p-8 mb-8">
-            <h2 class="text-xl font-bold text-white mb-6 flex items-center gap-2">➕ Novo Projeto</h2>
+            <h2 class="text-xl font-bold text-white mb-6">➕ Novo Projeto</h2>
             
-            <div class="space-y-5">
-                <!-- NOME -->
+            <div class="space-y-4">
                 <div>
                     <label>📛 Nome do Projeto</label>
-                    <input type="text" id="titulo" placeholder="Ex: App de Delivery, Landing Page, Sistema de Estoque...">
-                    <p class="text-gray-600 text-xs mt-1">💡 Use um nome curto e descritivo</p>
+                    <input type="text" id="titulo" placeholder="Ex: App de Delivery">
                 </div>
 
-                <!-- DESCRIÇÃO -->
+                <div>
+                    <label>🏷️ Categoria</label>
+                    <select id="categoria" class="w-full">
+                        <option value="">Selecione uma categoria...</option>
+                        <option value="Saúde">🏥 Saúde</option>
+                        <option value="Automotivo">🚗 Automotivo</option>
+                        <option value="Ecommerce">🛒 Ecommerce</option>
+                        <option value="Financeiro">💰 Financeiro</option>
+                        <option value="Educação">📚 Educação</option>
+                        <option value="Delivery">🛵 Delivery</option>
+                        <option value="Imobiliário">🏠 Imobiliário</option>
+                        <option value="Tecnologia">💻 Tecnologia</option>
+                        <option value="Marketing">📢 Marketing</option>
+                        <option value="Landing Page">📄 Landing Page</option>
+                    </select>
+                </div>
+
                 <div>
                     <label>📝 Descrição</label>
-                    <textarea id="descricao" rows="3" placeholder="Ex: Aplicativo mobile para entrega de comida com rastreamento em tempo real..."></textarea>
-                    <p class="text-gray-600 text-xs mt-1">💡 Explique o que o projeto faz em 1-2 frases</p>
+                    <input type="text" id="descricao" placeholder="Ex: Aplicativo mobile para entrega de comida">
                 </div>
 
-                <!-- ÍCONE -->
                 <div>
-                    <label>🎨 Ícone do Card</label>
-                    <div class="flex flex-wrap gap-2 mt-2">
-                        <span class="tag selecionada" onclick="selecionarIcone('box', this)" data-icone="box">📦 App</span>
-                        <span class="tag" onclick="selecionarIcone('cloud-cog', this)" data-icone="cloud-cog">☁️ API</span>
-                        <span class="tag" onclick="selecionarIcone('shopping-cart', this)" data-icone="shopping-cart">🛒 Loja</span>
-                        <span class="tag" onclick="selecionarIcone('smartphone', this)" data-icone="smartphone">📱 Mobile</span>
-                        <span class="tag" onclick="selecionarIcone('monitor', this)" data-icone="monitor">🖥️ Site</span>
-                        <span class="tag" onclick="selecionarIcone('globe', this)" data-icone="globe">🌐 Web</span>
-                        <span class="tag" onclick="selecionarIcone('database', this)" data-icone="database">🗄️ Dados</span>
-                        <span class="tag" onclick="selecionarIcone('code-2', this)" data-icone="code-2">💻 Código</span>
+                    <label>🛠️ Tecnologias (separadas por vírgula)</label>
+                    <input type="text" id="tecnologias" placeholder="React, Node.js, PostgreSQL">
+                </div>
+
+                <div>
+                    <label>🔗 Link do Projeto</label>
+                    <input type="url" id="link" placeholder="https://meu-projeto.onrender.com">
+                </div>
+
+                <div>
+                    <label>🎨 Ícone</label>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag selecionada" onclick="selecionarIcone('box', this)">📦 App</span>
+                        <span class="tag" onclick="selecionarIcone('cloud-cog', this)">☁️ API</span>
+                        <span class="tag" onclick="selecionarIcone('shopping-cart', this)">🛒 Loja</span>
+                        <span class="tag" onclick="selecionarIcone('smartphone', this)">📱 Mobile</span>
+                        <span class="tag" onclick="selecionarIcone('monitor', this)">🖥️ Site</span>
+                        <span class="tag" onclick="selecionarIcone('globe', this)">🌐 Web</span>
+                        <span class="tag" onclick="selecionarIcone('code-2', this)">💻 Código</span>
                     </div>
                     <input type="hidden" id="icone" value="box">
                 </div>
 
-                <!-- TECNOLOGIAS -->
-                <div>
-                    <label>🛠️ Tecnologias</label>
-                    <input type="text" id="tecnologias" placeholder="Ex: React, Node.js, PostgreSQL">
-                    <p class="text-gray-600 text-xs mt-1">💡 Separe por vírgulas: HTML, CSS, JavaScript</p>
-                </div>
-
-                <!-- LINK -->
-                <div>
-                    <label>🔗 Link do Projeto</label>
-                    <input type="url" id="link" placeholder="https://meu-projeto.onrender.com">
-                    <p class="text-gray-600 text-xs mt-1">💡 Link do site publicado (deixe em branco se não tiver)</p>
-                </div>
-
-                <!-- GRADIENTE -->
                 <div>
                     <label>🌈 Cor do Card</label>
-                    <div class="flex flex-wrap gap-2 mt-2">
+                    <div class="flex flex-wrap gap-2">
                         <span class="tag selecionada" onclick="selecionarGradient('from-neon to-neon-pink', 'bg-neon/20', this)" style="background:linear-gradient(90deg,#00ffff,#ff00ff);color:#000;">Ciano → Rosa</span>
                         <span class="tag" onclick="selecionarGradient('from-neon-pink to-neon-purple', 'bg-neon-pink/20', this)" style="background:linear-gradient(90deg,#ff00ff,#8b5cf6);color:#fff;">Rosa → Roxo</span>
                         <span class="tag" onclick="selecionarGradient('from-neon-purple to-neon', 'bg-neon-purple/20', this)" style="background:linear-gradient(90deg,#8b5cf6,#00ffff);color:#fff;">Roxo → Ciano</span>
                     </div>
-                    <input type="hidden" id="gradient" value="from-neon to-neon-pink">
-                    <input type="hidden" id="bg_tag" value="bg-neon/20">
                 </div>
 
-                <!-- BOTÃO SALVAR -->
                 <button onclick="salvarProjeto()" class="btn-neon text-lg">💾 Salvar Projeto</button>
-                <p id="msg-sucesso" class="text-green-400 text-center hidden">✅ Projeto salvo! <a href="/" class="underline">Ver no site</a></p>
+                <p id="msg-sucesso" class="text-green-400 text-center hidden">✅ Salvo! <a href="/" class="underline">Ver no site</a></p>
             </div>
         </div>
 
-        <!-- LISTA -->
         <div class="glass rounded-2xl p-6 md:p-8">
             <h2 class="text-xl font-bold text-white mb-4">📁 Projetos Cadastrados</h2>
-            <div id="lista-projetos" class="space-y-3"><p class="text-gray-500">Nenhum projeto ainda.</p></div>
+            <div id="lista-projetos" class="space-y-3"></div>
         </div>
     </div>
 
@@ -135,18 +135,17 @@
         function logout() {
             document.getElementById('tela-login').classList.remove('hidden');
             document.getElementById('tela-painel').classList.add('hidden');
+            document.getElementById('senha').value = '';
         }
 
         function selecionarIcone(icone, el) {
-            document.querySelectorAll('[data-icone]').forEach(t => t.classList.remove('selecionada'));
+            document.querySelectorAll('.tag').forEach(t => t.classList.remove('selecionada'));
             el.classList.add('selecionada');
             iconeAtual = icone;
             document.getElementById('icone').value = icone;
         }
 
         function selecionarGradient(gradient, bgTag, el) {
-            document.querySelectorAll('#gradient').forEach(g => g.value = gradient);
-            document.querySelectorAll('#bg_tag').forEach(b => b.value = bgTag);
             gradientAtual = gradient;
             bgTagAtual = bgTag;
             el.parentElement.querySelectorAll('.tag').forEach(t => t.classList.remove('selecionada'));
@@ -155,27 +154,26 @@
 
         function salvarProjeto() {
             const projeto = {
-                icone: iconeAtual,
                 titulo: document.getElementById('titulo').value,
+                categoria: document.getElementById('categoria').value,
                 descricao: document.getElementById('descricao').value,
                 tecnologias: document.getElementById('tecnologias').value,
                 link: document.getElementById('link').value,
+                icone: iconeAtual,
                 gradient: gradientAtual,
                 bgTag: bgTagAtual
             };
 
-            if (!projeto.titulo) { alert('⚠️ Preencha pelo menos o nome do projeto!'); return; }
+            if (!projeto.titulo) { alert('⚠️ Preencha o nome!'); return; }
 
             const projetos = JSON.parse(localStorage.getItem('sml-projetos') || '[]');
             projetos.push(projeto);
             localStorage.setItem('sml-projetos', JSON.stringify(projetos));
 
             document.getElementById('msg-sucesso').classList.remove('hidden');
-            setTimeout(() => document.getElementById('msg-sucesso').classList.add('hidden'), 5000);
-            document.getElementById('titulo').value = '';
-            document.getElementById('descricao').value = '';
-            document.getElementById('tecnologias').value = '';
-            document.getElementById('link').value = '';
+            setTimeout(() => document.getElementById('msg-sucesso').classList.add('hidden'), 3000);
+            ['titulo','descricao','tecnologias','link'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('categoria').value = '';
             carregarProjetos();
         }
 
@@ -183,25 +181,41 @@
             const projetos = JSON.parse(localStorage.getItem('sml-projetos') || '[]');
             const lista = document.getElementById('lista-projetos');
             if (projetos.length === 0) {
-                lista.innerHTML = '<div class="text-center py-8 text-gray-500">📭 Nenhum projeto cadastrado</div>';
+                lista.innerHTML = '<p class="text-gray-500 text-center py-4">📭 Nenhum projeto</p>';
                 return;
             }
             lista.innerHTML = projetos.map((p, i) => `
-                <div class="flex justify-between items-center bg-white/5 rounded-xl p-4 hover:bg-white/10 transition">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">${p.icone === 'box' ? '📦' : p.icone === 'cloud-cog' ? '☁️' : p.icone === 'shopping-cart' ? '🛒' : p.icone === 'smartphone' ? '📱' : p.icone === 'monitor' ? '🖥️' : p.icone === 'globe' ? '🌐' : p.icone === 'database' ? '🗄️' : '💻'}</span>
-                        <div>
-                            <p class="text-white font-bold">${p.titulo}</p>
-                            <p class="text-gray-400 text-xs">${p.tecnologias}</p>
+                <div class="flex justify-between items-center bg-white/5 rounded-xl p-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-white font-bold">${p.titulo}</span>
+                            ${p.categoria ? `<span class="px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded text-xs">${p.categoria}</span>` : ''}
                         </div>
+                        <p class="text-gray-500 text-xs mt-1">${(p.tecnologias || '').split(',').slice(0,3).join(', ')}</p>
                     </div>
-                    <button onclick="excluirProjeto(${i})" class="text-red-400 hover:text-red-300 text-lg px-3">🗑️</button>
+                    <button onclick="editarProjeto(${i})" class="text-cyan-400 hover:text-cyan-300 mr-2">✏️</button><button onclick="excluirProjeto(${i})" class="text-red-400 hover:text-red-300">🗑️</button>
                 </div>
             `).join('');
         }
 
+        function editarProjeto(index) {
+            const projetos = JSON.parse(localStorage.getItem("sml-projetos") || "[]");
+            const p = projetos[index];
+            document.getElementById("titulo").value = p.titulo || "";
+            document.getElementById("categoria").value = p.categoria || "";
+            document.getElementById("descricao").value = p.descricao || "";
+            document.getElementById("tecnologias").value = p.tecnologias || "";
+            document.getElementById("link").value = p.link || "";
+            iconeAtual = p.icone || "box";
+            gradientAtual = p.gradient || "from-neon to-neon-pink";
+            bgTagAtual = p.bgTag || "bg-neon/20";
+            projetos.splice(index, 1);
+            localStorage.setItem("sml-projetos", JSON.stringify(projetos));
+            carregarProjetos();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
         function excluirProjeto(index) {
-            if (confirm('Tem certeza que deseja excluir este projeto?')) {
+            if (confirm('Excluir?')) {
                 const projetos = JSON.parse(localStorage.getItem('sml-projetos') || '[]');
                 projetos.splice(index, 1);
                 localStorage.setItem('sml-projetos', JSON.stringify(projetos));
