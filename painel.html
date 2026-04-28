@@ -16,109 +16,74 @@
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
 
-    <!-- TELA DE LOGIN -->
     <div id="tela-login" class="glass rounded-xl p-8 w-full max-w-md">
         <h1 class="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">
             &lt;SML/Developer&gt;
         </h1>
         <p class="text-gray-400 text-center mb-8">Painel Administrativo</p>
-        
-        <input type="password" id="senha" placeholder="Digite a senha..." 
-               class="w-full px-4 py-3 rounded-lg mb-4 text-center text-lg tracking-widest"
-               onkeypress="if(event.key==='Enter')login()">
-        
-        <button onclick="login()" class="btn-neon w-full py-3 rounded-lg transition">
-            Acessar
-        </button>
+        <input type="password" id="senha" placeholder="Digite a senha..." class="w-full px-4 py-3 rounded-lg mb-4 text-center text-lg" onkeypress="if(event.key==='Enter')login()">
+        <button onclick="login()" class="btn-neon w-full py-3 rounded-lg transition">Acessar</button>
         <p id="erro-login" class="text-red-400 text-center mt-4 hidden">Senha incorreta!</p>
     </div>
 
-    <!-- TELA DO PAINEL -->
     <div id="tela-painel" class="hidden w-full max-w-2xl">
         <div class="flex justify-between items-center mb-8">
-            <h1 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">
-                &lt;SML/Developer&gt; Painel
-            </h1>
-            <button onclick="logout()" class="text-gray-400 hover:text-red-400 transition text-sm">
-                Sair
-            </button>
+            <h1 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">&lt;SML/Developer&gt; Painel</h1>
+            <button onclick="logout()" class="text-gray-400 hover:text-red-400 transition text-sm">Sair</button>
         </div>
 
         <div class="glass rounded-xl p-6 mb-8">
             <h2 class="text-xl font-bold text-white mb-6">➕ Novo Projeto</h2>
-            
             <div class="space-y-4">
                 <div>
-                    <label class="text-gray-400 text-sm">Ícone (Lucide)</label>
+                    <label class="text-gray-400 text-sm">Ícone</label>
                     <select id="icone" class="w-full px-4 py-3 rounded-lg mt-1">
-                        <option value="box">📦 Box</option>
-                        <option value="cloud-cog">☁️ Cloud</option>
-                        <option value="shopping-cart">🛒 Shopping</option>
-                        <option value="smartphone">📱 Smartphone</option>
-                        <option value="monitor">🖥️ Monitor</option>
-                        <option value="globe">🌐 Globe</option>
-                        <option value="database">🗄️ Database</option>
-                        <option value="server">🖧 Server</option>
-                        <option value="code-2">💻 Code</option>
+                        <option value="box">📦 Box</option><option value="cloud-cog">☁️ Cloud</option><option value="shopping-cart">🛒 Shopping</option><option value="smartphone">📱 Smartphone</option><option value="monitor">🖥️ Monitor</option><option value="globe">🌐 Globe</option><option value="database">🗄️ Database</option><option value="server">🖧 Server</option><option value="code-2">💻 Code</option>
                     </select>
                 </div>
-                
                 <div>
                     <label class="text-gray-400 text-sm">Nome do Projeto</label>
                     <input type="text" id="titulo" placeholder="Ex: App de Delivery" class="w-full px-4 py-3 rounded-lg mt-1">
                 </div>
-                
                 <div>
                     <label class="text-gray-400 text-sm">Descrição</label>
                     <textarea id="descricao" rows="3" placeholder="O que o projeto faz..." class="w-full px-4 py-3 rounded-lg mt-1"></textarea>
                 </div>
-                
                 <div>
                     <label class="text-gray-400 text-sm">Tecnologias (separadas por vírgula)</label>
                     <input type="text" id="tecnologias" placeholder="React, Node.js, PostgreSQL" class="w-full px-4 py-3 rounded-lg mt-1">
                 </div>
-                
                 <div>
                     <label class="text-gray-400 text-sm">Link do Projeto</label>
                     <input type="url" id="link" placeholder="https://..." class="w-full px-4 py-3 rounded-lg mt-1">
                 </div>
-                
                 <div>
-                    <label class="text-gray-400 text-sm">Gradiente do Card</label>
+                    <label class="text-gray-400 text-sm">Gradiente</label>
                     <select id="gradient" class="w-full px-4 py-3 rounded-lg mt-1">
                         <option value="from-neon to-neon-pink">Ciano → Rosa</option>
                         <option value="from-neon-pink to-neon-purple">Rosa → Roxo</option>
                         <option value="from-neon-purple to-neon">Roxo → Ciano</option>
                     </select>
                 </div>
-
-                <button onclick="salvarProjeto()" class="btn-neon w-full py-3 rounded-lg transition mt-4">
-                    💾 Salvar Projeto
-                </button>
+                <button onclick="salvarProjeto()" class="btn-neon w-full py-3 rounded-lg transition mt-4">💾 Salvar Projeto</button>
                 <p id="msg-sucesso" class="text-green-400 text-center hidden">✅ Projeto salvo com sucesso!</p>
             </div>
         </div>
 
-        <!-- LISTA DE PROJETOS -->
         <div class="glass rounded-xl p-6">
             <h2 class="text-xl font-bold text-white mb-4">📁 Projetos Cadastrados</h2>
-            <div id="lista-projetos" class="space-y-3">
-                <p class="text-gray-500">Carregando...</p>
-            </div>
+            <div id="lista-projetos" class="space-y-3"><p class="text-gray-500">Carregando...</p></div>
         </div>
     </div>
 
     <script>
         const SENHA = 'sml2025';
-        let logado = false;
-
+        const NEON_URL = 'https://ep-lingering-firefly-anfqpvp0-pooler.c-6.us-east-1.aws.neon.tech';
+        
         function login() {
-            const senha = document.getElementById('senha').value;
-            if (senha === SENHA) {
-                logado = true;
+            if (document.getElementById('senha').value === SENHA) {
                 document.getElementById('tela-login').classList.add('hidden');
                 document.getElementById('tela-painel').classList.remove('hidden');
-                document.getElementById('erro-login').classList.add('hidden');
                 carregarProjetos();
             } else {
                 document.getElementById('erro-login').classList.remove('hidden');
@@ -126,57 +91,51 @@
         }
 
         function logout() {
-            logado = false;
             document.getElementById('tela-login').classList.remove('hidden');
             document.getElementById('tela-painel').classList.add('hidden');
             document.getElementById('senha').value = '';
         }
 
         function salvarProjeto() {
-            const icone = document.getElementById('icone').value;
-            const titulo = document.getElementById('titulo').value;
-            const descricao = document.getElementById('descricao').value;
-            const tecnologias = document.getElementById('tecnologias').value.split(',').map(t => t.trim());
-            const link = document.getElementById('link').value;
-            const gradient = document.getElementById('gradient').value;
-            const bgTag = gradient.includes('pink') ? 'bg-neon-pink/20' : 
-                          gradient.includes('purple') ? 'bg-neon-purple/20' : 'bg-neon/20';
+            const projeto = {
+                icone: document.getElementById('icone').value,
+                titulo: document.getElementById('titulo').value,
+                descricao: document.getElementById('descricao').value,
+                tecnologias: document.getElementById('tecnologias').value,
+                link: document.getElementById('link').value,
+                gradient: document.getElementById('gradient').value,
+                bg_tag: document.getElementById('gradient').value.includes('pink') ? 'bg-neon-pink/20' : 
+                        document.getElementById('gradient').value.includes('purple') ? 'bg-neon-purple/20' : 'bg-neon/20'
+            };
 
-            if (!titulo || !descricao) {
-                alert('Preencha pelo menos o nome e descrição!');
-                return;
-            }
+            if (!projeto.titulo) { alert('Preencha o nome do projeto!'); return; }
 
-            // Salvar no localStorage como fallback (sem Neon)
-            
-            projetos.push({ icone, titulo, descricao, tecnologias, link, gradient, bgTag });
-            
+            // Salvar no localStorage (funciona offline + Render)
+            const projetos = JSON.parse(localStorage.getItem('sml-projetos') || '[]');
+            projetos.push(projeto);
+            localStorage.setItem('sml-projetos', JSON.stringify(projetos));
 
             document.getElementById('msg-sucesso').classList.remove('hidden');
             setTimeout(() => document.getElementById('msg-sucesso').classList.add('hidden'), 3000);
-            
             document.getElementById('titulo').value = '';
             document.getElementById('descricao').value = '';
             document.getElementById('tecnologias').value = '';
             document.getElementById('link').value = '';
-            
             carregarProjetos();
         }
 
         function carregarProjetos() {
-            
+            const projetos = JSON.parse(localStorage.getItem('sml-projetos') || '[]');
             const lista = document.getElementById('lista-projetos');
-            
             if (projetos.length === 0) {
-                lista.innerHTML = '<p class="text-gray-500">Nenhum projeto cadastrado ainda.</p>';
+                lista.innerHTML = '<p class="text-gray-500">Nenhum projeto cadastrado.</p>';
                 return;
             }
-
             lista.innerHTML = projetos.map((p, i) => `
                 <div class="flex justify-between items-center bg-white/5 rounded-lg p-4">
                     <div>
                         <span class="text-white font-bold">${p.titulo}</span>
-                        <span class="text-gray-400 text-sm ml-2">${p.tecnologias.join(', ')}</span>
+                        <span class="text-gray-400 text-sm ml-2">${p.tecnologias}</span>
                     </div>
                     <button onclick="excluirProjeto(${i})" class="text-red-400 hover:text-red-300 text-sm">🗑️</button>
                 </div>
@@ -184,9 +143,9 @@
         }
 
         function excluirProjeto(index) {
-            
+            const projetos = JSON.parse(localStorage.getItem('sml-projetos') || '[]');
             projetos.splice(index, 1);
-            
+            localStorage.setItem('sml-projetos', JSON.stringify(projetos));
             carregarProjetos();
         }
     </script>
