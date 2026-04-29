@@ -33,9 +33,10 @@ pool.query(`CREATE TABLE IF NOT EXISTS projetos (
 app.post('/api/projetos', async (req, res) => {
   const p = req.body;
   try {
+    const tecnologiasArray = p.tecnologias ? '{' + p.tecnologias.split(',').map(t => '"' + t.trim() + '"').join(',') + '}' : null;
     await pool.query(
       'INSERT INTO projetos (icone, titulo, descricao, tecnologias, link, gradient, bg_tag, categoria, tipo, imagem_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)',
-      [p.icone, p.titulo, p.descricao, p.tecnologias, p.link, p.gradient, p.bgTag, p.categoria, p.tipo, p.imagem_url]
+      [p.icone, p.titulo, p.descricao, tecnologiasArray, p.link, p.gradient, p.bgTag, p.categoria, p.tipo, p.imagem_url]
     );
     res.json({ ok: true });
   } catch (err) { res.status(500).json({ error: err.message }); }
@@ -43,6 +44,7 @@ app.post('/api/projetos', async (req, res) => {
 
 app.get('/api/projetos', async (req, res) => {
   try {
+    const tecnologiasArray = p.tecnologias ? '{' + p.tecnologias.split(',').map(t => '"' + t.trim() + '"').join(',') + '}' : null;
     const { rows } = await pool.query('SELECT * FROM projetos ORDER BY criado_em DESC');
     res.json(rows);
   } catch (err) { res.status(500).json({ error: err.message }); }
@@ -50,6 +52,7 @@ app.get('/api/projetos', async (req, res) => {
 
 app.get('/api/projetos/:id', async (req, res) => {
   try {
+    const tecnologiasArray = p.tecnologias ? '{' + p.tecnologias.split(',').map(t => '"' + t.trim() + '"').join(',') + '}' : null;
     const { rows } = await pool.query('SELECT * FROM projetos WHERE id = $1', [req.params.id]);
     res.json(rows[0] || { error: 'Not found' });
   } catch (err) { res.status(500).json({ error: err.message }); }
@@ -57,6 +60,7 @@ app.get('/api/projetos/:id', async (req, res) => {
 
 app.delete('/api/projetos/:id', async (req, res) => {
   try {
+    const tecnologiasArray = p.tecnologias ? '{' + p.tecnologias.split(',').map(t => '"' + t.trim() + '"').join(',') + '}' : null;
     await pool.query('DELETE FROM projetos WHERE id = $1', [req.params.id]);
     res.json({ ok: true });
   } catch (err) { res.status(500).json({ error: err.message }); }
@@ -64,6 +68,7 @@ app.delete('/api/projetos/:id', async (req, res) => {
 
 app.get('/health', async (req, res) => {
   try {
+    const tecnologiasArray = p.tecnologias ? '{' + p.tecnologias.split(',').map(t => '"' + t.trim() + '"').join(',') + '}' : null;
     await pool.query('SELECT 1');
     res.status(200).send('OK');
   } catch (err) { res.status(500).send('ERROR'); }
