@@ -1,4 +1,4 @@
-const API_URL = 'URL_DA_SUA_API'; // SUBSTITUA pela URL real da API no Render
+const API_URL = 'https://sml-api.onrender.com'; // SUBSTITUA pela URL real da API no Render
 
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof lucide !== 'undefined') {
