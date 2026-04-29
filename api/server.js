@@ -5,6 +5,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Log de todas as requisições
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_Txje28HvEAGU@ep-winter-frog-amud4rkl-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require'
 });
