@@ -6,7 +6,7 @@ app.use(cors());
 app.use(express.json());
 
 // String de conexão robusta para evitar cold start
-const connectionString = process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_Txje28HvEAGU@ep-winter-frog-amud4rkl-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=10';
+const connectionString = process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_Txje28HvEAGU@ep-winter-frog-amud4rkl-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require\sslmode=requireuselibpqcompat=true&connect_timeout=10';
 
 const pool = new Pool({ connectionString });
 
