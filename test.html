@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Ícones</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/libs/lucide.min.js"></script>
+    <style>
+        body { background: #0a0f1e; }
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen gap-4">
+    <a href="#" class="social-icon"><i data-lucide="github"></i></a>
+    <a href="#" class="social-icon"><i data-lucide="instagram"></i></a>
+    <a href="#" class="social-icon"><i data-lucide="linkedin"></i></a>
+    <a href="#" class="social-icon"><i data-lucide="smartphone"></i></a>
+    <script>
+        lucide.createIcons();
+        setTimeout(() => lucide.createIcons(), 500);
+        setTimeout(() => lucide.createIcons(), 1500);
+    </script>
+</body>
+</html>

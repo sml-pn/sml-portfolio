@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Teste Final Etiquetas</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/libs/lucide.min.js"></script>
+<style>body{background:#0a0f1e;font-family:monospace;padding:20px;color:white}.grid{display:grid;gap:20px;max-width:1200px;margin:0 auto}@media(min-width:768px){.grid{grid-template-columns:repeat(2,1fr)}}@media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}.card{background:rgba(255,255,255,0.05);border-radius:16px;padding:24px;border:1px solid rgba(255,255,255,0.1)}.tag{display:inline-block;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:1px}</style></head>
+<body>
+<h1 style="text-align:center;margin-bottom:30px;background:linear-gradient(90deg,#00ffff,#ff00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent">🏷️ Teste de Etiquetas</h1>
+<div id="projetos" class="grid"></div>
+<script>
+const container = document.getElementById('projetos');
+const projetos = JSON.parse(localStorage.getItem('sml-projetos') || '[]');
+
+console.log('🔍 Projetos carregados:', projetos.length);
+projetos.forEach(p => console.log(' -', p.titulo, '| Categoria:', p.categoria));
+
+if (projetos.length === 0) {
+    container.innerHTML = '<p style="text-align:center;color:red">❌ Nenhum projeto no localStorage</p>';
+} else {
+    container.innerHTML = projetos.map(proj => {
+        const cores = {
+            'saúde': 'background:#ef4444;color:white',
+            'automotivo': 'background:#3b82f6;color:white',
+            'ecommerce': 'background:#eab308;color:black',
+            'educação': 'background:#8b5cf6;color:white',
+            'tecnologia': 'background:#06b6d4;color:black',
+            'financeiro': 'background:#10b981;color:white',
+            'delivery': 'background:#f97316;color:white',
+            'marketing': 'background:#ec4899;color:white',
+            'imobiliário': 'background:#d97706;color:white',
+            'landing page': 'background:#6366f1;color:white'
+        };
+        const cat = (proj.categoria || '').trim();
+        const catKey = cat.toLowerCase().replace(/\s+/g, '');
+        const estilo = cores[catKey] || 'background:#6b7280;color:white';
+        const etiqueta = cat ? `<span class="tag" style="${estilo}">🏷️ ${cat}</span>` : '<span class="tag" style="background:#374151;color:#9ca3af">🏷️ Sem categoria</span>';
+        const techs = (proj.tecnologias || '').split(',').map(t => t.trim()).filter(t => t);
+        return `
+            <div class="card">
+                <div style="height:160px;background:linear-gradient(135deg,${proj.gradient?.replace('from-','').replace(' to-',',') || '#00ffff,#ff00ff'});border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative">
+                    <i data-lucide="${proj.icone || 'box'}" style="color:white;width:48px;height:48px"></i>
+                    <div style="position:absolute;top:12px;left:12px">${etiqueta}</div>
+                </div>
+                <h3 style="font-size:20px;font-weight:bold;margin-bottom:8px">${proj.titulo}</h3>
+                <p style="color:#9ca3af;margin-bottom:12px">${proj.descricao || ''}</p>
+                ${techs.length ? `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">${techs.map(t => `<span style="padding:4px 10px;background:rgba(0,255,255,0.1);border-radius:20px;font-size:12px;color:#00ffff">${t}</span>`).join('')}</div>` : ''}
+                ${proj.link ? `<a href="${proj.link}" target="_blank" style="color:#00ffff;text-decoration:none">🔗 Acessar projeto →</a>` : ''}
+            </div>`;
+    }).join('');
+    
+    // Inicializar ícones Lucide
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+</script>
+</body>
+</html>
