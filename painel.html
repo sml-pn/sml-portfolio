@@ -175,6 +175,7 @@
                         </div>
                     </div>
                 `).join('');
+            console.error(err); alert('Erro na requisição: ' + err.message);
             } catch (err) {
                 console.error('Erro ao carregar', err);
             }
@@ -201,6 +202,7 @@
                     body: JSON.stringify(projeto)
                 });
                 const data = await res.json();
+            alert('Resposta da API: ' + JSON.stringify(data));
                 if (data.ok) {
                     document.getElementById('msg-sucesso').classList.remove('hidden');
                     setTimeout(() => document.getElementById('msg-sucesso').classList.add('hidden'), 3000);
@@ -210,6 +212,7 @@
                 } else {
                     alert('Erro: ' + (data.error || 'Desconhecido'));
                 }
+            console.error(err); alert('Erro na requisição: ' + err.message);
             } catch (err) {
                 alert('Erro de conexão com a API');
             }
@@ -220,8 +223,10 @@
             try {
                 const res = await fetch(API_URL + '/api/projetos/' + id, { method: 'DELETE' });
                 const data = await res.json();
+            alert('Resposta da API: ' + JSON.stringify(data));
                 if (data.ok) carregarProjetos();
                 else alert('Erro ao excluir');
+            console.error(err); alert('Erro na requisição: ' + err.message);
             } catch (err) {
                 alert('Erro de conexão');
             }
