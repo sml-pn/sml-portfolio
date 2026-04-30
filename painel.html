@@ -115,6 +115,7 @@
         let tipoMidia = 'icone';
 
         function login() {
+            alert("🔍 Função login foi chamada!");
             const senhaDigitada = document.getElementById("senha").value;
             if (senhaDigitada === SENHA) {
                 document.getElementById("tela-login").classList.add("hidden");
@@ -127,6 +128,7 @@
         }
 
         function logout() {
+            alert("🔍 Função logout foi chamada!");
             document.getElementById("tela-login").classList.remove("hidden");
             document.getElementById("tela-painel").classList.add("hidden");
             document.getElementById("senha").value = "";
