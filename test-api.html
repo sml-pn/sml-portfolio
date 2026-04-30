@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Teste API</title>
+<style>body{background:#0a0f1e;color:#fff;font-family:monospace;padding:20px}pre{background:#111;padding:10px;border-radius:8px;overflow-x:auto}</style></head>
+<body>
+<h2>🔍 Teste de Conexão com a API</h2>
+<p>URL: <code>https://sml-api.onrender.com/api/projetos</code></p>
+<button onclick="testar()" style="padding:12px;background:#00ffff;color:#000;border:none;border-radius:8px;font-weight:bold;cursor:pointer">🔄 Testar Agora</button>
+<div id="resultado" style="margin-top:20px"></div>
+<script>
+async function testar() {
+  const r = document.getElementById('resultado');
+  r.innerHTML = '⏳ Carregando...';
+  try {
+    const res = await fetch('https://sml-api.onrender.com/api/projetos');
+    const data = await res.json();
+    r.innerHTML = `<p style="color:lime">✅ Sucesso! ${data.length} projeto(s) encontrado(s)</p>
+    <pre>${JSON.stringify(data, null, 2)}</pre>`;
+  } catch(e) {
+    r.innerHTML = `<p style="color:red">❌ Erro: ${e.message}</p>`;
+  }
+}
+testar();
+</script>
+</body>
+</html>
