@@ -175,6 +175,7 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/neon-api.js?v=20260430"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof lucide !== 'undefined') {
@@ -182,3 +183,10 @@
                 setTimeout(() => lucide.createIcons(), 500);
             }
 
+            const container = document.getElementById('projetos-container');
+            if (!container) return;
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
