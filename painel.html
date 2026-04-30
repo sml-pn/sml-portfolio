@@ -11,20 +11,26 @@
     <style>
         body { background: #0a0f1e; font-family: 'Courier New', monospace; }
         .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
-        input, textarea, select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 12px; padding: 14px 18px; width: 100%; }
+        input, textarea, select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 12px; padding: 14px 18px; width: 100%; min-height: 48px; }
         input:focus, textarea:focus, select:focus { border-color: #00ffff; outline: none; box-shadow: 0 0 15px rgba(0,255,255,0.15); }
         label { color: #9ca3af; font-size: 13px; margin-bottom: 6px; display: block; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .btn-neon { background: linear-gradient(90deg, #00ffff, #ff00ff); color: #0a0f1e; font-weight: bold; border-radius: 12px; padding: 14px; width: 100%; cursor: pointer; border: none; font-size: 16px; }
+        .btn-neon { background: linear-gradient(90deg, #00ffff, #ff00ff); color: #0a0f1e; font-weight: bold; border-radius: 12px; padding: 14px; width: 100%; cursor: pointer; border: none; font-size: 16px; min-height: 48px; }
         .btn-neon:hover { transform: scale(1.01); box-shadow: 0 0 30px rgba(0,255,255,0.3); }
-        .tag { display: inline-block; padding: 7px 16px; background: rgba(0,255,255,0.08); border-radius: 20px; font-size: 12px; cursor: pointer; margin: 3px; border: 1px solid transparent; }
+        .tag { display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; background: rgba(0,255,255,0.08); border-radius: 20px; font-size: 13px; cursor: pointer; margin: 3px; border: 1px solid transparent; user-select: none; min-height: 40px; }
         .tag:hover { background: rgba(0,255,255,0.15); border-color: rgba(0,255,255,0.3); }
         .tag.selecionada { background: #00ffff; color: #0a0f1e; font-weight: bold; border-color: #00ffff; }
+        .btn-action { padding: 10px 14px; border-radius: 10px; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; transition: all 0.2s; }
+        .btn-action:hover { background: rgba(255,255,255,0.08); }
+        @media (max-width: 640px) {
+            .glass { padding: 1.25rem; }
+            .btn-action { padding: 12px 16px; }
+        }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="min-h-screen flex items-center justify-center p-3 sm:p-4">
 
     <!-- TELA DE LOGIN -->
-    <div id="tela-login" class="glass rounded-2xl p-10 w-full max-w-md">
+    <div id="tela-login" class="glass rounded-2xl p-6 sm:p-10 w-full max-w-md">
         <div class="text-center mb-8">
             <h1 class="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">&lt;SML/&gt;</h1>
             <p class="text-gray-500 mt-2">Painel do Desenvolvedor</p>
@@ -36,17 +42,17 @@
 
     <!-- PAINEL (OCULTO INICIALMENTE) -->
     <div id="tela-painel" class="hidden w-full max-w-2xl">
-        <div class="flex justify-between items-center mb-8">
+        <div class="flex justify-between items-center mb-6 sm:mb-8">
             <div>
-                <h1 class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">&lt;SML/&gt; Painel</h1>
-                <p class="text-gray-500 text-sm mt-1">Gerencie seus projetos</p>
+                <h1 class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">&lt;SML/&gt; Painel</h1>
+                <p class="text-gray-500 text-xs sm:text-sm mt-1">Gerencie seus projetos</p>
             </div>
-            <button onclick="logout()" class="text-gray-400 hover:text-red-400 transition px-4 py-2 rounded-lg border border-gray-700">Sair</button>
+            <button onclick="logout()" class="text-gray-400 hover:text-red-400 transition px-4 py-2 rounded-lg border border-gray-700 text-sm sm:text-base">Sair</button>
         </div>
 
         <!-- FORMULÁRIO -->
-        <div class="glass rounded-2xl p-6 md:p-8 mb-8">
-            <h2 class="text-xl font-bold text-white mb-6">➕ Novo Projeto</h2>
+        <div class="glass rounded-2xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
+            <h2 class="text-xl font-bold text-white mb-4 sm:mb-6">➕ Novo Projeto</h2>
             <div class="space-y-4">
                 <div>
                     <label>📛 Nome</label>
@@ -83,21 +89,21 @@
                 <div>
                     <label>🎨 Ícone</label>
                     <div class="flex flex-wrap gap-2" id="icones-tags">
-                        <span class="tag selecionada" data-icone="box">📦 App</span>
-                        <span class="tag" data-icone="cloud-cog">☁️ API</span>
-                        <span class="tag" data-icone="shopping-cart">🛒 Loja</span>
-                        <span class="tag" data-icone="smartphone">📱 Mobile</span>
-                        <span class="tag" data-icone="monitor">🖥️ Site</span>
-                        <span class="tag" data-icone="globe">🌐 Web</span>
-                        <span class="tag" data-icone="code-2">💻 Código</span>
+                        <span class="tag selecionada" data-icone="box" role="button" tabindex="0">📦 App</span>
+                        <span class="tag" data-icone="cloud-cog" role="button" tabindex="0">☁️ API</span>
+                        <span class="tag" data-icone="shopping-cart" role="button" tabindex="0">🛒 Loja</span>
+                        <span class="tag" data-icone="smartphone" role="button" tabindex="0">📱 Mobile</span>
+                        <span class="tag" data-icone="monitor" role="button" tabindex="0">🖥️ Site</span>
+                        <span class="tag" data-icone="globe" role="button" tabindex="0">🌐 Web</span>
+                        <span class="tag" data-icone="code-2" role="button" tabindex="0">💻 Código</span>
                     </div>
                 </div>
                 <div>
                     <label>🌈 Cor do Card</label>
                     <div class="flex flex-wrap gap-2" id="gradiente-tags">
-                        <span class="tag selecionada" data-gradient="from-neon to-neon-pink" data-bgtag="bg-neon/20" style="background:linear-gradient(90deg,#00ffff,#ff00ff);color:#000;">Ciano → Rosa</span>
-                        <span class="tag" data-gradient="from-neon-pink to-neon-purple" data-bgtag="bg-neon-pink/20" style="background:linear-gradient(90deg,#ff00ff,#8b5cf6);color:#fff;">Rosa → Roxo</span>
-                        <span class="tag" data-gradient="from-neon-purple to-neon" data-bgtag="bg-neon-purple/20" style="background:linear-gradient(90deg,#8b5cf6,#00ffff);color:#fff;">Roxo → Ciano</span>
+                        <span class="tag selecionada" data-gradient="from-neon to-neon-pink" data-bgtag="bg-neon/20" style="background:linear-gradient(90deg,#00ffff,#ff00ff);color:#000;" role="button" tabindex="0">Ciano → Rosa</span>
+                        <span class="tag" data-gradient="from-neon-pink to-neon-purple" data-bgtag="bg-neon-pink/20" style="background:linear-gradient(90deg,#ff00ff,#8b5cf6);color:#fff;" role="button" tabindex="0">Rosa → Roxo</span>
+                        <span class="tag" data-gradient="from-neon-purple to-neon" data-bgtag="bg-neon-purple/20" style="background:linear-gradient(90deg,#8b5cf6,#00ffff);color:#fff;" role="button" tabindex="0">Roxo → Ciano</span>
                     </div>
                 </div>
                 <button onclick="salvarProjeto()" class="btn-neon text-lg">💾 Salvar Projeto</button>
@@ -106,7 +112,7 @@
         </div>
 
         <!-- LISTA -->
-        <div class="glass rounded-2xl p-6 md:p-8">
+        <div class="glass rounded-2xl p-4 sm:p-6 md:p-8">
             <h2 class="text-xl font-bold text-white mb-4">📁 Projetos Cadastrados</h2>
             <div id="lista-projetos" class="space-y-3"><p class="text-gray-500">Carregando...</p></div>
         </div>
@@ -141,36 +147,42 @@
 
         // Eventos das tags
         document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('icones-tags').addEventListener('click', e => {
-                if (e.target.dataset.icone) {
+            const iconesTags = document.getElementById('icones-tags');
+            if (iconesTags) {
+                iconesTags.addEventListener('click', e => {
+                    const tag = e.target.closest('.tag');
+                    if (!tag || !tag.dataset.icone) return;
                     document.querySelectorAll('#icones-tags .tag').forEach(t => t.classList.remove('selecionada'));
-                    e.target.classList.add('selecionada');
-                    iconeAtual = e.target.dataset.icone;
-                }
-            });
-            document.getElementById('gradiente-tags').addEventListener('click', e => {
-                if (e.target.dataset.gradient) {
+                    tag.classList.add('selecionada');
+                    iconeAtual = tag.dataset.icone;
+                });
+            }
+            const gradienteTags = document.getElementById('gradiente-tags');
+            if (gradienteTags) {
+                gradienteTags.addEventListener('click', e => {
+                    const tag = e.target.closest('.tag');
+                    if (!tag || !tag.dataset.gradient) return;
                     document.querySelectorAll('#gradiente-tags .tag').forEach(t => t.classList.remove('selecionada'));
-                    e.target.classList.add('selecionada');
-                    gradientAtual = e.target.dataset.gradient;
-                    bgTagAtual = e.target.dataset.bgtag;
-                }
-            });
+                    tag.classList.add('selecionada');
+                    gradientAtual = tag.dataset.gradient;
+                    bgTagAtual = tag.dataset.bgtag;
+                });
+            }
         });
 
         // ---------- CRUD ----------
         async function salvarProjeto() {
             const projeto = {
                 icone: iconeAtual,
-                titulo: document.getElementById('titulo').value,
+                titulo: document.getElementById('titulo').value.trim(),
                 categoria: document.getElementById('categoria').value,
-                descricao: document.getElementById('descricao').value,
-                tecnologias: document.getElementById('tecnologias').value,
-                link: document.getElementById('link').value,
+                descricao: document.getElementById('descricao').value.trim(),
+                tecnologias: document.getElementById('tecnologias').value.trim(),
+                link: document.getElementById('link').value.trim(),
                 gradient: gradientAtual,
                 bg_tag: bgTagAtual,
                 tipo: tipoMidia,
-                imagem_url: tipoMidia === 'imagem' ? (document.getElementById('imagem_url')?.value?.trim() || '') : ''
+                imagem_url: ''
             };
 
             if (!projeto.titulo) {
@@ -210,18 +222,18 @@
                     return;
                 }
                 lista.innerHTML = projetos.map(p => `
-                    <div class="flex justify-between items-center bg-white/5 rounded-xl p-4">
-                        <div class="flex items-center gap-3">
-                            <span class="text-xl">${p.tipo === 'imagem' ? '🖼️' : '📦'}</span>
-                            <div>
-                                <p class="text-white font-bold text-sm">${p.titulo}</p>
-                                <p class="text-gray-500 text-xs">${(p.tecnologias || '').split(',').slice(0,3).join(', ')}</p>
-                                ${p.categoria ? `<span class="ml-2 px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded text-xs">${p.categoria}</span>` : ''}
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center bg-white/5 rounded-xl p-3 sm:p-4 gap-3">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="text-xl flex-shrink-0">${p.tipo === 'imagem' ? '🖼️' : '📦'}</span>
+                            <div class="min-w-0 flex-1">
+                                <p class="text-white font-bold text-sm truncate max-w-[180px] sm:max-w-[300px]">${p.titulo}</p>
+                                <p class="text-gray-500 text-xs truncate max-w-[180px] sm:max-w-[300px]">${(p.tecnologias || '').split(',').slice(0,3).join(', ')}</p>
+                                ${p.categoria ? `<span class="inline-block ml-2 px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded text-xs">${p.categoria}</span>` : ''}
                             </div>
                         </div>
-                        <div>
-                            <button onclick="editarProjeto(${p.id})" class="text-cyan-400 hover:text-cyan-300 mr-2">✏️</button>
-                            <button onclick="excluirProjeto(${p.id})" class="text-red-400 hover:text-red-300">🗑️</button>
+                        <div class="flex items-center gap-2 self-end sm:self-auto">
+                            <button onclick="event.stopPropagation();editarProjeto(${p.id})" class="btn-action text-cyan-400 hover:bg-cyan-400/10" aria-label="Editar">✏️</button>
+                            <button onclick="event.stopPropagation();excluirProjeto(${p.id})" class="btn-action text-red-400 hover:bg-red-400/10" aria-label="Excluir">🗑️</button>
                         </div>
                     </div>
                 `).join('');
@@ -242,10 +254,8 @@
         }
 
         function editarProjeto(id) {
-            // Implementação simplificada: você pode carregar os dados no formulário
             alert('Editar projeto ' + id + ' (em breve)');
         }
     </script>
 </body>
 </html>
-<- If you want libpq compatibility now, use force refresh Thu Apr 30 12:42:53 -03 2026 -->
