@@ -6,6 +6,7 @@ async function carregarProjetosNoSite() {
     try {
         const resposta = await fetch(`${NEON_REST_URL}/api/projetos`);
         const projetos = await resposta.json();
+            alert("Projetos carregados: " + projetos.length + "\n" + JSON.stringify(projetos.slice(0,2), null, 2));
         if (!Array.isArray(projetos) || projetos.length === 0) return;
         container.innerHTML = projetos.map(proj => {
             const techs = (proj.tecnologias || '').split(',').map(t => t.trim()).filter(t => t);
