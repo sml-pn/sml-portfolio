@@ -6,14 +6,22 @@ app.use(cors());
 app.use(express.json());
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_Vrk6GOhy1oMZ@ep-proud-snow-an3y2oqh-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=10
+  connectionString: process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_Vrk6GOhy1oMZ@ep-proud-snow-an3y2oqh-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=10'
 });
 
 pool.query(`CREATE TABLE IF NOT EXISTS projetos (
-  id SERIAL PRIMARY KEY, icone VARCHAR(30), titulo VARCHAR(200) NOT NULL,
-  descricao TEXT, tecnologias TEXT[], link VARCHAR(500),
-  gradient VARCHAR(100), bg_tag VARCHAR(50), categoria VARCHAR(50),
-  tipo VARCHAR(20), imagem_url TEXT, criado_em TIMESTAMP DEFAULT NOW()
+  id SERIAL PRIMARY KEY,
+  icone VARCHAR(30),
+  titulo VARCHAR(200) NOT NULL,
+  descricao TEXT,
+  tecnologias TEXT[],
+  link VARCHAR(500),
+  gradient VARCHAR(100),
+  bg_tag VARCHAR(50),
+  categoria VARCHAR(50),
+  tipo VARCHAR(20),
+  imagem_url TEXT,
+  criado_em TIMESTAMP DEFAULT NOW()
 )`);
 
 app.post('/api/projetos', async (req, res) => {
