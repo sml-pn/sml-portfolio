@@ -6,7 +6,7 @@ app.use(cors());
 app.use(express.json());
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_Vrk6GOhy1oMZ@ep-proud-snow-an3y2oqh-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=requirepostgresql://neondb_owner:npg_Txje28HvEAGU@ep-winter-frog-amud4rkl-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=10connect_timeout=10'
+  connectionString: process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_Vrk6GOhy1oMZ@ep-proud-snow-an3y2oqh-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=10
 });
 
 pool.query(`CREATE TABLE IF NOT EXISTS projetos (
