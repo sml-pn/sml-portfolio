@@ -4,7 +4,7 @@ async function carregarProjetosNoSite() {
     const container = document.getElementById('projetos-container');
     if (!container) return;
     try {
-        const resposta = await fetch(`${NEON_REST_URL}/projetos?select=*&order=criado_em.desc`);
+        const resposta = await fetch(`${NEON_REST_URL}/api/projetos`);
         const projetos = await resposta.json();
         if (!Array.isArray(projetos) || projetos.length === 0) return;
         container.innerHTML = projetos.map(proj => {

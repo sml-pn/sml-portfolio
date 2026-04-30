@@ -176,7 +176,7 @@
             }
 
             try {
-                const resposta = await fetch(API_URL + '/projetos', {
+                const resposta = await fetch(API_URL + '/api/projetos', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(projeto)
@@ -198,7 +198,7 @@
 
         async function carregarProjetos() {
             try {
-                const resposta = await fetch(API_URL + '/projetos?select=*&order=criado_em.desc');
+                const resposta = await fetch(API_URL + '/api/projetos');
                 const projetos = await resposta.json();
                 const lista = document.getElementById('lista-projetos');
                 if (!lista) return;
@@ -230,7 +230,7 @@
         async function excluirProjeto(id) {
             if (!confirm('Excluir este projeto?')) return;
             try {
-                const resposta = await fetch(API_URL + '/projetos?id=eq.' + id, { method: 'DELETE' });
+                const resposta = await fetch(API_URL + '/api/projetos/' + id, { method: 'DELETE' });
                 if (resposta.ok) carregarProjetos();
                 else alert('Erro ao excluir');
             } catch (erro) {
