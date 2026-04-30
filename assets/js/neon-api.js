@@ -1,4 +1,4 @@
-const NEON_REST_URL = 'https://ep-winter-frog-amud4rkl.apirest.c-5.us-east-1.aws.neon.tech/neondb/rest/v1';
+const NEON_REST_URL = 'https://ep-winter-frog-amud4rk1.apirest.c-5.us-east-1.aws.neon.tech/neondb/rest/v1';
 
 async function carregarProjetosNoSite() {
     const container = document.getElementById('projetos-container');
