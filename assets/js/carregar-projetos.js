@@ -29,14 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const catKey = catRaw.toLowerCase().replace(/\s+/g, '');
         const corCat = cores[catKey] || 'bg-gray-500/20 text-gray-400';
         const categoriaTag = catRaw 
-          ? `<span class="px-3 py-1 ${corCat} rounded-full text-xs font-bold border uppercase tracking-wider absolute -top-8 left-3">
+          ? `<span class="absolute -top-8 left-3 z-20 px-3 py-1 ${corCat} rounded-full text-xs font-bold border uppercase tracking-wider">
                <i data-lucide="tag" class="inline w-4 h-4 mr-1"></i>${catRaw}
              </span>` 
           : '';
         
         let topo = '';
         if (proj.tipo === 'imagem' && proj.imagem_url) {
-          topo = `<div class="relative">
+          topo = `<div class="relative overflow-visible">
             <img src="${proj.imagem_url}" alt="${proj.titulo}" class="w-full h-48 object-cover rounded-lg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
             <div class="h-48 bg-gradient-to-br ${proj.gradient || 'from-neon to-neon-pink'} rounded-lg items-center justify-center" style="display:none">
               <i data-lucide="${proj.icone || 'image'}" class="text-white w-12 h-12"></i>
@@ -44,13 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
             ${categoriaTag}
           </div>`;
         } else {
-          topo = `<div class="relative h-48 bg-gradient-to-br ${proj.gradient || 'from-neon to-neon-pink'} rounded-lg flex items-center justify-center">
+          topo = `<div class="relative overflow-visible h-48 bg-gradient-to-br ${proj.gradient || 'from-neon to-neon-pink'} rounded-lg flex items-center justify-center">
             <i data-lucide="${proj.icone || 'box'}" class="text-white w-16 h-16"></i>
             ${categoriaTag}
           </div>`;
         }
         
-        return `<div class="card-3d bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
+        return `<div class="card-3d overflow-visible bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
           ${topo}
           <h3 class="text-lg md:text-xl font-bold mt-4 mb-2 text-white">${proj.titulo}</h3>
           <p class="text-gray-400 text-sm mb-4">${proj.descricao || ''}</p>
