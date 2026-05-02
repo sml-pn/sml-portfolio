@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
           'marketing': 'bg-pink-500/20 text-pink-400',
           'imobiliário': 'bg-amber-500/20 text-amber-400',
           'landing page': 'bg-indigo-500/20 text-indigo-400'
+                'pet shop': 'bg-teal-500/20 text-teal-400',
         };
         
         const catRaw = (proj.categoria || '').trim();
