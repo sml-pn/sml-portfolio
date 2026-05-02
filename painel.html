@@ -3,52 +3,96 @@
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SML Developer - Painel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background:#0a0f1e; font-family:'Courier New',monospace; color:white; padding:20px; }
-        .glass { background:rgba(255,255,255,0.05); border-radius:16px; padding:24px; margin:12px 0; }
-        input,select { background:rgba(255,255,255,0.1); border:1px solid #333; color:white; padding:12px; border-radius:8px; width:100%; margin:6px 0; }
-        button { background:#00ffff; color:#000; font-weight:bold; padding:12px 24px; border:none; border-radius:8px; cursor:pointer; width:100%; margin:6px 0; }
-        .erro { color:#ff4444; }
-        .sucesso { color:#44ff44; }
+        body{background:#0a0f1e;font-family:'Courier New',monospace;color:#fff;padding:20px}
+        .glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;margin:12px 0}
+        input,select{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.2);color:#fff;border-radius:12px;padding:14px 18px;width:100%;min-height:48px;margin:6px 0}
+        button{background:linear-gradient(90deg,#00ffff,#ff00ff);color:#0a0f1e;font-weight:bold;border-radius:12px;padding:14px;width:100%;cursor:pointer;border:none;font-size:16px;min-height:48px;margin:6px 0}
+        .tag{display:inline-flex;align-items:center;justify-content:center;padding:8px 16px;background:rgba(0,255,255,0.08);border-radius:20px;font-size:13px;cursor:pointer;margin:3px;border:1px solid transparent;min-height:40px}
+        .tag.selecionada{background:#00ffff;color:#0a0f1e;font-weight:bold}
+        .btn-action{padding:10px 14px;border-radius:10px;min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.03)}
+        .btn-action.editar{color:#00ffff}
+        .btn-action.excluir{color:#ff4080}
+        pre{background:#111;padding:12px;border-radius:8px;overflow-x:auto;font-size:12px;max-height:300px;overflow-y:auto}
     </style>
 </head>
 <body>
-    <div class="glass">
-        <h2>🔍 Diagnóstico de Conexão</h2>
-        <button onclick="testarAPI()">🔄 Testar https://sml-api.onrender.com/api/test-cors</button>
-        <pre id="resultado-teste" style="background:#111;padding:12px;border-radius:8px;margin-top:12px;overflow-x:auto;"></pre>
-        
-        <h3 style="margin-top:20px;">📁 Projetos</h3>
-        <button onclick="carregarProjetos()">📋 Listar Projetos</button>
-        <pre id="resultado-projetos" style="background:#111;padding:12px;border-radius:8px;margin-top:12px;overflow-x:auto;"></pre>
+    <div id="tela-login" class="glass" style="max-width:400px;margin:0 auto">
+        <h1 class="text-4xl font-bold text-center mb-4" style="background:linear-gradient(90deg,#00ffff,#ff00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent">&lt;SML/&gt;</h1>
+        <p class="text-gray-400 text-center mb-6">Painel do Desenvolvedor</p>
+        <input type="password" id="senha" placeholder="Digite sua senha..." class="text-center text-lg" onkeypress="if(event.key==='Enter')login()">
+        <button onclick="login()">🔐 Acessar Painel</button>
+        <p id="erro-login" class="text-red-400 text-center mt-4 hidden">Senha incorreta!</p>
+    </div>
+
+    <div id="tela-painel" class="hidden" style="max-width:700px;margin:0 auto">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+            <h1 class="text-3xl font-bold" style="background:linear-gradient(90deg,#00ffff,#ff00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent">&lt;SML/&gt; Painel</h1>
+            <button onclick="logout()" style="background:rgba(255,255,255,0.05);color:#9ca3af;width:auto;padding:8px 16px;border-radius:8px">Sair</button>
+        </div>
+
+        <div class="glass">
+            <h2 class="text-xl font-bold mb-4" id="form-titulo">➕ Novo Projeto</h2>
+            <input type="text" id="titulo" placeholder="Nome do projeto">
+            <select id="categoria">
+                <option value="">Selecione a categoria...</option>
+                <option value="Saúde">🏥 Saúde</option><option value="Automotivo">🚗 Automotivo</option><option value="Ecommerce">🛒 Ecommerce</option><option value="Financeiro">💰 Financeiro</option><option value="Educação">📚 Educação</option><option value="Delivery">🛵 Delivery</option><option value="Imobiliário">🏠 Imobiliário</option><option value="Tecnologia">💻 Tecnologia</option><option value="Marketing">📢 Marketing</option><option value="Landing Page">📄 Landing Page</option><option value="Pet Shop">🐾 Pet Shop</option><option value="Restaurante">🍽️ Restaurante</option><option value="Advocacia">⚖️ Advocacia</option><option value="Academia">💪 Academia</option><option value="Estética">💄 Estética</option><option value="Construção">🏗️ Construção</option><option value="Turismo">✈️ Turismo</option><option value="Cursos">🎓 Cursos</option><option value="Transporte">🚚 Transporte</option><option value="Eventos">🎉 Eventos</option><option value="Serviços">🔧 Serviços</option>
+            </select>
+            <input type="text" id="descricao" placeholder="Descrição curta do projeto">
+            <input type="text" id="tecnologias" placeholder="React, Node.js, PostgreSQL">
+            <input type="url" id="link" placeholder="https://...">
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin:8px 0" id="icones-tags">
+                <span class="tag selecionada" data-icone="box">📦 App</span><span class="tag" data-icone="cloud-cog">☁️ API</span><span class="tag" data-icone="shopping-cart">🛒 Loja</span><span class="tag" data-icone="smartphone">📱 Mobile</span><span class="tag" data-icone="monitor">🖥️ Site</span><span class="tag" data-icone="globe">🌐 Web</span><span class="tag" data-icone="code-2">💻 Código</span>
+            </div>
+            <button onclick="salvarProjeto()" id="btn-salvar">💾 Salvar Projeto</button>
+            <p id="msg-sucesso" class="text-green-400 text-center hidden">✅ Projeto salvo!</p>
+            <p id="msg-erro" class="text-red-400 text-center hidden"></p>
+        </div>
+
+        <div class="glass">
+            <h2 class="text-xl font-bold mb-4">📁 Projetos Cadastrados</h2>
+            <div id="lista-projetos"><p class="text-gray-500">Carregando...</p></div>
+        </div>
     </div>
 
     <script>
-        const API = 'https://sml-api.onrender.com';
+        const SENHA='sml2025',API_URL='https://sml-api.onrender.com';
+        let iconeAtual='box',gradientAtual='from-neon to-neon-pink',bgTagAtual='bg-neon/20',projetoEmEdicao=null;
 
-        async function testarAPI() {
-            const out = document.getElementById('resultado-teste');
-            out.textContent = '⏳ Testando...';
-            try {
-                const res = await fetch(API+'/api/test-cors');
-                const data = await res.json();
-                out.innerHTML = '<span class="sucesso">✅ SUCESSO!</span>\n' + JSON.stringify(data, null, 2);
-            } catch(e) {
-                out.innerHTML = '<span class="erro">❌ FALHOU</span>\n' + e.message + '\n\nPossíveis causas:\n- API offline\n- CORS bloqueado\n- Rede do celular restrita';
-            }
+        function login(){if(document.getElementById('senha').value===SENHA){document.getElementById('tela-login').classList.add('hidden');document.getElementById('tela-painel').classList.remove('hidden');carregarProjetos()}else document.getElementById('erro-login').classList.remove('hidden')}
+        function logout(){document.getElementById('tela-login').classList.remove('hidden');document.getElementById('tela-painel').classList.add('hidden');projetoEmEdicao=null;resetForm()}
+        function resetForm(){['titulo','descricao','tecnologias','link'].forEach(id=>document.getElementById(id).value='');document.getElementById('categoria').value='';document.getElementById('form-titulo').innerText='➕ Novo Projeto';document.getElementById('btn-salvar').innerText='💾 Salvar Projeto';projetoEmEdicao=null}
+
+        document.addEventListener('DOMContentLoaded',()=>{
+            document.getElementById('icones-tags').addEventListener('click',e=>{const tag=e.target.closest('.tag');if(!tag||!tag.dataset.icone)return;document.querySelectorAll('#icones-tags .tag').forEach(t=>t.classList.remove('selecionada'));tag.classList.add('selecionada');iconeAtual=tag.dataset.icone})
+        });
+
+        async function carregarProjetos(){
+            const lista=document.getElementById('lista-projetos');lista.innerHTML='<p class="text-gray-500">⏳ Conectando...</p>';
+            try{
+                const res=await fetch(API_URL+'/api/projetos');
+                if(!res.ok)throw new Error('Status '+res.status);
+                const projetos=await res.json();
+                if(!Array.isArray(projetos)||projetos.length===0){lista.innerHTML='<p class="text-gray-500">📭 Nenhum projeto</p>';return}
+                lista.innerHTML=projetos.map(p=>`<div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.05);border-radius:12px;padding:12px;margin:8px 0"><div><p class="text-white font-bold">${p.titulo}</p><p class="text-gray-500 text-xs">${p.categoria||''} | ${(p.tecnologias||'').split(',').slice(0,3).join(', ')}</p></div><div style="display:flex;gap:8px"><button onclick="editarProjeto(${p.id})" class="btn-action editar">✏️</button><button onclick="excluirProjeto(${p.id})" class="btn-action excluir">🗑️</button></div></div>`).join('')
+            }catch(e){lista.innerHTML='<p class="text-red-400">❌ '+e.message+'</p>'}
         }
 
-        async function carregarProjetos() {
-            const out = document.getElementById('resultado-projetos');
-            out.textContent = '⏳ Carregando...';
-            try {
-                const res = await fetch(API+'/api/projetos');
-                const data = await res.json();
-                out.innerHTML = '<span class="sucesso">✅ ' + data.length + ' projeto(s)</span>\n' + JSON.stringify(data, null, 2);
-            } catch(e) {
-                out.innerHTML = '<span class="erro">❌ ERRO</span>\n' + e.message;
-            }
+        async function salvarProjeto(){
+            const projeto={icone:iconeAtual,titulo:document.getElementById('titulo').value.trim(),categoria:document.getElementById('categoria').value,descricao:document.getElementById('descricao').value.trim(),tecnologias:document.getElementById('tecnologias').value.trim(),link:document.getElementById('link').value.trim(),gradient:gradientAtual,bgTag:bgTagAtual,tipo:'icone',imagem_url:''};
+            if(!projeto.titulo){alert('⚠️ Preencha o nome!');return}
+            const url=projetoEmEdicao?`${API_URL}/api/projetos/${projetoEmEdicao}`:`${API_URL}/api/projetos`;
+            const method=projetoEmEdicao?'PUT':'POST';
+            try{
+                const res=await fetch(url,{method,headers:{'Content-Type':'application/json'},body:JSON.stringify(projeto)});
+                if(res.ok){document.getElementById('msg-sucesso').classList.remove('hidden');setTimeout(()=>document.getElementById('msg-sucesso').classList.add('hidden'),3000);resetForm();carregarProjetos()}
+                else{document.getElementById('msg-erro').innerText='❌ '+await res.text();document.getElementById('msg-erro').classList.remove('hidden')}
+            }catch(e){document.getElementById('msg-erro').innerText='❌ '+e.message;document.getElementById('msg-erro').classList.remove('hidden')}
         }
+
+        async function excluirProjeto(id){if(!confirm('Excluir?'))return;try{await fetch(API_URL+'/api/projetos/'+id,{method:'DELETE'});carregarProjetos()}catch(e){alert('Erro: '+e.message)}}
+        async function editarProjeto(id){try{const res=await fetch(API_URL+'/api/projetos/'+id);const p=await res.json();document.getElementById('titulo').value=p.titulo||'';document.getElementById('categoria').value=p.categoria||'';document.getElementById('descricao').value=p.descricao||'';document.getElementById('tecnologias').value=p.tecnologias||'';document.getElementById('link').value=p.link||'';iconeAtual=p.icone||'box';document.querySelectorAll('#icones-tags .tag').forEach(t=>t.classList.remove('selecionada'));const tagIcone=document.querySelector(`#icones-tags [data-icone="${p.icone}"]`);if(tagIcone)tagIcone.classList.add('selecionada');projetoEmEdicao=id;document.getElementById('form-titulo').innerText='✏️ Editar Projeto';document.getElementById('btn-salvar').innerText='💾 Atualizar Projeto';window.scrollTo({top:0,behavior:'smooth'})}catch(e){alert('Erro: '+e.message)}}
     </script>
 </body>
 </html>
