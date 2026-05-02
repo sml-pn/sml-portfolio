@@ -2,7 +2,14 @@ const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
 const app = express();
-app.use(cors());
+
+// Configuração CORS explícita para permitir seu site
+app.use(cors({
+  origin: ['https://sml-developer.onrender.com', 'http://localhost:8000', 'http://localhost:3000'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type']
+}));
+
 app.use(express.json());
 
 const pool = new Pool({
@@ -15,6 +22,11 @@ pool.query(`CREATE TABLE IF NOT EXISTS projetos (
   gradient VARCHAR(100), bg_tag VARCHAR(50), categoria VARCHAR(50),
   tipo VARCHAR(20), imagem_url TEXT, criado_em TIMESTAMP DEFAULT NOW()
 )`);
+
+// Endpoint de teste CORS (responde a qualquer origem)
+app.get('/api/test-cors', (req, res) => {
+  res.json({ message: 'CORS funcionando!', timestamp: new Date().toISOString() });
+});
 
 app.post('/api/projetos', async (req, res) => {
   const p = req.body;
@@ -35,17 +47,25 @@ app.get('/api/projetos', async (req, res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
-app.put("/api/projetos/:id", async (req, res) => {
+app.get('/api/projetos/:id', async (req, res) => {
+  try {
+    const { rows } = await pool.query('SELECT * FROM projetos WHERE id = $1', [req.params.id]);
+    res.json(rows[0] || { error: 'Not found' });
+  } catch (err) { res.status(500).json({ error: err.message }); }
+});
+
+app.put('/api/projetos/:id', async (req, res) => {
   const p = req.body;
   try {
-    const arr = p.tecnologias ? "{" + p.tecnologias.split(",").map(t => "\"" + t.trim() + "\"").join(",") + "}" : null;
+    const arr = p.tecnologias ? '{' + p.tecnologias.split(',').map(t => '"' + t.trim() + '"').join(',') + '}' : null;
     await pool.query(
-      "UPDATE projetos SET icone=$1, titulo=$2, descricao=$3, tecnologias=$4, link=$5, gradient=$6, bg_tag=$7, categoria=$8, tipo=$9, imagem_url=$10 WHERE id=$11",
+      'UPDATE projetos SET icone=$1, titulo=$2, descricao=$3, tecnologias=$4, link=$5, gradient=$6, bg_tag=$7, categoria=$8, tipo=$9, imagem_url=$10 WHERE id=$11',
       [p.icone, p.titulo, p.descricao, arr, p.link, p.gradient, p.bgTag, p.categoria, p.tipo, p.imagem_url, req.params.id]
     );
     res.json({ ok: true });
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
+
 app.delete('/api/projetos/:id', async (req, res) => {
   try {
     await pool.query('DELETE FROM projetos WHERE id = $1', [req.params.id]);
