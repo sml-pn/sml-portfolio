@@ -24,6 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
           'imobiliário': 'bg-amber-500/20 text-amber-400',
           'landing page': 'bg-indigo-500/20 text-indigo-400'
                 'pet shop': 'bg-teal-500/20 text-teal-400',
+                'restaurante': 'bg-orange-500/20 text-orange-400',
+                'advocacia': 'bg-amber-500/20 text-amber-400',
+                'academia': 'bg-lime-500/20 text-lime-400',
+                'estética': 'bg-rose-500/20 text-rose-400',
+                'construção': 'bg-stone-500/20 text-stone-400',
+                'turismo': 'bg-sky-500/20 text-sky-400',
+                'cursos': 'bg-violet-500/20 text-violet-400',
+                'transporte': 'bg-slate-500/20 text-slate-400',
+                'eventos': 'bg-fuchsia-500/20 text-fuchsia-400',
+                'serviços': 'bg-zinc-500/20 text-zinc-400'
         };
         
         const catRaw = (proj.categoria || '').trim();
