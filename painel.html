@@ -56,6 +56,9 @@
                         <option value="Delivery">🛵 Delivery</option>
                         <option value="Imobiliário">🏠 Imobiliário</option>
                         <option value="Tecnologia">💻 Tecnologia</option>
+                        <option value="Marketing">📢 Marketing</option>
+                        <option value="Landing Page">📄 Landing Page</option>
+                        <option value="Pet Shop">🐾 Pet Shop</option>
                         <option value="Restaurante">🍽️ Restaurante</option>
                         <option value="Advocacia">⚖️ Advocacia</option>
                         <option value="Academia">💪 Academia</option>
@@ -66,9 +69,6 @@
                         <option value="Transporte">🚚 Transporte</option>
                         <option value="Eventos">🎉 Eventos</option>
                         <option value="Serviços">🔧 Serviços</option>
-                        <option value="Pet Shop">🐾 Pet Shop</option>
-                        <option value="Marketing">📢 Marketing</option>
-                        <option value="Landing Page">📄 Landing Page</option>
                     </select>
                 </div>
                 <div>
@@ -93,6 +93,9 @@
                         <span class="tag" data-icone="monitor">🖥️ Site</span>
                         <span class="tag" data-icone="globe">🌐 Web</span>
                         <span class="tag" data-icone="code-2">💻 Código</span>
+                        <span class="tag" data-icone="palette">🎨 Design</span>
+                        <span class="tag" data-icone="camera">📷 Foto</span>
+                        <span class="tag" data-icone="music">🎵 Música</span>
                     </div>
                 </div>
                 <div>
@@ -120,6 +123,7 @@
         let iconeAtual = 'box';
         let gradientAtual = 'from-neon to-neon-pink';
         let bgTagAtual = 'bg-neon/20';
+        let projetoEmEdicao = null; // guarda o id do projeto sendo editado
 
         function login() {
             if (document.getElementById('senha').value === SENHA) {
@@ -134,6 +138,7 @@
         function logout() {
             document.getElementById('tela-login').classList.remove('hidden');
             document.getElementById('tela-painel').classList.add('hidden');
+            projetoEmEdicao = null;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -168,57 +173,102 @@
                 imagem_url: ''
             };
             if (!projeto.titulo) return alert('⚠️ Preencha o nome!');
-            const res = await fetch(API_URL + '/api/projetos', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(projeto)
-            });
-            if (res.ok) {
-                document.getElementById('msg-sucesso').classList.remove('hidden');
-                setTimeout(() => document.getElementById('msg-sucesso').classList.add('hidden'), 3000);
-                ['titulo','descricao','tecnologias','link'].forEach(id => document.getElementById(id).value = '');
-                document.getElementById('categoria').value = '';
-                carregarProjetos();
-            } else {
-                alert('Erro: ' + await res.text());
+            
+            const url = projetoEmEdicao 
+                ? `${API_URL}/api/projetos/${projetoEmEdicao}` 
+                : `${API_URL}/api/projetos`;
+            const method = projetoEmEdicao ? 'PUT' : 'POST';
+            
+            try {
+                const res = await fetch(url, {
+                    method,
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(projeto)
+                });
+                if (res.ok) {
+                    document.getElementById('msg-sucesso').classList.remove('hidden');
+                    setTimeout(() => document.getElementById('msg-sucesso').classList.add('hidden'), 3000);
+                    ['titulo','descricao','tecnologias','link'].forEach(id => document.getElementById(id).value = '');
+                    document.getElementById('categoria').value = '';
+                    projetoEmEdicao = null;
+                    carregarProjetos();
+                } else {
+                    alert('Erro: ' + await res.text());
+                }
+            } catch (e) {
+                alert('Erro de conexão');
             }
         }
 
         async function carregarProjetos() {
-            const res = await fetch(API_URL + '/api/projetos');
-            const projetos = await res.json();
-            const lista = document.getElementById('lista-projetos');
-            if (!lista) return;
-            if (!Array.isArray(projetos) || projetos.length === 0) {
-                lista.innerHTML = '<p class="text-gray-500 text-center py-4">📭 Nenhum projeto</p>';
-                return;
-            }
-            lista.innerHTML = projetos.map(p => `
-                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center bg-white/5 rounded-xl p-3 sm:p-4 gap-3">
-                    <div class="flex items-center gap-3 min-w-0">
-                        <span class="text-xl flex-shrink-0">${p.tipo==='imagem'?'🖼️':'📦'}</span>
-                        <div class="min-w-0 flex-1">
-                            <p class="text-white font-bold text-sm truncate max-w-[180px] sm:max-w-[300px]">${p.titulo}</p>
-                            <p class="text-gray-500 text-xs truncate max-w-[180px] sm:max-w-[300px]">${(p.tecnologias||'').split(',').slice(0,3).join(', ')}</p>
-                            ${p.categoria ? `<span class="inline-block ml-2 px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded text-xs">${p.categoria}</span>` : ''}
+            try {
+                const res = await fetch(`${API_URL}/api/projetos`);
+                const projetos = await res.json();
+                const lista = document.getElementById('lista-projetos');
+                if (!lista) return;
+                if (!Array.isArray(projetos) || projetos.length === 0) {
+                    lista.innerHTML = '<p class="text-gray-500 text-center py-4">📭 Nenhum projeto</p>';
+                    return;
+                }
+                lista.innerHTML = projetos.map(p => `
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center bg-white/5 rounded-xl p-3 sm:p-4 gap-3">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="text-xl flex-shrink-0">${p.tipo==='imagem'?'🖼️':'📦'}</span>
+                            <div class="min-w-0 flex-1">
+                                <p class="text-white font-bold text-sm truncate max-w-[180px] sm:max-w-[300px]">${p.titulo}</p>
+                                <p class="text-gray-500 text-xs truncate max-w-[180px] sm:max-w-[300px]">${(p.tecnologias||'').split(',').slice(0,3).join(', ')}</p>
+                                ${p.categoria ? `<span class="inline-block ml-2 px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded text-xs">${p.categoria}</span>` : ''}
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 self-end sm:self-auto">
+                            <button onclick="event.stopPropagation();editarProjeto(${p.id})" class="btn-action text-cyan-400 hover:bg-cyan-400/10" aria-label="Editar">✏️</button>
+                            <button onclick="event.stopPropagation();excluirProjeto(${p.id})" class="btn-action text-red-400 hover:bg-red-400/10" aria-label="Excluir">🗑️</button>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2 self-end sm:self-auto">
-                        <button onclick="event.stopPropagation();editarProjeto(${p.id})" class="btn-action text-cyan-400 hover:bg-cyan-400/10" aria-label="Editar">✏️</button>
-                        <button onclick="event.stopPropagation();excluirProjeto(${p.id})" class="btn-action text-red-400 hover:bg-red-400/10" aria-label="Excluir">🗑️</button>
-                    </div>
-                </div>
-            `).join('');
+                `).join('');
+            } catch (e) {
+                console.error(e);
+            }
         }
 
         async function excluirProjeto(id) {
             if (!confirm('Excluir este projeto?')) return;
-            await fetch(API_URL + '/api/projetos/' + id, { method: 'DELETE' });
-            carregarProjetos();
+            try {
+                await fetch(`${API_URL}/api/projetos/${id}`, { method: 'DELETE' });
+                carregarProjetos();
+            } catch (e) {
+                alert('Erro ao excluir');
+            }
         }
 
-        function editarProjeto(id) {
-            alert('Editar projeto ' + id + ' (em breve)');
+        async function editarProjeto(id) {
+            try {
+                const res = await fetch(`${API_URL}/api/projetos/${id}`);
+                const p = await res.json();
+                if (p && !p.error) {
+                    document.getElementById('titulo').value = p.titulo || '';
+                    document.getElementById('categoria').value = p.categoria || '';
+                    document.getElementById('descricao').value = p.descricao || '';
+                    document.getElementById('tecnologias').value = p.tecnologias || '';
+                    document.getElementById('link').value = p.link || '';
+                    iconeAtual = p.icone || 'box';
+                    gradientAtual = p.gradient || 'from-neon to-neon-pink';
+                    bgTagAtual = p.bg_tag || 'bg-neon/20';
+                    // Marcar o ícone correto
+                    document.querySelectorAll('#icones-tags .tag').forEach(t => t.classList.remove('selecionada'));
+                    const tagIcone = document.querySelector(`#icones-tags [data-icone="${p.icone}"]`);
+                    if (tagIcone) tagIcone.classList.add('selecionada');
+                    // Marcar o gradiente correto
+                    document.querySelectorAll('#gradiente-tags .tag').forEach(t => t.classList.remove('selecionada'));
+                    const tagGrad = document.querySelector(`#gradiente-tags [data-gradient="${p.gradient}"]`);
+                    if (tagGrad) tagGrad.classList.add('selecionada');
+                    
+                    projetoEmEdicao = id;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            } catch (e) {
+                alert('Erro ao carregar dados do projeto');
+            }
         }
     </script>
 </body>

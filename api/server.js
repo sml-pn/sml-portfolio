@@ -35,6 +35,17 @@ app.get('/api/projetos', async (req, res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
+app.put("/api/projetos/:id", async (req, res) => {
+  const p = req.body;
+  try {
+    const arr = p.tecnologias ? "{" + p.tecnologias.split(",").map(t => "\"" + t.trim() + "\"").join(",") + "}" : null;
+    await pool.query(
+      "UPDATE projetos SET icone=$1, titulo=$2, descricao=$3, tecnologias=$4, link=$5, gradient=$6, bg_tag=$7, categoria=$8, tipo=$9, imagem_url=$10 WHERE id=$11",
+      [p.icone, p.titulo, p.descricao, arr, p.link, p.gradient, p.bgTag, p.categoria, p.tipo, p.imagem_url, req.params.id]
+    );
+    res.json({ ok: true });
+  } catch (err) { res.status(500).json({ error: err.message }); }
+});
 app.delete('/api/projetos/:id', async (req, res) => {
   try {
     await pool.query('DELETE FROM projetos WHERE id = $1', [req.params.id]);
