@@ -2,9 +2,6 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SML Developer - Painel</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,25 +9,23 @@
         body { background: #0a0f1e; font-family: 'Courier New', monospace; }
         .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
         input, textarea, select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 12px; padding: 14px 18px; width: 100%; min-height: 48px; }
-        input:focus, textarea:focus, select:focus { border-color: #00ffff; outline: none; box-shadow: 0 0 15px rgba(0,255,255,0.15); }
         label { color: #9ca3af; font-size: 13px; margin-bottom: 6px; display: block; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .btn-neon { background: linear-gradient(90deg, #00ffff, #ff00ff); color: #0a0f1e; font-weight: bold; border-radius: 12px; padding: 14px; width: 100%; cursor: pointer; border: none; font-size: 16px; min-height: 48px; }
+        .btn-neon { background: linear-gradient(90deg, #00ffff, #ff00ff); color: #0a0f1e; font-weight: bold; border-radius: 12px; padding: 14px; width: 100%; cursor: pointer; border: none; font-size: 16px; min-height: 48px; transition: transform 0.2s; }
         .btn-neon:hover { transform: scale(1.01); box-shadow: 0 0 30px rgba(0,255,255,0.3); }
-        .tag { display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; background: rgba(0,255,255,0.08); border-radius: 20px; font-size: 13px; cursor: pointer; margin: 3px; border: 1px solid transparent; user-select: none; min-height: 40px; }
+        .tag { display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; background: rgba(0,255,255,0.08); border-radius: 20px; font-size: 13px; cursor: pointer; margin: 3px; border: 1px solid transparent; min-height: 40px; transition: all 0.2s; }
         .tag:hover { background: rgba(0,255,255,0.15); border-color: rgba(0,255,255,0.3); }
         .tag.selecionada { background: #00ffff; color: #0a0f1e; font-weight: bold; border-color: #00ffff; }
-        .btn-action { padding: 10px 14px; border-radius: 10px; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; transition: all 0.2s; }
+        .btn-action { padding: 10px 14px; border-radius: 10px; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; transition: all 0.2s; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); cursor: pointer; }
         .btn-action:hover { background: rgba(255,255,255,0.08); }
-        @media (max-width: 640px) {
-            .glass { padding: 1.25rem; }
-            .btn-action { padding: 12px 16px; }
-        }
+        .btn-action.editar { color: #00ffff; }
+        .btn-action.excluir { color: #ff4080; }
+        .status-msg { font-size: 13px; text-align: center; margin-top: 10px; }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-3 sm:p-4">
+<body class="min-h-screen flex items-center justify-center p-4">
 
     <!-- TELA DE LOGIN -->
-    <div id="tela-login" class="glass rounded-2xl p-6 sm:p-10 w-full max-w-md">
+    <div id="tela-login" class="glass rounded-2xl p-10 w-full max-w-md">
         <div class="text-center mb-8">
             <h1 class="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">&lt;SML/&gt;</h1>
             <p class="text-gray-500 mt-2">Painel do Desenvolvedor</p>
@@ -40,19 +35,19 @@
         <p id="erro-login" class="text-red-400 text-center mt-4 hidden">Senha incorreta!</p>
     </div>
 
-    <!-- PAINEL (OCULTO INICIALMENTE) -->
+    <!-- PAINEL -->
     <div id="tela-painel" class="hidden w-full max-w-2xl">
-        <div class="flex justify-between items-center mb-6 sm:mb-8">
+        <div class="flex justify-between items-center mb-8">
             <div>
-                <h1 class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">&lt;SML/&gt; Painel</h1>
-                <p class="text-gray-500 text-xs sm:text-sm mt-1">Gerencie seus projetos</p>
+                <h1 class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">&lt;SML/&gt; Painel</h1>
+                <p class="text-gray-500 text-sm mt-1">Gerencie seus projetos</p>
             </div>
-            <button onclick="logout()" class="text-gray-400 hover:text-red-400 transition px-4 py-2 rounded-lg border border-gray-700 text-sm sm:text-base">Sair</button>
+            <button onclick="logout()" class="text-gray-400 hover:text-red-400 transition px-4 py-2 rounded-lg border border-gray-700">Sair</button>
         </div>
 
         <!-- FORMULÁRIO -->
-        <div class="glass rounded-2xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
-            <h2 class="text-xl font-bold text-white mb-4 sm:mb-6">➕ Novo Projeto</h2>
+        <div class="glass rounded-2xl p-6 md:p-8 mb-8">
+            <h2 class="text-xl font-bold text-white mb-6" id="form-titulo">➕ Novo Projeto</h2>
             <div class="space-y-4">
                 <div>
                     <label>📛 Nome</label>
@@ -72,6 +67,17 @@
                         <option value="Tecnologia">💻 Tecnologia</option>
                         <option value="Marketing">📢 Marketing</option>
                         <option value="Landing Page">📄 Landing Page</option>
+                        <option value="Pet Shop">🐾 Pet Shop</option>
+                        <option value="Restaurante">🍽️ Restaurante</option>
+                        <option value="Advocacia">⚖️ Advocacia</option>
+                        <option value="Academia">💪 Academia</option>
+                        <option value="Estética">💄 Estética</option>
+                        <option value="Construção">🏗️ Construção</option>
+                        <option value="Turismo">✈️ Turismo</option>
+                        <option value="Cursos">🎓 Cursos</option>
+                        <option value="Transporte">🚚 Transporte</option>
+                        <option value="Eventos">🎉 Eventos</option>
+                        <option value="Serviços">🔧 Serviços</option>
                     </select>
                 </div>
                 <div>
@@ -89,30 +95,41 @@
                 <div>
                     <label>🎨 Ícone</label>
                     <div class="flex flex-wrap gap-2" id="icones-tags">
-                        <span class="tag selecionada" data-icone="box" role="button" tabindex="0">📦 App</span>
-                        <span class="tag" data-icone="cloud-cog" role="button" tabindex="0">☁️ API</span>
-                        <span class="tag" data-icone="shopping-cart" role="button" tabindex="0">🛒 Loja</span>
-                        <span class="tag" data-icone="smartphone" role="button" tabindex="0">📱 Mobile</span>
-                        <span class="tag" data-icone="monitor" role="button" tabindex="0">🖥️ Site</span>
-                        <span class="tag" data-icone="globe" role="button" tabindex="0">🌐 Web</span>
-                        <span class="tag" data-icone="code-2" role="button" tabindex="0">💻 Código</span>
+                        <span class="tag selecionada" data-icone="box">📦 App</span>
+                        <span class="tag" data-icone="cloud-cog">☁️ API</span>
+                        <span class="tag" data-icone="shopping-cart">🛒 Loja</span>
+                        <span class="tag" data-icone="smartphone">📱 Mobile</span>
+                        <span class="tag" data-icone="monitor">🖥️ Site</span>
+                        <span class="tag" data-icone="globe">🌐 Web</span>
+                        <span class="tag" data-icone="code-2">💻 Código</span>
+                        <span class="tag" data-icone="palette">🎨 Design</span>
+                        <span class="tag" data-icone="camera">📷 Foto</span>
+                        <span class="tag" data-icone="music">🎵 Música</span>
+                        <span class="tag" data-icone="briefcase">💼 Negócios</span>
+                        <span class="tag" data-icone="home">🏠 Home</span>
+                        <span class="tag" data-icone="star">⭐ Favorito</span>
+                        <span class="tag" data-icone="book">📖 Educação</span>
+                        <span class="tag" data-icone="heart">❤️ Saúde</span>
+                        <span class="tag" data-icone="trophy">🏆 Premiação</span>
+                        <span class="tag" data-icone="zap">⚡ Rápido</span>
                     </div>
                 </div>
                 <div>
                     <label>🌈 Cor do Card</label>
                     <div class="flex flex-wrap gap-2" id="gradiente-tags">
-                        <span class="tag selecionada" data-gradient="from-neon to-neon-pink" data-bgtag="bg-neon/20" style="background:linear-gradient(90deg,#00ffff,#ff00ff);color:#000;" role="button" tabindex="0">Ciano → Rosa</span>
-                        <span class="tag" data-gradient="from-neon-pink to-neon-purple" data-bgtag="bg-neon-pink/20" style="background:linear-gradient(90deg,#ff00ff,#8b5cf6);color:#fff;" role="button" tabindex="0">Rosa → Roxo</span>
-                        <span class="tag" data-gradient="from-neon-purple to-neon" data-bgtag="bg-neon-purple/20" style="background:linear-gradient(90deg,#8b5cf6,#00ffff);color:#fff;" role="button" tabindex="0">Roxo → Ciano</span>
+                        <span class="tag selecionada" data-gradient="from-neon to-neon-pink" data-bgtag="bg-neon/20" style="background:linear-gradient(90deg,#00ffff,#ff00ff);color:#000;">Ciano → Rosa</span>
+                        <span class="tag" data-gradient="from-neon-pink to-neon-purple" data-bgtag="bg-neon-pink/20" style="background:linear-gradient(90deg,#ff00ff,#8b5cf6);color:#fff;">Rosa → Roxo</span>
+                        <span class="tag" data-gradient="from-neon-purple to-neon" data-bgtag="bg-neon-purple/20" style="background:linear-gradient(90deg,#8b5cf6,#00ffff);color:#fff;">Roxo → Ciano</span>
                     </div>
                 </div>
-                <button onclick="salvarProjeto()" class="btn-neon text-lg">💾 Salvar Projeto</button>
-                <p id="msg-sucesso" class="text-green-400 text-center hidden">✅ Projeto salvo! <a href="/" class="underline">Ver no site</a></p>
+                <button onclick="salvarProjeto()" class="btn-neon text-lg" id="btn-salvar">💾 Salvar Projeto</button>
+                <p id="msg-sucesso" class="status-msg text-green-400 hidden">✅ Projeto salvo! <a href="/" class="underline">Ver no site</a></p>
+                <p id="msg-erro" class="status-msg text-red-400 hidden"></p>
             </div>
         </div>
 
         <!-- LISTA -->
-        <div class="glass rounded-2xl p-4 sm:p-6 md:p-8">
+        <div class="glass rounded-2xl p-6 md:p-8">
             <h2 class="text-xl font-bold text-white mb-4">📁 Projetos Cadastrados</h2>
             <div id="lista-projetos" class="space-y-3"><p class="text-gray-500">Carregando...</p></div>
         </div>
@@ -124,15 +141,13 @@
         let iconeAtual = 'box';
         let gradientAtual = 'from-neon to-neon-pink';
         let bgTagAtual = 'bg-neon/20';
-        let tipoMidia = 'icone';
+        let projetoEmEdicao = null;
 
-        // ---------- LOGIN ----------
+        // LOGIN
         function login() {
-            const senhaDigitada = document.getElementById('senha').value;
-            if (senhaDigitada === SENHA) {
+            if (document.getElementById('senha').value === SENHA) {
                 document.getElementById('tela-login').classList.add('hidden');
                 document.getElementById('tela-painel').classList.remove('hidden');
-                document.getElementById('erro-login').classList.add('hidden');
                 carregarProjetos();
             } else {
                 document.getElementById('erro-login').classList.remove('hidden');
@@ -142,27 +157,29 @@
         function logout() {
             document.getElementById('tela-login').classList.remove('hidden');
             document.getElementById('tela-painel').classList.add('hidden');
-            document.getElementById('senha').value = '';
+            projetoEmEdicao = null;
+            resetForm();
         }
 
-        // Eventos das tags
+        // Eventos das tags de ícone e gradiente
         document.addEventListener('DOMContentLoaded', () => {
-            const iconesTags = document.getElementById('icones-tags');
-            if (iconesTags) {
-                iconesTags.addEventListener('click', e => {
+            const iconesContainer = document.getElementById('icones-tags');
+            if (iconesContainer) {
+                iconesContainer.addEventListener('click', e => {
                     const tag = e.target.closest('.tag');
                     if (!tag || !tag.dataset.icone) return;
-                    document.querySelectorAll('#icones-tags .tag').forEach(t => t.classList.remove('selecionada'));
+                    iconesContainer.querySelectorAll('.tag').forEach(t => t.classList.remove('selecionada'));
                     tag.classList.add('selecionada');
                     iconeAtual = tag.dataset.icone;
                 });
             }
-            const gradienteTags = document.getElementById('gradiente-tags');
-            if (gradienteTags) {
-                gradienteTags.addEventListener('click', e => {
+
+            const gradienteContainer = document.getElementById('gradiente-tags');
+            if (gradienteContainer) {
+                gradienteContainer.addEventListener('click', e => {
                     const tag = e.target.closest('.tag');
                     if (!tag || !tag.dataset.gradient) return;
-                    document.querySelectorAll('#gradiente-tags .tag').forEach(t => t.classList.remove('selecionada'));
+                    gradienteContainer.querySelectorAll('.tag').forEach(t => t.classList.remove('selecionada'));
                     tag.classList.add('selecionada');
                     gradientAtual = tag.dataset.gradient;
                     bgTagAtual = tag.dataset.bgtag;
@@ -170,7 +187,15 @@
             }
         });
 
-        // ---------- CRUD ----------
+        function resetForm() {
+            ['titulo','descricao','tecnologias','link'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('categoria').value = '';
+            document.getElementById('form-titulo').innerText = '➕ Novo Projeto';
+            document.getElementById('btn-salvar').innerText = '💾 Salvar Projeto';
+            projetoEmEdicao = null;
+        }
+
+        // SALVAR/EDITAR
         async function salvarProjeto() {
             const projeto = {
                 icone: iconeAtual,
@@ -180,8 +205,8 @@
                 tecnologias: document.getElementById('tecnologias').value.trim(),
                 link: document.getElementById('link').value.trim(),
                 gradient: gradientAtual,
-                bg_tag: bgTagAtual,
-                tipo: tipoMidia,
+                bgTag: bgTagAtual,
+                tipo: 'icone',
                 imagem_url: ''
             };
 
@@ -190,37 +215,51 @@
                 return;
             }
 
+            const url = projetoEmEdicao
+                ? `${API_URL}/api/projetos/${projetoEmEdicao}`
+                : `${API_URL}/api/projetos`;
+            const method = projetoEmEdicao ? 'PUT' : 'POST';
+
             try {
-                const resposta = await fetch(API_URL + '/api/projetos', {
-                    method: 'POST',
+                const res = await fetch(url, {
+                    method,
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(projeto)
                 });
-                if (resposta.ok) {
+
+                if (res.ok) {
                     document.getElementById('msg-sucesso').classList.remove('hidden');
+                    document.getElementById('msg-erro').classList.add('hidden');
                     setTimeout(() => document.getElementById('msg-sucesso').classList.add('hidden'), 3000);
-                    ['titulo','descricao','tecnologias','link'].forEach(id => document.getElementById(id).value = '');
-                    document.getElementById('categoria').value = '';
+                    resetForm();
                     carregarProjetos();
                 } else {
-                    const erro = await resposta.text();
-                    alert('❌ Erro: ' + erro);
+                    const erro = await res.text();
+                    document.getElementById('msg-erro').innerText = '❌ ' + erro;
+                    document.getElementById('msg-erro').classList.remove('hidden');
                 }
-            } catch (erro) {
-                alert('❌ Conexão falhou: ' + erro.message);
+            } catch (e) {
+                document.getElementById('msg-erro').innerText = '❌ Erro de conexão com o servidor';
+                document.getElementById('msg-erro').classList.remove('hidden');
             }
         }
 
+        // CARREGAR PROJETOS COM FEEDBACK
         async function carregarProjetos() {
+            const lista = document.getElementById('lista-projetos');
+            if (!lista) return;
+            lista.innerHTML = '<p class="text-gray-500 text-center py-4">⏳ Carregando projetos...</p>';
+
             try {
-                const resposta = await fetch(API_URL + '/api/projetos');
-                const projetos = await resposta.json();
-                const lista = document.getElementById('lista-projetos');
-                if (!lista) return;
+                const res = await fetch(`${API_URL}/api/projetos`);
+                if (!res.ok) throw new Error('API respondeu com erro ' + res.status);
+                const projetos = await res.json();
+
                 if (!Array.isArray(projetos) || projetos.length === 0) {
-                    lista.innerHTML = '<p class="text-gray-500 text-center py-4">📭 Nenhum projeto</p>';
+                    lista.innerHTML = '<p class="text-gray-500 text-center py-4">📭 Nenhum projeto cadastrado</p>';
                     return;
                 }
+
                 lista.innerHTML = projetos.map(p => `
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center bg-white/5 rounded-xl p-3 sm:p-4 gap-3">
                         <div class="flex items-center gap-3 min-w-0">
@@ -232,29 +271,65 @@
                             </div>
                         </div>
                         <div class="flex items-center gap-2 self-end sm:self-auto">
-                            <button onclick="event.stopPropagation();editarProjeto(${p.id})" class="btn-action text-cyan-400 hover:bg-cyan-400/10" aria-label="Editar">✏️</button>
-                            <button onclick="event.stopPropagation();excluirProjeto(${p.id})" class="btn-action text-red-400 hover:bg-red-400/10" aria-label="Excluir">🗑️</button>
+                            <button onclick="event.stopPropagation();editarProjeto(${p.id})" class="btn-action editar" aria-label="Editar">✏️</button>
+                            <button onclick="event.stopPropagation();excluirProjeto(${p.id})" class="btn-action excluir" aria-label="Excluir">🗑️</button>
                         </div>
                     </div>
                 `).join('');
-            } catch (erro) {
-                console.error('Erro ao carregar projetos', erro);
+            } catch (e) {
+                lista.innerHTML = '<p class="text-red-400 text-center py-4">❌ Erro ao conectar ao servidor. Verifique se a API está online.</p>';
+                console.error(e);
             }
         }
 
+        // EXCLUIR
         async function excluirProjeto(id) {
-            if (!confirm('Excluir este projeto?')) return;
+            if (!confirm('Tem certeza que deseja excluir este projeto?')) return;
             try {
-                const resposta = await fetch(API_URL + '/api/projetos/' + id, { method: 'DELETE' });
-                if (resposta.ok) carregarProjetos();
-                else alert('Erro ao excluir');
-            } catch (erro) {
-                alert('Erro de conexão');
+                const res = await fetch(`${API_URL}/api/projetos/${id}`, { method: 'DELETE' });
+                if (res.ok) {
+                    carregarProjetos();
+                } else {
+                    alert('Erro ao excluir: ' + await res.text());
+                }
+            } catch (e) {
+                alert('Erro de conexão ao excluir');
             }
         }
 
-        function editarProjeto(id) {
-            alert('Editar projeto ' + id + ' (em breve)');
+        // EDITAR (carrega dados no formulário)
+        async function editarProjeto(id) {
+            try {
+                const res = await fetch(`${API_URL}/api/projetos/${id}`);
+                if (!res.ok) throw new Error('Projeto não encontrado');
+                const p = await res.json();
+
+                document.getElementById('titulo').value = p.titulo || '';
+                document.getElementById('categoria').value = p.categoria || '';
+                document.getElementById('descricao').value = p.descricao || '';
+                document.getElementById('tecnologias').value = p.tecnologias || '';
+                document.getElementById('link').value = p.link || '';
+                iconeAtual = p.icone || 'box';
+                gradientAtual = p.gradient || 'from-neon to-neon-pink';
+                bgTagAtual = p.bg_tag || 'bg-neon/20';
+
+                // Atualiza tags visuais
+                document.querySelectorAll('#icones-tags .tag').forEach(t => t.classList.remove('selecionada'));
+                const tagIcone = document.querySelector(`#icones-tags [data-icone="${p.icone}"]`);
+                if (tagIcone) tagIcone.classList.add('selecionada');
+
+                document.querySelectorAll('#gradiente-tags .tag').forEach(t => t.classList.remove('selecionada'));
+                const tagGrad = document.querySelector(`#gradiente-tags [data-gradient="${p.gradient}"]`);
+                if (tagGrad) tagGrad.classList.add('selecionada');
+
+                projetoEmEdicao = id;
+                document.getElementById('form-titulo').innerText = '✏️ Editar Projeto';
+                document.getElementById('btn-salvar').innerText = '💾 Atualizar Projeto';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (e) {
+                alert('Erro ao carregar projeto para edição');
+                console.error(e);
+            }
         }
     </script>
 </body>
