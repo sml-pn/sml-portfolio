@@ -13,32 +13,32 @@ document.addEventListener('DOMContentLoaded', () => {
           : (proj.tecnologias || '').split(',').map(t => t.trim()).filter(t => t);
 
         const cores = {
-          'saúde': 'bg-red-500/20 text-red-400',
-          'automotivo': 'bg-blue-500/20 text-blue-400',
-          'ecommerce': 'bg-yellow-500/20 text-yellow-400',
-          'educação': 'bg-purple-500/20 text-purple-400',
-          'tecnologia': 'bg-cyan-500/20 text-cyan-400',
-          'financeiro': 'bg-emerald-500/20 text-emerald-400',
-          'delivery': 'bg-orange-500/20 text-orange-400',
-          'marketing': 'bg-pink-500/20 text-pink-400',
-          'imobiliário': 'bg-amber-500/20 text-amber-400',
-          'landing page': 'bg-indigo-500/20 text-indigo-400',
-          'pet shop': 'bg-teal-500/20 text-teal-400',
-          'restaurante': 'bg-orange-500/20 text-orange-400',
-          'advocacia': 'bg-amber-500/20 text-amber-400',
-          'academia': 'bg-lime-500/20 text-lime-400',
-          'estética': 'bg-rose-500/20 text-rose-400',
-          'construção': 'bg-stone-500/20 text-stone-400',
-          'turismo': 'bg-sky-500/20 text-sky-400',
-          'cursos': 'bg-violet-500/20 text-violet-400',
-          'transporte': 'bg-slate-500/20 text-slate-400',
-          'eventos': 'bg-fuchsia-500/20 text-fuchsia-400',
-          'serviços': 'bg-zinc-500/20 text-zinc-400'
+          'saúde': 'bg-red-500 text-white',
+          'automotivo': 'bg-blue-500 text-white',
+          'ecommerce': 'bg-yellow-500 text-black',
+          'educação': 'bg-purple-500 text-white',
+          'tecnologia': 'bg-cyan-500 text-black',
+          'financeiro': 'bg-emerald-500 text-white',
+          'delivery': 'bg-orange-500 text-white',
+          'marketing': 'bg-pink-500 text-white',
+          'imobiliário': 'bg-amber-500 text-black',
+          'landing page': 'bg-indigo-500 text-white',
+          'pet shop': 'bg-teal-500 text-white',
+          'restaurante': 'bg-orange-500 text-white',
+          'advocacia': 'bg-amber-500 text-black',
+          'academia': 'bg-lime-500 text-black',
+          'estética': 'bg-rose-500 text-white',
+          'construção': 'bg-stone-500 text-white',
+          'turismo': 'bg-sky-500 text-black',
+          'cursos': 'bg-violet-500 text-white',
+          'transporte': 'bg-slate-500 text-white',
+          'eventos': 'bg-fuchsia-500 text-white',
+          'serviços': 'bg-zinc-500 text-white'
         };
 
         const catRaw = (proj.categoria || '').trim();
         const catKey = catRaw.toLowerCase().replace(/\s+/g, '');
-        const corCat = cores[catKey] || 'bg-gray-500/20 text-gray-400';
+        const corCat = cores[catKey] || 'bg-gray-500 text-white';
 
         const categoriaTag = catRaw
           ? `<span class="px-3 py-1 ${corCat} rounded-full text-xs font-bold border uppercase tracking-wider absolute -top-8 left-3 z-20">
