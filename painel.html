@@ -2,260 +2,52 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SML Developer - Painel</title>
+    <title>SML Developer - Painel Teste</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #0a0f1e; font-family: 'Courier New', monospace; }
-        .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
-        input, textarea, select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 12px; padding: 14px 18px; width: 100%; min-height: 48px; }
-        input:focus, textarea:focus, select:focus { border-color: #00ffff; outline: none; box-shadow: 0 0 15px rgba(0,255,255,0.15); }
-        label { color: #9ca3af; font-size: 13px; margin-bottom: 6px; display: block; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .btn-neon { background: linear-gradient(90deg, #00ffff, #ff00ff); color: #0a0f1e; font-weight: bold; border-radius: 12px; padding: 14px; width: 100%; cursor: pointer; border: none; font-size: 16px; min-height: 48px; }
-        .btn-neon:hover { transform: scale(1.01); box-shadow: 0 0 30px rgba(0,255,255,0.3); }
-        .tag { display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; background: rgba(0,255,255,0.08); border-radius: 20px; font-size: 13px; cursor: pointer; margin: 3px; border: 1px solid transparent; user-select: none; min-height: 40px; }
-        .tag:hover { background: rgba(0,255,255,0.15); border-color: rgba(0,255,255,0.3); }
-        .tag.selecionada { background: #00ffff; color: #0a0f1e; font-weight: bold; border-color: #00ffff; }
-        .btn-action { padding: 10px 14px; border-radius: 10px; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; transition: all 0.2s; }
-        .btn-action:hover { background: rgba(255,255,255,0.08); }
-        @media (max-width: 640px) {
-            .glass { padding: 1.25rem; }
-            .btn-action { padding: 12px 16px; }
-        }
+        body { background: #0a0f1e; color: white; font-family: monospace; padding: 20px; }
+        button { background: #00ffff; color: #000; font-weight: bold; padding: 12px; border: none; border-radius: 8px; cursor: pointer; margin: 5px; }
+        .card { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 15px; margin: 10px 0; }
+        .error { color: #ff4444; }
+        .success { color: #44ff44; }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-3 sm:p-4">
-
-    <!-- TELA DE LOGIN -->
-    <div id="tela-login" class="glass rounded-2xl p-6 sm:p-10 w-full max-w-md">
-        <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">&lt;SML/&gt;</h1>
-            <p class="text-gray-500 mt-2">Painel do Desenvolvedor</p>
-        </div>
-        <input type="password" id="senha" placeholder="Digite sua senha..." class="text-center text-lg" onkeypress="if(event.key==='Enter')login()">
-        <button onclick="login()" class="btn-neon mt-4">🔐 Acessar Painel</button>
-        <p id="erro-login" class="text-red-400 text-center mt-4 hidden">Senha incorreta!</p>
-    </div>
-
-    <!-- PAINEL (OCULTO INICIALMENTE) -->
-    <div id="tela-painel" class="hidden w-full max-w-2xl">
-        <div class="flex justify-between items-center mb-6 sm:mb-8">
-            <div>
-                <h1 class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">&lt;SML/&gt; Painel</h1>
-                <p class="text-gray-500 text-xs sm:text-sm mt-1">Gerencie seus projetos</p>
-            </div>
-            <button onclick="logout()" class="text-gray-400 hover:text-red-400 transition px-4 py-2 rounded-lg border border-gray-700 text-sm sm:text-base">Sair</button>
-        </div>
-
-        <!-- FORMULÁRIO -->
-        <div class="glass rounded-2xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
-            <h2 class="text-xl font-bold text-white mb-4 sm:mb-6">➕ Novo Projeto</h2>
-            <div class="space-y-4">
-                <div>
-                    <label>📛 Nome</label>
-                    <input type="text" id="titulo" placeholder="Nome do projeto">
-                </div>
-                <div>
-                    <label>🏷️ Categoria</label>
-                    <select id="categoria">
-                        <option value="">Selecione...</option>
-                        <option value="Saúde">🏥 Saúde</option>
-                        <option value="Automotivo">🚗 Automotivo</option>
-                        <option value="Ecommerce">🛒 Ecommerce</option>
-                        <option value="Financeiro">💰 Financeiro</option>
-                        <option value="Educação">📚 Educação</option>
-                        <option value="Delivery">🛵 Delivery</option>
-                        <option value="Imobiliário">🏠 Imobiliário</option>
-                        <option value="Tecnologia">💻 Tecnologia</option>
-                        <option value="Marketing">📢 Marketing</option>
-                        <option value="Landing Page">📄 Landing Page</option>
-                    </select>
-                </div>
-                <div>
-                    <label>📝 Descrição</label>
-                    <input type="text" id="descricao" placeholder="Uma frase sobre o projeto">
-                </div>
-                <div>
-                    <label>🛠️ Tecnologias</label>
-                    <input type="text" id="tecnologias" placeholder="React, Node.js, PostgreSQL">
-                </div>
-                <div>
-                    <label>🔗 Link</label>
-                    <input type="url" id="link" placeholder="https://...">
-                </div>
-                <div>
-                    <label>🎨 Ícone</label>
-                    <div class="flex flex-wrap gap-2" id="icones-tags">
-                        <span class="tag selecionada" data-icone="box" role="button" tabindex="0">📦 App</span>
-                        <span class="tag" data-icone="cloud-cog" role="button" tabindex="0">☁️ API</span>
-                        <span class="tag" data-icone="shopping-cart" role="button" tabindex="0">🛒 Loja</span>
-                        <span class="tag" data-icone="smartphone" role="button" tabindex="0">📱 Mobile</span>
-                        <span class="tag" data-icone="monitor" role="button" tabindex="0">🖥️ Site</span>
-                        <span class="tag" data-icone="globe" role="button" tabindex="0">🌐 Web</span>
-                        <span class="tag" data-icone="code-2" role="button" tabindex="0">💻 Código</span>
-                    </div>
-                </div>
-                <div>
-                    <label>🌈 Cor do Card</label>
-                    <div class="flex flex-wrap gap-2" id="gradiente-tags">
-                        <span class="tag selecionada" data-gradient="from-neon to-neon-pink" data-bgtag="bg-neon/20" style="background:linear-gradient(90deg,#00ffff,#ff00ff);color:#000;" role="button" tabindex="0">Ciano → Rosa</span>
-                        <span class="tag" data-gradient="from-neon-pink to-neon-purple" data-bgtag="bg-neon-pink/20" style="background:linear-gradient(90deg,#ff00ff,#8b5cf6);color:#fff;" role="button" tabindex="0">Rosa → Roxo</span>
-                        <span class="tag" data-gradient="from-neon-purple to-neon" data-bgtag="bg-neon-purple/20" style="background:linear-gradient(90deg,#8b5cf6,#00ffff);color:#fff;" role="button" tabindex="0">Roxo → Ciano</span>
-                    </div>
-                </div>
-                <button onclick="salvarProjeto()" class="btn-neon text-lg">💾 Salvar Projeto</button>
-                <p id="msg-sucesso" class="text-green-400 text-center hidden">✅ Projeto salvo! <a href="/" class="underline">Ver no site</a></p>
-            </div>
-        </div>
-
-        <!-- LISTA -->
-        <div class="glass rounded-2xl p-4 sm:p-6 md:p-8">
-            <h2 class="text-xl font-bold text-white mb-4">📁 Projetos Cadastrados</h2>
-            <div id="lista-projetos" class="space-y-3"><p class="text-gray-500">Carregando...</p></div>
-        </div>
-    </div>
-
+<body>
+    <h1 style="background:linear-gradient(90deg,#00ffff,#ff00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent">&lt;SML/&gt; Painel de Teste</h1>
+    <p>API: <code>https://sml-api.onrender.com</code></p>
+    <button onclick="testarAPI()">🔄 Testar Conexão com API</button>
+    <button onclick="carregarProjetos()">📋 Carregar Projetos</button>
+    <div id="resultado" style="margin-top:20px;"></div>
     <script>
-        const SENHA = 'sml2025';
         const API_URL = 'https://sml-api.onrender.com';
-        let iconeAtual = 'box';
-        let gradientAtual = 'from-neon to-neon-pink';
-        let bgTagAtual = 'bg-neon/20';
-        let tipoMidia = 'icone';
-
-        // ---------- LOGIN ----------
-        function login() {
-            const senhaDigitada = document.getElementById('senha').value;
-            if (senhaDigitada === SENHA) {
-                document.getElementById('tela-login').classList.add('hidden');
-                document.getElementById('tela-painel').classList.remove('hidden');
-                document.getElementById('erro-login').classList.add('hidden');
-                carregarProjetos();
-            } else {
-                document.getElementById('erro-login').classList.remove('hidden');
-            }
-        }
-
-        function logout() {
-            document.getElementById('tela-login').classList.remove('hidden');
-            document.getElementById('tela-painel').classList.add('hidden');
-            document.getElementById('senha').value = '';
-        }
-
-        // Eventos das tags
-        document.addEventListener('DOMContentLoaded', () => {
-            const iconesTags = document.getElementById('icones-tags');
-            if (iconesTags) {
-                iconesTags.addEventListener('click', e => {
-                    const tag = e.target.closest('.tag');
-                    if (!tag || !tag.dataset.icone) return;
-                    document.querySelectorAll('#icones-tags .tag').forEach(t => t.classList.remove('selecionada'));
-                    tag.classList.add('selecionada');
-                    iconeAtual = tag.dataset.icone;
-                });
-            }
-            const gradienteTags = document.getElementById('gradiente-tags');
-            if (gradienteTags) {
-                gradienteTags.addEventListener('click', e => {
-                    const tag = e.target.closest('.tag');
-                    if (!tag || !tag.dataset.gradient) return;
-                    document.querySelectorAll('#gradiente-tags .tag').forEach(t => t.classList.remove('selecionada'));
-                    tag.classList.add('selecionada');
-                    gradientAtual = tag.dataset.gradient;
-                    bgTagAtual = tag.dataset.bgtag;
-                });
-            }
-        });
-
-        // ---------- CRUD ----------
-        async function salvarProjeto() {
-            const projeto = {
-                icone: iconeAtual,
-                titulo: document.getElementById('titulo').value.trim(),
-                categoria: document.getElementById('categoria').value,
-                descricao: document.getElementById('descricao').value.trim(),
-                tecnologias: document.getElementById('tecnologias').value.trim(),
-                link: document.getElementById('link').value.trim(),
-                gradient: gradientAtual,
-                bg_tag: bgTagAtual,
-                tipo: tipoMidia,
-                imagem_url: ''
-            };
-
-            if (!projeto.titulo) {
-                alert('⚠️ Preencha o nome do projeto!');
-                return;
-            }
-
+        window.testarAPI = async function() {
+            const div = document.getElementById('resultado');
+            div.innerHTML = '⏳ Testando...';
             try {
-                const resposta = await fetch(API_URL + '/api/projetos', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(projeto)
-                });
-                if (resposta.ok) {
-                    document.getElementById('msg-sucesso').classList.remove('hidden');
-                    setTimeout(() => document.getElementById('msg-sucesso').classList.add('hidden'), 3000);
-                    ['titulo','descricao','tecnologias','link'].forEach(id => document.getElementById(id).value = '');
-                    document.getElementById('categoria').value = '';
-                    carregarProjetos();
+                const res = await fetch(API_URL + '/health');
+                const text = await res.text();
+                div.innerHTML = `<span class="success">✅ Health: ${text}</span>`;
+            } catch(e) {
+                div.innerHTML = `<span class="error">❌ ${e.message}</span>`;
+            }
+        };
+        window.carregarProjetos = async function() {
+            const div = document.getElementById('resultado');
+            div.innerHTML = '⏳ Carregando...';
+            try {
+                const res = await fetch(API_URL + '/api/projetos');
+                if (!res.ok) throw new Error('Status ' + res.status);
+                const projetos = await res.json();
+                if (projetos.length === 0) {
+                    div.innerHTML = '📭 Nenhum projeto';
                 } else {
-                    const erro = await resposta.text();
-                    alert('❌ Erro: ' + erro);
+                    div.innerHTML = projetos.map(p => `<div class="card"><strong>${p.titulo}</strong><br><small>${p.categoria || ''}</small></div>`).join('');
                 }
-            } catch (erro) {
-                alert('❌ Conexão falhou: ' + erro.message);
+            } catch(e) {
+                div.innerHTML = `<span class="error">❌ ${e.message}</span>`;
             }
-        }
-
-        async function carregarProjetos() {
-            try {
-                const resposta = await fetch(API_URL + '/api/projetos');
-                const projetos = await resposta.json();
-                const lista = document.getElementById('lista-projetos');
-                if (!lista) return;
-                if (!Array.isArray(projetos) || projetos.length === 0) {
-                    lista.innerHTML = '<p class="text-gray-500 text-center py-4">📭 Nenhum projeto</p>';
-                    return;
-                }
-                lista.innerHTML = projetos.map(p => `
-                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center bg-white/5 rounded-xl p-3 sm:p-4 gap-3">
-                        <div class="flex items-center gap-3 min-w-0">
-                            <span class="text-xl flex-shrink-0">${p.tipo === 'imagem' ? '🖼️' : '📦'}</span>
-                            <div class="min-w-0 flex-1">
-                                <p class="text-white font-bold text-sm truncate max-w-[180px] sm:max-w-[300px]">${p.titulo}</p>
-                                <p class="text-gray-500 text-xs truncate max-w-[180px] sm:max-w-[300px]">${(p.tecnologias || '').split(',').slice(0,3).join(', ')}</p>
-                                ${p.categoria ? `<span class="inline-block ml-2 px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded text-xs">${p.categoria}</span>` : ''}
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2 self-end sm:self-auto">
-                            <button onclick="event.stopPropagation();editarProjeto(${p.id})" class="btn-action text-cyan-400 hover:bg-cyan-400/10" aria-label="Editar">✏️</button>
-                            <button onclick="event.stopPropagation();excluirProjeto(${p.id})" class="btn-action text-red-400 hover:bg-red-400/10" aria-label="Excluir">🗑️</button>
-                        </div>
-                    </div>
-                `).join('');
-            } catch (erro) {
-                console.error('Erro ao carregar projetos', erro);
-            }
-        }
-
-        async function excluirProjeto(id) {
-            if (!confirm('Excluir este projeto?')) return;
-            try {
-                const resposta = await fetch(API_URL + '/api/projetos/' + id, { method: 'DELETE' });
-                if (resposta.ok) carregarProjetos();
-                else alert('Erro ao excluir');
-            } catch (erro) {
-                alert('Erro de conexão');
-            }
-        }
-
-        function editarProjeto(id) {
-            alert('Editar projeto ' + id + ' (em breve)');
-        }
+        };
     </script>
 </body>
 </html>

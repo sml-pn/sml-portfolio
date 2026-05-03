@@ -3,14 +3,14 @@ const { Pool } = require('pg');
 const cors = require('cors');
 const app = express();
 
-// Configuração CORS explícita para permitir seu site
-app.use(cors({
-  origin: ['https://sml-developer.onrender.com', 'http://localhost:8000', 'http://localhost:3000'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type']
-}));
-
+app.use(cors());
 app.use(express.json());
+app.use((req, res, next) => {
+    res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.header('Pragma', 'no-cache');
+    res.header('Expires', '0');
+    next();
+});
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_Vrk6GOhy1oMZ@ep-proud-snow-an3y2oqh-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=10'
@@ -23,9 +23,9 @@ pool.query(`CREATE TABLE IF NOT EXISTS projetos (
   tipo VARCHAR(20), imagem_url TEXT, criado_em TIMESTAMP DEFAULT NOW()
 )`);
 
-// Endpoint de teste CORS (responde a qualquer origem)
-app.get('/api/test-cors', (req, res) => {
-  res.json({ message: 'CORS funcionando!', timestamp: new Date().toISOString() });
+app.get('/api/projetos', async (req, res) => {
+  try { const { rows } = await pool.query('SELECT * FROM projetos ORDER BY criado_em DESC'); res.json(rows); }
+  catch (err) { res.status(500).json({ error: err.message }); }
 });
 
 app.post('/api/projetos', async (req, res) => {
@@ -37,20 +37,6 @@ app.post('/api/projetos', async (req, res) => {
       [p.icone, p.titulo, p.descricao, arr, p.link, p.gradient, p.bgTag, p.categoria, p.tipo, p.imagem_url]
     );
     res.json({ ok: true });
-  } catch (err) { res.status(500).json({ error: err.message }); }
-});
-
-app.get('/api/projetos', async (req, res) => {
-  try {
-    const { rows } = await pool.query('SELECT * FROM projetos ORDER BY criado_em DESC');
-    res.json(rows);
-  } catch (err) { res.status(500).json({ error: err.message }); }
-});
-
-app.get('/api/projetos/:id', async (req, res) => {
-  try {
-    const { rows } = await pool.query('SELECT * FROM projetos WHERE id = $1', [req.params.id]);
-    res.json(rows[0] || { error: 'Not found' });
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
@@ -67,10 +53,8 @@ app.put('/api/projetos/:id', async (req, res) => {
 });
 
 app.delete('/api/projetos/:id', async (req, res) => {
-  try {
-    await pool.query('DELETE FROM projetos WHERE id = $1', [req.params.id]);
-    res.json({ ok: true });
-  } catch (err) { res.status(500).json({ error: err.message }); }
+  try { await pool.query('DELETE FROM projetos WHERE id = $1', [req.params.id]); res.json({ ok: true }); }
+  catch (err) { res.status(500).json({ error: err.message }); }
 });
 
 app.get('/health', async (req, res) => {
