@@ -43,7 +43,7 @@
                             <span class="text-xl flex-shrink-0">📦</span>
                             <div class="min-w-0 flex-1">
                                 <p class="text-white font-bold text-sm truncate max-w-[180px] sm:max-w-[300px]">${p.titulo || 'Sem título'}</p>
-                                <p class="text-gray-500 text-xs truncate max-w-[180px] sm:max-w-[300px]">${(Array.isArray(p.tecnologias) ? p.tecnologias : (p.tecnologias || '').split(',')).slice(0,3).join(', ') || 'Sem tecnologias'}</p>
+                                <p class="text-gray-500 text-xs truncate max-w-[180px] sm:max-w-[300px]">${(Array.isArray(p.tecnologias) ? p.tecnologias : (Array.isArray(p.tecnologias) ? p.tecnologias : (p.tecnologias || '').split(','))).slice(0,3).join(', ') || 'Sem tecnologias'}</p>
                                 ${p.categoria ? `<span class="inline-block ml-2 px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded text-xs">${p.categoria}</span>` : ''}
                             </div>
                         </div>
