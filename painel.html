@@ -244,43 +244,6 @@
             }
         }
 
-        // CARREGAR PROJETOS COM FEEDBACK
-        async function carregarProjetos() {
-            const lista = document.getElementById('lista-projetos');
-            if (!lista) return;
-            lista.innerHTML = '<p class="text-gray-500 text-center py-4">⏳ Carregando projetos...</p>';
-
-            try {
-                const res = await fetch(`${API_URL}/api/projetos`);
-                if (!res.ok) throw new Error('API respondeu com erro ' + res.status);
-                const projetos = await res.json();
-
-                if (!Array.isArray(projetos) || projetos.length === 0) {
-                    lista.innerHTML = '<p class="text-gray-500 text-center py-4">📭 Nenhum projeto cadastrado</p>';
-                    return;
-                }
-
-                lista.innerHTML = projetos.map(p => `
-                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center bg-white/5 rounded-xl p-3 sm:p-4 gap-3">
-                        <div class="flex items-center gap-3 min-w-0">
-                            <span class="text-xl flex-shrink-0">${p.tipo === 'imagem' ? '🖼️' : '📦'}</span>
-                            <div class="min-w-0 flex-1">
-                                <p class="text-white font-bold text-sm truncate max-w-[180px] sm:max-w-[300px]">${p.titulo}</p>
-                                <p class="text-gray-500 text-xs truncate max-w-[180px] sm:max-w-[300px]">${(p.tecnologias || '').split(',').slice(0,3).join(', ')}</p>
-                                ${p.categoria ? `<span class="inline-block ml-2 px-2 py-0.5 bg-cyan-500/20 text-cyan-400 rounded text-xs">${p.categoria}</span>` : ''}
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2 self-end sm:self-auto">
-                            <button onclick="event.stopPropagation();editarProjeto(${p.id})" class="btn-action editar" aria-label="Editar">✏️</button>
-                            <button onclick="event.stopPropagation();excluirProjeto(${p.id})" class="btn-action excluir" aria-label="Excluir">🗑️</button>
-                        </div>
-                    </div>
-                `).join('');
-            } catch (e) {
-                lista.innerHTML = '<p class="text-red-400 text-center py-4">❌ Erro ao conectar ao servidor. Verifique se a API está online.</p>';
-                console.error(e);
-            }
-        }
 
         // EXCLUIR
         async function excluirProjeto(id) {
