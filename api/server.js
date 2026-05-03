@@ -3,63 +3,59 @@ const { Pool } = require('pg');
 const cors = require('cors');
 const app = express();
 
-app.use(cors({
-    origin: ['https://sml-developer.onrender.com', 'http://localhost:8000', 'http://localhost:3000'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-}));
+// Permitir TODAS as origens durante o teste (depois restringimos)
+app.use(cors());
 app.options('*', cors());
 app.use(express.json());
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_Vrk6GOhy1oMZ@ep-proud-snow-an3y2oqh-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=10'
+  connectionString: process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_Vrk6GOhy1oMZ@ep-proud-snow-an3y2oqh-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=10'
 });
 
 pool.query(`CREATE TABLE IF NOT EXISTS projetos (
-    id SERIAL PRIMARY KEY, icone VARCHAR(30), titulo VARCHAR(200) NOT NULL,
-    descricao TEXT, tecnologias TEXT[], link VARCHAR(500),
-    gradient VARCHAR(100), bg_tag VARCHAR(50), categoria VARCHAR(50),
-    tipo VARCHAR(20), imagem_url TEXT, criado_em TIMESTAMP DEFAULT NOW()
+  id SERIAL PRIMARY KEY, icone VARCHAR(30), titulo VARCHAR(200) NOT NULL,
+  descricao TEXT, tecnologias TEXT[], link VARCHAR(500),
+  gradient VARCHAR(100), bg_tag VARCHAR(50), categoria VARCHAR(50),
+  tipo VARCHAR(20), imagem_url TEXT, criado_em TIMESTAMP DEFAULT NOW()
 )`);
 
 app.get('/api/projetos', async (req, res) => {
-    try { const { rows } = await pool.query('SELECT * FROM projetos ORDER BY criado_em DESC'); res.json(rows); }
-    catch (err) { res.status(500).json({ error: err.message }); }
+  try { const { rows } = await pool.query('SELECT * FROM projetos ORDER BY criado_em DESC'); res.json(rows); }
+  catch (err) { res.status(500).json({ error: err.message }); }
 });
 
 app.post('/api/projetos', async (req, res) => {
-    const p = req.body;
-    try {
-        const arr = p.tecnologias ? '{' + p.tecnologias.split(',').map(t => '"' + t.trim() + '"').join(',') + '}' : null;
-        await pool.query(
-            'INSERT INTO projetos (icone, titulo, descricao, tecnologias, link, gradient, bg_tag, categoria, tipo, imagem_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)',
-            [p.icone, p.titulo, p.descricao, arr, p.link, p.gradient, p.bgTag, p.categoria, p.tipo, p.imagem_url]
-        );
-        res.json({ ok: true });
-    } catch (err) { res.status(500).json({ error: err.message }); }
+  const p = req.body;
+  try {
+    const arr = p.tecnologias ? '{' + p.tecnologias.split(',').map(t => '"' + t.trim() + '"').join(',') + '}' : null;
+    await pool.query(
+      'INSERT INTO projetos (icone, titulo, descricao, tecnologias, link, gradient, bg_tag, categoria, tipo, imagem_url) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)',
+      [p.icone, p.titulo, p.descricao, arr, p.link, p.gradient, p.bgTag, p.categoria, p.tipo, p.imagem_url]
+    );
+    res.json({ ok: true });
+  } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
 app.put('/api/projetos/:id', async (req, res) => {
-    const p = req.body;
-    try {
-        const arr = p.tecnologias ? '{' + p.tecnologias.split(',').map(t => '"' + t.trim() + '"').join(',') + '}' : null;
-        await pool.query(
-            'UPDATE projetos SET icone=$1, titulo=$2, descricao=$3, tecnologias=$4, link=$5, gradient=$6, bg_tag=$7, categoria=$8, tipo=$9, imagem_url=$10 WHERE id=$11',
-            [p.icone, p.titulo, p.descricao, arr, p.link, p.gradient, p.bgTag, p.categoria, p.tipo, p.imagem_url, req.params.id]
-        );
-        res.json({ ok: true });
-    } catch (err) { res.status(500).json({ error: err.message }); }
+  const p = req.body;
+  try {
+    const arr = p.tecnologias ? '{' + p.tecnologias.split(',').map(t => '"' + t.trim() + '"').join(',') + '}' : null;
+    await pool.query(
+      'UPDATE projetos SET icone=$1, titulo=$2, descricao=$3, tecnologias=$4, link=$5, gradient=$6, bg_tag=$7, categoria=$8, tipo=$9, imagem_url=$10 WHERE id=$11',
+      [p.icone, p.titulo, p.descricao, arr, p.link, p.gradient, p.bgTag, p.categoria, p.tipo, p.imagem_url, req.params.id]
+    );
+    res.json({ ok: true });
+  } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
 app.delete('/api/projetos/:id', async (req, res) => {
-    try { await pool.query('DELETE FROM projetos WHERE id = $1', [req.params.id]); res.json({ ok: true }); }
-    catch (err) { res.status(500).json({ error: err.message }); }
+  try { await pool.query('DELETE FROM projetos WHERE id = $1', [req.params.id]); res.json({ ok: true }); }
+  catch (err) { res.status(500).json({ error: err.message }); }
 });
 
 app.get('/health', async (req, res) => {
-    try { await pool.query('SELECT 1'); res.status(200).send('OK'); }
-    catch (err) { res.status(500).send('ERROR'); }
+  try { await pool.query('SELECT 1'); res.status(200).send('OK'); }
+  catch (err) { res.status(500).send('ERROR'); }
 });
 
 const PORT = process.env.PORT || 3000;
