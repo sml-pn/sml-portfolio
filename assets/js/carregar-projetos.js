@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
           'transporte': 'bg-slate-500 text-white',
           'eventos': 'bg-fuchsia-500 text-white',
           'serviços': 'bg-zinc-500 text-white'
+        'bio': 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white',
         };
 
         const catRaw = (proj.categoria || '').trim();

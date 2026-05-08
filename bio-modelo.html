@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio | SML Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --neon: #00ffff;
+            --pink: #ff00ff;
+            --dark: #0a0f1e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--dark);
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Fundo animado com gradiente e partículas */
+        .bg-animated {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(0,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(255,0,255,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(139,92,246,0.08) 0%, transparent 50%);
+            animation: bgMove 20s ease-in-out infinite alternate;
+        }
+        @keyframes bgMove {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* Partículas flutuantes */
+        .particles {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        .container-bio {
+            position: relative;
+            z-index: 10;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Glassmorphism 2.0 */
+        .glass-card {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 32px 24px;
+            box-shadow:
+                0 8px 32px rgba(0,0,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 48px rgba(0,255,255,0.08);
+        }
+
+        /* Avatar com efeito 3D tilt */
+        .avatar-wrap {
+            perspective: 1000px;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+        }
+        .avatar-3d {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--neon);
+            box-shadow: 0 0 30px rgba(0,255,255,0.3);
+            transition: transform 0.2s ease-out;
+            transform-style: preserve-3d;
+        }
+
+        /* Nome com gradiente animado */
+        .name-gradient {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            background: linear-gradient(135deg, var(--neon), var(--pink), #8b5cf6, var(--neon));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease infinite;
+        }
+        @keyframes gradientShift {
+            0%,100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            color: #9ca3af;
+            text-align: center;
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+
+        /* Botões com efeito glass + hover neon */
+        .btn-bio {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            color: white;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-bio::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--neon), var(--pink));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+            border-radius: inherit;
+        }
+        .btn-bio:hover {
+            border-color: var(--neon);
+            box-shadow: 0 0 30px rgba(0,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        .btn-bio:hover::before { opacity: 0.15; }
+
+        .btn-bio .icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        /* Card 3D para serviços/produtos */
+        .service-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 16px;
+            margin: 10px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .service-card:hover {
+            transform: translateY(-4px) rotateX(2deg);
+            box-shadow: 0 8px 24px rgba(0,255,255,0.06);
+            border-color: rgba(0,255,255,0.2);
+        }
+
+        /* Parallax sutil no scroll */
+        @media (min-width: 768px) {
+            .parallax-slow {
+                transform: translateY(calc(var(--scroll) * 0.02));
+            }
+        }
+
+        /* Footer */
+        .footer-bio {
+            text-align: center;
+            color: #4b5563;
+            font-size: 0.8rem;
+            margin-top: 32px;
+            padding-bottom: 20px;
+        }
+
+        /* Loading pulse */
+        @keyframes pulse-neon {
+            0%,100% { box-shadow: 0 0 0 0 rgba(0,255,255,0.4); }
+            50% { box-shadow: 0 0 0 12px rgba(0,255,255,0); }
+        }
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse-neon 2s infinite;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animated"></div>
+
+    <div class="particles" id="particles"></div>
+
+    <div class="container-bio">
+
+        <!-- Card principal -->
+        <div class="glass-card">
+
+            <!-- Avatar 3D -->
+            <div class="avatar-wrap">
+                <img src="https://via.placeholder.com/120"
+                     alt="Foto de perfil"
+                     class="avatar-3d"
+                     id="avatar3d">
+            </div>
+
+            <!-- Nome -->
+            <h1 class="name-gradient">Nome do Cliente</h1>
+            <p class="subtitle">Profissão ou frase curta</p>
+            <p class="subtitle" style="margin-top:2px;">
+                <span class="pulse-dot"></span> Online agora
+            </p>
+
+            <!-- Links -->
+            <div style="margin-top: 28px;">
+
+                <a href="https://wa.me/558586121078" target="_blank" class="btn-bio">
+                    <span class="icon">💬</span>
+                    <span>Falar no WhatsApp</span>
+                </a>
+
+                <a href="https://instagram.com/seuuser" target="_blank" class="btn-bio">
+                    <span class="icon">📸</span>
+                    <span>Seguir no Instagram</span>
+                </a>
+
+                <a href="https://maps.google.com/?q=Trairi-CE" target="_blank" class="btn-bio">
+                    <span class="icon">📍</span>
+                    <span>Ver Localização</span>
+                </a>
+
+                <a href="mailto:contato@exemplo.com" class="btn-bio">
+                    <span class="icon">✉️</span>
+                    <span>Enviar E-mail</span>
+                </a>
+            </div>
+
+            <!-- Serviços em cards 3D -->
+            <div style="margin-top: 28px;">
+                <h3 style="color:white; font-size:1.1rem; margin-bottom:12px;">Serviços</h3>
+                <div class="service-card">
+                    <p style="color:white; font-weight:600;">Consultoria Personalizada</p>
+                    <p style="color:#9ca3af; font-size:0.85rem; margin-top:4px;">Análise completa do seu negócio</p>
+                </div>
+                <div class="service-card">
+                    <p style="color:white; font-weight:600;">Criação de Sites</p>
+                    <p style="color:#9ca3af; font-size:0.85rem; margin-top:4px;">Landing pages profissionais</p>
+                </div>
+                <div class="service-card">
+                    <p style="color:white; font-weight:600;">SEO e Tráfego</p>
+                    <p style="color:#9ca3af; font-size:0.85rem; margin-top:4px;">Ranqueamento no Google</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bio">Feito com 💜 por SML Developer</div>
+    </div>
+
+    <script>
+        // Partículas flutuantes
+        (function() {
+            const container = document.getElementById('particles');
+            const cores = ['#00ffff','#ff00ff','#8b5cf6','#ffffff'];
+            for (let i=0; i<25; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 4 + 2;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                p.style.background = cores[Math.floor(Math.random()*cores.length)];
+                p.style.left = Math.random()*100 + '%';
+                p.style.animationDuration = (Math.random()*10 + 10) + 's';
+                p.style.animationDelay = Math.random()*10 + 's';
+                container.appendChild(p);
+            }
+        })();
+
+        // Efeito 3D tilt no avatar
+        (function() {
+            const avatar = document.getElementById('avatar3d');
+            if (!avatar) return;
+            document.addEventListener('mousemove', function(e) {
+                const x = (window.innerWidth/2 - e.clientX) / 30;
+                const y = (window.innerHeight/2 - e.clientY) / 30;
+                avatar.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+            });
+        })();
+
+        // Parallax sutil no scroll
+        (function() {
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        const scrollY = window.scrollY;
+                        document.documentElement.style.setProperty('--scroll', scrollY);
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
