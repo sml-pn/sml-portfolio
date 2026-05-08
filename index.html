@@ -208,32 +208,25 @@
         });
     </script>
     <!-- Banner LGPD -->
-    </script>
-    <!-- Banner LGPD -->
-    <div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:rgba(10,15,30,0.95);backdrop-filter:blur(10px);border-top:2px solid #00ffff;padding:16px;z-index:9999;display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;font-family:"Courier New",monospace;color:#fff;display:none;">
+    <div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:rgba(10,15,30,0.95);backdrop-filter:blur(10px);border-top:2px solid #00ffff;padding:16px;z-index:9999;display:none;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;font-family:\"Courier New\",monospace;color:#fff;">
         <p style="margin:0;font-size:14px;"><i data-lucide="cookie" style="width:16px;height:16px;margin-right:6px;"></i> Usamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa <a href="/termos.html" style="color:#00ffff;text-decoration:underline;">Política de Cookies</a>.</p>
-        <button id="accept-cookies-btn" style="background:linear-gradient(90deg,#00ffff,#ff00ff);color:#0a0f1e;border:none;padding:8px 20px;border-radius:20px;font-weight:bold;cursor:pointer;font-family:"Courier New",monospace;">Aceitar</button>
+        <button id="accept-cookies-btn" style="background:linear-gradient(90deg,#00ffff,#ff00ff);color:#0a0f1e;border:none;padding:8px 20px;border-radius:20px;font-weight:bold;cursor:pointer;font-family:\"Courier New\",monospace;">Aceitar</button>
     </div>
     <script>
-        (function() {
-            const banner = document.getElementById("cookie-banner");
-            const acceptBtn = document.getElementById("accept-cookies-btn");
-            
-            if (localStorage.getItem("cookieConsent") !== "accepted") {
-                banner.style.display = "flex";
-            }
-            
-            acceptBtn.addEventListener("click", function() {
-                localStorage.setItem("cookieConsent", "accepted");
-                banner.style.display = "none";
-                if (typeof gtag !== "undefined") {
-                    gtag("consent", "update", {
-                        analytics_storage: "granted"
-                    });
-                }
-            });
-        })();
+(function() {
+  var banner = document.getElementById("cookie-banner");
+  var acceptBtn = document.getElementById("accept-cookies-btn");
+  if (!localStorage.getItem("cookieConsent")) {
+    banner.style.display = "flex";
+  }
+  acceptBtn.addEventListener("click", function() {
+    localStorage.setItem("cookieConsent", "accepted");
+    banner.style.display = "none";
+    if (typeof gtag === "function") {
+      gtag("consent", "update", { analytics_storage: "granted" });
+    }
+  });
+})();
     </script>
-    <script src="assets/js/carregar-projetos.js?v=1777747239"></script>
 </body>
 </html>
