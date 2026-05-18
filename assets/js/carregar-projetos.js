@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('projetos-container');
   if (!container) return;
 
-  fetch('https://sml-api.onrender.com/api/projetos')
+  fetch('https://sml-api-93h8.onrender.com/api/projetos')
     .then(r => r.json())
     .then(projetos => {
       if (!Array.isArray(projetos) || projetos.length === 0) return;
