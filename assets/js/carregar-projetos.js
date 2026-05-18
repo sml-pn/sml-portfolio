@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(projetos => {
       if (!Array.isArray(projetos) || projetos.length === 0) return;
 
+      container.style.opacity = "0";
+      container.style.transition = "opacity 0.5s ease";
       container.innerHTML = projetos.map(proj => {
         const techs = Array.isArray(proj.tecnologias)
           ? proj.tecnologias
@@ -63,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>`;
         }
 
-        return `<div class="overflow-visible bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
+        return `<div class="overflow-visible bg-white/5 fade-in-card backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-neon transition">
           ${topo}
           <h3 class="text-lg md:text-xl font-bold mt-4 mb-2 text-white">${proj.titulo}</h3>
           <p class="text-gray-400 text-sm mb-4">${proj.descricao || ''}</p>
@@ -72,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>`;
       }).join('');
 
+      container.style.opacity = "1";
       if (typeof lucide !== 'undefined') lucide.createIcons();
     })
     .catch(e => console.error('Erro ao carregar projetos', e));
