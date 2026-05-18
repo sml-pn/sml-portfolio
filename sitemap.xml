@@ -18,10 +18,4 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://sml-developer.onrender.com/analise.html</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 </urlset>
