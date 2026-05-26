@@ -34,11 +34,6 @@ html { scroll-behavior: smooth; }
 .hamburger.active .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.active .hamburger-line:nth-child(3) { top: 14px; transform: rotate(-45deg); background: linear-gradient(90deg, #ff00ff, #00ffff); }
 
-.card-3d {
-    transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    transform-style: preserve-3d; perspective: 1000px;
-}
-.card-3d:hover { transform: translateY(-8px) rotateX(2deg) rotateY(2deg); }
 
 [data-lucide] { transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1); }
 
