@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SML Developer | Sites e Landing Pages em Trairi-CE</title>
+<meta name="description" content="Samuel Pena — SML Developer. Web Full Stack em Trairi-CE. Sites institucionais, landing pages de alta conversão e bio pages premium. Código rápido, limpo e que vende.">
+<link rel="canonical" href="https://sml-developer.onrender.com/pagina/">
+<meta name="theme-color" content="#060913">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="SML Developer | Sites que vendem. Código que performa.">
+<meta property="og:description" content="Web Full Stack em Trairi-CE. Landing pages, sites institucionais e bio pages premium.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sml-developer.onrender.com/pagina/">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="https://sml-developer.onrender.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "SML Developer",
+  "alternateName": "Samuel Pena",
+  "description": "Desenvolvimento Web Full Stack em Trairi-CE. Sites institucionais, landing pages de alta conversão e bio pages.",
+  "url": "https://sml-developer.onrender.com",
+  "telephone": "+55-85-8612-1078",
+  "address": { "@type": "PostalAddress", "addressLocality": "Trairi", "addressRegion": "CE", "addressCountry": "BR" },
+  "sameAs": ["https://instagram.com/sml_developer", "https://github.com/sml-pn"]
+}
+</script>
+
+<style>
+:root{
+  --bg: #060913;
+  --surface: #0a0f1e;
+  --cyan: #00f5ff;
+  --magenta: #ff3df7;
+  --text: #e8ecf5;
+  --muted: #9aa3b8;
+  --muted-2: #6b748c;
+  --line: rgba(232,236,245,0.09);
+  --line-strong: rgba(232,236,245,0.16);
+  --radius: 20px;
+  --shadow: 0 20px 60px rgba(0,0,0,0.45);
+  --ff: "Space Grotesk", system-ui, sans-serif;
+  --ff-mono: "JetBrains Mono", monospace;
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--ff);
+  background: var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+h1,h2,h3{margin:0;line-height:1.12;letter-spacing:-0.022em;font-weight:700}
+h1{font-size: clamp(2.3rem, 5.8vw, 4.65rem); letter-spacing:-0.035em;}
+h2{font-size: clamp(1.9rem, 3.8vw, 2.8rem);}
+h3{font-size: clamp(1.18rem, 2vw, 1.35rem);}
+.muted{color:var(--muted)}
+.mono{font-family:var(--ff-mono)}
+.container{width:min(1120px, calc(100% - 48px)); margin-inline:auto;}
+.section{padding: 96px 0;}
+@media(max-width:720px){ .section{padding: 72px 0;} .container{width:min(1120px, calc(100% - 32px));} }
+
+body::before{
+  content:''; position:fixed; inset:0;
+  background-image: linear-gradient(rgba(255,255,255,0.023) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 64px 64px; opacity:.45; pointer-events:none; z-index:-2;
+}
+
+.nav-wrap{position:sticky; top:0; z-index:100; background: rgba(6,9,19,0.78); backdrop-filter: blur(16px); border-bottom:1px solid var(--line);}
+.nav{display:flex; align-items:center; justify-content:space-between; height:72px;}
+.brand{display:flex; align-items:center; gap:12px; font-weight:700; font-size:1.03rem;}
+.brand-mark{width:36px;height:36px;border-radius:11px; background: linear-gradient(135deg, #0a1128, #111e3a); border:1px solid var(--line-strong); display:grid;place-items:center; font-family:var(--ff-mono); font-size:13px; color:var(--cyan);}
+.nav-links{display:flex; align-items:center; gap:30px;}
+.nav-links a{color:var(--muted); font-size:.93rem; font-weight:500; transition: color .2s;}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{border:1px solid var(--line-strong); padding:10px 16px; border-radius:999px; color:var(--text)!important; font-size:.88rem!important; font-weight:600!important;}
+.nav-cta:hover{border-color: rgba(0,245,255,.45); background: rgba(0,245,255,.05)}
+@media(max-width:880px){ .nav-links{display:none} }
+@media(min-width:881px){ .nav-toggle{display:none} }
+
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:48px; padding: 0 22px; border-radius: 999px; font-weight:600; font-size:.98rem; transition: transform .18s var(--ease), box-shadow .2s; border:1px solid transparent; cursor:pointer; white-space:nowrap;}
+.btn-primary{background: linear-gradient(100deg, #00e8f3 0%, #00f5ff 100%); color:#04131d; box-shadow: 0 8px 28px rgba(0,245,255,.18);}
+.btn-primary:hover{transform: translateY(-1px); box-shadow: 0 12px 36px rgba(0,245,255,.26)}
+.btn-ghost{background: rgba(255,255,255,.032); border-color: var(--line-strong); color:var(--text);}
+.btn-ghost:hover{border-color: rgba(255,255,255,.28); background: rgba(255,255,255,.055)}
+
+.hero{position:relative; padding: 106px 0 86px; overflow:hidden;}
+.hero-inner{position:relative; z-index:2; display:grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items:center;}
+.hero h1 .grad{background: linear-gradient(90deg, #eaf8ff 0%, #8efcff 38%, #ff8dfb 100%); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.hero-sub{color:var(--muted); font-size: clamp(1.05rem, 1.5vw, 1.18rem); max-width: 48ch; margin:20px 0 30px;}
+.hero-ctas{display:flex; flex-wrap:wrap; gap:12px}
+.badge-online{display:inline-flex; align-items:center; gap:9px; padding:8px 13px; border-radius:999px; background: rgba(0,245,255,.06); border:1px solid rgba(0,245,255,.18); color:#b9f9ff; font-family:var(--ff-mono); font-size:.72rem; margin-bottom:22px;}
+.live-dot{width:7px;height:7px;border-radius:50%; background:#27ff8d; box-shadow: 0 0 12px rgba(39,255,141,.7); animation: pulse-live 1.8s ease-in-out infinite;}
+@keyframes pulse-live { 0%,100%{opacity:1} 50%{opacity:.45}}
+@media(max-width:980px){ .hero-inner{grid-template-columns:1fr; gap:44px} .hero{padding-top:68px} }
+
+.sec-head{max-width:640px; margin-bottom:46px}
+.sec-kicker{font-family:var(--ff-mono); font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:#7ddfff; margin-bottom:12px;}
+.sec-head h2{margin-bottom:12px}
+.sec-head p{color:var(--muted); font-size:1.04rem; margin:0}
+
+.services-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px;}
+@media(max-width:980px){ .services-grid{grid-template-columns: repeat(2,1fr)} }
+@media(max-width:600px){ .services-grid{grid-template-columns: 1fr} }
+.svc-card{background: linear-gradient(180deg, rgba(21,28,52,.72), rgba(13,18,35,.78)); border:1px solid var(--line); border-radius:20px; padding:26px 24px 24px; transition: border-color .22s, transform .22s var(--ease);}
+.svc-card:hover{border-color: rgba(0,245,255,.32); transform: translateY(-3px); box-shadow: 0 18px 50px rgba(0,0,0,.38);}
+.svc-ico{width:44px;height:44px;border-radius:12px; background: rgba(255,255,255,.035); border:1px solid var(--line); display:grid;place-items:center; color:#b8f9ff; margin-bottom:16px;}
+.svc-card h3{font-size:1.12rem;margin-bottom:8px}
+.svc-card p{color:var(--muted); font-size:.95rem; margin:0}
+
+.projects-grid{display:grid; grid-template-columns: repeat(3,1fr); gap:20px;}
+@media(max-width:980px){ .projects-grid{grid-template-columns: 1fr 1fr} }
+@media(max-width:640px){ .projects-grid{grid-template-columns:1fr} }
+.proj{border-radius:22px; overflow:hidden; background: linear-gradient(180deg, #11182f, #0d1328); border:1px solid var(--line); transition: transform .22s var(--ease);}
+.proj:hover{transform: translateY(-4px); border-color: rgba(255,61,247,.30);}
+.proj-thumb{aspect-ratio: 16/10.2; background: #0b1124; border-bottom:1px solid var(--line); display:grid; place-items:center; font-family:var(--ff-mono); font-size:.72rem; color: rgba(255,255,255,.78); text-transform:uppercase; letter-spacing:.08em;}
+.proj-body{padding:20px 20px 18px}
+.proj-tags{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px}
+.pill{font-family:var(--ff-mono); font-size:.70rem; background: rgba(255,255,255,.045); border:1px solid var(--line); color:#a9b4cc; border-radius:999px; padding:4px 9px;}
+.proj-body h3{font-size:1.18rem; margin-bottom:6px}
+.proj-body p{color:var(--muted); font-size:.94rem; margin:0 0 14px}
+.proj-link{font-weight:600; font-size:.93rem; color:#bffaff; display:inline-flex; align-items:center; gap:7px;}
+.proj-link:hover{color:#fff}
+
+.process{background: radial-gradient(900px 520px at 80% -10%, rgba(255,61,247,.055), transparent 60%), linear-gradient(180deg, rgba(255,255,255,.015), transparent 30%); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.process-grid{display:grid; grid-template-columns: repeat(4,1fr); gap:18px;}
+@media(max-width:900px){ .process-grid{grid-template-columns: 1fr 1fr} }
+@media(max-width:520px){ .process-grid{grid-template-columns:1fr} }
+.step{padding:26px 24px; border-radius:18px; background: rgba(255,255,255,.018); border:1px solid var(--line);}
+.step-num{font-family:var(--ff-mono); font-size:.74rem; color:#7cfdff; margin-bottom:10px;}
+.step h3{font-size:1.12rem;margin-bottom:8px}
+.step p{color:var(--muted); margin:0; font-size:.95rem}
+
+.about-grid{display:grid; grid-template-columns: .95fr 1.15fr; gap:44px; align-items:center;}
+@media(max-width:900px){ .about-grid{grid-template-columns:1fr} }
+.about-photo{border-radius:24px; background: linear-gradient(170deg, #112040, #0b1328); border:1px solid var(--line-strong); aspect-ratio: 4/4.6; display:grid; place-items:center; position:relative; overflow:hidden;}
+.about-photo-inner{width:160px;height:160px;border-radius:28px; background: radial-gradient(circle at 30% 30%, #0f213d, #08101f); border:1px solid rgba(255,255,255,.10); display:grid; place-items:center; color:#8ffdff; font-family:var(--ff-mono); font-size:2rem; font-weight:600;}
+
+.cta-band{padding: 82px 0; background: radial-gradient(900px 500px at 25% -10%, rgba(0,245,255,.069), transparent 60%), radial-gradient(700px 420px at 90% 120%, rgba(255,61,247,.054), transparent 60%), linear-gradient(180deg, rgba(255,255,255,.012), transparent); border-top:1px solid var(--line); border-bottom:1px solid var(--line); text-align:center;}
+.cta-inner{max-width: 780px; margin: 0 auto;}
+.cta-actions{display:flex; justify-content:center; gap:12px; flex-wrap:wrap}
+
+.contact-strip{padding: 34px 0 64px; border-bottom:1px solid var(--line);}
+.contact-row{display:flex; flex-wrap:wrap; gap:18px 34px; align-items:center; justify-content:space-between;}
+.contact-links{display:flex; gap:18px; flex-wrap:wrap; color:var(--muted)}
+.contact-links a{display:inline-flex; align-items:center; gap:8px; font-weight:500}
+.contact-links a:hover{color:var(--text)}
+
+footer{padding: 34px 0 54px; color:var(--muted-2); font-size:.88rem;}
+.footer-inner{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap}
+
+.reveal{opacity:0; transform: translateY(16px); transition: opacity .6s var(--ease), transform .6s var(--ease)}
+.reveal.in{opacity:1; transform:none}
+@media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none} }
+
+.grad-teal{ background: linear-gradient(135deg, #0b2f36, #14515b 45%, #1e7a82) }
+.grad-rose{ background: linear-gradient(135deg, #34112e, #6a1e5b 45%, #b4378f) }
+.grad-amber{ background: linear-gradient(135deg, #2a1d09, #674111 45%, #c47a1f) }
+
+.cookie-bar{position:fixed; left:16px; right:16px; bottom:16px; z-index:200; background: rgba(12,17,35,.94); border:1px solid var(--line-strong); border-radius:16px; padding:16px; display:none; backdrop-filter: blur(14px); box-shadow: var(--shadow);}
+.cookie-bar.show{display:block}
+.cookie-inner{display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:space-between}
+.cookie-inner p{margin:0; color:var(--muted); font-size:.92rem}
+.btn-xs{min-height:40px; padding:0 14px; border-radius:999px; font-weight:600; font-size:.88rem; cursor:pointer; border:1px solid var(--line-strong); background: rgba(255,255,255,.04); color:var(--text);}
+.btn-xs.primary{background: #e9eef8; color:#09111f; border-color:transparent}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
+</head>
+<body>
+
+<a href="#conteudo" class="sr-only">Pular para o conteúdo</a>
+
+<!-- NAV -->
+<div class="nav-wrap" id="topnav">
+  <nav class="container nav" aria-label="Principal">
+    <a class="brand" href="https://sml-developer.onrender.com" aria-label="SML Developer, início">
+      <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+      <span>SML Developer</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#servicos">Serviços</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#processo">Processo</a>
+      <a href="#sobre">Sobre</a>
+      <a class="nav-cta" href="https://wa.me/558586121078?text=Ol%C3%A1%20SML!%20Quero%20um%20or%C3%A7amento" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </div>
+  </nav>
+</div>
+
+<main id="conteudo">
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="container hero-inner">
+      <div class="hero-copy reveal">
+        <div class="badge-online">
+          <span class="live-dot" aria-hidden="true"></span>
+          Online agora • Trairi-CE
+        </div>
+        <h1>Sites que vendem.<br><span class="grad">Código que performa.</span></h1>
+        <p class="hero-sub">Web Full Stack em Trairi-CE. Landing pages, sites institucionais e bio pages premium. Rápido no mobile, bonito no desktop, pensado pra conversão.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://wa.me/558586121078?text=Ol%C3%A1%20SML!%20Quero%20um%20or%C3%A7amento%20para%20meu%20site" target="_blank" rel="noopener">Falar no WhatsApp</a>
+          <a class="btn btn-ghost" href="#projetos">Ver projetos</a>
+        </div>
+      </div>
+      <div class="hero-right reveal" style="display:flex;justify-content:center;align-items:center;">
+        <div style="width:300px;height:340px;border-radius:28px;background:linear-gradient(170deg,#0a1128,#111e3a);border:1px solid var(--line-strong);display:grid;place-items:center;font-family:var(--ff-mono);font-size:4rem;color:var(--cyan);">
+          &lt;SML/&gt;
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVIÇOS -->
+  <section class="section" id="servicos">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">Serviços</div>
+        <h2>Do primeiro pixel ao primeiro lead</h2>
+        <p>Sites enxutos, rápidos e feitos para converter no Brasil real, com WhatsApp integrado.</p>
+      </div>
+      <div class="services-grid">
+        <article class="svc-card reveal">
+          <div class="svc-ico">⚡</div>
+          <h3>Landing Pages</h3>
+          <p>Páginas de alta conversão, copy direta e Core Web Vitals verdes. Perfeito para tráfego pago.</p>
+        </article>
+        <article class="svc-card reveal">
+          <div class="svc-ico">🏛️</div>
+          <h3>Sites Institucionais</h3>
+          <p>Site profissional, leve e administrável. Foco em autoridade e SEO local.</p>
+        </article>
+        <article class="svc-card reveal">
+          <div class="svc-ico">🔗</div>
+          <h3>Bio Page Pro</h3>
+          <p>Seu link na bio com cara de marca premium. Botões inteligentes e visual impecável.</p>
+        </article>
+        <article class="svc-card reveal">
+          <div class="svc-ico">🔍</div>
+          <h3>SEO Local</h3>
+          <p>Google Perfil otimizado, schema LocalBusiness. Para aparecer em Trairi e região.</p>
+        </article>
+        <article class="svc-card reveal">
+          <div class="svc-ico">🚀</div>
+          <h3>Performance</h3>
+          <p>Menos de 70kb de JS total. Imagens otimizadas. Rápido até no 4G fraco.</p>
+        </article>
+        <article class="svc-card reveal">
+          <div class="svc-ico">📱</div>
+          <h3>Integração</h3>
+          <p>WhatsApp API, Meta Pixel, GA4, formulários com LGPD. Tudo medido.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section class="section" id="projetos" style="padding-top:28px">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">Cases recentes</div>
+        <h2>Projetos que geram contato, não só curtida</h2>
+      </div>
+      <div class="projects-grid">
+        <article class="proj reveal">
+          <div class="proj-thumb grad-rose">
+            <div style="text-align:center;padding:20px;">
+              <div style="font-size:1.1rem;margin-bottom:6px;">AMEI CETIM</div>
+              <div style="opacity:.7;font-size:.66rem;">Ecommerce • Cetim Premium</div>
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-tags"><span class="pill">Landing</span><span class="pill">WhatsApp</span><span class="pill">Ecommerce</span></div>
+            <h3>Amei Cetim</h3>
+            <p>Landing page para marca de acessórios de cetim premium. Carrinho inteligente com finalização via WhatsApp.</p>
+            <a class="proj-link" href="https://ameicetim.onrender.com" target="_blank" rel="noopener">Ver ao vivo →</a>
+          </div>
+        </article>
+        <article class="proj reveal">
+          <div class="proj-thumb grad-teal">
+            <div style="text-align:center;padding:20px;">
+              <div style="font-size:1.1rem;margin-bottom:6px;">HALISON HENRY</div>
+              <div style="opacity:.7;font-size:.66rem;">Gestor de Tráfego • Infoprodutos</div>
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-tags"><span class="pill">Vendas</span><span class="pill">Pixel</span><span class="pill">SEO</span></div>
+            <h3>Halison Henry Portfólio</h3>
+            <p>Landing page para gestor de tráfego, focada em alta conversão e design futurista.</p>
+            <a class="proj-link" href="https://halison-henry.onrender.com/" target="_blank" rel="noopener">Ver ao vivo →</a>
+          </div>
+        </article>
+        <article class="proj reveal">
+          <div class="proj-thumb grad-amber">
+            <div style="text-align:center;padding:20px;">
+              <div style="font-size:1.1rem;margin-bottom:6px;">BIO PREMIUM</div>
+              <div style="opacity:.7;font-size:.66rem;">Link na Bio • Vitrine Digital</div>
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-tags"><span class="pill">Bio Page</span><span class="pill">Instagram</span><span class="pill">Links</span></div>
+            <h3>Vitrine Bio</h3>
+            <p>Página de bio personalizada com glassmorphism, efeitos 3D e todos os links em um só lugar.</p>
+            <a class="proj-link" href="https://vitrinebio.onrender.com" target="_blank" rel="noopener">Ver ao vivo →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section class="section process" id="processo">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">Processo</div>
+        <h2>Simples, rápido e sem dor de cabeça</h2>
+      </div>
+      <div class="process-grid">
+        <div class="step reveal"><div class="step-num">01 — Briefing</div><h3>Alinhamento</h3><p>Entendo seu objetivo, público e oferta. 20 min no WhatsApp.</p></div>
+        <div class="step reveal"><div class="step-num">02 — Design</div><h3>UI no Figma</h3><p>Layout mobile-first, com hierarquia clara e CTA forte.</p></div>
+        <div class="step reveal"><div class="step-num">03 — Código</div><h3>Build limpo</h3><p>HTML/CSS/JS enxuto, acessível, semântico. Performance real.</p></div>
+        <div class="step reveal"><div class="step-num">04 — Entrega</div><h3>Publicar e medir</h3><p>Subo no seu domínio, configuro Analytics e WhatsApp.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="section" id="sobre">
+    <div class="container about-grid">
+      <div class="about-photo reveal"><div class="about-photo-inner">SP</div></div>
+      <div class="about-body reveal">
+        <div class="sec-kicker">Sobre</div>
+        <h2>Samuel Pena — SML Developer</h2>
+        <p>Sou desenvolvedor Full Stack em Trairi, Ceará. Trabalho com negócios locais e digitais que precisam de um site que carrega rápido, ranqueia bem e converte no WhatsApp.</p>
+        <p>Código próprio, design autoral, hospedagem otimizada. Foco em performance, SEO local e experiência mobile impecável.</p>
+        <div class="about-actions" style="margin-top:20px;">
+          <a class="btn btn-primary" href="https://wa.me/558586121078?text=Ol%C3%A1%20Samuel!%20Vim%20pelo%20site%20da%20SML" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+          <a class="btn btn-ghost" href="https://github.com/sml-pn" target="_blank" rel="noopener">Ver GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-band" id="contato">
+    <div class="cta-inner reveal">
+      <h2>Pronto para colocar seu site no ar?</h2>
+      <p>Me chama no WhatsApp com sua ideia e já te mando um orçamento fechado ainda hoje.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/558586121078?text=Ol%C3%A1%20SML!%20Quero%20um%20or%C3%A7amento" target="_blank" rel="noopener">Falar no WhatsApp agora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato rápido -->
+  <div class="contact-strip">
+    <div class="container contact-row">
+      <div class="contact-links">
+        <a href="https://wa.me/558586121078" target="_blank" rel="noopener">📱 +55 85 8612-1078</a>
+        <a href="https://instagram.com/sml_developer" target="_blank" rel="noopener">📸 @sml_developer</a>
+        <a href="https://github.com/sml-pn" target="_blank" rel="noopener">💻 @sml-pn</a>
+      </div>
+      <div class="muted">Trairi, Ceará • Atendimento Brasil</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 SML Developer — Samuel Pena. Trairi-CE, Brasil.</div>
+    <div><a href="https://sml-developer.onrender.com">Voltar ao portfólio ↑</a></div>
+  </div>
+</footer>
+
+<div class="cookie-bar" id="cookieBar">
+  <div class="container cookie-inner">
+    <p>Uso cookies essenciais para medir visitas. Sem rastreamento invasivo.</p>
+    <div class="cookie-actions">
+      <button class="btn-xs primary" id="cookieAccept">Aceitar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const rev = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); rev.unobserve(e.target);} });
+}, { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
+
+(function(){
+  const bar = document.getElementById('cookieBar');
+  const accept = document.getElementById('cookieAccept');
+  if(!localStorage.getItem('sml_cookie_v1')){ setTimeout(()=> bar.classList.add('show'), 900); }
+  accept.addEventListener('click', ()=>{
+    localStorage.setItem('sml_cookie_v1', 'granted');
+    bar.classList.remove('show');
+  });
+})();
+</script>
+</body>
+</html>
