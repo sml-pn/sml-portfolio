@@ -76,7 +76,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .proj{border-radius:22px;overflow:hidden;background:linear-gradient(180deg,#11182f,#0d1328);border:1px solid var(--line);transition:transform .22s var(--ease)}
 .proj:hover{transform:translateY(-4px);border-color:rgba(255,61,247,.30)}
 .proj-thumb{aspect-ratio:16/11;background:#0b1124;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
-.proj-thumb iframe{width:285%;height:285%;border:none;transform:scale(0.35);transform-origin:0 0;position:absolute;top:0;left:0;pointer-events:none;opacity:0.85}
+.proj-thumb iframe{width:285%;height:285%;border:none;transform:scale(0.35);transform-origin:0 0;position:absolute;top:0;left:0;pointer-events:none;opacity:0.85;transition:top 0.3s ease}
 .proj-thumb:hover iframe{opacity:1}
 .proj-body{padding:20px 20px 18px}
 .proj-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
@@ -140,6 +140,46 @@ document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
 </script>
 
 
+
+
+<script>
+// Efeito scroll automático nos iframes ao passar o mouse
+document.querySelectorAll('.proj-thumb').forEach(thumb => {
+    const iframe = thumb.querySelector('iframe');
+    if (!iframe) return;
+    
+    let scrollInterval;
+    let scrollPosition = 0;
+    let direction = 1; // 1 = desce, -1 = sobe
+    let isHovering = false;
+    
+    thumb.addEventListener('mouseenter', () => {
+        isHovering = true;
+        scrollPosition = 0;
+        direction = 1;
+        
+        scrollInterval = setInterval(() => {
+            if (!isHovering) return;
+            
+            // Move o iframe para cima/baixo simulando scroll
+            scrollPosition += direction * 1.5;
+            
+            if (scrollPosition >= 180 || scrollPosition <= 0) {
+                direction *= -1; // inverte direção ao chegar no limite
+            }
+            
+            iframe.style.top = -scrollPosition + 'px';
+        }, 30);
+    });
+    
+    thumb.addEventListener('mouseleave', () => {
+        isHovering = false;
+        clearInterval(scrollInterval);
+        scrollPosition = 0;
+        iframe.style.top = '0px';
+    });
+});
+</script>
 
 </body>
 </html>
