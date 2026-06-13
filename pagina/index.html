@@ -138,5 +138,48 @@ const rev=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isInters
 document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
 (function(){const bar=document.getElementById('cookieBar');const accept=document.getElementById('cookieAccept');if(!localStorage.getItem('sml_cookie_v1')){setTimeout(()=>bar.classList.add('show'),900)}accept.addEventListener('click',()=>{localStorage.setItem('sml_cookie_v1','granted');bar.classList.remove('show')})})();
 </script>
+
+<script>
+// Scroll automático nos iframes ao passar o mouse
+document.querySelectorAll('.proj-thumb').forEach(thumb => {
+    const iframe = thumb.querySelector('iframe');
+    if (!iframe) return;
+    
+    let scrollInterval;
+    let scrollDirection = 1; // 1 = desce, -1 = sobe
+    let scrollPosition = 0;
+    
+    thumb.addEventListener('mouseenter', () => {
+        // Inicia scroll automático
+        scrollInterval = setInterval(() => {
+            try {
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                const maxScroll = iframeDoc.body.scrollHeight - iframeDoc.documentElement.clientHeight;
+                
+                scrollPosition += scrollDirection * 2; // velocidade do scroll
+                
+                if (scrollPosition >= maxScroll || scrollPosition <= 0) {
+                    scrollDirection *= -1; // inverte direção
+                }
+                
+                iframe.contentWindow.scrollTo(0, scrollPosition);
+            } catch(e) {
+                // Se não conseguir acessar o iframe (cross-origin), para o scroll
+                clearInterval(scrollInterval);
+            }
+        }, 50);
+    });
+    
+    thumb.addEventListener('mouseleave', () => {
+        clearInterval(scrollInterval);
+        scrollPosition = 0;
+        scrollDirection = 1;
+        try {
+            iframe.contentWindow.scrollTo(0, 0);
+        } catch(e) {}
+    });
+});
+</script>
+
 </body>
 </html>
