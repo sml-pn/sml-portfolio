@@ -75,8 +75,8 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 @media(max-width:640px){.projects-grid{grid-template-columns:1fr}}
 .proj{border-radius:22px;overflow:hidden;background:linear-gradient(180deg,#11182f,#0d1328);border:1px solid var(--line);transition:transform .22s var(--ease)}
 .proj:hover{transform:translateY(-4px);border-color:rgba(255,61,247,.30)}
-.proj-thumb{aspect-ratio:16/11;background:#0b1124;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
-.proj-thumb iframe{width:285%;height:285%;border:none;transform:scale(0.35);transform-origin:0 0;position:absolute;top:0;left:0;pointer-events:none;opacity:0.85;transition:top 0.3s ease}
+.proj-thumb{aspect-ratio:16/11;background:#0b1124;border-bottom:1px solid var(--line);position:relative;overflow:hidden;display:flex;align-items:flex-start}
+.proj-thumb iframe{width:286%;height:286%;border:none;transform:scale(0.35);transform-origin:0 0;position:absolute;top:0;left:0;pointer-events:none;opacity:0.85;transition:top 0.5s ease}
 .proj-thumb:hover iframe{opacity:1}
 .proj-body{padding:20px 20px 18px}
 .proj-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
@@ -150,7 +150,7 @@ document.querySelectorAll('.proj-thumb').forEach(thumb => {
     
     let scrollInterval;
     let scrollPosition = 0;
-    let direction = 1; // 1 = desce, -1 = sobe
+    let direction = 1;
     let isHovering = false;
     
     thumb.addEventListener('mouseenter', () => {
@@ -161,15 +161,18 @@ document.querySelectorAll('.proj-thumb').forEach(thumb => {
         scrollInterval = setInterval(() => {
             if (!isHovering) return;
             
-            // Move o iframe para cima/baixo simulando scroll
-            scrollPosition += direction * 1.5;
+            // Move o iframe para mostrar a página inteira (285% de altura)
+            scrollPosition += direction * 2;
             
-            if (scrollPosition >= 180 || scrollPosition <= 0) {
-                direction *= -1; // inverte direção ao chegar no limite
+            // Limite máximo de scroll (altura total da página escalada)
+            const maxScroll = 520; // ajustado para mostrar toda a página
+            
+            if (scrollPosition >= maxScroll || scrollPosition <= 0) {
+                direction *= -1;
             }
             
             iframe.style.top = -scrollPosition + 'px';
-        }, 30);
+        }, 35);
     });
     
     thumb.addEventListener('mouseleave', () => {
