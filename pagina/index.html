@@ -72,7 +72,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 @media(max-width:640px){.projects-grid{grid-template-columns:1fr}}
 .proj{border-radius:22px;overflow:hidden;background:linear-gradient(180deg,#11182f,#0d1328);border:1px solid var(--line);transition:transform .22s var(--ease)}
 .proj:hover{transform:translateY(-4px);border-color:rgba(255,61,247,.30)}
-.proj-thumb{aspect-ratio:16/11;background:#0b1124;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.proj-thumb{aspect-ratio:16/11;background:#0b1124;border-bottom:1px solid var(--line);position:relative;overflow:visible}
 .proj-thumb iframe{width:286%;height:286%;border:none;transform:scale(0.35);transform-origin:0 0;position:absolute;top:0;left:0;pointer-events:none;opacity:0.85;transition:top 0.5s ease}
 .proj-thumb:hover iframe{opacity:1}
 .proj-body{padding:20px 20px 18px}
@@ -143,8 +143,8 @@ document.querySelectorAll('.proj-thumb').forEach(thumb => {
         isHovering = true; scrollPosition = 0; direction = 1;
         scrollInterval = setInterval(() => {
             if (!isHovering) return;
-            scrollPosition += direction * 3;
-            if (scrollPosition >= 380 || scrollPosition <= 0) direction *= -1;
+            scrollPosition += direction * 4;
+            if (scrollPosition >= 900 || scrollPosition <= 0) direction *= -1;
             iframe.style.top = -scrollPosition + 'px';
         }, 30);
     });
