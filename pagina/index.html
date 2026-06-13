@@ -75,9 +75,9 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 @media(max-width:640px){.projects-grid{grid-template-columns:1fr}}
 .proj{border-radius:22px;overflow:hidden;background:linear-gradient(180deg,#11182f,#0d1328);border:1px solid var(--line);transition:transform .22s var(--ease)}
 .proj:hover{transform:translateY(-4px);border-color:rgba(255,61,247,.30)}
-.proj-thumb{aspect-ratio:16/11;background:#0b1124;border-bottom:1px solid var(--line);position:relative;overflow:hidden;cursor:pointer}
-.proj-thumb iframe{width:285%;height:285%;border:none;transform:scale(0.35);transform-origin:0 0;position:absolute;top:0;left:0;pointer-events:none;transition:transform 0.3s ease,opacity 0.3s ease;opacity:0.85}
-.proj-thumb:hover iframe{pointer-events:auto;opacity:1;transform:scale(0.38)}
+.proj-thumb{aspect-ratio:16/11;background:#0b1124;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.proj-thumb iframe{width:285%;height:285%;border:none;transform:scale(0.35);transform-origin:0 0;position:absolute;top:0;left:0;pointer-events:none;opacity:0.85}
+.proj-thumb:hover iframe{opacity:1}
 .proj-body{padding:20px 20px 18px}
 .proj-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
 .pill{font-family:var(--ff-mono);font-size:.70rem;background:rgba(255,255,255,.045);border:1px solid var(--line);color:#a9b4cc;border-radius:999px;padding:4px 9px}
@@ -139,47 +139,7 @@ document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
 (function(){const bar=document.getElementById('cookieBar');const accept=document.getElementById('cookieAccept');if(!localStorage.getItem('sml_cookie_v1')){setTimeout(()=>bar.classList.add('show'),900)}accept.addEventListener('click',()=>{localStorage.setItem('sml_cookie_v1','granted');bar.classList.remove('show')})})();
 </script>
 
-<script>
-// Scroll automático nos iframes ao passar o mouse
-document.querySelectorAll('.proj-thumb').forEach(thumb => {
-    const iframe = thumb.querySelector('iframe');
-    if (!iframe) return;
-    
-    let scrollInterval;
-    let scrollDirection = 1; // 1 = desce, -1 = sobe
-    let scrollPosition = 0;
-    
-    thumb.addEventListener('mouseenter', () => {
-        // Inicia scroll automático
-        scrollInterval = setInterval(() => {
-            try {
-                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                const maxScroll = iframeDoc.body.scrollHeight - iframeDoc.documentElement.clientHeight;
-                
-                scrollPosition += scrollDirection * 2; // velocidade do scroll
-                
-                if (scrollPosition >= maxScroll || scrollPosition <= 0) {
-                    scrollDirection *= -1; // inverte direção
-                }
-                
-                iframe.contentWindow.scrollTo(0, scrollPosition);
-            } catch(e) {
-                // Se não conseguir acessar o iframe (cross-origin), para o scroll
-                clearInterval(scrollInterval);
-            }
-        }, 50);
-    });
-    
-    thumb.addEventListener('mouseleave', () => {
-        clearInterval(scrollInterval);
-        scrollPosition = 0;
-        scrollDirection = 1;
-        try {
-            iframe.contentWindow.scrollTo(0, 0);
-        } catch(e) {}
-    });
-});
-</script>
+
 
 </body>
 </html>
