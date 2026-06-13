@@ -11,7 +11,6 @@
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="SML Developer | Sites que vendem. Código que performa.">
 <meta property="og:description" content="Web Full Stack em Trairi-CE. Landing pages, sites institucionais e bio pages premium.">
-<meta property="og:type" content="website">
 <meta property="og:url" content="https://sml-developer.onrender.com/pagina/">
 <meta property="og:image" content="https://sml-developer.onrender.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,12 +23,10 @@
 html{scroll-behavior:smooth}
 body{margin:0;font-family:var(--ff);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
 h1,h2,h3{margin:0;line-height:1.12;letter-spacing:-0.022em;font-weight:700}
 h1{font-size:clamp(2.3rem,5.8vw,4.65rem);letter-spacing:-0.035em}
 h2{font-size:clamp(1.9rem,3.8vw,2.8rem)}
 .muted{color:var(--muted)}
-.mono{font-family:var(--ff-mono)}
 .container{width:min(1120px,calc(100% - 48px));margin-inline:auto}
 .section{padding:96px 0}
 @media(max-width:720px){.section{padding:72px 0}.container{width:min(1120px,calc(100% - 32px))}}
@@ -73,9 +70,9 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:980px){.projects-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.projects-grid{grid-template-columns:1fr}}
-.proj{border-radius:22px;overflow:hidden;background:linear-gradient(180deg,#11182f,#0d1328);border:1px solid var(--line);transition:transform .22s var(--ease);position:relative}
+.proj{border-radius:22px;overflow:hidden;background:linear-gradient(180deg,#11182f,#0d1328);border:1px solid var(--line);transition:transform .22s var(--ease)}
 .proj:hover{transform:translateY(-4px);border-color:rgba(255,61,247,.30)}
-.proj-thumb{aspect-ratio:16/11;background:#0b1124;border-bottom:1px solid var(--line);position:relative;overflow:hidden;display:flex;align-items:flex-start;border-radius:22px 22px 0 0}
+.proj-thumb{aspect-ratio:16/11;background:#0b1124;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
 .proj-thumb iframe{width:286%;height:286%;border:none;transform:scale(0.35);transform-origin:0 0;position:absolute;top:0;left:0;pointer-events:none;opacity:0.85;transition:top 0.5s ease}
 .proj-thumb:hover iframe{opacity:1}
 .proj-body{padding:20px 20px 18px}
@@ -136,53 +133,28 @@ footer{padding:34px 0 54px;color:var(--muted-2);font-size:.88rem}
 <script>
 const rev=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rev.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
-(function(){const bar=document.getElementById('cookieBar');const accept=document.getElementById('cookieAccept');if(!localStorage.getItem('sml_cookie_v1')){setTimeout(()=>bar.classList.add('show'),900)}accept.addEventListener('click',()=>{localStorage.setItem('sml_cookie_v1','granted');bar.classList.remove('show')})})();
-</script>
 
-
-
-
-<script>
-// Efeito scroll automático nos iframes ao passar o mouse
+// Scroll automático nos iframes ao passar o mouse
 document.querySelectorAll('.proj-thumb').forEach(thumb => {
     const iframe = thumb.querySelector('iframe');
     if (!iframe) return;
-    
-    let scrollInterval;
-    let scrollPosition = 0;
-    let direction = 1;
-    let isHovering = false;
-    
+    let scrollInterval, scrollPosition = 0, direction = 1, isHovering = false;
     thumb.addEventListener('mouseenter', () => {
-        isHovering = true;
-        scrollPosition = 0;
-        direction = 1;
-        
+        isHovering = true; scrollPosition = 0; direction = 1;
         scrollInterval = setInterval(() => {
             if (!isHovering) return;
-            
-            // Move o iframe para mostrar a página inteira (285% de altura)
-            scrollPosition += direction * 2;
-            
-            // Limite máximo de scroll (altura total da página escalada)
-            const maxScroll = 520; // ajustado para mostrar toda a página
-            
-            if (scrollPosition >= maxScroll || scrollPosition <= 0) {
-                direction *= -1;
-            }
-            
+            scrollPosition += direction * 3;
+            if (scrollPosition >= 380 || scrollPosition <= 0) direction *= -1;
             iframe.style.top = -scrollPosition + 'px';
-        }, 35);
+        }, 30);
     });
-    
     thumb.addEventListener('mouseleave', () => {
-        isHovering = false;
-        clearInterval(scrollInterval);
-        scrollPosition = 0;
-        iframe.style.top = '0px';
+        isHovering = false; clearInterval(scrollInterval); scrollPosition = 0; iframe.style.top = '0px';
     });
 });
-</script>
 
+// Cookie
+(function(){const bar=document.getElementById('cookieBar');const accept=document.getElementById('cookieAccept');if(!localStorage.getItem('sml_cookie_v1')){setTimeout(()=>bar.classList.add('show'),900)}accept.addEventListener('click',()=>{localStorage.setItem('sml_cookie_v1','granted');bar.classList.remove('show')})})();
+</script>
 </body>
 </html>
