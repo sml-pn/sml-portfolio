@@ -559,16 +559,9 @@ footer{
       <div class="hero-meta">Resposta em até 2h • Orçamento sem compromisso</div>
     </div>
 
-    <div class="hero-terminal-wrap reveal-image-wrapper">
-      <div class="reveal-image-container">
-        <img src="https://sml-developer.onrender.com/og-image.png" 
-             alt="Preview SML Developer" 
-             class="reveal-image" 
-             id="heroRevealImage"
-             style="width:100%; height:auto; display:block; clip-path: inset(0 100% 0 0);">
-        <div class="reveal-image-overlay"></div>
-      </div>
-      <div class="terminal-hint">↓ role para revelar</div>
+    <div class="hero-terminal-wrap">
+      <canvas id="page-builder" width="600" height="420" style="width:100%;max-width:420px;border-radius:24px;background:#0b1328;border:1px solid rgba(255,255,255,.12)"></canvas>
+      <div class="terminal-hint">↓ role para montar</div>
     </div>
   <div class="hero-scroll-hint">role para explorar</div>
 </section>
@@ -829,23 +822,55 @@ ScrollTrigger.create({
   onUpdate: self => { progressBar.style.transform = `scaleX(${self.progress})`; }
 });
 
-// HERO: image reveal on scroll
-const heroImage = document.getElementById('heroRevealImage');
-if (!reduceMotion && heroImage) {
-  gsap.to(heroImage, {
-    clipPath: 'inset(0 0% 0 0)',
-    ease: 'power2.inOut',
-    scrollTrigger: {
-      trigger: '#hero',
-      start: 'top top',
-      end: '+=600',
-      scrub: 1.2,
-      pin: true,
-      pinSpacing: true
-    }
-  });
-} else if (heroImage) {
-  heroImage.style.clipPath = 'inset(0 0% 0 0)';
+// HERO: Canvas animado - blocos montando a landing page
+const canvas = document.getElementById('page-builder');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  const blocks = [
+    {x:80, y:-60, w:440, h:38, color:'#0f1b38', label:'SML Developer', ty:40},
+    {x:100, y:-60, w:260, h:72, color:'#00f5ff', label:'Sites que vendem', ty:100, textColor:'#04131d'},
+    {x:380, y:-60, w:120, h:72, color:'#ff3df7', ty:100},
+    {x:80, y:-60, w:130, h:90, color:'#131d3a', ty:200},
+    {x:235, y:-60, w:130, h:90, color:'#131d3a', ty:200},
+    {x:390, y:-60, w:130, h:90, color:'#131d3a', ty:200},
+    {x:80, y:-60, w:440, h:48, color:'#0f1b38', label:'WhatsApp • @sml_developer', ty:310}
+  ];
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    blocks.forEach(b => {
+      ctx.fillStyle = b.color;
+      roundRect(ctx, b.x, b.y, b.w, b.h, 12);
+      if(b.label){
+        ctx.fillStyle = b.textColor || '#9aa3b8';
+        ctx.font = '13px "JetBrains Mono", monospace';
+        ctx.fillText(b.label, b.x+14, b.y + b.h/2 + 4);
+      }
+    });
+  }
+  function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();ctx.fill()}
+
+  if(!reduceMotion){
+    blocks.forEach((b,i)=>{
+      gsap.fromTo(b, {y:-60}, {
+        y: b.ty,
+        ease: 'back.out(1.4)',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom 60%',
+          scrub: 0.6
+        },
+        delay: i*0.04,
+        onUpdate: draw
+      });
+    });
+  } else {
+    blocks.forEach(b => b.y = b.ty);
+  }
+  draw();
 }
 
 // Services reveal
