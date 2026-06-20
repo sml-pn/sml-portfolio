@@ -3,174 +3,944 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SML Developer | Sites e Landing Pages em Trairi-CE</title>
-<meta name="description" content="Samuel Pena — SML Developer. Web Full Stack em Trairi-CE. Sites institucionais, landing pages de alta conversão e bio pages premium.">
-<link rel="canonical" href="https://sml-developer.onrender.com/pagina/">
-<meta name="theme-color" content="#060913">
-<meta name="color-scheme" content="dark">
-<meta name="robots" content="index, follow">
+<title>SML Developer — Samuel Pena | Sites que vendem. Código que performa. Trairi-CE</title>
+<meta name="description" content="Samuel Pena, desenvolvedor Full Stack em Trairi, Ceará. Landing pages, sites institucionais e bio pages premium que carregam rápido, ranqueiam bem e convertem no WhatsApp.">
+<link rel="icon" type="image/png" href="https://sml-developer.onrender.com/favicon.png">
 <meta property="og:title" content="SML Developer | Sites que vendem. Código que performa.">
 <meta property="og:description" content="Web Full Stack em Trairi-CE. Landing pages, sites institucionais e bio pages premium.">
-<meta property="og:url" content="https://sml-developer.onrender.com/pagina/">
 <meta property="og:image" content="https://sml-developer.onrender.com/og-image.png">
+<meta property="og:url" content="https://sml-developer.onrender.com/pagina/">
+<meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
 <style>
-:root{--bg:#060913;--surface:#0a0f1e;--cyan:#00f5ff;--magenta:#ff3df7;--text:#e8ecf5;--muted:#9aa3b8;--muted-2:#6b748c;--line:rgba(232,236,245,0.09);--line-strong:rgba(232,236,245,0.16);--radius:20px;--shadow:0 20px 60px rgba(0,0,0,0.45);--ff:"Space Grotesk",system-ui,sans-serif;--ff-mono:"JetBrains Mono",monospace;--ease:cubic-bezier(.22,1,.36,1)}
-*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg: #060913;
+  --surface: #0a0f1e;
+  --surface-2: #10172b;
+  --surface-3: #151d34;
+  --cyan: #00f5ff;
+  --magenta: #ff3df7;
+  --text: #e8ecf5;
+  --muted: #9aa3b8;
+  --muted-2: #6b748c;
+  --border: rgba(232,236,245,0.09);
+  --border-strong: rgba(232,236,245,0.16);
+  --radius: 20px;
+  --radius-sm: 14px;
+  --shadow: 0 20px 70px rgba(0,0,0,.45);
+  --maxw: 1120px;
+  --font-ui: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+*{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--ff);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+body{
+  margin:0;
+  font-family:var(--font-ui);
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
 a{color:inherit;text-decoration:none}
-h1,h2,h3{margin:0;line-height:1.12;letter-spacing:-0.022em;font-weight:700}
-h1{font-size:clamp(2.3rem,5.8vw,4.65rem);letter-spacing:-0.035em}
-h2{font-size:clamp(1.9rem,3.8vw,2.8rem)}
-.muted{color:var(--muted)}
-.container{width:min(1120px,calc(100% - 48px));margin-inline:auto}
-.section{padding:96px 0}
-@media(max-width:720px){.section{padding:72px 0}.container{width:min(1120px,calc(100% - 32px))}}
-body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.023) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px);background-size:64px 64px;opacity:.45;pointer-events:none;z-index:-2}
-.nav-wrap{position:sticky;top:0;z-index:100;background:rgba(6,9,19,0.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.03rem}
-.brand-mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#0a1128,#111e3a);border:1px solid var(--line-strong);display:grid;place-items:center;font-family:var(--ff-mono);font-size:13px;color:var(--cyan)}
-.nav-links{display:flex;align-items:center;gap:30px}
-.nav-links a{color:var(--muted);font-size:.93rem;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:var(--text)}
-.nav-cta{border:1px solid var(--line-strong);padding:10px 16px;border-radius:999px;color:var(--text)!important;font-size:.88rem!important;font-weight:600!important}
-.nav-cta:hover{border-color:rgba(0,245,255,.45);background:rgba(0,245,255,.05)}
-@media(max-width:880px){.nav-links{display:none}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;font-size:.98rem;transition:transform .18s var(--ease),box-shadow .2s;border:1px solid transparent;cursor:pointer;white-space:nowrap}
-.btn-primary{background:linear-gradient(100deg,#00e8f3 0%,#00f5ff 100%);color:#04131d;box-shadow:0 8px 28px rgba(0,245,255,.18)}
-.btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 36px rgba(0,245,255,.26)}
-.btn-ghost{background:rgba(255,255,255,.032);border-color:var(--line-strong);color:var(--text)}
-.btn-ghost:hover{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.055)}
-.hero{position:relative;padding:106px 0 86px;overflow:hidden}
-.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
-.hero h1 .grad{background:linear-gradient(90deg,#eaf8ff 0%,#8efcff 38%,#ff8dfb 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-sub{color:var(--muted);font-size:clamp(1.05rem,1.5vw,1.18rem);max-width:48ch;margin:20px 0 30px}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
-.badge-online{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border-radius:999px;background:rgba(0,245,255,.06);border:1px solid rgba(0,245,255,.18);color:#b9f9ff;font-family:var(--ff-mono);font-size:.72rem;margin-bottom:22px}
-.live-dot{width:7px;height:7px;border-radius:50%;background:#27ff8d;box-shadow:0 0 12px rgba(39,255,141,.7);animation:pulse-live 1.8s ease-in-out infinite}
-@keyframes pulse-live{0%,100%{opacity:1}50%{opacity:.45}}
-@media(max-width:980px){.hero-inner{grid-template-columns:1fr;gap:44px}.hero{padding-top:68px}}
-.sec-head{max-width:640px;margin-bottom:46px}
-.sec-kicker{font-family:var(--ff-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#7ddfff;margin-bottom:12px}
-.sec-head h2{margin-bottom:12px}
-.sec-head p{color:var(--muted);font-size:1.04rem;margin:0}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-@media(max-width:980px){.services-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.services-grid{grid-template-columns:1fr}}
-.svc-card{background:linear-gradient(180deg,rgba(21,28,52,.72),rgba(13,18,35,.78));border:1px solid var(--line);border-radius:20px;padding:26px 24px 24px;transition:border-color .22s,transform .22s var(--ease)}
-.svc-card:hover{border-color:rgba(0,245,255,.32);transform:translateY(-3px);box-shadow:0 18px 50px rgba(0,0,0,.38)}
-.svc-ico{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid var(--line);display:grid;place-items:center;color:#b8f9ff;margin-bottom:16px}
-.svc-card h3{font-size:1.12rem;margin-bottom:8px}
-.svc-card p{color:var(--muted);font-size:.95rem;margin:0}
-.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media(max-width:980px){.projects-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.projects-grid{grid-template-columns:1fr}}
-.proj{border-radius:22px;overflow:hidden;background:linear-gradient(180deg,#11182f,#0d1328);border:1px solid var(--line);transition:transform .22s var(--ease)}
-.proj:hover{transform:translateY(-4px);border-color:rgba(255,61,247,.30)}
-.proj-thumb{aspect-ratio:16/11;background:#0b1124;border-bottom:1px solid var(--line);position:relative;overflow:visible}
-.proj-thumb iframe{width:220%;height:220%;border:none;transform:scale(0.45);transform-origin:0 0;position:absolute;top:0;left:0;pointer-events:none;opacity:0.85;transition:top 0.5s ease}
-.proj-thumb:hover iframe{opacity:1}
-.proj-body{padding:20px 20px 18px}
-.proj-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.pill{font-family:var(--ff-mono);font-size:.70rem;background:rgba(255,255,255,.045);border:1px solid var(--line);color:#a9b4cc;border-radius:999px;padding:4px 9px}
-.proj-body h3{font-size:1.18rem;margin-bottom:6px}
-.proj-body p{color:var(--muted);font-size:.94rem;margin:0 0 14px}
-.proj-link{font-weight:600;font-size:.93rem;color:#bffaff;display:inline-flex;align-items:center;gap:7px}
-.proj-link:hover{color:#fff}
-.process{background:radial-gradient(900px 520px at 80% -10%,rgba(255,61,247,.055),transparent 60%),linear-gradient(180deg,rgba(255,255,255,.015),transparent 30%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-@media(max-width:900px){.process-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.process-grid{grid-template-columns:1fr}}
-.step{padding:26px 24px;border-radius:18px;background:rgba(255,255,255,.018);border:1px solid var(--line)}
-.step-num{font-family:var(--ff-mono);font-size:.74rem;color:#7cfdff;margin-bottom:10px}
-.step h3{font-size:1.12rem;margin-bottom:8px}
-.step p{color:var(--muted);margin:0;font-size:.95rem}
-.about-grid{display:grid;grid-template-columns:.95fr 1.15fr;gap:44px;align-items:center}
-@media(max-width:900px){.about-grid{grid-template-columns:1fr}}
-.about-photo{border-radius:24px;background:linear-gradient(170deg,#112040,#0b1328);border:1px solid var(--line-strong);aspect-ratio:4/4.6;display:grid;place-items:center;position:relative;overflow:hidden}
-.about-photo-inner{width:160px;height:160px;border-radius:28px;background:radial-gradient(circle at 30% 30%,#0f213d,#08101f);border:1px solid rgba(255,255,255,.10);display:grid;place-items:center;color:#8ffdff;font-family:var(--ff-mono);font-size:2rem;font-weight:600}
-.cta-band{padding:82px 0;background:radial-gradient(900px 500px at 25% -10%,rgba(0,245,255,.069),transparent 60%),radial-gradient(700px 420px at 90% 120%,rgba(255,61,247,.054),transparent 60%),linear-gradient(180deg,rgba(255,255,255,.012),transparent);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
-.cta-inner{max-width:780px;margin:0 auto}
-.cta-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.contact-strip{padding:34px 0 64px;border-bottom:1px solid var(--line)}
-.contact-row{display:flex;flex-wrap:wrap;gap:18px 34px;align-items:center;justify-content:space-between}
-.contact-links{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted)}
-.contact-links a{display:inline-flex;align-items:center;gap:8px;font-weight:500}
-.contact-links a:hover{color:var(--text)}
-footer{padding:34px 0 54px;color:var(--muted-2);font-size:.88rem}
-.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-.reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
-.cookie-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:200;background:rgba(12,17,35,.94);border:1px solid var(--line-strong);border-radius:16px;padding:16px;display:none;backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+img{display:block;max-width:100%}
+p{line-height:1.7}
+
+/* Scroll progress */
+.scroll-progress{
+  position:fixed; top:0; left:0; right:0; height:3px; z-index:200;
+  background: rgba(255,255,255,.06);
+}
+.scroll-progress__bar{
+  height:100%; width:100%;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+/* Scroll Magic badge */
+.scroll-magic-badge{
+  position:fixed; top:14px; right:16px; z-index:190;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .02em;
+  color: #c8d2e5;
+  background: rgba(10,15,30,.72);
+  border:1px solid var(--border);
+  padding:8px 12px;
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.28);
+}
+.scroll-magic-badge strong{ color: var(--cyan); font-weight:600; }
+.scroll-magic-badge span.sep{ opacity:.55; margin:0 5px;}
+
+/* Top Nav */
+.site-nav{
+  position: sticky;
+  top: 3px;
+  z-index:120;
+  background: linear-gradient(180deg, rgba(6,9,19,.88) 60%, rgba(6,9,19,0));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.nav-inner{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding: 16px 24px;
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+}
+.logo{
+  font-weight:700; font-size:17px; letter-spacing:-.01em;
+}
+.logo-dot{ color: var(--cyan); }
+.nav-links{ display:flex; gap:28px; font-size:14.5px; color: var(--muted);}
+.nav-links a:hover{ color:var(--text); }
+.nav-right{ display:flex; align-items:center; gap:14px;}
+
+/* Container */
+.container{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+.section{ padding: 92px 0; position:relative; }
+.eyebrow{
+  display:inline-block; font-family:var(--font-mono); font-size:12.5px;
+  color: var(--cyan);
+  letter-spacing:.04em; margin-bottom:14px;
+}
+.section-head{ max-width:640px; margin-bottom:48px; }
+.section-head h2{
+  font-size: clamp(30px, 4.2vw, 48px);
+  line-height:1.06; letter-spacing:-.022em; margin:0 0 14px;
+}
+.section-head p{ color:var(--muted); font-size:18px; margin:0; }
+
+/* Buttons */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:15px 22px;
+  border-radius: 14px;
+  font-weight:600; font-size:15.5px;
+  transition: transform .15s ease, background .2s, border-color .2s, box-shadow .2s;
+  white-space:nowrap;
+  position:relative;
+  border:1px solid transparent;
+  cursor:pointer;
+}
+.btn--primary{
+  background: linear-gradient(100deg, #00e4ec 0%, #00f5ff 45%, #7d7dff 95%);
+  color:#04111a;
+  box-shadow: 0 10px 32px rgba(0,245,255,.18), inset 0 1px 0 rgba(255,255,255,.45);
+}
+.btn--primary:hover{ transform: translateY(-1px); }
+.btn--ghost{
+  background: rgba(255,255,255,.032);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.btn--ghost:hover{ background: rgba(255,255,255,.062); border-color: rgba(255,255,255,.24);}
+.btn--sm{ padding:10px 16px; font-size:13.8px; border-radius:12px;}
+.btn svg{ width:17px; height:17px; margin-left:8px; opacity:.8;}
+
+/* HERO */
+.hero{
+  min-height: calc(100svh - 70px);
+  position:relative;
+  display:flex; align-items:center;
+  overflow:hidden;
+  padding: 64px 0 80px;
+}
+.hero-grid{
+  display:grid; grid-template-columns: 1.15fr .85fr; gap:60px; align-items:center;
+  width:100%;
+}
+.live-badge{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family: var(--font-mono);
+  font-size:12.5px; color:#c9d4e8;
+  border:1px solid var(--border-strong);
+  background: rgba(255,255,255,.025);
+  padding:8px 13px; border-radius:999px;
+  margin-bottom: 22px;
+}
+.live-dot{
+  width:8px; height:8px; border-radius:50%; background:#27e88a;
+  box-shadow:0 0 14px rgba(39,232,138,.55);
+  animation: pulseDot 1.8s infinite;
+}
+@keyframes pulseDot{ 0%,100%{transform:scale(1)} 50%{transform:scale(.78)} }
+.hero-copy h1{
+  font-size: clamp(40px, 6.2vw, 74px);
+  line-height:.95;
+  letter-spacing:-.038em;
+  margin:0 0 18px;
+  font-weight:700;
+}
+.hero-copy .lead{
+  font-size: clamp(17px,1.8vw,20px);
+  color: var(--muted);
+  max-width: 500px;
+  margin:0 0 30px;
+}
+.hero-ctas{ display:flex; flex-wrap:wrap; gap:12px; margin-bottom:16px;}
+.hero-meta{
+  font-size:13.3px; color: var(--muted-2);
+}
+.hero-scroll-hint{
+  position:absolute; left:50%; bottom:22px; transform:translateX(-50%);
+  font-family:var(--font-mono); font-size:11px; color:#65718a; letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.hero-terminal-wrap{ position:relative; z-index:2; }
+.terminal{
+  background: linear-gradient(180deg, #0b1122, #0b1126);
+  border:1px solid rgba(0,245,255,.18);
+  border-radius: var(--radius);
+  box-shadow: 0 30px 90px rgba(0,0,0,.55), 0 0 80px rgba(0,245,255,.055), inset 0 1px 0 rgba(255,255,255,.05);
+  overflow:hidden;
+}
+.terminal-bar{
+  display:flex; align-items:center; gap:7px;
+  padding:14px 16px;
+  border-bottom:1px solid rgba(255,255,255,.065);
+  font-family:var(--font-mono); font-size:11.5px; color:#637090;
+}
+.terminal-bar span{ width:10px; height:10px; border-radius:50%; background:#24304d; display:block;}
+.terminal-bar span:nth-child(1){ background:#ff5f57;}
+.terminal-bar span:nth-child(2){ background:#febc2e;}
+.terminal-bar span:nth-child(3){ background:#28c840;}
+.terminal-bar em{ margin-left:auto; font-style:normal; }
+.code-block{
+  font-family:var(--font-mono);
+  font-size:12.65px;
+  line-height:1.78;
+  color:#c6d2ea;
+  padding:22px 22px 24px;
+  margin:0;
+  min-height: 372px;
+  white-space:pre-wrap;
+}
+.code-block .c{ color:#5d6987; }
+.code-block .b{ color: var(--cyan); }
+.code-block .p{ color: #ff7ad9; }
+.code-block .y{ color: #ffd76a; }
+.code-block .g{ color: #78f0b8; }
+.terminal-hint{
+  padding: 10px 18px 16px;
+  font-family:var(--font-mono); font-size:11px; color:#52607a;
+}
+.orb{
+  position:absolute; border-radius:50%; filter: blur(90px); opacity:.32; pointer-events:none;
+}
+.orb--cyan{ width:520px; height:520px; background: radial-gradient(circle, rgba(0,245,255,.5), transparent 70%); top:-80px; right:-85px;}
+.orb--magenta{ width:420px; height:420px; background: radial-gradient(circle, rgba(255,61,247,.38), transparent 70%); bottom:-90px; left:-60px;}
+
+/* Services */
+.services-grid{
+  display:grid; grid-template-columns: repeat(3, 1fr); gap:18px;
+}
+.service-card{
+  background: linear-gradient(180deg, rgba(255,255,255,.032), rgba(255,255,255,.017));
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px 24px 24px;
+  transition: border-color .25s, transform .25s, background .25s;
+}
+.service-card:hover{
+  border-color: rgba(0,245,255,.32);
+  transform: translateY(-3px);
+  background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+}
+.svc-icon{
+  width:44px; height:44px; border-radius:12px;
+  display:grid; place-items:center;
+  background: rgba(0,245,255,.06);
+  border:1px solid rgba(0,245,255,.15);
+  color:#8dfaff;
+  margin-bottom:16px;
+}
+.svc-icon.mag{ background: rgba(255,61,247,.065); border-color: rgba(255,61,247,.18); color:#ffb2f9;}
+.service-card h3{ margin:0 0 8px; font-size:19px; letter-spacing:-.01em;}
+.service-card p{ margin:0; color: var(--muted); font-size:15.2px; line-height:1.6;}
+
+/* Projetos / Horizontal */
+.projects-section{
+  padding: 90px 0 40px;
+  background: radial-gradient(900px 500px at 80% -10%, rgba(255,61,247,.055), transparent),
+              radial-gradient(900px 500px at 10% 100%, rgba(0,245,255,.045), transparent);
+  border-top:1px solid rgba(255,255,255,.05);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.projects-pin{
+  position:relative;
+  overflow:hidden;
+}
+.projects-intro{
+  max-width:var(--maxw); margin:0 auto; padding:0 24px 34px;
+}
+.projects-intro h2{ font-size: clamp(30px, 4.2vw, 52px); margin:0 0 10px; letter-spacing:-.022em;}
+.projects-intro p{ color:var(--muted); margin:0; font-size:17.5px; }
+.projects-track{
+  display:flex; gap:26px;
+  padding: 12px 24px 18px;
+  width: max-content;
+}
+.project-slide{
+  width: min(820px, 78vw);
+  flex: 0 0 auto;
+  background: linear-gradient(180deg, #0d1429, #0b1122);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius: 24px;
+  overflow:hidden;
+  box-shadow: var(--shadow);
+}
+.project-media{
+  height: 340px;
+  background: #0b1328;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  position:relative;
+  overflow:hidden;
+}
+.project-browserbar{
+  position:absolute; top:0; left:0; right:0; height:38px;
+  background: rgba(255,255,255,.035);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  display:flex; align-items:center; padding:0 14px; gap:7px;
+  font-family:var(--font-mono); font-size:11px; color:#6f7b96;
+}
+.project-browserbar span.dot{width:8px;height:8px;border-radius:50%;background:#24304d;}
+.project-shot{
+  position:absolute; inset:38px 0 0 0;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-mono); font-size:13px; color:#65749a;
+  background: linear-gradient(160deg, rgba(0,245,255,.07), rgba(255,61,247,.055));
+}
+.project-shot-inner{
+  text-align:center; padding:20px;
+}
+.project-shot-inner .fake-h1{
+  font-family: var(--font-ui); font-weight:700; font-size:28px; color:#dfe7f7; margin-bottom:8px; letter-spacing:-.015em;
+}
+.project-shot-inner .fake-sub{ color:#8a95ad; font-size:13.5px;}
+.shot-pill{
+  display:inline-flex; margin-top:13px; font-size:11.5px; padding:6px 10px; border-radius:999px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.09); color:#b9c5dc;
+}
+.project-body{ padding: 24px 26px 26px;}
+.project-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+.tag{
+  font-family:var(--font-mono); font-size:11px; color:#96a6c3;
+  background: rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.09);
+  padding:5px 10px; border-radius:999px;
+}
+.project-body h3{ margin:0 0 8px; font-size:26px; letter-spacing:-.015em;}
+.project-body p{ margin:0 0 16px; color: var(--muted);}
+.project-link{
+  font-weight:600; font-size:15px;
+  color: var(--cyan);
+}
+.project-link:hover{ text-decoration:underline; text-underline-offset:3px;}
+.project-count{
+  font-family:var(--font-mono); font-size:12px; color:#647292; margin-bottom:6px;
+}
+.projects-scroll-hint{
+  text-align:center; color:#5c677f; font-family:var(--font-mono); font-size:11.5px; padding: 16px 24px 30px;
+}
+
+/* Processo */
+.timeline-wrap{
+  display:grid; grid-template-columns: 130px 1fr; gap:32px;
+  max-width: 820px;
+}
+.timeline-rail{
+  position:relative; width:2px; background: rgba(255,255,255,.1); margin-left:16px; border-radius:2px;
+  min-height:520px;
+}
+.timeline-fill{
+  position:absolute; left:0; top:0; width:100%; height:0%;
+  background: linear-gradient(180deg, var(--cyan), #7d6fff 65%, var(--magenta));
+  border-radius:2px;
+  box-shadow: 0 0 20px rgba(0,245,255,.24);
+}
+.timeline-steps{ display:flex; flex-direction:column; gap:56px; padding-top:2px; }
+.timeline-step{ position:relative;}
+.t-step-num{
+  font-family:var(--font-mono); font-size:12.5px; color:#74f7ff; margin-bottom:6px;
+}
+.timeline-step h3{ margin:0 0 8px; font-size:26px; letter-spacing:-.014em;}
+.timeline-step p{ margin:0; color:var(--muted); max-width:520px; font-size:16.8px;}
+.t-dot{
+  position:absolute; left:-44px; top:6px; width:14px; height:14px; border-radius:50%;
+  background:#0d1326; border:2px solid #3b445e;
+  box-shadow: 0 0 0 4px rgba(9,13,28,.9);
+  transition: border-color .2s, background .2s, box-shadow .2s;
+}
+.t-dot.active{ border-color: var(--cyan); background: var(--cyan); box-shadow: 0 0 16px rgba(0,245,255,.5), 0 0 0 4px rgba(9,13,28,.9);}
+
+/* Sobre */
+.sobre-card{
+  display:grid; grid-template-columns: 108px 1fr; gap:26px; align-items:start;
+  background: linear-gradient(180deg, rgba(255,255,255,.034), rgba(255,255,255,.016));
+  border:1px solid var(--border);
+  border-radius: 24px;
+  padding: 30px;
+  max-width: 860px;
+  box-shadow: var(--shadow);
+}
+.avatar{
+  width:108px; height:108px; border-radius: 22px;
+  background: linear-gradient(135deg, #13203b, #1d2d54);
+  border:1px solid rgba(255,255,255,.1);
+  display:grid; place-items:center;
+  font-weight:700; font-size:34px; letter-spacing:-.02em;
+  color:#bfefff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+}
+.sobre-card h3{ margin:2px 0 10px; font-size:30px; letter-spacing:-.014em;}
+.sobre-card p{ margin:0; color: var(--muted); font-size:17.5px;}
+.sobre-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+.sobre-tags span{
+  font-family:var(--font-mono); font-size:11.3px; color:#9fb2cf;
+  background:rgba(255,255,255,.038); border:1px solid rgba(255,255,255,.085);
+  padding:6px 10px; border-radius: 999px;
+}
+
+/* CTA final */
+.cta-final{
+  padding: 100px 0 96px;
+  text-align:center;
+  background: radial-gradient(700px 420px at 50% 0%, rgba(0,245,255,.065), transparent 70%),
+              radial-gradient(600px 420px at 70% 10%, rgba(255,61,247,.043), transparent 70%);
+  border-top:1px solid rgba(255,255,255,.055);
+}
+.cta-final h2{
+  font-size: clamp(34px, 5.3vw, 60px);
+  line-height:1.04; letter-spacing:-.025em; margin:0 0 14px;
+}
+.cta-final p{ color:var(--muted); font-size:18px; margin:0 0 26px;}
+
+/* Footer */
+footer{
+  border-top:1px solid rgba(255,255,255,.07);
+  padding: 30px 0 42px;
+  color:#79849d;
+  font-size:14px;
+}
+.footer-inner{
+  max-width:var(--maxw); margin:0 auto; padding:0 24px;
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px;
+}
+.footer-links{ display:flex; gap:20px; flex-wrap:wrap; }
+.footer-links a{ color:#aab5ca; }
+.footer-links a:hover{ color: var(--text); }
+
+/* Reveal helpers */
+.reveal{ opacity:0; transform: translateY(28px); }
+
+/* Utilities */
+.muted{ color:var(--muted); }
+
+/* Cookie bar */
+.cookie-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:200;background:rgba(12,17,35,.94);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px;display:none;backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(0,0,0,.45)}
 .cookie-bar.show{display:block}
 .cookie-inner{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between}
 .cookie-inner p{margin:0;color:var(--muted);font-size:.92rem}
-.btn-xs{min-height:40px;padding:0 14px;border-radius:999px;font-weight:600;font-size:.88rem;cursor:pointer;border:1px solid var(--line-strong);background:rgba(255,255,255,.04);color:var(--text)}
+.btn-xs{min-height:40px;padding:0 14px;border-radius:999px;font-weight:600;font-size:.88rem;cursor:pointer;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text)}
 .btn-xs.primary{background:#e9eef8;color:#09111f;border-color:transparent}
+
+/* Powered by */
+.powered-by{position:fixed;bottom:12px;right:12px;opacity:0.22;font-size:0.62rem;color:#fff;z-index:999;font-family:var(--font-mono);pointer-events:none}
+
+/* Responsive */
+@media (max-width: 980px){
+  .hero-grid{ grid-template-columns: 1fr; gap:34px;}
+  .hero{ padding-top:38px;}
+  .code-block{ min-height: 298px;}
+  .services-grid{ grid-template-columns: repeat(2, 1fr);}
+  .project-slide{ width: min(760px, 84vw); }
+  .project-media{ height: 270px; }
+}
+@media (max-width: 640px){
+  .nav-links{ display:none; }
+  .nav-inner{ padding: 13px 18px;}
+  .container{ padding: 0 18px; }
+  .section{ padding: 74px 0;}
+  .hero-copy h1{ font-size: clamp(38px, 10vw, 52px); }
+  .hero-ctas{ flex-direction:column; align-items:stretch; }
+  .btn{ width:100%; justify-content:center; }
+  .services-grid{ grid-template-columns: 1fr; }
+  .project-slide{ width: 86vw; }
+  .project-media{ height: 220px; }
+  .timeline-wrap{ grid-template-columns: 1fr; }
+  .timeline-rail{ display:none; }
+  .t-dot{ display:none;}
+  .timeline-steps{ gap: 36px; }
+  .sobre-card{ grid-template-columns: 1fr; }
+  .avatar{ width:84px; height:84px; border-radius:18px; font-size:27px;}
+  .scroll-magic-badge{
+    top:auto; bottom:12px; right:12px;
+    font-size:10.2px; padding:7px 10px;
+  }
+  .hero-scroll-hint{ display:none; }
+  .footer-inner{ flex-direction:column; align-items:flex-start; }
+}
+@media (max-width: 390px){
+  .project-slide{ width: 90vw; }
+  .project-body h3{ font-size:22px; }
+  .code-block{ font-size: 11.8px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .live-dot{ animation: none; }
+}
 </style>
 </head>
 <body>
-<div class="nav-wrap"><nav class="container nav"><a class="brand" href="https://sml-developer.onrender.com"><span class="brand-mark">&lt;/&gt;</span><span>SML Developer</span></a><div class="nav-links"><a href="#servicos">Serviços</a><a href="#projetos">Projetos</a><a href="#processo">Processo</a><a href="#sobre">Sobre</a><a class="nav-cta" href="https://wa.me/558586121078" target="_blank" rel="noopener"><i data-lucide="message-circle" style="width:18px;height:18px;"></i> <i data-lucide="message-circle" style="width:18px;height:18px;"></i> Falar no WhatsApp</a></div></nav></div>
-<header class="hero"><div class="container hero-inner"><div class="hero-copy reveal"><div class="badge-online"><span class="live-dot"></span>Online agora • Trairi-CE</div><h1>Sites que vendem.<br><span class="grad">Código que performa.</span></h1><p class="hero-sub">Web Full Stack em Trairi-CE. Landing pages, sites institucionais e bio pages premium.</p><div class="hero-ctas"><a class="btn btn-primary" href="https://wa.me/558586121078" target="_blank" rel="noopener"><i data-lucide="message-circle" style="width:18px;height:18px;"></i> <i data-lucide="message-circle" style="width:18px;height:18px;"></i> Falar no WhatsApp</a><a class="btn btn-ghost" href="#projetos">Ver projetos</a></div></div><div class="hero-right reveal" style="display:flex;justify-content:center;align-items:center"><div style="width:300px;height:340px;border-radius:28px;background:linear-gradient(170deg,#0a1128,#111e3a);border:1px solid var(--line-strong);display:grid;place-items:center;font-family:var(--ff-mono);font-size:4rem;color:var(--cyan)">&lt;SML/&gt;</div></div></div></header>
-<section class="section" id="servicos"><div class="container"><div class="sec-head reveal"><div class="sec-kicker">Serviços</div><h2>Do primeiro pixel ao primeiro lead</h2><p>Sites enxutos, rápidos e feitos para converter.</p></div><div class="services-grid"><article class="svc-card reveal"><div class="svc-ico"><i data-lucide="zap" style="width:20px;height:20px;"></i></div><h3>Landing Pages</h3><p>Páginas de alta conversão, copy direta e Core Web Vitals verdes.</p></article><article class="svc-card reveal"><div class="svc-ico"><i data-lucide="building-2" style="width:20px;height:20px;"></i></div><h3>Sites Institucionais</h3><p>Site profissional, leve e com foco em autoridade e SEO local.</p></article><article class="svc-card reveal"><div class="svc-ico"><i data-lucide="link-2" style="width:20px;height:20px;"></i></div><h3>Bio Page Pro</h3><p>Link na bio com cara de marca premium. Visual impecável.</p></article><article class="svc-card reveal"><div class="svc-ico"><i data-lucide="search" style="width:20px;height:20px;"></i></div><h3>SEO Local</h3><p>Google Perfil otimizado para aparecer em Trairi e região.</p></article><article class="svc-card reveal"><div class="svc-ico"><i data-lucide="rocket" style="width:20px;height:20px;"></i></div><h3>Performance</h3><p>Menos de 70kb de JS. Rápido até no 4G.</p></article><article class="svc-card reveal"><div class="svc-ico"><i data-lucide="smartphone" style="width:20px;height:20px;"></i></div><h3>Integração</h3><p>WhatsApp, Meta Pixel, GA4. Tudo medido.</p></article></div></div></section>
-<section class="section" id="projetos"><div class="container"><div class="sec-head reveal"><div class="sec-kicker">Cases recentes</div><h2>Projetos que geram contato</h2></div><div class="projects-grid">
-<article class="proj reveal"><div class="proj-thumb"><iframe src="https://ameicetim.onrender.com" loading="lazy" title="Amei Cetim" sandbox="allow-scripts allow-same-origin"></iframe><div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,15,30,0.7));pointer-events:none;z-index:1"></div></div><div class="proj-body"><div class="proj-tags"><span class="pill">Landing</span><span class="pill">WhatsApp</span></div><h3>Amei Cetim</h3><p>Landing page para marca de cetim premium com carrinho inteligente.</p><a class="proj-link" href="https://ameicetim.onrender.com" target="_blank" rel="noopener">Ver ao vivo →</a></div></article>
-<article class="proj reveal"><div class="proj-thumb"><iframe src="https://halison-henry.onrender.com/" loading="lazy" title="Halison Henry" sandbox="allow-scripts allow-same-origin"></iframe><div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,15,30,0.7));pointer-events:none;z-index:1"></div></div><div class="proj-body"><div class="proj-tags"><span class="pill">Vendas</span><span class="pill">Pixel</span></div><h3>Halison Henry</h3><p>Landing page para gestor de tráfego focada em alta conversão.</p><a class="proj-link" href="https://halison-henry.onrender.com/" target="_blank" rel="noopener">Ver ao vivo →</a></div></article>
-<article class="proj reveal"><div class="proj-thumb"><iframe src="https://vitrinebio.onrender.com" loading="lazy" title="Vitrine Bio" sandbox="allow-scripts allow-same-origin"></iframe><div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,15,30,0.7));pointer-events:none;z-index:1"></div></div><div class="proj-body"><div class="proj-tags"><span class="pill">Bio Page</span><span class="pill">Links</span></div><h3>Vitrine Bio</h3><p>Página de bio com glassmorphism e todos os links em um só lugar.</p><a class="proj-link" href="https://vitrinebio.onrender.com" target="_blank" rel="noopener">Ver ao vivo →</a></div></article>
-</div></div></section>
-<section class="section process" id="processo"><div class="container"><div class="sec-head reveal"><div class="sec-kicker">Processo</div><h2>Simples, rápido e sem dor de cabeça</h2></div><div class="process-grid"><div class="step reveal"><div class="step-num">01 — <i data-lucide="message-circle" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;"></i> Briefing</div><h3>Alinhamento</h3><p>Entendo seu objetivo em 20 min no WhatsApp.</p></div><div class="step reveal"><div class="step-num">02 — <i data-lucide="pen-tool" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;"></i> Design</div><h3>UI no Figma</h3><p>Layout mobile-first com CTA forte.</p></div><div class="step reveal"><div class="step-num">03 — <i data-lucide="code-2" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;"></i> Código</div><h3>Build limpo</h3><p>HTML/CSS/JS enxuto e semântico.</p></div><div class="step reveal"><div class="step-num">04 — <i data-lucide="rocket" style="width:14px;height:14px;display:inline-block;vertical-align:-2px;"></i> Entrega</div><h3>Publicar</h3><p>Subo no domínio e configuro Analytics.</p></div></div></div></section>
-<section class="section" id="sobre"><div class="container about-grid"><div class="about-photo reveal"><div class="about-photo-inner">SP</div></div><div class="about-body reveal"><div class="sec-kicker">Sobre</div><h2>Samuel Pena — SML Developer</h2><p>Sou desenvolvedor Full Stack em Trairi, Ceará. Trabalho com negócios locais e digitais que precisam de um site que carrega rápido, ranqueia bem e converte no WhatsApp.</p><div style="margin-top:20px"><a class="btn btn-primary" href="https://wa.me/558586121078" target="_blank" rel="noopener"><i data-lucide="phone" style="width:18px;height:18px;"></i> <i data-lucide="phone" style="width:18px;height:18px;"></i> Chamar no WhatsApp</a><a class="btn btn-ghost" href="https://github.com/sml-pn" target="_blank" rel="noopener" style="margin-left:10px"><i data-lucide="github" style="width:18px;height:18px;"></i> <i data-lucide="github" style="width:18px;height:18px;"></i> Ver GitHub</a></div></div></div></section>
-<section class="cta-band"><div class="cta-inner reveal"><h2>Pronto para colocar seu site no ar?</h2><p>Me chama no WhatsApp com sua ideia.</p><div class="cta-actions"><a class="btn btn-primary" href="https://wa.me/558586121078" target="_blank" rel="noopener"><i data-lucide="message-circle" style="width:18px;height:18px;"></i> <i data-lucide="message-circle" style="width:18px;height:18px;"></i> Falar no WhatsApp agora</a></div></div></section>
-<div class="contact-strip"><div class="container contact-row"><div class="contact-links"><a href="https://wa.me/558586121078" target="_blank" rel="noopener"><i data-lucide="phone" style="width:16px;height:16px;"></i> +55 85 8612-1078</a><a href="https://instagram.com/sml_developer" target="_blank" rel="noopener"><i data-lucide="instagram" style="width:16px;height:16px;"></i> @sml_developer</a><a href="https://github.com/sml-pn" target="_blank" rel="noopener"><i data-lucide="github" style="width:16px;height:16px;"></i> @sml-pn</a></div><div class="muted">Trairi, Ceará • Atendimento Brasil</div></div></div>
-<footer><div class="container footer-inner"><div>© 2026 SML Developer — Samuel Pena</div><div><a href="https://sml-developer.onrender.com">Voltar ao portfólio ↑</a></div></div></footer>
-<div class="cookie-bar" id="cookieBar"><div class="container cookie-inner"><p>Uso cookies essenciais para medir visitas.</p><div class="cookie-actions"><button class="btn-xs primary" id="cookieAccept">Aceitar</button></div></div></div>
+
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" id="scrollProgressBar"></div></div>
+
+<div class="scroll-magic-badge" aria-hidden="true"><strong>Scroll Magic Mode</strong><span class="sep">•</span> GSAP ScrollTrigger</div>
+
+<header class="site-nav" role="banner">
+  <div class="nav-inner">
+    <div class="logo" aria-label="SML Developer"><a href="https://sml-developer.onrender.com">SML<span class="logo-dot">•</span>Developer</a></div>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#processo">Processo</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn--ghost btn--sm" href="https://wa.me/558586121078" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="orb orb--cyan" aria-hidden="true"></div>
+  <div class="orb orb--magenta" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="live-badge"><span class="live-dot" aria-hidden="true"></span> Online agora • Trairi-CE</div>
+      <h1>Sites que vendem.<br>Código que performa.</h1>
+      <p class="lead">Web Full Stack. Landing pages, sites institucionais e bio pages premium.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/558586121078" target="_blank" rel="noopener" class="btn btn--primary magnetic js-magnetic">Falar no WhatsApp</a>
+        <a href="#projetos" class="btn btn--ghost magnetic js-magnetic">Ver projetos</a>
+      </div>
+      <div class="hero-meta">Resposta em até 2h • Orçamento sem compromisso</div>
+    </div>
+
+    <div class="hero-terminal-wrap">
+      <div class="terminal" aria-label="Terminal de código animado por scroll">
+        <div class="terminal-bar"><span></span><em>sml_dev — samuel@trairi ~</em></div>
+        <pre id="codeType" class="code-block" aria-live="polite"></pre>
+        <div class="terminal-hint">↓ role para digitar</div>
+      </div>
+    </div>
+  <div class="hero-scroll-hint">role para explorar</div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">O que eu faço</span>
+      <h2>Serviços pensados para converter</h2>
+      <p>Do design ao deploy. Foco total em velocidade, SEO e WhatsApp.</p>
+    </div>
+
+    <div class="services-grid" id="servicesGrid">
+      <!-- 1 -->
+      <article class="service-card reveal">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Landing Pages</h3>
+        <p>Páginas de alta conversão, rápidas, com copy clara e CTA direto para o WhatsApp.</p>
+      </article>
+      <!-- 2 -->
+      <article class="service-card reveal">
+        <div class="svc-icon mag" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h3>Sites Institucionais</h3>
+        <p>Sites completos, responsivos, gerenciáveis e prontos para ranquear no Google.</p>
+      </article>
+      <!-- 3 -->
+      <article class="service-card reveal">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <h3>Bio Page Pro</h3>
+        <p>Sua bio-link premium. Leve, linda, com pixels, catálogo e botão de WhatsApp 1-clique.</p>
+      </article>
+      <!-- 4 -->
+      <article class="service-card reveal">
+        <div class="svc-icon mag" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <h3>SEO Local</h3>
+        <p>Otimização para “perto de mim” em Trairi e região. Google Business, mapas e conteúdo.</p>
+      </article>
+      <!-- 5 -->
+      <article class="service-card reveal">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 0 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
+        </div>
+        <h3>Performance</h3>
+        <p>95+ no Lighthouse. Imagens otimizadas, Core Web Vitals verdes, hospedagem rápida.</p>
+      </article>
+      <!-- 6 -->
+      <article class="service-card reveal">
+        <div class="svc-icon mag" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+        </div>
+        <h3>Integração WhatsApp</h3>
+        <p>Botões flutuantes, pré-mensagens inteligentes, UTM e rastreio de conversão.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETOS - HORIZONTAL -->
+<section id="projetos" class="projects-section">
+  <div class="projects-intro">
+    <span class="eyebrow">Projetos recentes</span>
+    <h2>Trabalhos ao vivo, prontos para escalar</h2>
+    <p>Role para navegar. Na vertical, o carrossel anda na horizontal.</p>
+  </div>
+
+  <div class="projects-pin" id="projectsPin">
+    <div class="projects-track" id="projectsTrack">
+      <!-- Projeto 1 -->
+      <article class="project-slide">
+        <div class="project-media">
+          <div class="project-browserbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:10px">ameicetim.onrender.com</span></div>
+          <div class="project-shot">
+            <div class="project-shot-inner">
+              <div class="fake-h1">Amei Cetim</div>
+              <div class="fake-sub">Moda íntima confortável • Loja online</div>
+              <div class="shot-pill">Lançamento • E-commerce leve</div>
+            </div>
+          </div>
+        <div class="project-body">
+          <div class="project-count">01 / 03</div>
+          <div class="project-tags"><span class="tag">E-commerce</span><span class="tag">Landing</span><span class="tag">WhatsApp</span></div>
+          <h3>Amei Cetim</h3>
+          <p>Loja de moda íntima com catálogo rápido, checkout via WhatsApp e visual clean em tons rosé. Foco total em conversão mobile.</p>
+          <a class="project-link" href="https://ameicetim.onrender.com" target="_blank" rel="noopener">Ver ao vivo →</a>
+        </div>
+      </article>
+
+      <!-- Projeto 2 -->
+      <article class="project-slide">
+        <div class="project-media">
+          <div class="project-browserbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:10px">halison-henry.onrender.com</span></div>
+          <div class="project-shot">
+            <div class="project-shot-inner">
+              <div class="fake-h1">Halison Henry</div>
+              <div class="fake-sub">Portfólio profissional • Agendamentos</div>
+              <div class="shot-pill">Site institucional</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-count">02 / 03</div>
+          <div class="project-tags"><span class="tag">Institucional</span><span class="tag">Portfólio</span><span class="tag">SEO</span></div>
+          <h3>Halison Henry</h3>
+          <p>Site institucional elegante para presença profissional, com seções de serviços, cases e CTA direto para contato no WhatsApp.</p>
+          <a class="project-link" href="https://halison-henry.onrender.com/" target="_blank" rel="noopener">Ver ao vivo →</a>
+        </div>
+      </article>
+
+      <!-- Projeto 3 -->
+      <article class="project-slide">
+        <div class="project-media">
+          <div class="project-browserbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:10px">vitrinebio.onrender.com</span></div>
+          <div class="project-shot">
+            <div class="project-shot-inner">
+              <div class="fake-h1">Vitrine Bio</div>
+              <div class="fake-sub">Sua bio que vende 24h</div>
+              <div class="shot-pill">Bio Page Pro</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-count">03 / 03</div>
+          <div class="project-tags"><span class="tag">Bio Page</span><span class="tag">Links</span><span class="tag">Ultra-rápido</span></div>
+          <h3>Vitrine Bio</h3>
+          <p>Bio-link premium para Instagram. Carrega em &lt;0.8s, links ilimitados, pixel pronto e conversão direta no Whats.</p>
+          <a class="project-link" href="https://vitrinebio.onrender.com" target="_blank" rel="noopener">Ver ao vivo →</a>
+        </div>
+      </article>
+    </div>
+    <div class="projects-scroll-hint">Continue rolando ↓</div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section id="processo" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Processo claro, do alinhamento ao ar</h2>
+      <p>Sem enrolação. 4 etapas bem definidas.</p>
+    </div>
+
+    <div class="timeline-wrap">
+      <div class="timeline-rail" aria-hidden="true">
+        <div class="timeline-fill" id="timelineFill"></div>
+      </div>
+      <div class="timeline-steps" id="timelineSteps">
+        <div class="timeline-step">
+          <div class="t-dot"></div>
+          <div class="t-step-num">01 — Brief</div>
+          <h3>Alinhamento</h3>
+          <p>Entendo seu negócio, público e objetivo. Definimos oferta, copy e estrutura no WhatsApp em 30 min.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="t-dot"></div>
+          <div class="t-step-num">02 — Design</div>
+          <h3>Layout Profissional</h3>
+          <p>Layout mobile-first aprovado por você. Tipografia, cores e hierarquia pensadas para converter.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="t-dot"></div>
+          <div class="t-step-num">03 — Code</div>
+          <h3>Build limpo</h3>
+          <p>Código sem gambiarra. Semântico, rápido, acessível. SEO local e WhatsApp integrados.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="t-dot"></div>
+          <div class="t-step-num">04 — Go</div>
+          <h3>Publicar</h3>
+          <p>Deploy, domínio, analytics e handoff. Seu site no ar, pronto para vender. Suporte 15 dias.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="section" style="padding-top:38px;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Quem faz</span>
+      <h2>Olá, sou o Samuel</h2>
+    </div>
+    <div class="sobre-card reveal" id="sobreCard">
+      <div class="avatar" aria-hidden="true">SP</div>
+      <div>
+        <h3>Samuel Pena — SML Developer</h3>
+        <p>Sou desenvolvedor Full Stack em Trairi, Ceará. Sites que carregam rápido, ranqueiam bem e convertem no WhatsApp. Foco em negócio real, não em firula.</p>
+        <div class="sobre-tags">
+          <span>Trairi-CE</span>
+          <span>Full Stack</span>
+          <span>Lighthouse 95+</span>
+          <span>Landing Pages</span>
+          <span>SEO Local</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="contato">
+  <div class="container">
+    <h2>Pronto para colocar seu site no ar?</h2>
+    <p>Me chama no WhatsApp. Respondo rápido e monto um orçamento sem compromisso.</p>
+    <a class="btn btn--primary magnetic js-magnetic" href="https://wa.me/558586121078?text=Oi%20Samuel%2C%20vim%20pelo%20seu%20site%20SML%20Developer.%20Quero%20um%20or%C3%A7amento." target="_blank" rel="noopener" style="padding:17px 28px; font-size:16.5px;">
+      Falar no WhatsApp agora
+    </a>
+    <div style="margin-top:14px; color:#6c778d; font-size:13.7px;">Resposta em até 2h • Trairi, Ceará</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 SML Developer — Samuel Pena, Trairi, Ceará</div>
+    <div class="footer-links">
+      <a href="https://wa.me/558586121078" target="_blank" rel="noopener">WhatsApp +55 85 8612-1078</a>
+      <a href="https://instagram.com/sml_developer" target="_blank" rel="noopener">Instagram @sml_developer</a>
+      <a href="https://github.com/sml-pn" target="_blank" rel="noopener">GitHub @sml-pn</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Cookie LGPD -->
+<div class="cookie-bar" id="cookieBar">
+  <div class="container cookie-inner">
+    <p>Uso cookies essenciais para medir visitas. Sem rastreamento invasivo.</p>
+    <div class="cookie-actions">
+      <button class="btn-xs primary" id="cookieAccept">Aceitar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Powered by -->
+<div class="powered-by">Powered by SML Developer</div>
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script>
-lucide.createIcons();
-lucide.createIcons();
-const rev=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rev.unobserve(e.target)}})},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
+gsap.registerPlugin(ScrollTrigger);
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Scroll automático otimizado - altura dinâmica + pausa quando aba invisível
-document.querySelectorAll('.proj-thumb').forEach(thumb => {
-    const iframe = thumb.querySelector('iframe');
-    if (!iframe) return;
-    let scrollInterval, scrollPosition = 0, direction = 1, isHovering = false;
-
-    thumb.addEventListener('mouseenter', () => {
-        isHovering = true; scrollPosition = 0; direction = 1;
-        const maxScroll = iframe.offsetHeight - thumb.offsetHeight;
-        scrollInterval = setInterval(() => {
-            if (!isHovering || document.hidden) return;
-            scrollPosition += direction * 4;
-            if (scrollPosition >= maxScroll || scrollPosition <= 0) direction *= -1;
-            iframe.style.top = -scrollPosition + 'px';
-        }, 30);
-    });
-    thumb.addEventListener('mouseleave', () => {
-        isHovering = false; clearInterval(scrollInterval); scrollPosition = 0; iframe.style.top = '0px';
-    });
+// Scroll progress bar
+const progressBar = document.getElementById('scrollProgressBar');
+ScrollTrigger.create({
+  start: 0,
+  end: () => document.documentElement.scrollHeight - window.innerHeight,
+  onUpdate: self => { progressBar.style.transform = `scaleX(${self.progress})`; }
 });
 
-// Pausar scroll quando a aba não estiver visível
-document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-        document.querySelectorAll('.proj-thumb').forEach(thumb => {
-            const iframe = thumb.querySelector('iframe');
-            if (iframe) iframe.style.top = '0px';
-        });
+// HERO: code typing on scroll
+const codeEl = document.getElementById('codeType');
+const codeLines = [
+  {t: '// samuelpena.dev — Trairi, CE', c:'c'},
+  {t: '', c:''},
+  {t: 'import { gsap } from "gsap"', c:'b'},
+  {t: 'import { ScrollTrigger } from "gsap/ScrollTrigger"', c:'b'},
+  {t: '', c:''},
+  {t: 'function launchSite() {', c:''},
+  {t: '  return {', c:''},
+  {t: '    speed: "95+ Lighthouse",', c:'g'},
+  {t: '    seo: "Local-first",', c:'g'},
+  {t: '    conversion: "WhatsApp direct"', c:'g'},
+  {t: '  }', c:''},
+  {t: '}', c:''},
+  {t: '', c:''},
+  {t: 'gsap.to(".vendas", {', c:'p'},
+  {t: '  scrollTrigger: {', c:''},
+  {t: '    trigger: ".projeto",', c:'y'},
+  {t: '    scrub: true', c:'c'},
+  {t: '  },', c:''},
+  {t: '  y: 0,', c:''},
+  {t: '  opacity: 1', c:''},
+  {t: '})', c:'p'},
+  {t: '', c:''},
+  {t: '// vamo tirar do papel? → wa.me/558586121078', c:'c'},
+];
+const fullCodeText = codeLines.map(l => l.t).join('\n');
+function renderCode(progress){
+  const chars = Math.floor(fullCodeText.length * progress);
+  let count = 0, html = '';
+  for (let i = 0; i < codeLines.length; i++) {
+    const line = codeLines[i];
+    let lineOut = '';
+    for (let ch = 0; ch < line.t.length; ch++) {
+      if (count < chars) lineOut += line.t[ch];
+      count++;
     }
+    count++;
+    if(lineOut || count <= chars) {
+      const cls = line.c ? ` class="${line.c}"` : '';
+      html += `<span${cls}>${lineOut.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</span>\n`;
+    }
+    if (count > chars) break;
+  }
+  const caret = (progress > 0.02 && progress < 0.995) ? '<span style="background:#00f5ff;color:#04131a">▌</span>' : '';
+  codeEl.innerHTML = html + caret;
+}
+renderCode(0);
+if(!reduceMotion){
+  ScrollTrigger.create({
+    trigger: '#hero', start: 'top top', end: '+=820', pin: true, pinSpacing: true,
+    onUpdate: self => renderCode(self.progress)
+  });
+} else renderCode(1);
+
+// Services reveal
+if(!reduceMotion){
+  gsap.utils.toArray('.service-card').forEach(card => {
+    gsap.fromTo(card, { y: 38, opacity: 0 }, { y: 0, opacity: 1, duration: .7, ease: 'power2.out',
+      scrollTrigger: { trigger: card, start: 'top 84%', toggleActions: 'play none none none' } });
+  });
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    if(el.classList.contains('service-card')) return;
+    gsap.fromTo(el, {y:28, opacity:0}, {y:0, opacity:1, duration:.65, ease:'power2.out',
+      scrollTrigger:{ trigger: el, start:'top 86%' }});
+  });
+}
+
+// Projetos horizontal scroll
+const projectsPin = document.getElementById('projectsPin');
+const projectsTrack = document.getElementById('projectsTrack');
+function initProjectsHorizontal(){
+  if(reduceMotion) return;
+  const slides = gsap.utils.toArray('.project-slide');
+  if(!slides.length) return;
+  const totalScroll = () => projectsTrack.scrollWidth - projectsPin.clientWidth + 28;
+  gsap.to(projectsTrack, {
+    x: () => -totalScroll(), ease: 'none',
+    scrollTrigger: {
+      trigger: projectsPin, start: 'top top', end: () => '+=' + (totalScroll() * 1.45),
+      pin: true, scrub: 1, snap: 1 / (slides.length - 1),
+      invalidateOnRefresh: true, anticipatePin: 1
+    }
+  });
+}
+initProjectsHorizontal();
+
+// Timeline fill
+const timelineSteps = document.querySelectorAll('.timeline-step');
+if(!reduceMotion){
+  gsap.to('#timelineFill', {
+    height: '100%', ease: 'none',
+    scrollTrigger: { trigger: '#timelineSteps', start: 'top 62%', end: 'bottom 60%', scrub: true }
+  });
+  timelineSteps.forEach(step => {
+    ScrollTrigger.create({
+      trigger: step, start: 'top 68%', end: 'bottom 40%',
+      onEnter: () => step.querySelector('.t-dot')?.classList.add('active'),
+      onEnterBack: () => step.querySelector('.t-dot')?.classList.add('active'),
+    });
+  });
+} else {
+  document.querySelectorAll('.t-dot').forEach(d=>d.classList.add('active'));
+}
+
+// Sobre parallax
+if(!reduceMotion && window.innerWidth > 700){
+  gsap.to('#sobreCard', { yPercent: -3, ease: 'none',
+    scrollTrigger: { trigger: '#sobre', start: 'top bottom', end: 'bottom top', scrub: true } });
+}
+
+// Magnetic buttons
+document.querySelectorAll('.js-magnetic').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    if(reduceMotion) return;
+    const r = btn.getBoundingClientRect();
+    const x = e.clientX - (r.left + r.width/2), y = e.clientY - (r.top + r.height/2);
+    gsap.to(btn, { x: x * 0.22, y: y * 0.30, duration: .35, ease: 'power2.out' });
+  });
+  btn.addEventListener('mouseleave', () => { gsap.to(btn, { x:0, y:0, duration:.45, ease:'elastic.out(1, .45)' }); });
+});
+
+// Smooth anchor
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id = a.getAttribute('href'); if(id.length<2) return;
+    const target = document.querySelector(id);
+    if(target){ e.preventDefault(); const y = target.getBoundingClientRect().top + window.scrollY - 74;
+      window.scrollTo({top:y, behavior: reduceMotion ? 'auto':'smooth'}); }
+  });
 });
 
 // Cookie
-(function(){const bar=document.getElementById('cookieBar');const accept=document.getElementById('cookieAccept');if(!localStorage.getItem('sml_cookie_v1')){setTimeout(()=>bar.classList.add('show'),900)}accept.addEventListener('click',()=>{localStorage.setItem('sml_cookie_v1','granted');bar.classList.remove('show')})})();
+(function(){const bar=document.getElementById('cookieBar'), accept=document.getElementById('cookieAccept');
+if(!localStorage.getItem('sml_cookie_v2')){setTimeout(()=>bar.classList.add('show'),900);}
+accept.addEventListener('click',()=>{localStorage.setItem('sml_cookie_v2','granted');bar.classList.remove('show');})})();
 </script>
 </body>
 </html>
