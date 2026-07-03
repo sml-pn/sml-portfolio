@@ -65,10 +65,11 @@ p{line-height:1.7}
 /* Preloader */
 #preloader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease}
 #preloader.hide{opacity:0;visibility:hidden;pointer-events:none}
-.rocket{width:80px;height:80px;display:flex;align-items:center;justify-content:center;animation:rocketZigzag 1.6s ease-in-out forwards, rocketLaunch .7s 1.6s ease-in forwards;position:relative}
-.rocket-icon{width:100%;height:100%;color:var(--cyan);filter:drop-shadow(0 0 12px rgba(0,245,255,.6))}
-@keyframes rocketZigzag{0%{transform:translate(0,0) rotate(0deg)}15%{transform:translate(-30px,-20px) rotate(-5deg)}30%{transform:translate(40px,-40px) rotate(7deg)}45%{transform:translate(-50px,-60px) rotate(-4deg)}60%{transform:translate(30px,-80px) rotate(6deg)}75%{transform:translate(-20px,-100px) rotate(-3deg)}90%{transform:translate(10px,-120px) rotate(2deg)}100%{transform:translate(0,-140px) rotate(0deg)}}
-@keyframes rocketLaunch{0%{transform:translate(0,-140px) scale(1);opacity:1}100%{transform:translate(0,-600px) scale(.3);opacity:0}}
+/* Modern Loader */
+.loader-sml { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.loader-ring { width: 90px; height: 90px; filter: drop-shadow(0 0 16px rgba(0,245,255,0.3)); }
+.loader-text { font-family: var(--font); font-size: 20px; font-weight: 800; letter-spacing: 0.12em; color: var(--text); text-shadow: 0 0 20px rgba(0,245,255,0.5); animation: pulseText 1.5s ease-in-out infinite; }
+@keyframes pulseText { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
 
 /* Partículas */
 #particlesCanvas{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.45}
@@ -82,7 +83,26 @@ p{line-height:1.7}
 .nav-links a{position:relative;padding:4px 0;transition:color .2s}.nav-links a:hover{color:var(--text)}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--cyan);border-radius:2px;transition:width .25s var(--ease)}.nav-links a:hover::after{width:100%}
 .nav-right{display:flex;align-items:center;gap:14px}
-@media(max-width:640px){.nav-links{display:none}}
+/* Hamburger */
+.hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; width: 44px; height: 44px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 130; gap: 7px; }
+.hamburger span { display: block; width: 26px; height: 2.5px; background: var(--text); border-radius: 3px; transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.25s ease; }
+.hamburger.active span:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scale(0); }
+.hamburger.active span:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg); }
+
+/* Mobile Menu Overlay */
+.mobile-menu { position: fixed; inset: 0; z-index: 110; background: rgba(6,9,19,0.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-nav-links { display: flex; flex-direction: column; gap: 36px; text-align: center; }
+.mobile-nav-links a { font-size: 28px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; transition: color 0.2s, transform 0.2s; }
+.mobile-nav-links a:hover { color: var(--cyan); transform: scale(1.04); }
+.mobile-nav-links .btn--primary { margin-top: 12px; padding: 16px 28px; font-size: 16px; }
+
+@media(max-width:640px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-menu .btn--primary { display: inline-flex; }
+}
 
 /* Container */
 .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
@@ -233,7 +253,24 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
 <body>
 
 <!-- PRELOADER -->
-<div id="preloader" aria-hidden="true"><div class="rocket"><i data-lucide="rocket" class="rocket-icon"></i></div></div>
+<div id="preloader" aria-hidden="true">
+  <div class="loader-sml">
+    <svg class="loader-ring" viewBox="0 0 100 100">
+      <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="var(--cyan)"/>
+          <stop offset="100%" stop-color="var(--magenta)"/>
+        </linearGradient>
+      </defs>
+      <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="4"/>
+      <circle cx="50" cy="50" r="42" fill="none" stroke="url(#grad)" stroke-width="4" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264">
+        <animate attributeName="stroke-dashoffset" from="264" to="0" dur="1.4s" fill="freeze" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="2s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+    <div class="loader-text">SML</div>
+  </div>
+</div>
 
 <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" id="scrollProgressBar"></div></div>
 <canvas id="particlesCanvas" aria-hidden="true"></canvas>
@@ -242,9 +279,25 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
   <div class="nav-inner">
     <a class="logo" href="/" aria-label="SML Developer">SML<span class="logo-dot">•</span>Developer</a>
     <nav class="nav-links" aria-label="Principal"><a href="#servicos">Serviços</a><a href="#projetos">Projetos</a><a href="#processo">Processo</a><a href="#sobre">Sobre</a></nav>
-    <div class="nav-right"><a class="btn btn--ghost btn--sm" href="https://wa.me/558586121078" target="_blank" rel="noopener"><i data-lucide="message-circle" style="width:16px;height:16px"></i> WhatsApp</a></div>
+    <div class="nav-right">
+      <a class="btn btn--ghost btn--sm" href="https://wa.me/558586121078" target="_blank" rel="noopener"><i data-lucide="message-circle" style="width:16px;height:16px"></i> WhatsApp</a>
+      <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-nav-links">
+    <a href="#servicos">Serviços</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#processo">Processo</a>
+    <a href="#sobre">Sobre</a>
+    <a href="https://wa.me/558586121078" target="_blank" rel="noopener" class="btn btn--primary">WhatsApp</a>
+  </nav>
+</div>
 
 <main>
   <section id="hero" class="hero" aria-labelledby="hero-title">
@@ -509,6 +562,28 @@ document.addEventListener('DOMContentLoaded', function() {
       bar.classList.remove('show')
     })
   })();
+
+
+
+  /* Menu Mobile */
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
   /* Lucide icons (final) */
   if (typeof lucide !== 'undefined') lucide.createIcons();
