@@ -40,7 +40,7 @@ p{line-height:1.7}
 #preloader.hide{display:none}
 
 .scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;background:rgba(255,255,255,.04)}
-.scroll-progress__bar{height:100%;width:100%;background:linear-gradient(90deg,var(--cyan),var(--magenta));transform-origin:left;transform:scaleX(0);transition:transform .1s linear}
+.scroll-progress__bar{height:100%;width:0%;background:linear-gradient(90deg,var(--cyan),var(--magenta));transition:width .1s linear}
 
 #particlesCanvas{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.45;max-width:100vw;overflow:hidden}
 
@@ -107,6 +107,7 @@ p{line-height:1.7}
 .service-card h3{margin:0 0 8px;font-size:19px}
 .service-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
 
+/* PROJETOS */
 .projects-grid{display:flex;flex-direction:column;gap:40px}
 .proj{border-radius:24px;overflow:hidden;background:linear-gradient(180deg,#11182f,#0d1328);border:1px solid var(--border);transition:transform .25s var(--ease),border-color .25s,box-shadow .25s}
 .proj:hover{transform:translateY(-5px);border-color:rgba(255,61,247,.25);box-shadow:0 20px 60px rgba(0,0,0,.4)}
@@ -118,8 +119,9 @@ p{line-height:1.7}
 .device-card:hover{border-color:var(--cyan)}
 .mobile-card{aspect-ratio:9/16;max-width:220px;margin:0 auto;min-height:250px}
 .desktop-card{aspect-ratio:16/10;min-height:180px}
-.device-screen{position:absolute;inset:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.device-screen img{width:100%;height:100%;object-fit:cover;display:block}
+.device-screen{position:absolute;inset:0;overflow:hidden;background:#0a0e1a}
+.device-screen img{width:100%;height:auto;position:absolute;top:0;left:0;transition:transform 0.3s ease}
+.device-card:hover .device-screen img{transform:translateY(-30%)}
 .device-screen .fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#0b1124;position:relative}
 .mobile-card .fallback::before{content:"";display:block;width:60%;height:70%;border:2px solid #334155;border-radius:12px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:inset 0 0 0 2px #1e293b}
 .mobile-card .fallback::after{content:"";position:absolute;top:12%;left:50%;transform:translateX(-50%);width:8%;height:2%;background:#334155;border-radius:0 0 4px 4px}
@@ -188,30 +190,46 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
 .btn-xs.primary{background:#e9eef8;color:#09111f;border-color:transparent}
 .powered-by{position:fixed;bottom:14px;right:14px;opacity:.18;font-size:.58rem;color:#fff;z-index:999;font-family:var(--mono);pointer-events:none}
 
+/* Responsivo */
 @media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
   .services-grid{grid-template-columns:repeat(2,1fr)}
   .dep-grid{grid-template-columns:1fr}
-  .timeline-wrap{grid-template-columns:1fr}.timeline-rail{display:none}.t-dot{display:none}
+  .timeline-wrap{grid-template-columns:1fr}
+  .timeline-rail{display:none}
+  .t-dot{display:none}
   .counters-row{grid-template-columns:repeat(2,1fr)}
-  .proj-devices{grid-template-columns:1fr;max-width:400px;margin:0 auto;gap:20px}
-  .mobile-card{max-width:200px;margin:0 auto;min-height:200px}
-  .desktop-card{aspect-ratio:16/10;min-height:150px}
+  .proj-devices{display:flex;flex-direction:column;gap:12px;padding:0 12px 12px;max-width:100%}
+  .mobile-card{max-width:100%;width:100%;margin:0;min-height:220px}
+  .desktop-card{width:100%;aspect-ratio:16/10;min-height:160px}
+  .proj-header{padding:18px 12px 0}
+  .proj-header h3{font-size:22px;margin-bottom:4px}
+  .proj-header p{font-size:14px}
+  .proj-footer{padding:0 12px 12px}
+  .container{padding:0 12px}
+  .section{padding:48px 0}
 }
 @media(max-width:640px){
-  .container{padding:0 18px}.section{padding:72px 0}
+  .container{padding:0 8px}
+  .section{padding:40px 0}
   .hero-copy h1{font-size:clamp(36px,10vw,52px)}
-  .hero-ctas{flex-direction:column;align-items:stretch}.hero-ctas .btn{width:100%;justify-content:center}
+  .hero-ctas{flex-direction:column;align-items:stretch}
+  .hero-ctas .btn{width:100%;justify-content:center}
   .services-grid{grid-template-columns:1fr}
   .sobre-card{grid-template-columns:1fr}
   .avatar{width:84px;height:84px;border-radius:18px;font-size:27px}
   .footer-inner{flex-direction:column;align-items:flex-start}
   .faq-grid{max-width:100%}
-  .nav-links{display:none}
-  .hamburger{display:flex}
-  .proj-header h3{font-size:24px}
+  .proj-header h3{font-size:20px}
+  .proj-devices{padding:0 8px 8px}
+  .proj-header{padding:14px 8px 0}
+  .proj-footer{padding:0 8px 8px}
 }
 @media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}.live-dot{animation:none}.hero-orb{animation:none}
+  html{scroll-behavior:auto}
+  .live-dot{animation:none}
+  .hero-orb{animation:none}
 }
 </style>
 </head>
@@ -265,7 +283,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
       <div class="services-grid">
         <article class="service-card"><div class="svc-label"><i class="fas fa-bolt"></i> Conversão</div><h3>Landing Pages</h3><p>Páginas de alta conversão, rápidas, com copy clara e CTA direto para o WhatsApp.</p></article>
         <article class="service-card"><div class="svc-label"><i class="fas fa-building"></i> Presença</div><h3>Sites Institucionais</h3><p>Sites completos, responsivos, gerenciáveis e prontos para ranquear no Google.</p></article>
-        <article class="service-card"><div class="svc-label"><i class="fas fa-link"></i> Link na Bio</div><h3>Bio Page Pro</h3><p>Sua bio-link premium. Leve, linda, com pixels, catálogo e botão de WhatsApp 1-clique.</p></article>
+        <article class="service-card"><div class="svc-label"><i class="fas fa-link"></i> Link na Bio</div><h3>Bio Page Pro</h3><p>Sua bio-link premium. Leve, linda, com pixels, catálogo e botão de WhatsApp 1-clique. <a href="https://wa.me/558586121078?text=Quero%20minha%20Bio%20Page" target="_blank" rel="noopener" style="color:var(--cyan); text-decoration:underline; font-weight:500;">Peça a sua →</a></p></article>
         <article class="service-card"><div class="svc-label"><i class="fas fa-map-marker-alt"></i> Local</div><h3>SEO Local</h3><p>Otimização para "perto de mim" em Trairi e região. Google Business, mapas e conteúdo.</p></article>
         <article class="service-card"><div class="svc-label"><i class="fas fa-tachometer-alt"></i> Velocidade</div><h3>Performance</h3><p>95+ no Lighthouse. Imagens otimizadas, Core Web Vitals verdes, hospedagem rápida.</p></article>
         <article class="service-card"><div class="svc-label"><i class="fab fa-whatsapp"></i> WhatsApp</div><h3>Integração WhatsApp</h3><p>Botões flutuantes, pré-mensagens inteligentes, UTM e rastreio de conversão.</p></article>
@@ -277,6 +295,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
     <div class="container">
       <div class="section-head"><span class="eyebrow">Projetos recentes</span><h2>Trabalhos ao vivo</h2><p>Versões mobile e desktop. Passe o mouse para explorar.</p></div>
       <div class="projects-grid">
+        <!-- Amei Cetim -->
         <article class="proj">
           <div class="proj-header"><h3>Amei Cetim</h3><p>Loja de moda íntima com checkout via WhatsApp e visual clean.</p></div>
           <div class="proj-devices">
@@ -285,6 +304,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
           </div>
           <div class="proj-footer"><div class="proj-tags"><span class="tag">E-commerce</span><span class="tag">WhatsApp</span></div><a class="proj-link" href="https://ameicetim.onrender.com" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a></div>
         </article>
+        <!-- Halison Henry -->
         <article class="proj">
           <div class="proj-header"><h3>Halison Henry</h3><p>Site institucional elegante com seções de serviços e CTA direto.</p></div>
           <div class="proj-devices">
@@ -293,13 +313,47 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
           </div>
           <div class="proj-footer"><div class="proj-tags"><span class="tag">Institucional</span><span class="tag">SEO</span></div><a class="proj-link" href="https://halison-henry.onrender.com/" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a></div>
         </article>
+        <!-- Vitrine Bio -->
         <article class="proj">
           <div class="proj-header"><h3>Vitrine Bio</h3><p>Bio-link premium para Instagram. Carrega em menos de 0.8s.</p></div>
           <div class="proj-devices">
             <div class="device-card mobile-card"><div class="device-screen"><img src="assets/vitrine-mobile.png" alt="Vitrine Bio Mobile" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none"><span></span></div></div></div>
             <div class="device-card desktop-card"><div class="device-screen"><img src="assets/vitrine-desktop.png" alt="Vitrine Bio Desktop" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none"><span></span></div></div></div>
           </div>
-          <div class="proj-footer"><div class="proj-tags"><span class="tag">Bio Page</span><span class="tag">Links</span></div><a class="proj-link" href="https://vitrinebio.onrender.com" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a></div>
+          <div class="proj-footer" style="flex-wrap:wrap;gap:12px;">
+            <div class="proj-tags"><span class="tag">Bio Page</span><span class="tag">Links</span></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <a class="proj-link" href="https://vitrinebio.onrender.com" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a>
+              <a class="btn btn--sm" href="https://wa.me/558586121078?text=Quero%20minha%20Bio%20Page%20como%20a%20Vitrine%20Bio" target="_blank" rel="noopener" style="background:var(--cyan);color:#000;font-size:13px;padding:8px 14px;border-radius:999px;font-weight:600;text-decoration:none;white-space:nowrap;">Quero minha Bio</a>
+            </div>
+          </div>
+        </article>
+        <!-- Academia FitPro -->
+        <article class="proj">
+          <div class="proj-header"><h3>Academia FitPro</h3><p>Sistema de gestão para academias. Agendamento, alunos e pagamentos.</p></div>
+          <div class="proj-devices">
+            <div class="device-card mobile-card"><div class="device-screen"><img src="assets/academia-mobile.png" alt="Academia FitPro Mobile" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none"><span></span></div></div></div>
+            <div class="device-card desktop-card"><div class="device-screen"><img src="assets/academia-desktop.png" alt="Academia FitPro Desktop" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none"><span></span></div></div></div>
+          </div>
+          <div class="proj-footer"><div class="proj-tags"><span class="tag">SaaS</span><span class="tag">Agendamento</span></div><a class="proj-link" href="#"><i class="fas fa-clock"></i> Em desenvolvimento</a></div>
+        </article>
+        <!-- Advocacia Souza -->
+        <article class="proj">
+          <div class="proj-header"><h3>Advocacia Souza</h3><p>Site institucional para escritório de advocacia. Áreas de atuação e blog jurídico.</p></div>
+          <div class="proj-devices">
+            <div class="device-card mobile-card"><div class="device-screen"><img src="assets/advocacia-mobile.png" alt="Advocacia Souza Mobile" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none"><span></span></div></div></div>
+            <div class="device-card desktop-card"><div class="device-screen"><img src="assets/advocacia-desktop.png" alt="Advocacia Souza Desktop" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none"><span></span></div></div></div>
+          </div>
+          <div class="proj-footer"><div class="proj-tags"><span class="tag">Institucional</span><span class="tag">Blog</span></div><a class="proj-link" href="#"><i class="fas fa-clock"></i> Em desenvolvimento</a></div>
+        </article>
+        <!-- Colégio Ágape -->
+        <article class="proj">
+          <div class="proj-header"><h3>Colégio Centro de Ensino Ágape</h3><p>Site institucional para escola de educação básica. Matrículas, calendário e área do aluno.</p></div>
+          <div class="proj-devices">
+            <div class="device-card mobile-card"><div class="device-screen"><img src="assets/agape-mobile.png" alt="Colégio Ágape Mobile" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none"><span></span></div></div></div>
+            <div class="device-card desktop-card"><div class="device-screen"><img src="assets/agape-desktop.png" alt="Colégio Ágape Desktop" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fallback" style="display:none"><span></span></div></div></div>
+          </div>
+          <div class="proj-footer"><div class="proj-tags"><span class="tag">Institucional</span><span class="tag">Educação</span></div><a class="proj-link" href="#"><i class="fas fa-clock"></i> Em desenvolvimento</a></div>
         </article>
       </div>
     </div>
@@ -417,7 +471,10 @@ document.addEventListener('DOMContentLoaded', function() {
   ScrollTrigger.create({
     start:0,
     end:()=>document.documentElement.scrollHeight-window.innerHeight,
-    onUpdate:self=>progressBar.style.transform=`scaleX(${self.progress})`
+    onUpdate:self=>{
+      const p = Math.max(0.005, self.progress);
+      progressBar.style.width = (p * 100).toFixed(2) + '%';
+    }
   });
 
   if(!reduceMotion){
