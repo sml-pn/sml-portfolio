@@ -107,13 +107,40 @@ p{line-height:1.7}
 .service-card h3{margin:0 0 8px;font-size:19px}
 .service-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
 
-/* CARROSSÉIS INFINITOS */
+/* CHAT DE IA */
+#chatFab{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;border-radius:50%;background:var(--cyan);border:none;cursor:pointer;box-shadow:0 8px 30px rgba(0,245,255,0.3);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+#chatFab:hover{transform:scale(1.1)}
+#chatFab i{font-size:28px;color:#04111a}
+#chatOverlay{position:fixed;inset:0;z-index:1000;background:rgba(6,9,19,0.96);backdrop-filter:blur(20px);display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+#chatOverlay.open{opacity:1;visibility:visible}
+.chat-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border)}
+.chat-header h3{font-size:20px;margin:0;display:flex;align-items:center;gap:10px}
+.chat-header h3 i{color:var(--cyan)}
+.chat-close{background:none;border:none;color:var(--text);font-size:24px;cursor:pointer}
+.chat-messages{flex:1;overflow-y:auto;padding:24px;display:flex;flex-direction:column;gap:12px}
+.chat-bubble{max-width:80%;padding:14px 18px;border-radius:18px;font-size:15px;line-height:1.5;animation:fadeIn .3s ease}
+.chat-bubble.assistant{background:rgba(0,245,255,0.08);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-bubble.user{background:rgba(255,61,247,0.12);align-self:flex-end;border-bottom-right-radius:4px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.chat-input-area{display:flex;gap:12px;padding:20px 24px;border-top:1px solid var(--border)}
+.chat-input-area input{flex:1;padding:14px 18px;border-radius:999px;border:1px solid var(--border2);background:rgba(255,255,255,0.05);color:var(--text);font-size:15px;outline:none}
+.chat-input-area input:focus{border-color:var(--cyan)}
+.chat-input-area button{width:48px;height:48px;border-radius:50%;background:var(--cyan);border:none;color:#04111a;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center}
+.typing-dots{display:flex;gap:4px;padding:8px 14px}
+.typing-dots span{width:8px;height:8px;border-radius:50%;background:var(--muted2);animation:typing 1.4s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes typing{0%,60%,100%{opacity:.4;transform:translateY(0)}30%{opacity:1;transform:translateY(-6px)}}
+
+/* CARROSSÉIS */
 .carousel-full{position:relative;overflow:hidden;width:100%}
+@media(max-width:768px){.carousel-full{overflow:visible}}
 .carousel-track{display:flex;gap:24px;transition:none;will-change:transform}
-.proj-card{flex:0 0 340px;border-radius:24px;overflow:hidden;border:1px solid var(--border);background:rgba(17,24,47,0.5);backdrop-filter:blur(12px);padding:28px 28px 24px;text-align:center;transition:border-color .3s,transform .3s}
+@media(max-width:768px){.carousel-track{gap:16px}}
+.proj-card{flex:0 0 340px;border-radius:24px;overflow:visible;border:1px solid var(--border);background:rgba(17,24,47,0.5);backdrop-filter:blur(12px);padding:28px 28px 24px;text-align:center;transition:border-color .3s,transform .3s}
 .proj-card:hover{border-color:var(--cyan);transform:translateY(-4px)}
 .proj-card h3{font-size:24px;margin:0 0 8px}
-.proj-card p{color:var(--muted);font-size:14px;margin:0 auto 16px;max-width:280px}
+.proj-card p{color:var(--muted);font-size:14px;margin:0 auto 16px;max-width:280px;word-wrap:break-word}
 .proj-card .proj-footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-top:12px}
 .proj-card .proj-tags{display:flex;gap:6px;flex-wrap:wrap}
 .tag{font-family:var(--mono);font-size:10.5px;color:#96a6c3;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:5px 10px;border-radius:999px}
@@ -121,14 +148,19 @@ p{line-height:1.7}
 .proj-link:hover{color:#fff}
 .proj-dev h3::after{content:" ⏳";font-size:16px}
 
-.dep-card-carousel{flex:0 0 340px;background:rgba(255,255,255,.018);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:18px;padding:22px}
+.dep-card-carousel{flex:0 0 340px;padding:24px;background:rgba(255,255,255,.018);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:18px;overflow:visible}
 .dep-stars{color:#f59e0b;font-size:15px;margin-bottom:8px}
-.dep-card-carousel p{color:var(--muted);font-size:14.5px;line-height:1.6;margin:0 0 12px}
+.dep-card-carousel p{color:var(--muted);font-size:14.5px;line-height:1.6;margin:0 0 12px;word-wrap:break-word}
 .dep-autor{color:var(--text);font-size:13.5px}
 
-.partner-item{flex:0 0 auto;scroll-snap-align:start;text-align:center;padding:20px 30px;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:16px;min-width:160px;transition:border-color .3s,transform .3s}
-.partner-item:hover{border-color:var(--cyan);transform:translateY(-4px)}
-.partner-item i{font-size:40px;color:var(--cyan);margin-bottom:8px}
+/* PARCEIROS */
+.partners-marquee{overflow:hidden;width:100%;padding:20px 0}
+.partners-track{display:flex;gap:40px;animation:marqueeScroll 40s linear infinite;width:max-content}
+.partners-track:hover{animation-play-state:paused}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.partner-item{flex:0 0 auto;text-align:center;padding:8px 12px;background:transparent;border:none;transition:transform .3s,filter .3s}
+.partner-item:hover{transform:translateY(-4px);filter:drop-shadow(0 0 8px var(--cyan))}
+.partner-item i{font-size:38px;color:var(--cyan);margin-bottom:6px;display:block}
 .partner-item span{display:block;font-family:var(--mono);font-size:13px;color:var(--muted)}
 
 .carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:20px}
@@ -207,8 +239,8 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
   .timeline-rail{display:none}
   .t-dot{display:none}
   .counters-row{grid-template-columns:repeat(2,1fr)}
-  .proj-card{flex:0 0 280px}
-  .dep-card-carousel{flex:0 0 280px}
+  .proj-card{flex:0 0 85vw;max-width:380px;margin:0 auto;padding:24px 20px}
+  .dep-card-carousel{flex:0 0 85vw;max-width:380px;margin:0 auto;padding:20px}
   .hero-copy h1{font-size:clamp(34px,8vw,48px)}
   .hero-ctas{flex-direction:column;align-items:stretch}
   .hero-ctas .btn{width:100%;justify-content:center}
@@ -216,13 +248,14 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
   .avatar::after{border-radius:14px;box-shadow:inset 0 0 30px 15px #060913}
   .sobre-card{grid-template-columns:1fr;text-align:center}
   .sobre-card .avatar{margin:0 auto 24px}
+  #chatFab{width:56px;height:56px;bottom:16px;right:16px}
 }
 @media(max-width:640px){
   .container{padding:0 10px}
   .section{padding:40px 0}
   .services-grid,.features-grid{grid-template-columns:1fr}
-  .proj-card{flex:0 0 260px}
-  .dep-card-carousel{flex:0 0 260px}
+  .proj-card{flex:0 0 88vw;max-width:350px;margin:0 auto;padding:20px 16px}
+  .dep-card-carousel{flex:0 0 88vw;max-width:350px;margin:0 auto;padding:18px}
   .avatar{width:140px;border-radius:12px}
   .avatar::after{border-radius:12px;box-shadow:inset 0 0 25px 12px #060913}
   .footer-inner{flex-direction:column;align-items:flex-start}
@@ -232,6 +265,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
   html{scroll-behavior:auto}
   .live-dot{animation:none}
   .hero-orb{animation:none}
+  .partners-track{animation:none}
 }
 </style>
 </head>
@@ -243,7 +277,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
 <header class="site-nav">
   <div class="nav-inner">
     <a class="logo" href="/" aria-label="SML/PN Developer"><span class="logo-bracket">&lt;</span>SML<span class="logo-slash">/</span>PN<span class="logo-bracket">&gt;</span></a>
-    <nav class="nav-links" aria-label="Principal"><a href="#servicos">Serviços</a><a href="#projetos">Projetos</a><a href="#diferenciais">Diferenciais</a><a href="#parceiros">Parceiros</a><a href="#sobre">Sobre</a></nav>
+    <nav class="nav-links" aria-label="Principal"><a href="#servicos">Serviços</a><a href="#diferenciais">Diferenciais</a><a href="#processo">Processo</a><a href="#projetos">Projetos</a><a href="#depoimentos">Depoimentos</a><a href="#sobre">Sobre</a></nav>
     <div class="nav-right">
       <a class="btn btn--ghost btn--sm" href="https://wa.me/558586121078" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -254,9 +288,10 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
 <div class="mobile-menu" id="mobileMenu">
   <nav class="mobile-nav-links">
     <a href="#servicos">Serviços</a>
-    <a href="#projetos">Projetos</a>
     <a href="#diferenciais">Diferenciais</a>
-    <a href="#parceiros">Parceiros</a>
+    <a href="#processo">Processo</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#depoimentos">Depoimentos</a>
     <a href="#sobre">Sobre</a>
     <a href="https://wa.me/558586121078" target="_blank" rel="noopener" class="btn btn--primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
   </nav>
@@ -294,21 +329,11 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
     </div>
   </section>
 
-  <section id="projetos" class="section">
-    <div class="container">
-      <div class="section-head"><span class="eyebrow">Projetos recentes</span><h2>Trabalhos realizados</h2><p>Arraste ou aguarde o carrossel.</p></div>
-      <div class="carousel-full" id="projetosCarousel">
-        <div class="carousel-track" id="projetosTrack"></div>
-        <div class="carousel-dots" id="projetosDots"></div>
-      </div>
-    </div>
-  </section>
-
   <section id="diferenciais" class="section">
     <div class="container">
       <div class="section-head"><span class="eyebrow">Diferenciais</span><h2>Por que escolher a SML/PN?</h2><p>Cada projeto é pensado para performar, converter e encantar.</p></div>
       <div class="features-grid">
-        <div class="feature-card"><i class="fab fa-whatsapp"></i><h3>WhatsApp Multi</h3><p>Atendimento via WhatsApp com múltiplos números e mensagens automáticas.</p></div>
+        <div class="feature-card"><i class="fab fa-whatsapp"></i><h3>WhatsApp Multi</h3><p>Atendimento via WhatsApp com múltiplos números e mensagens pré-programadas. <a href="https://wa.me/558586121078?text=Olá!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20saber%20mais%20sobre%20esse%20serviço." target="_blank" rel="noopener" style="color:var(--cyan); text-decoration:underline; font-weight:500;">Teste aqui →</a></p></div>
         <div class="feature-card"><i class="fas fa-map-marked-alt"></i><h3>Mapa Único/Múltiplo</h3><p>Google Maps integrado com um ou vários endereços.</p></div>
         <div class="feature-card"><i class="fas fa-infinity"></i><h3>Efeitos Infinitos</h3><p>Animações, transições e microinterações que encantam o usuário.</p></div>
         <div class="feature-card"><i class="fas fa-mobile-alt"></i><h3>Mobile + Desktop</h3><p>Layouts responsivos que funcionam perfeitamente em qualquer dispositivo.</p></div>
@@ -316,6 +341,31 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
         <div class="feature-card"><i class="fas fa-chart-line"></i><h3>Estrutura de Venda</h3><p>Design pensado para converter visitantes em clientes.</p></div>
         <div class="feature-card"><i class="fas fa-font"></i><h3>Fontes Personalizadas</h3><p>Tipografia exclusiva que reforça a personalidade da sua marca.</p></div>
         <div class="feature-card"><i class="fas fa-rocket"></i><h3>Performance 95+</h3><p>Otimização de velocidade, SEO e boas práticas de código.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="processo" class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Como funciona</span><h2>Processo claro, do alinhamento ao ar</h2><p>Sem enrolação. 4 etapas bem definidas.</p></div>
+      <div class="timeline-wrap">
+        <div class="timeline-rail"><div class="timeline-fill" id="timelineFill"></div></div>
+        <div class="timeline-steps" id="timelineSteps">
+          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-comments"></i> 01 — Brief</div><h3>Alinhamento</h3><p>Entendo seu negócio, público e objetivo. Definimos oferta, copy e estrutura no WhatsApp em 30 min.</p></div>
+          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-pencil-alt"></i> 02 — Design</div><h3>Layout Profissional</h3><p>Layout mobile-first aprovado por você. Tipografia, cores e hierarquia pensadas para converter.</p></div>
+          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-code"></i> 03 — Code</div><h3>Build limpo</h3><p>Código sem gambiarra. Semântico, rápido, acessível. SEO local e WhatsApp integrados.</p></div>
+          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-rocket"></i> 04 — Go</div><h3>Publicar</h3><p>Deploy, domínio, analytics e handoff. Seu site no ar, pronto para vender. Suporte 15 dias.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projetos" class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Projetos recentes</span><h2>Trabalhos realizados</h2><p>Arraste ou aguarde o carrossel.</p></div>
+      <div class="carousel-full" id="projetosCarousel">
+        <div class="carousel-track" id="projetosTrack"></div>
+        <div class="carousel-dots" id="projetosDots"></div>
       </div>
     </div>
   </section>
@@ -333,24 +383,8 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
   <section id="parceiros" class="section">
     <div class="container">
       <div class="section-head"><span class="eyebrow">Tecnologias e parceiros</span><h2>Ferramentas que utilizo</h2></div>
-      <div class="carousel-full" id="parceirosCarousel">
-        <div class="carousel-track" id="parceirosTrack"></div>
-        <div class="carousel-dots" id="parceirosDots"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="processo" class="section">
-    <div class="container">
-      <div class="section-head"><span class="eyebrow">Como funciona</span><h2>Processo claro, do alinhamento ao ar</h2><p>Sem enrolação. 4 etapas bem definidas.</p></div>
-      <div class="timeline-wrap">
-        <div class="timeline-rail"><div class="timeline-fill" id="timelineFill"></div></div>
-        <div class="timeline-steps" id="timelineSteps">
-          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-comments"></i> 01 — Brief</div><h3>Alinhamento</h3><p>Entendo seu negócio, público e objetivo. Definimos oferta, copy e estrutura no WhatsApp em 30 min.</p></div>
-          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-pencil-alt"></i> 02 — Design</div><h3>Layout Profissional</h3><p>Layout mobile-first aprovado por você. Tipografia, cores e hierarquia pensadas para converter.</p></div>
-          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-code"></i> 03 — Code</div><h3>Build limpo</h3><p>Código sem gambiarra. Semântico, rápido, acessível. SEO local e WhatsApp integrados.</p></div>
-          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-rocket"></i> 04 — Go</div><h3>Publicar</h3><p>Deploy, domínio, analytics e handoff. Seu site no ar, pronto para vender. Suporte 15 dias.</p></div>
-        </div>
+      <div class="partners-marquee">
+        <div class="partners-track" id="partnersTrack"></div>
       </div>
     </div>
   </section>
@@ -372,7 +406,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
 
   <section id="sobre" class="section" style="padding-top:38px">
     <div class="container">
-      <div class="section-head"><span class="eyebrow">Quem faz</span><h2>Olá, sou o Samuel</h2></div>
+      <div class="section-head"><span class="eyebrow">Quem faz</span><h2>Olá, sou Samuel Pena</h2></div>
       <div class="sobre-card" id="sobreCard">
         <div class="avatar"><img src="assets/samuel.webp" alt="Samuel Pena"></div>
         <div>
@@ -410,6 +444,24 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
   <div class="container cookie-inner"><p>Uso cookies essenciais para medir visitas. Sem rastreamento invasivo.</p><button class="btn-xs primary" id="cookieAccept">Aceitar</button></div>
 </div>
 <div class="powered-by" aria-hidden="true">Powered by SML/PN</div>
+
+<!-- Botão do chat -->
+<button id="chatFab" aria-label="Abrir chat de atendimento"><i class="fas fa-comment-dots"></i></button>
+
+<!-- Overlay do chat -->
+<div id="chatOverlay">
+  <div class="chat-header">
+    <h3><i class="fas fa-robot"></i> Assistente SML/PN</h3>
+    <button class="chat-close" id="chatClose">&times;</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-bubble assistant">👋 Olá! Sou o assistente virtual da SML/PN. Como posso te ajudar hoje?<br>Pergunte sobre sites, landing pages, bio pages, SEO ou orçamentos.</div>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" id="chatInput" placeholder="Digite sua mensagem..." autocomplete="off">
+    <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
@@ -539,42 +591,67 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   /* === FUNÇÃO REUTILIZÁVEL DE CARROSSEL INFINITO === */
-  function createInfiniteCarousel(trackId, dotsId, items, cardWidth, gap, direction, intervalTime) {
+  function createInfiniteCarousel(trackId, dotsId, items, baseCardWidth, baseGap, direction, intervalTime) {
     const track = document.getElementById(trackId);
-    const dotsContainer = document.getElementById(dotsId);
-    if (!track || !dotsContainer) return;
+    const dotsContainer = dotsId ? document.getElementById(dotsId) : null;
+    if (!track) return;
+
+    let cardWidth = baseCardWidth;
+    let gap = baseGap;
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      cardWidth = Math.min(window.innerWidth * 0.85, 380);
+      gap = 16;
+    }
 
     const step = cardWidth + gap;
     const totalCards = items.length;
     const allItems = [...items, ...items, ...items];
     let position = totalCards * step;
-    let currentIndex = 0;
+    if (window.innerWidth <= 768) {
+      const containerWidth = track.parentElement.offsetWidth;
+      position = totalCards * step - (containerWidth - cardWidth) / 2;
+      if (position < 0) position = 0;
+    }
+    let currentIndex = totalCards;
     let currentDirection = direction;
     let interval;
+
+    const cardSelector = trackId.includes('projeto') ? '.proj-card' : '.dep-card-carousel';
 
     allItems.forEach((item, index) => {
       const card = document.createElement('div');
       card.className = item.className;
       card.innerHTML = item.innerHTML;
+      card.style.flex = `0 0 ${cardWidth}px`;
       track.appendChild(card);
     });
 
     track.style.transform = `translateX(-${position}px)`;
 
-    for (let i = 0; i < totalCards; i++) {
-      const dot = document.createElement('button');
-      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', `Item ${i + 1}`);
-      dot.addEventListener('click', () => {
-        position = totalCards * step + i * step;
-        track.style.transition = 'transform 0.5s ease';
-        track.style.transform = `translateX(-${position}px)`;
-        updateDots(i);
-      });
-      dotsContainer.appendChild(dot);
+    if (dotsContainer) {
+      for (let i = 0; i < totalCards; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Item ${i + 1}`);
+        dot.addEventListener('click', () => {
+          position = totalCards * step + i * step;
+          if (window.innerWidth <= 768) {
+            const containerWidth = track.parentElement.offsetWidth;
+            const offset = (containerWidth - cardWidth) / 2;
+            position = totalCards * step + i * step - offset;
+            if (position < 0) position = 0;
+          }
+          track.style.transition = 'transform 0.5s ease';
+          track.style.transform = `translateX(-${position}px)`;
+          updateDots(i);
+        });
+        dotsContainer.appendChild(dot);
+      }
     }
 
     function updateDots(activeIndex) {
+      if (!dotsContainer) return;
       const dots = dotsContainer.querySelectorAll('.carousel-dot');
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === activeIndex % totalCards);
@@ -583,55 +660,100 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function moveCarousel() {
       currentIndex += currentDirection;
-
       if (currentIndex >= totalCards * 2) {
         currentIndex = totalCards;
         track.style.transition = 'none';
         position = currentIndex * step;
+        if (window.innerWidth <= 768) {
+          const containerWidth = track.parentElement.offsetWidth;
+          const offset = (containerWidth - cardWidth) / 2;
+          position = currentIndex * step - offset;
+          if (position < 0) position = 0;
+        }
         track.style.transform = `translateX(-${position}px)`;
-        currentDirection = -1 * direction;
+        currentDirection = -direction;
         setTimeout(() => {
           track.style.transition = 'transform 0.5s ease';
           currentIndex += currentDirection;
           position = currentIndex * step;
+          if (window.innerWidth <= 768) {
+            const containerWidth = track.parentElement.offsetWidth;
+            const offset = (containerWidth - cardWidth) / 2;
+            position = currentIndex * step - offset;
+            if (position < 0) position = 0;
+          }
           track.style.transform = `translateX(-${position}px)`;
           updateDots((currentIndex % totalCards + totalCards) % totalCards);
         }, 50);
         return;
       }
-
       if (currentIndex < totalCards) {
         currentIndex = totalCards * 2 - 1;
         track.style.transition = 'none';
         position = currentIndex * step;
+        if (window.innerWidth <= 768) {
+          const containerWidth = track.parentElement.offsetWidth;
+          const offset = (containerWidth - cardWidth) / 2;
+          position = currentIndex * step - offset;
+          if (position < 0) position = 0;
+        }
         track.style.transform = `translateX(-${position}px)`;
-        currentDirection = -1 * direction;
+        currentDirection = -direction;
         setTimeout(() => {
           track.style.transition = 'transform 0.5s ease';
           currentIndex += currentDirection;
           position = currentIndex * step;
+          if (window.innerWidth <= 768) {
+            const containerWidth = track.parentElement.offsetWidth;
+            const offset = (containerWidth - cardWidth) / 2;
+            position = currentIndex * step - offset;
+            if (position < 0) position = 0;
+          }
           track.style.transform = `translateX(-${position}px)`;
           updateDots((currentIndex % totalCards + totalCards) % totalCards);
         }, 50);
         return;
       }
-
       track.style.transition = 'transform 0.5s ease';
       position = currentIndex * step;
+      if (window.innerWidth <= 768) {
+        const containerWidth = track.parentElement.offsetWidth;
+        const offset = (containerWidth - cardWidth) / 2;
+        position = currentIndex * step - offset;
+        if (position < 0) position = 0;
+      }
       track.style.transform = `translateX(-${position}px)`;
       updateDots((currentIndex % totalCards + totalCards) % totalCards);
     }
 
     interval = setInterval(moveCarousel, intervalTime);
+
+    window.addEventListener('resize', () => {
+      const mobileNow = window.innerWidth <= 768;
+      if (mobileNow) {
+        cardWidth = Math.min(window.innerWidth * 0.85, 380);
+        gap = 16;
+      } else {
+        cardWidth = baseCardWidth;
+        gap = baseGap;
+      }
+      const newStep = cardWidth + gap;
+      track.querySelectorAll(cardSelector).forEach(c => c.style.flex = `0 0 ${cardWidth}px`);
+      const containerWidth = track.parentElement.offsetWidth;
+      position = totalCards * newStep - (containerWidth - cardWidth) / 2;
+      if (position < 0) position = 0;
+      track.style.transition = 'none';
+      track.style.transform = `translateX(-${position}px)`;
+    });
+
     return interval;
   }
 
-  // Dados dos carrosséis
   const projetosData = [
-    { className: 'proj-card', innerHTML: '<div class="proj-header"><h3>Amei Cetim</h3><p>Loja de moda íntima com checkout via WhatsApp e visual clean.</p></div><div class="proj-footer"><div class="proj-tags"><span class="tag">E-commerce</span><span class="tag">WhatsApp</span></div><a class="proj-link" href="https://ameicetim.onrender.com" target="_blank"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a></div>' },
+    { className: 'proj-card', innerHTML: '<div class="proj-header"><h3>Amei Cetim</h3><p>Site profissional de acessórios de cetim com carrinho, lightbox e finalização via WhatsApp.<br><small style="color:var(--muted)">Projeto de: Rosana</small></p></div><div class="proj-footer"><div class="proj-tags"><span class="tag">E-commerce</span><span class="tag">WhatsApp</span></div><a class="proj-link" href="https://ameicetim.onrender.com" target="_blank"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a></div>' },
     { className: 'proj-card', innerHTML: '<div class="proj-header"><h3>Halison Henry</h3><p>Site institucional elegante com seções de serviços e CTA direto.</p></div><div class="proj-footer"><div class="proj-tags"><span class="tag">Institucional</span><span class="tag">SEO</span></div><a class="proj-link" href="https://halison-henry.onrender.com/" target="_blank"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a></div>' },
-    { className: 'proj-card', innerHTML: '<div class="proj-header"><h3>Vitrine Bio</h3><p>Bio-link premium para Instagram. Carrega em menos de 0.8s.</p></div><div class="proj-footer" style="flex-wrap:wrap;gap:8px;"><div class="proj-tags"><span class="tag">Bio Page</span><span class="tag">Links</span></div><a class="proj-link" href="https://vitrinebio.onrender.com" target="_blank"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a><a class="btn btn--sm" href="https://wa.me/558586121078?text=Quero%20minha%20Bio%20Page%20como%20a%20Vitrine%20Bio" target="_blank" style="background:var(--cyan);color:#000;font-size:12px;padding:6px 12px;border-radius:999px;font-weight:600;text-decoration:none;white-space:nowrap;">Quero minha Bio</a></div>' },
-    { className: 'proj-card', innerHTML: '<div class="proj-header"><h3>Colégio Ágape</h3><p>Site institucional para escola de educação básica. Matrículas, calendário e área do aluno.</p></div><div class="proj-footer"><div class="proj-tags"><span class="tag">Institucional</span><span class="tag">Educação</span></div><a class="proj-link" href="https://colegioagape.onrender.com" target="_blank"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a></div>' },
+    { className: 'proj-card', innerHTML: '<div class="proj-header"><h3>Vitrine Bio</h3><p>Bio-link premium para Instagram. Carrega em menos de 0.8s.<br><small style="color:var(--muted)">Projeto de: Samuel CEO</small></p></div><div class="proj-footer" style="flex-wrap:wrap;gap:8px;"><div class="proj-tags"><span class="tag">Bio Page</span><span class="tag">Links</span></div><a class="proj-link" href="https://vitrinebio.onrender.com" target="_blank"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a><a class="btn btn--sm" href="https://wa.me/558586121078?text=Quero%20minha%20Bio%20Page%20como%20a%20Vitrine%20Bio" target="_blank" style="background:var(--cyan);color:#000;font-size:12px;padding:6px 12px;border-radius:999px;font-weight:600;text-decoration:none;white-space:nowrap;">Quero minha Bio</a></div>' },
+    { className: 'proj-card', innerHTML: '<div class="proj-header"><h3>Colégio Centro de Ensino Ágape</h3><p>Landing page otimizada com WebP, menu hambúrguer e integração Google Maps/WhatsApp, focada em conversão e SEO.</p></div><div class="proj-footer"><div class="proj-tags"><span class="tag">Institucional</span><span class="tag">Educação</span></div><a class="proj-link" href="https://colegioagape.onrender.com" target="_blank"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a></div>' },
     { className: 'proj-card proj-dev', innerHTML: '<div class="proj-header"><h3>Academia FitPro</h3><p>Sistema de gestão para academias. Agendamento, alunos e pagamentos.</p></div><div class="proj-footer"><div class="proj-tags"><span class="tag">SaaS</span><span class="tag">Agendamento</span></div><a class="proj-link" href="#"><i class="fas fa-clock"></i> Em desenvolvimento</a></div>' },
     { className: 'proj-card proj-dev', innerHTML: '<div class="proj-header"><h3>Advocacia Souza</h3><p>Site institucional para escritório de advocacia. Áreas de atuação e blog jurídico.</p></div><div class="proj-footer"><div class="proj-tags"><span class="tag">Institucional</span><span class="tag">Blog</span></div><a class="proj-link" href="#"><i class="fas fa-clock"></i> Em desenvolvimento</a></div>' }
   ];
@@ -645,26 +767,42 @@ document.addEventListener('DOMContentLoaded', function() {
     { className: 'dep-card-carousel', innerHTML: '<div class="dep-stars">★★★★★</div><p>"Profissional dedicado e muito criativo. Meu site ficou perfeito."</p><div class="dep-autor"><strong>Ricardo Alves</strong> · Construtora</div>' }
   ];
 
-  const parceirosData = [
-    { className: 'partner-item', innerHTML: '<i class="fas fa-cloud"></i><span>Render</span>' },
-    { className: 'partner-item', innerHTML: '<i class="fab fa-github"></i><span>GitHub</span>' },
-    { className: 'partner-item', innerHTML: '<i class="fas fa-infinity"></i><span>Vercel</span>' },
-    { className: 'partner-item', innerHTML: '<i class="fab fa-html5"></i><span>HTML5</span>' },
-    { className: 'partner-item', innerHTML: '<i class="fab fa-css3-alt"></i><span>CSS3</span>' },
-    { className: 'partner-item', innerHTML: '<i class="fab fa-js-square"></i><span>JavaScript</span>' },
-    { className: 'partner-item', innerHTML: '<i class="fab fa-python"></i><span>Python</span>' },
-    { className: 'partner-item', innerHTML: '<i class="fab fa-node-js"></i><span>Node.js</span>' },
-    { className: 'partner-item', innerHTML: '<i class="fas fa-database"></i><span>PostgreSQL</span>' },
-    { className: 'partner-item', innerHTML: '<i class="fab fa-figma"></i><span>Figma</span>' },
-    { className: 'partner-item', innerHTML: '<i class="fas fa-shield-alt"></i><span>SSL/HTTPS</span>' },
-    { className: 'partner-item', innerHTML: '<i class="fas fa-search"></i><span>SEO</span>' }
+  const parceiros = [
+    { icon: 'fas fa-cloud', name: 'Render' },
+    { icon: 'fab fa-github', name: 'GitHub' },
+    { icon: 'fas fa-infinity', name: 'Vercel' },
+    { icon: 'fab fa-google', name: 'Google' },
+    { icon: 'fab fa-aws', name: 'AWS' },
+    { icon: 'fas fa-cloud-upload-alt', name: 'Cloudflare' },
+    { icon: 'fab fa-html5', name: 'HTML5' },
+    { icon: 'fab fa-css3-alt', name: 'CSS3' },
+    { icon: 'fab fa-js-square', name: 'JavaScript' },
+    { icon: 'fab fa-react', name: 'React' },
+    { icon: 'fab fa-python', name: 'Python' },
+    { icon: 'fab fa-node-js', name: 'Node.js' },
+    { icon: 'fas fa-database', name: 'PostgreSQL' },
+    { icon: 'fab fa-figma', name: 'Figma' },
+    { icon: 'fas fa-shield-alt', name: 'SSL/HTTPS' },
+    { icon: 'fas fa-search', name: 'SEO' },
+    { icon: 'fas fa-code', name: 'TypeScript' },
+    { icon: 'fas fa-wind', name: 'Tailwind CSS' },
   ];
 
-  // Iniciar carrosséis com direções alternadas
-  createInfiniteCarousel('projetosTrack', 'projetosDots', projetosData, 340, 24, 1, 4000);   // direita
-  createInfiniteCarousel('depoimentosTrack', 'depoimentosDots', depoimentosData, 340, 24, -1, 3500); // esquerda
-  createInfiniteCarousel('parceirosTrack', 'parceirosDots', parceirosData, 160, 40, 1, 5000);   // direita
+  const trackParceiros = document.getElementById('partnersTrack');
+  if (trackParceiros) {
+    const itemsHTML = parceiros.map(p => `<div class="partner-item"><i class="${p.icon}"></i><span>${p.name}</span></div>`).join('');
+    trackParceiros.innerHTML = itemsHTML + itemsHTML;
+  }
+
+  createInfiniteCarousel('projetosTrack', 'projetosDots', projetosData, 340, 24, 1, 4000);
+  createInfiniteCarousel('depoimentosTrack', 'depoimentosDots', depoimentosData, 340, 24, -1, 3500);
+
+  
+  chatClose.addEventListener('click', () => { chatOverlay.classList.remove('open'); });
+  chatSend.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
 });
 </script>
+<script src="assets/chat.js" defer></script>
 </body>
 </html>
