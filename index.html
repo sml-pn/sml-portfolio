@@ -125,7 +125,7 @@ p{line-height:1.7}
 .chat-bubble.assistant{background:rgba(0,245,255,0.08);align-self:flex-start;border-bottom-left-radius:4px}
 .chat-bubble.user{background:rgba(255,61,247,0.12);align-self:flex-end;border-bottom-right-radius:4px}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.chat-input-area{display:flex;gap:12px;padding:20px 24px;border-top:1px solid var(--border)}
+.chat-input-area{display:flex;gap:12px;padding:20px 24px;border-top:1px solid var(--border);position:sticky;bottom:0;background:rgba(6,9,19,0.98);z-index:1001;padding-bottom:max(20px, env(safe-area-inset-bottom))}
 .chat-input-area input{flex:1;padding:14px 18px;border-radius:999px;border:1px solid var(--border2);background:rgba(255,255,255,0.05);color:var(--text);font-size:15px;outline:none}
 .chat-input-area input:focus{border-color:var(--cyan)}
 .chat-input-area button{width:48px;height:48px;border-radius:50%;background:var(--cyan);border:none;color:#04111a;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center}
