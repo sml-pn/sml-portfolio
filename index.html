@@ -287,7 +287,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
     <a class="logo" href="/" aria-label="SML/PN Developer"><span class="logo-bracket">&lt;</span>SML<span class="logo-slash">/</span>PN<span class="logo-bracket">&gt;</span></a>
     <nav class="nav-links" aria-label="Principal"><a href="#servicos">Serviços</a><a href="#diferenciais">Diferenciais</a><a href="#processo">Processo</a><a href="#projetos">Projetos</a><a href="#depoimentos">Depoimentos</a><a href="#sobre">Sobre</a></nav>
     <div class="nav-right">
-      <a class="btn btn--ghost btn--sm" href="https://wa.me/558586121078" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      
       <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -301,7 +301,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
     <a href="#projetos">Projetos</a>
     <a href="#depoimentos">Depoimentos</a>
     <a href="#sobre">Sobre</a>
-    <a href="https://wa.me/558586121078" target="_blank" rel="noopener" class="btn btn--primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="#" class="btn btn--primary" onclick="document.getElementById('chatFab').click();return false;"><i class="fas fa-comment-dots"></i> Falar pelo Chat</a>
   </nav>
 </div>
 
@@ -329,7 +329,8 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
       <div class="services-grid">
         <article class="service-card"><div class="svc-label"><i class="fas fa-bolt"></i> Conversão</div><h3>Landing Pages</h3><p>Páginas de alta conversão, rápidas, com copy clara e CTA direto para o WhatsApp.</p></article>
         <article class="service-card"><div class="svc-label"><i class="fas fa-building"></i> Presença</div><h3>Sites Institucionais</h3><p>Sites completos, responsivos, gerenciáveis e prontos para ranquear no Google.</p></article>
-        <article class="service-card"><div class="svc-label"><i class="fas fa-link"></i> Link na Bio</div><h3>Bio Page Pro</h3><p>Sua bio-link premium. Leve, linda, com pixels, catálogo e botão de WhatsApp 1-clique. <a href="https://wa.me/558586121078?text=Quero%20minha%20Bio%20Page" target="_blank" rel="noopener" style="color:var(--cyan); text-decoration:underline; font-weight:500;">Peça a sua →</a></p></article>
+        <article class="service-card"><div class="svc-label"><i class="fas fa-link"></i> Link na Bio</div><h3>Bio Page Pro</h3><p>Sua bio-link premium. Leve, linda, com pixels, catálogo e botão de WhatsApp 1-clique. <a href="#" onclick="document.getElementById('chatFab').click();return false;" style="color:var(--cyan);text-decoration:underline;font-weight:500;">Fale pelo Chat →</a></p></article>
+        <article class="service-card"><div class="svc-label"><i class="fas fa-robot"></i> IA no Site</div><h3>Chat Inteligente RAG</h3><p>Chat automatizado treinado com o conteúdo do seu site. Responde clientes 24h, sem mensalidade, integrado ao WhatsApp. <a href="#" onclick="document.getElementById('chatFab').click();return false;" style="color:var(--cyan);text-decoration:underline;font-weight:500;">Quero no meu site →</a></p></article>
         <article class="service-card"><div class="svc-label"><i class="fas fa-map-marker-alt"></i> Local</div><h3>SEO Local</h3><p>Otimização para "perto de mim" em Trairi e região. Google Business, mapas e conteúdo.</p></article>
         <article class="service-card"><div class="svc-label"><i class="fas fa-tachometer-alt"></i> Velocidade</div><h3>Performance</h3><p>95+ no Lighthouse. Imagens otimizadas, Core Web Vitals verdes, hospedagem rápida.</p></article>
         <article class="service-card"><div class="svc-label"><i class="fab fa-whatsapp"></i> WhatsApp</div><h3>Integração WhatsApp</h3><p>Botões flutuantes, pré-mensagens inteligentes, UTM e rastreio de conversão.</p></article>
@@ -441,7 +442,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
   <div class="footer-inner">
     <div>© 2026 SML/PN — Samuel Pena, Trairi, Ceará</div>
     <div class="footer-links">
-      <a href="https://wa.me/558586121078" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      
       <a href="https://instagram.com/sml_developer" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
       <a href="https://github.com/sml-pn" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
     </div>
@@ -811,6 +812,7 @@ document.addEventListener('DOMContentLoaded', function() {
   chatInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
 });
 </script>
+<script src="assets/js/auto-index.js"></script>
 <script src="assets/js/search-engine.js"></script>
 <script src="assets/js/chat.js" defer></script>
 </body>
