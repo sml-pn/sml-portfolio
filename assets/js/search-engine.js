@@ -33,13 +33,13 @@ var SMLEngine = (function() {
     docs.push({ id:'ecommerce', keywords:'ecommerce e-commerce loja virtual loja online carrinho vender produtos catalogo', resposta:'🛒 <b>E-commerce</b> — Loja virtual com carrinho e WhatsApp. Sob consulta.<br>🔗 <a href="https://ameicetim.onrender.com" target="_blank" style="color:var(--cyan);">Ver exemplo: Amei Cetim</a>' });
     
     // SITE - DEVE VIR DEPOIS DOS ESPECÍFICOS
-    docs.push({ id:'site', keywords:'site quero site preciso site criar site fazer site site para', resposta:'🌐 <b>Sites profissionais:</b><br><br>🎯 <b>Landing Page — R$ 547,90</b> (pagina unica, 72h)<br>📄 <b>Site 2 pags — R$ 697,90</b> (landing + extra, 96h)<br>🏢 <b>Institucional — R$ 997,90</b> (ate 5 pags, 7 dias)<br>🛒 <b>E-commerce</b> (sob consulta)<br><br>Qual tipo se encaixa no seu projeto?' });
+    docs.push({ id:'site', keywords:'site quero site preciso site criar site fazer site site para web homepage website pagina web', resposta:'🌐 <b>Sites profissionais:</b><br><br>🎯 <b>Landing Page — R$ 547,90</b> (pagina unica, 72h)<br>📄 <b>Site 2 pags — R$ 697,90</b> (landing + extra, 96h)<br>🏢 <b>Institucional — R$ 997,90</b> (ate 5 pags, 7 dias)<br>🛒 <b>E-commerce</b> (sob consulta)<br><br>Qual tipo se encaixa no seu projeto?' });
     
-    docs.push({ id:'chat_rag', keywords:'chat rag bot assistente virtual ia inteligencia artificial chat inteligente', resposta:'🤖 <b>Chat RAG Inteligente — R$ 197,90</b><br><br>✅ Responde clientes 24h<br>✅ Treinado com SEU conteudo<br>✅ Integrado ao WhatsApp e GA4<br>✅ Instalacao incluida<br>✅ Pagamento unico, sem mensalidade<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver demonstracao</a>' + wppBtn('Quero Chat RAG no meu site!') });
+    docs.push({ id:'chat_rag', keywords:'chat rag bot assistente virtual ia inteligencia artificial chat inteligente automacao atendimento automatico', resposta:'🤖 <b>Chat RAG Inteligente — R$ 197,90</b><br><br>✅ Responde clientes 24h<br>✅ Treinado com SEU conteudo<br>✅ Integrado ao WhatsApp e GA4<br>✅ Instalacao incluida<br>✅ Pagamento unico, sem mensalidade<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver demonstracao</a>' + wppBtn('Quero Chat RAG no meu site!') });
     
     docs.push({ id:'portfolio', keywords:'portfolio projetos trabalhos exemplos mostre ver fez criou ja fez', resposta:'📂 <b>Projetos:</b><br>🛒 Amei Cetim <a href="https://ameicetim.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>🏢 Halison Henry <a href="https://halison-henry.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>📱 Vitrine Bio <a href="https://vitrinebio.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>🏫 Colegio Agape <a href="https://colegioagape.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a>' });
     
-    docs.push({ id:'seo', keywords:'seo google ranquear aparecer busca organico melhorar seo como melhorar', resposta:'🔍 <b>SEO Local incluso em todos os planos!</b><br><br>✅ Otimizacao para Google<br>✅ Google Meu Negocio<br>✅ Palavras-chave locais<br>✅ Meta tags e sitemap<br>✅ Performance 95+<br><br>Quer aparecer nas buscas de Trairi e regiao?' + wppBtn('Quero SEO!') });
+    docs.push({ id:'seo', keywords:'seo google ranquear aparecer busca organico melhorar seo como melhorar trafego trafego organico', resposta:'🔍 <b>SEO Local incluso em todos os planos!</b><br><br>✅ Otimizacao para Google<br>✅ Google Meu Negocio<br>✅ Palavras-chave locais<br>✅ Meta tags e sitemap<br>✅ Performance 95+<br><br>Quer aparecer nas buscas de Trairi e regiao?' + wppBtn('Quero SEO!') });
     
     docs.push({ id:'contato', keywords:'whatsapp falar conversar ligar telefone contato zap chamar', resposta:'📞 Vamos conversar?' + wppBtn('Ola Samuel!') });
     docs.push({ id:'sobre', keywords:'quem samuel desenvolvedor dono fundador sobre', resposta:'👨‍💻 <b>Samuel Pena</b> — Full Stack em Trairi-CE.' });
@@ -52,6 +52,9 @@ var SMLEngine = (function() {
 
   
     docs.push({ id:'ga4', keywords:'ga4 g4 google analytics analytics o que ga4 o que g4', resposta:'📊 <b>GA4 (Google Analytics 4)</b> — E a ferramenta gratuita do Google que mostra quantas pessoas visitam seu site, de onde elas vem, quais paginas mais acessam e muito mais.<br><br>✅ <b>Em todos os meus sites eu instalo o GA4</b> para voce acompanhar os resultados.<br>✅ O <b>Chat RAG</b> tambem envia eventos para o GA4 — voce ve quantas pessoas perguntaram precos, portfolio, etc.<br><br>🔗 <a href="https://analytics.google.com" target="_blank" style="color:var(--cyan);">Acessar Google Analytics</a>' + wppBtn('Quero GA4 no meu site!') });
+
+  
+    docs.push({ id:'responsivo', keywords:'responsivo mobile celular tablet funciona celular adapta dispositivo', resposta:'📱 <b>Todos os meus sites são 100% responsivos!</b><br><br>✅ Funcionam perfeitamente no celular, tablet e computador<br>✅ Design mobile-first (pensado primeiro para celular)<br>✅ Layout adaptável a qualquer tamanho de tela<br>✅ Imagens otimizadas para carregar rapido no 4G<br>✅ Testado em iOS e Android<br><br>🔗 <a href="https://vitrinebio.onrender.com" target="_blank" style="color:var(--cyan);">Veja no seu celular</a>' + wppBtn('Quero site responsivo!') });
 
   buildFromPage();
 
