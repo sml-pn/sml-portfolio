@@ -11,7 +11,7 @@ var SMLEngine = (function() {
     if (typeof gtag !== 'undefined') gtag('event', n, p);
   }
 
-  // ============ LÊ TUDO DA PÁGINA ============
+  // ============ LÊ A PÁGINA ============
   function buildFromPage() {
     docs = [];
     
@@ -64,6 +64,7 @@ var SMLEngine = (function() {
       });
     }
     
+    // Intenções manuais
     docs.push({ id:'precos', keywords:'preco quanto custa valor investimento tabela planos orcamento precos', resposta:'📋 <b>Precos SML/PN:</b><br><br>📱 <b>Vitrine Bio:</b> Simples R$ 97,90 | Premium R$ 247,90 | Empresarial R$ 497,90<br>🌐 <b>Sites:</b> Landing R$ 547,90 | 2 pags R$ 697,90 | Institucional R$ 997,90<br>🛒 <b>E-commerce:</b> sob consulta<br>🤖 <b>Chat RAG:</b> R$ 197,90<br><br>✅ Garantia 7 dias • Hospedagem inclusa' });
     docs.push({ id:'saudacao', keywords:'oi ola hey bom dia boa tarde boa noite iae opa fala salve hi hello', resposta:'Ola! Sou o assistente da <b>SML/PN</b> — Samuel Pena.<br><br>📱 <b>Vitrine Bio</b> a partir de R$ 97,90<br>🌐 <b>Sites</b> a partir de R$ 547,90<br>🤖 <b>Chat RAG</b> — R$ 197,90<br><br>Me conta: qual seu interesse?' });
     docs.push({ id:'portfolio', keywords:'portfolio projetos trabalhos exemplos mostre ver fez criou ja fez', resposta:'📂 <b>Projetos:</b><br>🛒 Amei Cetim <a href="https://ameicetim.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>🏢 Halison Henry <a href="https://halison-henry.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>📱 Vitrine Bio <a href="https://vitrinebio.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>🏫 Colegio Agape <a href="https://colegioagape.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a>' });
@@ -73,12 +74,14 @@ var SMLEngine = (function() {
     docs.push({ id:'prazos', keywords:'prazo demora dias entrega rapido urgente tempo pronto', resposta:'⏱️ <b>Prazos:</b> Bio Simples 48h | Premium 3-5 dias | Landing 72h | 2 pags 96h | Institucional 7 dias' });
     docs.push({ id:'modelos_bio', keywords:'modelos bio modelos vitrine quais modelos tipos bio exemplos bios showcase', resposta:'📱 <b>Modelos de Vitrine Bio:</b><br><br>🟢 Simples R$ 97,90<br>🔵 Premium R$ 247,90<br>🟣 Empresarial R$ 497,90<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver showcase</a>' });
     docs.push({ id:'chat_rag', keywords:'chat rag bot assistente virtual ia inteligencia artificial', resposta:'🤖 <b>Chat RAG — R$ 197,90</b><br>Atendimento 24h treinado com seu conteudo. Integrado WhatsApp e GA4.' + wppBtn('Quero Chat RAG!') });
+    docs.push({ id:'responsivo', keywords:'responsivo responsiva responsivas mobile celular tablet funciona celular serve celular adapta dispositivo', resposta:'📱 <b>Todos os meus sites sao 100% responsivos!</b><br><br>✅ Funcionam no celular, tablet e computador<br>✅ Design mobile-first<br>✅ Imagens otimizadas para 4G/5G<br>✅ Testado em iOS e Android<br><br>🔗 <a href="https://vitrinebio.onrender.com" target="_blank" style="color:var(--cyan);">Veja no seu celular</a>' + wppBtn('Quero site responsivo!') });
     
-    console.log('📚 Engine: ' + docs.length + ' itens indexados');
+    console.log('📚 Engine: ' + docs.length + ' itens');
   }
 
   buildFromPage();
 
+  // ============ LEITURA EXTERNA ============
   function fetchVitrineMain() {
     fetch('https://vitrinebio.onrender.com/')
       .then(function(r) { return r.text(); })
@@ -88,10 +91,10 @@ var SMLEngine = (function() {
         var precos = text.match(/R\$\s?[\d,.]+/g) || [];
         docs.push({
           id: 'vitrine_main',
-          keywords: 'vitrine bio principal pagina inicial ' + text.substring(0,200).toLowerCase(),
+          keywords: 'vitrine bio principal ' + text.substring(0,200).toLowerCase(),
           resposta: '📱 <b>Vitrine Bio:</b><br><br>' + text.substring(0,400) + '...<br><br>💰 ' + precos.slice(0,3).join(', ') + '<br><br>🔗 <a href="https://vitrinebio.onrender.com/" target="_blank" style="color:var(--cyan);">Acessar</a>' + wppBtn('Quero minha Vitrine Bio!')
         });
-        console.log('📚 Vitrine Bio principal carregada');
+        console.log('📚 Vitrine Bio carregada');
       }).catch(function() {});
   }
 
@@ -111,7 +114,7 @@ var SMLEngine = (function() {
           docs.push({
             id: 'vitrine_showcase',
             keywords: 'showcase modelos vitrine ' + info.join(' ').toLowerCase(),
-            resposta: '🎨 <b>Showcase Vitrine Bio:</b><br><br>' + info.slice(0,6).map(function(i){return '• '+i;}).join('<br>') + '<br><br>💰 ' + precos.slice(0,3).join(', ') + '<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver showcase</a>' + wppBtn('Quero igual!')
+            resposta: '🎨 <b>Showcase:</b><br><br>' + info.slice(0,6).map(function(i){return '• '+i;}).join('<br>') + '<br><br>💰 ' + precos.slice(0,3).join(', ') + '<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver showcase</a>' + wppBtn('Quero igual!')
           });
           console.log('📚 Showcase carregado');
         }
@@ -121,21 +124,26 @@ var SMLEngine = (function() {
   fetchVitrineMain();
   fetchShowcase();
 
+  // ============ DETECTOR DE INTENÇÃO COM NLP ============
   function detectIntent(query) {
     var q = query.toLowerCase();
+    
     if (typeof window.nlp !== 'undefined') {
       var doc = window.nlp(q);
       var verbs = doc.verbs().out('array');
       var nouns = doc.nouns().out('array');
-      var actionVerbs = ['quero','preciso','gostaria','contratar','fechar','comprar','pedir'];
-      var hasAction = verbs.some(function(v) { return actionVerbs.indexOf(v) !== -1; });
-      if (hasAction) {
+      if (verbs.some(function(v) { return /quero|preciso|gostaria|contratar|comprar|pedir/.test(v); })) {
         if (nouns.some(function(n) { return /site|pagina|web|landing/.test(n); })) return 'site';
         if (nouns.some(function(n) { return /vitrine|bio|instagram|link/.test(n); })) return 'vitrine_bio';
         if (nouns.some(function(n) { return /loja|ecommerce|vender|produto/.test(n); })) return 'ecommerce';
       }
       if (q.match(/quanto|custa|preco|valor|orcamento/)) return 'precos';
       if (verbs.some(function(v) { return /mostra|ver|exemplo/.test(v); })) return 'portfolio';
+    }
+    
+    if (q.match(/responsiv|celular|mobile|tablet|serve para|funciona no/)) return 'responsivo';
+    if (q.match(/e para|e o|e no|para site|para o site|do site/)) {
+      if (q.match(/site|pagina|web/)) return 'site';
     }
     if (q.match(/quero|preciso|gostaria|contratar/)) {
       if (q.match(/site|pagina|web/)) return 'site';
@@ -144,7 +152,7 @@ var SMLEngine = (function() {
     }
     if (q.match(/quanto|custa|preco|valor|orcamento/)) return 'precos';
     if (q.match(/mostra|ver|exemplo|portfolio|projeto|trabalho/)) return 'portfolio';
-    if (q.match(/prazo|demora|entrega|urgente/)) return 'prazos';
+    if (q.match(/prazo|demora|entrega|urgente|tempo/)) return 'prazos';
     if (q.match(/garantia|devolucao|reembolso/)) return 'garantia';
     if (q.match(/pagamento|pagar|cartao|pix/)) return 'pagamento';
     if (q.match(/whatsapp|falar|contato|chamar/)) return 'contato';
@@ -152,7 +160,7 @@ var SMLEngine = (function() {
   }
 
   function fixTypos(text) {
-    var fixes = {'char':'chat','prco':'preco','stie':'site','portflio':'portfolio','vitrne':'vitrine','landng':'landing'};
+    var fixes = {'char':'chat','prco':'preco','stie':'site','portflio':'portfolio','vitrne':'vitrine','landng':'landing','bill':'bio','celular':'mobile','responsiva':'responsivo','responsivas':'responsivo'};
     var words = text.split(' ');
     for (var i = 0; i < words.length; i++) { if (fixes[words[i]]) words[i] = fixes[words[i]]; }
     return words.join(' ');
