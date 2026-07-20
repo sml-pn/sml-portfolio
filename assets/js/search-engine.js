@@ -50,6 +50,9 @@ var SMLEngine = (function() {
     console.log('📚 Engine: ' + docs.length + ' intencoes precisas');
   }
 
+  
+    docs.push({ id:'ga4', keywords:'ga4 g4 google analytics analytics o que ga4 o que g4', resposta:'📊 <b>GA4 (Google Analytics 4)</b> — E a ferramenta gratuita do Google que mostra quantas pessoas visitam seu site, de onde elas vem, quais paginas mais acessam e muito mais.<br><br>✅ <b>Em todos os meus sites eu instalo o GA4</b> para voce acompanhar os resultados.<br>✅ O <b>Chat RAG</b> tambem envia eventos para o GA4 — voce ve quantas pessoas perguntaram precos, portfolio, etc.<br><br>🔗 <a href="https://analytics.google.com" target="_blank" style="color:var(--cyan);">Acessar Google Analytics</a>' + wppBtn('Quero GA4 no meu site!') });
+
   buildFromPage();
 
   function fixTypos(text) {
