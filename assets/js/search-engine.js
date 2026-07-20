@@ -11,7 +11,6 @@ var SMLEngine = (function() {
     if (typeof gtag !== 'undefined') gtag('event', n, p);
   }
 
-  // ============ LÊ A PÁGINA ============
   function buildFromPage() {
     docs = [];
     
@@ -57,14 +56,9 @@ var SMLEngine = (function() {
     var sobre = document.querySelector('#sobre');
     if (sobre) {
       var sobreText = sobre.textContent?.trim().substring(0, 500) || '';
-      docs.push({
-        id: 'sobre',
-        keywords: 'quem samuel desenvolvedor dono fundador sobre contato',
-        resposta: sobreText + wppBtn('Quero falar com o Samuel!')
-      });
+      docs.push({ id:'sobre', keywords:'quem samuel desenvolvedor dono fundador sobre contato', resposta: sobreText + wppBtn('Quero falar com o Samuel!') });
     }
     
-    // Intenções manuais
     docs.push({ id:'precos', keywords:'preco quanto custa valor investimento tabela planos orcamento precos', resposta:'📋 <b>Precos SML/PN:</b><br><br>📱 <b>Vitrine Bio:</b> Simples R$ 97,90 | Premium R$ 247,90 | Empresarial R$ 497,90<br>🌐 <b>Sites:</b> Landing R$ 547,90 | 2 pags R$ 697,90 | Institucional R$ 997,90<br>🛒 <b>E-commerce:</b> sob consulta<br>🤖 <b>Chat RAG:</b> R$ 197,90<br><br>✅ Garantia 7 dias • Hospedagem inclusa' });
     docs.push({ id:'saudacao', keywords:'oi ola hey bom dia boa tarde boa noite iae opa fala salve hi hello', resposta:'Ola! Sou o assistente da <b>SML/PN</b> — Samuel Pena.<br><br>📱 <b>Vitrine Bio</b> a partir de R$ 97,90<br>🌐 <b>Sites</b> a partir de R$ 547,90<br>🤖 <b>Chat RAG</b> — R$ 197,90<br><br>Me conta: qual seu interesse?' });
     docs.push({ id:'portfolio', keywords:'portfolio projetos trabalhos exemplos mostre ver fez criou ja fez', resposta:'📂 <b>Projetos:</b><br>🛒 Amei Cetim <a href="https://ameicetim.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>🏢 Halison Henry <a href="https://halison-henry.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>📱 Vitrine Bio <a href="https://vitrinebio.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>🏫 Colegio Agape <a href="https://colegioagape.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a>' });
@@ -74,14 +68,15 @@ var SMLEngine = (function() {
     docs.push({ id:'prazos', keywords:'prazo demora dias entrega rapido urgente tempo pronto', resposta:'⏱️ <b>Prazos:</b> Bio Simples 48h | Premium 3-5 dias | Landing 72h | 2 pags 96h | Institucional 7 dias' });
     docs.push({ id:'modelos_bio', keywords:'modelos bio modelos vitrine quais modelos tipos bio exemplos bios showcase', resposta:'📱 <b>Modelos de Vitrine Bio:</b><br><br>🟢 Simples R$ 97,90<br>🔵 Premium R$ 247,90<br>🟣 Empresarial R$ 497,90<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver showcase</a>' });
     docs.push({ id:'chat_rag', keywords:'chat rag bot assistente virtual ia inteligencia artificial', resposta:'🤖 <b>Chat RAG — R$ 197,90</b><br>Atendimento 24h treinado com seu conteudo. Integrado WhatsApp e GA4.' + wppBtn('Quero Chat RAG!') });
-    docs.push({ id:'responsivo', keywords:'responsivo responsiva responsivas mobile celular tablet funciona celular serve celular adapta dispositivo', resposta:'📱 <b>Todos os meus sites sao 100% responsivos!</b><br><br>✅ Funcionam no celular, tablet e computador<br>✅ Design mobile-first<br>✅ Imagens otimizadas para 4G/5G<br>✅ Testado em iOS e Android<br><br>🔗 <a href="https://vitrinebio.onrender.com" target="_blank" style="color:var(--cyan);">Veja no seu celular</a>' + wppBtn('Quero site responsivo!') });
+    docs.push({ id:'responsivo', keywords:'responsivo responsiva mobile celular tablet funciona serve adapta dispositivo tela', resposta:'📱 <b>Todos os meus sites sao 100% responsivos!</b><br><br>✅ Funcionam no celular, tablet e computador<br>✅ Design mobile-first<br>✅ Imagens otimizadas para 4G/5G<br>✅ Testado em iOS e Android<br><br>🔗 <a href="https://vitrinebio.onrender.com" target="_blank" style="color:var(--cyan);">Veja no seu celular</a>' + wppBtn('Quero site responsivo!') });
+    docs.push({ id:'gerenciavel', keywords:'gerenciavel gerenciaveis administrar painel dashboard controle', resposta:'📝 <b>Sites gerenciáveis</b> significa que voce mesmo pode atualizar o site sem programador.<br><br>✅ Alterar textos e imagens<br>✅ Adicionar produtos/servicos<br>✅ Trocar fotos da galeria<br>✅ Atualizar precos<br><br>Tudo por um painel simples!' + wppBtn('Quero site gerenciavel!') });
+    docs.push({ id:'explicar', keywords:'explica o que significa como assim o que quer dizer', resposta:'🤔 <b>Me explica melhor sua duvida!</b> Qual termo ou servico voce quer que eu detalhe?<br><br>Posso explicar:<br>📱 Sites responsivos<br>📝 Sites gerenciáveis<br>🔍 SEO<br>🤖 Chat RAG<br>📊 GA4<br><br>' + wppBtn('Quero falar com o Samuel!') });
     
     console.log('📚 Engine: ' + docs.length + ' itens');
   }
 
   buildFromPage();
 
-  // ============ LEITURA EXTERNA ============
   function fetchVitrineMain() {
     fetch('https://vitrinebio.onrender.com/')
       .then(function(r) { return r.text(); })
@@ -124,7 +119,6 @@ var SMLEngine = (function() {
   fetchVitrineMain();
   fetchShowcase();
 
-  // ============ DETECTOR DE INTENÇÃO COM NLP ============
   function detectIntent(query) {
     var q = query.toLowerCase();
     
@@ -141,10 +135,15 @@ var SMLEngine = (function() {
       if (verbs.some(function(v) { return /mostra|ver|exemplo/.test(v); })) return 'portfolio';
     }
     
-    if (q.match(/responsiv|celular|mobile|tablet|serve para|funciona no/)) return 'responsivo';
-    if (q.match(/e para|e o|e no|para site|para o site|do site/)) {
-      if (q.match(/site|pagina|web/)) return 'site';
+    if (q.match(/como assim|o que significa|o que quer dizer|explica|o que e/)) {
+      if (q.match(/gerenciav|administr/)) return 'gerenciavel';
+      if (q.match(/responsiv|mobile|celular/)) return 'responsivo';
+      if (q.match(/seo|ranquear|google/)) return 'seo';
+      return 'explicar';
     }
+    if (q.match(/responsiv|celular|mobile|tablet|serve para|funciona no|serve no|serve em|funciona em|adapt|tela/)) return 'responsivo';
+    if (q.match(/gerenciav|administr|painel|dashboard|controle/)) return 'gerenciavel';
+    if (q.match(/e para|e o|e no|para site|para o site|do site/)) { if (q.match(/site|pagina|web/)) return 'site'; }
     if (q.match(/quero|preciso|gostaria|contratar/)) {
       if (q.match(/site|pagina|web/)) return 'site';
       if (q.match(/vitrine|bio|instagram/)) return 'vitrine_bio';
@@ -160,7 +159,7 @@ var SMLEngine = (function() {
   }
 
   function fixTypos(text) {
-    var fixes = {'char':'chat','prco':'preco','stie':'site','portflio':'portfolio','vitrne':'vitrine','landng':'landing','bill':'bio','celular':'mobile','responsiva':'responsivo','responsivas':'responsivo'};
+    var fixes = {'char':'chat','prco':'preco','stie':'site','portflio':'portfolio','vitrne':'vitrine','landng':'landing','bill':'bio','celular':'mobile','responsiva':'responsivo','responsivas':'responsivo','gerenciavei':'gerenciavel'};
     var words = text.split(' ');
     for (var i = 0; i < words.length; i++) { if (fixes[words[i]]) words[i] = fixes[words[i]]; }
     return words.join(' ');
