@@ -1,204 +1,93 @@
-/* ==================== SML ENGINE - VERSÃO FINAL ==================== */
 var SMLEngine = (function() {
   
   var docs = [];
   var salesStage = 'inicio';
 
   function wppBtn(t) {
-    return '<br><br><a href="https://wa.me/558586121078?text=' + encodeURIComponent(t || 'Ola Samuel!') + '" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;text-decoration:none;margin-top:8px;font-size:14px;transition:all .2s;"><i class="fab fa-whatsapp" style="margin-right:6px;"></i> Chamar no WhatsApp</a>';
-  }function trackEvent(n, p) {
+    return '<br><br><a href="https://wa.me/558586121078?text=' + encodeURIComponent(t || 'Ola Samuel!') + '" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;text-decoration:none;font-size:14px;"><i class="fab fa-whatsapp" style="margin-right:6px;"></i> Chamar no WhatsApp</a>';
+  }
+
+  function trackEvent(n, p) {
     p = p || {};
     if (typeof gtag !== 'undefined') gtag('event', n, p);
   }
 
-  // ============ CONVERTE LINKS EM BOTÕES ============
-  function convertLinksToButtons(text) {
-    text = text.replace(/Quero no meu site\s*→?/gi, '');
-    text = text.replace(/Fale pelo Chat\s*→?/gi, '');
-    text = text.replace(/Peça a sua\s*→?/gi, '');
-    text = text.replace(/Teste aqui\s*→?/gi, '');
-    text = text.replace(/Quero esse\s*→?/gi, '');
-    text = text.replace(/Quero minha Bio\s*→?/gi, '');
-    text = text.replace(/→/g, '');
-    text = text.replace(/\s+/g, ' ').trim();
-    if (!text || text.length < 5) text = 'Quer saber mais sobre este servico?';
-    return text + wppBtn('Ola Samuel! Quero saber mais.');
-  }
-
-  // ============ FILTRO DE TEXTO ============
-  function filterText(text) {
-    text = text.replace(/[\u{1F600}-\u{1F6FF}]/gu, '');
-    text = text.replace(/[\u{1F300}-\u{1F5FF}]/gu, '');
-    text = text.replace(/[\u{1F680}-\u{1F6FF}]/gu, '');
-    text = text.replace(/[\u{2600}-\u{26FF}]/gu, '');
-    text = text.replace(/[\u{2700}-\u{27BF}]/gu, '');
-    text = text.replace(/[→€¥$£¢™©®°•◉○●□■☆★♥♦♣♠✓✗✘☐☑☒]/g, '');
-    text = text.replace(/\b\d{4,}\b/g, '');
-    text = text.replace(/\s+/g, ' ').trim();
-    return text;
-  }
-
-  function extractRelevantText(element) {
-    if (!element) return '';
-    return filterText(element.textContent || element.innerText || '');
-  }
-
-  // ============ VARIAÇÕES ============
-  function generateVariations(text) {
-    var words = text.toLowerCase().split(/\s+/);
-    var variations = [text.toLowerCase()];
-    words.forEach(function(w) { if (w.length > 3) variations.push(w); });
-    var synonyms = {
-      'site': 'site pagina web website homepage',
-      'landing': 'landing page pagina venda captura conversao lead',
-      'vitrine': 'vitrine bio page link bio instagram linktree modelos bios exemplos',
-      'ecommerce': 'ecommerce loja virtual loja online carrinho vender produtos catalogo',
-      'institucional': 'institucional empresa negocio clinica escritorio corporativo completo',
-      'chat': 'chat bot assistente virtual ia inteligencia artificial rag',
-      'preco': 'preco quanto custa valor investimento orcamento tabela',
-      'prazo': 'prazo demora dias entrega tempo pronto urgencia',
-      'whatsapp': 'whatsapp zap whats contato falar conversar telefone',
-      'portfolio': 'portfolio projetos trabalhos exemplos mostre ver fez criou'
-    };
-    for (var key in synonyms) {
-      if (text.toLowerCase().indexOf(key) !== -1) {
-        variations = variations.concat(synonyms[key].split(' '));
-      }
-    }
-    return variations.join(' ');
-  }
-
-  // ============ FUNIL DE VENDAS ============
-  function getSalesFollowUp(intentId) {
-    if (intentId === 'precos' && salesStage === 'inicio') {
-      salesStage = 'precos';
-      return '<br><br>💡 <b>Quer ver alguns projetos que ja fiz?</b> (digite "sim" ou "portfolio")';
-    }
-    if ((intentId === 'portfolio') && (salesStage === 'precos' || salesStage === 'inicio')) {
-      salesStage = 'portfolio';
-      return '<br><br>🎯 <b>Gostou de algum?</b> Me chama no WhatsApp que preparo um orcamento!' + wppBtn('Quero um orcamento!');
-    }
-    if (intentId === 'saudacao') {
-      salesStage = 'inicio';
-      return '<br><br>Me conta: voce esta pensando em uma 📱 <b>Vitrine Bio</b>, um 🌐 <b>Site</b> ou um 🛒 <b>E-commerce</b>?';
-    }
-    if (intentId === 'modelos_bio') {
-      salesStage = 'precos';
-      return '<br><br>💡 <b>Quer saber os precos de cada plano?</b>';
-    }
-    return '';
-  }
-
-  // ============ BASE DE CONHECIMENTO ============
+  // ============ BASE DE CONHECIMENTO MANUAL (MAIS PRECISA) ============
   function buildFromPage() {
     docs = [];
     
-    var serviceSection = document.querySelector('#servicos');
-    if (serviceSection) {
-      var cards = serviceSection.querySelectorAll('.service-card');
-      cards.forEach(function(card) {
-        var title = extractRelevantText(card.querySelector('h3'));
-        var desc = extractRelevantText(card.querySelector('p'));
-        if (title && desc) {
-          docs.push({
-            id: title.toLowerCase().replace(/\s+/g,'_'),
-            keywords: generateVariations(title + ' ' + desc),
-            resposta: convertLinksToButtons('<b>' + title + '</b><br>' + desc)
-          });
-        }
-      });
-    }
+    // ORDEM IMPORTA: intenções mais específicas primeiro
     
-    docs.push({
-      id: 'precos',
-      keywords: generateVariations('preco quanto custa valor investimento tabela planos orcamento precos'),
-      resposta: '📋 <b>Precos SML/PN (pagamento unico):</b><br><br>📱 <b>Vitrine Bio:</b><br>🟢 Simples: R$ 97,90 (48h)<br>🔵 Premium: R$ 247,90 (3-5 dias) ⭐<br>🟣 Empresarial: R$ 497,90 (3-5 dias)<br><br>🌐 <b>Sites:</b><br>🎯 Landing: R$ 547,90 (72h)<br>📄 2 pags: R$ 697,90 (96h)<br>🏢 Institucional: R$ 997,90 (7 dias)<br>🛒 E-commerce: sob consulta<br><br>✅ Garantia 7 dias • Hospedagem inclusa • 50% inicio + 50% entrega'
-    });
+    docs.push({ id:'saudacao', keywords:'oi ola hey bom dia boa tarde boa noite iae opa fala salve hi hello', resposta:'Ola! Sou o assistente da <b>SML/PN</b> — Samuel Pena.<br><br>📱 <b>Vitrine Bio</b> a partir de R$ 97,90<br>🌐 <b>Sites</b> a partir de R$ 547,90<br>🤖 <b>Chat RAG</b> para automatizar atendimento<br><br>Me conta: qual seu interesse?' });
     
-    docs.push({
-      id: 'modelos_bio',
-      keywords: generateVariations('modelos bio modelos vitrine quais modelos tipos bio exemplos bios showcase'),
-      resposta: '📱 <b>Modelos de Vitrine Bio:</b><br><br>🟢 <b>Simples — R$ 97</b><br>Links essenciais, design limpo, 48h<br><br>🔵 <b>Premium — R$ 247</b> ⭐ MAIS VENDIDO<br>Identidade visual, depoimentos, mapa, Pixel, 3-5 dias<br><br>🟣 <b>Empresarial — R$ 497</b><br>Galeria, Analytics, contador de urgencia, suporte 30 dias<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver todos os modelos ao vivo</a>'
-    });
+    docs.push({ id:'precos', keywords:'preco quanto custa valor investimento tabela planos orcamento precos', resposta:'📋 <b>Precos SML/PN:</b><br><br>📱 <b>Vitrine Bio:</b> Simples R$ 97,90 | Premium R$ 247,90 | Empresarial R$ 497,90<br>🌐 <b>Sites:</b> Landing R$ 547,90 | 2 pags R$ 697,90 | Institucional R$ 997,90<br>🛒 <b>E-commerce:</b> sob consulta<br>🤖 <b>Chat RAG:</b> R$ 197,90<br><br>✅ Garantia 7 dias • Hospedagem inclusa' });
     
-    docs.push({
-      id: 'portfolio',
-      keywords: generateVariations('portfolio projetos trabalhos exemplos mostre ver fez criou ja fez'),
-      resposta: '📂 <b>Projetos entregues:</b><br><br>🛒 <b>Amei Cetim</b> — E-commerce<br>🔗 <a href="https://ameicetim.onrender.com" target="_blank" style="color:var(--cyan);">Ver site</a><br><br>🏢 <b>Halison Henry</b> — Institucional<br>🔗 <a href="https://halison-henry.onrender.com" target="_blank" style="color:var(--cyan);">Ver site</a><br><br>📱 <b>Vitrine Bio</b> — Bio Premium<br>🔗 <a href="https://vitrinebio.onrender.com" target="_blank" style="color:var(--cyan);">Ver modelo</a><br><br>🏫 <b>Colegio Agape</b> — Landing<br>🔗 <a href="https://colegioagape.onrender.com" target="_blank" style="color:var(--cyan);">Ver site</a><br><br>🎨 <b>Showcase</b><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver todos</a>'
-    });
+    docs.push({ id:'modelos_bio', keywords:'modelos bio modelos vitrine quais modelos tipos bio exemplos bios showcase', resposta:'📱 <b>Modelos de Vitrine Bio:</b><br><br>🟢 Simples — R$ 97,90 (links essenciais, 48h)<br>🔵 Premium — R$ 247,90 (identidade visual, depoimentos, Pixel) ⭐<br>🟣 Empresarial — R$ 497,90 (galeria, Analytics, urgencia)<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver showcase ao vivo</a>' });
     
-    docs.push({
-      id: 'saudacao',
-      keywords: generateVariations('oi ola hey bom dia boa tarde boa noite iae opa fala salve hi hello chat ajuda'),
-      resposta: 'Ola! Sou o assistente da <b>SML/PN</b> — Samuel Pena, Full Stack em Trairi-CE.<br><br>📱 <b>Vitrine Bio</b> a partir de R$ 97,90<br>🌐 <b>Sites</b> a partir de R$ 547,90<br>🤖 <b>Chat RAG</b> para automatizar atendimento'
-    });
+    docs.push({ id:'vitrine_bio', keywords:'vitrine bio page link bio instagram linktree', resposta:'📱 <b>Vitrine Bio</b> — Pagina profissional para Instagram.<br><br>🟢 Simples: R$ 97,90<br>🔵 Premium: R$ 247,90 ⭐<br>🟣 Empresarial: R$ 497,90<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver modelos</a>' });
     
-    docs.push({ id: 'contato', keywords: generateVariations('whatsapp falar conversar ligar telefone contato zap chamar'), resposta: '📞 Vamos conversar pelo WhatsApp?' + wppBtn('Ola Samuel! Quero falar sobre um projeto.') });
-    docs.push({ id: 'sobre', keywords: generateVariations('quem samuel desenvolvedor dono fundador sobre'), resposta: '👨‍💻 <b>Samuel Pena</b> — Full Stack em Trairi-CE.<br>📸 <a href="https://instagram.com/sml_developer" target="_blank" style="color:var(--cyan);">@sml_developer</a><br>💻 <a href="https://github.com/sml-pn" target="_blank" style="color:var(--cyan);">sml-pn</a>' });
-    docs.push({ id: 'prazos', keywords: generateVariations('prazo demora dias entrega rapido urgente tempo pronto'), resposta: '⏱️ <b>Prazos:</b><br>📱 Bio Simples: 48h<br>📱 Premium/Empresarial: 3-5 dias<br>🎯 Landing: 72h<br>📄 2 pags: 96h<br>🏢 Institucional: 7 dias' });
-    docs.push({ id: 'garantia', keywords: generateVariations('garantia devolucao reembolso nao gostar 7 dias'), resposta: '✅ <b>Garantia de 7 dias.</b> Se nao gostar, devolvo 100%.' });
-    docs.push({ id: 'pagamento', keywords: generateVariations('pagamento pagar cartao pix transferencia parcela sinal'), resposta: '💳 <b>Pagamento:</b> 50% inicio + 50% entrega. Pix e transferencia.' });
-    docs.push({ id: 'sim', keywords: 'sim quero positivo ok yes claro bora', resposta: 'Otimo! ' + getSalesFollowUp('portfolio') });
+    docs.push({ id:'landing_page', keywords:'landing page pagina venda conversao landing page', resposta:'🎯 <b>Landing Page — R$ 547,90</b><br>Pagina unica de conversao. Hero, servicos, mapa, galeria, WhatsApp Multi. 72h.<br>🔗 <a href="https://colegioagape.onrender.com" target="_blank" style="color:var(--cyan);">Ver exemplo</a>' });
     
-    console.log('📚 SML Engine: ' + docs.length + ' intencoes prontas');
+    docs.push({ id:'institucional', keywords:'site institucional 5 paginas completo empresa clinica negocio corporativo', resposta:'🏢 <b>Site Institucional — R$ 997,90</b><br>Ate 5 paginas. Menu, blog, formulario, WhatsApp Multi. 7 dias.<br>🔗 <a href="https://halison-henry.onrender.com" target="_blank" style="color:var(--cyan);">Ver exemplo</a>' });
+    
+    docs.push({ id:'ecommerce', keywords:'ecommerce e-commerce loja virtual loja online carrinho vender produtos catalogo', resposta:'🛒 <b>E-commerce</b> — Loja virtual com carrinho e WhatsApp. Sob consulta.<br>🔗 <a href="https://ameicetim.onrender.com" target="_blank" style="color:var(--cyan);">Ver exemplo: Amei Cetim</a>' });
+    
+    // SITE - DEVE VIR DEPOIS DOS ESPECÍFICOS
+    docs.push({ id:'site', keywords:'site quero site preciso site criar site fazer site site para', resposta:'🌐 <b>Sites profissionais:</b><br><br>🎯 <b>Landing Page — R$ 547,90</b> (pagina unica, 72h)<br>📄 <b>Site 2 pags — R$ 697,90</b> (landing + extra, 96h)<br>🏢 <b>Institucional — R$ 997,90</b> (ate 5 pags, 7 dias)<br>🛒 <b>E-commerce</b> (sob consulta)<br><br>Qual tipo se encaixa no seu projeto?' });
+    
+    docs.push({ id:'chat_rag', keywords:'chat rag bot assistente virtual ia inteligencia artificial chat inteligente', resposta:'🤖 <b>Chat RAG Inteligente — R$ 197,90</b><br><br>✅ Responde clientes 24h<br>✅ Treinado com SEU conteudo<br>✅ Integrado ao WhatsApp e GA4<br>✅ Instalacao incluida<br>✅ Pagamento unico, sem mensalidade<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver demonstracao</a>' + wppBtn('Quero Chat RAG no meu site!') });
+    
+    docs.push({ id:'portfolio', keywords:'portfolio projetos trabalhos exemplos mostre ver fez criou ja fez', resposta:'📂 <b>Projetos:</b><br>🛒 Amei Cetim <a href="https://ameicetim.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>🏢 Halison Henry <a href="https://halison-henry.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>📱 Vitrine Bio <a href="https://vitrinebio.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>🏫 Colegio Agape <a href="https://colegioagape.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a>' });
+    
+    docs.push({ id:'seo', keywords:'seo google ranquear aparecer busca organico melhorar seo como melhorar', resposta:'🔍 <b>SEO Local incluso em todos os planos!</b><br><br>✅ Otimizacao para Google<br>✅ Google Meu Negocio<br>✅ Palavras-chave locais<br>✅ Meta tags e sitemap<br>✅ Performance 95+<br><br>Quer aparecer nas buscas de Trairi e regiao?' + wppBtn('Quero SEO!') });
+    
+    docs.push({ id:'contato', keywords:'whatsapp falar conversar ligar telefone contato zap chamar', resposta:'📞 Vamos conversar?' + wppBtn('Ola Samuel!') });
+    docs.push({ id:'sobre', keywords:'quem samuel desenvolvedor dono fundador sobre', resposta:'👨‍💻 <b>Samuel Pena</b> — Full Stack em Trairi-CE.' });
+    docs.push({ id:'prazos', keywords:'prazo demora dias entrega rapido urgente tempo pronto', resposta:'⏱️ <b>Prazos:</b> Bio Simples 48h | Premium 3-5 dias | Landing 72h | 2 pags 96h | Institucional 7 dias' });
+    docs.push({ id:'garantia', keywords:'garantia devolucao reembolso 7 dias', resposta:'✅ <b>Garantia de 7 dias.</b> Se nao gostar, devolvo 100%.' });
+    docs.push({ id:'pagamento', keywords:'pagamento pagar cartao pix transferencia parcela', resposta:'💳 <b>Pagamento:</b> 50% inicio + 50% entrega. Pix.' });
+    
+    console.log('📚 Engine: ' + docs.length + ' intencoes precisas');
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', buildFromPage);
-  } else {
-    buildFromPage();
-  }
+  buildFromPage();
 
-  // ============ CORREÇÃO DE TYPOS ============
   function fixTypos(text) {
-    var fixes = {
-      'char':'chat','chst':'chat','prco':'preco','orcmento':'orcamento',
-      'vitrne':'vitrine','landng':'landing','stie':'site','portflio':'portfolio',
-      'projto':'projeto','mnutencao':'manutencao','granta':'garantia',
-      'pgamento':'pagamento','przo':'prazo','domnio':'dominio','contto':'contato',
-      'sobr':'sobre','servco':'servico','rag':'chat inteligente','modelo':'modelos'
-    };
+    var fixes = {'char':'chat','prco':'preco','stie':'site','portflio':'portfolio','vitrne':'vitrine','landng':'landing'};
     var words = text.split(' ');
-    for (var i = 0; i < words.length; i++) {
-      if (fixes[words[i]]) words[i] = fixes[words[i]];
-    }
+    for (var i = 0; i < words.length; i++) { if (fixes[words[i]]) words[i] = fixes[words[i]]; }
     return words.join(' ');
   }
 
   function tokenize(text) {
-    return text.toLowerCase()
-      .replace(/[àáâãä]/g,'a').replace(/[èéêë]/g,'e')
-      .replace(/[ìíîï]/g,'i').replace(/[òóôõö]/g,'o')
-      .replace(/[ùúûü]/g,'u').replace(/[ç]/g,'c')
-      .replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim()
-      .split(' ').filter(function(w){ return w.length > 1; });
+    return text.toLowerCase().replace(/[àáâãä]/g,'a').replace(/[èéêë]/g,'e').replace(/[ìíîï]/g,'i').replace(/[òóôõö]/g,'o').replace(/[ùúûü]/g,'u').replace(/[ç]/g,'c').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim().split(' ').filter(function(w){ return w.length > 1; });
   }
 
   function search(query) {
-    if (docs.length === 0) buildFromPage();
-    
-    query = fixTypos(query);
+    query = fixTypos(query.toLowerCase().trim());
     var qTokens = tokenize(query);
     var bestScore = 0, bestDoc = null;
     
     for (var i = 0; i < docs.length; i++) {
-      var doc = docs[i];
-      var kTokens = tokenize(doc.keywords);
-      var score = 0;
+      var doc = docs[i], score = 0, kTokens = tokenize(doc.keywords);
+      
+      // Match exato da frase inteira (maior peso)
+      if (doc.keywords.indexOf(query) !== -1) score += 30;
+      
+      // Match de tokens
       for (var j = 0; j < qTokens.length; j++) {
         for (var k = 0; k < kTokens.length; k++) {
           if (qTokens[j] === kTokens[k]) score += 10;
           else if (kTokens[k].indexOf(qTokens[j]) !== -1 && qTokens[j].length > 2) score += 5;
         }
       }
-      if (doc.keywords.indexOf(query.toLowerCase()) !== -1) score += 20;
+      
       if (score > bestScore) { bestScore = score; bestDoc = doc; }
     }
     
-    if (bestDoc && bestScore > 3) {
-      trackEvent('chat_intent_' + bestDoc.id, { intent: bestDoc.id, score: bestScore });
-      var followUp = getSalesFollowUp(bestDoc.id);
-      return bestDoc.resposta + followUp;
+    if (bestDoc && bestScore > 5) {
+      trackEvent('chat_intent_' + bestDoc.id, { intent: bestDoc.id });
+      return bestDoc.resposta;
     }
     return null;
   }
