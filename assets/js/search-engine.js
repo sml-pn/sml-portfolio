@@ -5,10 +5,8 @@ var SMLEngine = (function() {
   var salesStage = 'inicio';
 
   function wppBtn(t) {
-    return '<br><br><a href="https://wa.me/558586121078?text=' + encodeURIComponent(t || 'Ola Samuel!') + '" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:14px 24px;border-radius:999px;font-weight:600;text-decoration:none;margin-top:8px;font-size:15px;"><i class="fab fa-whatsapp"></i> Chamar no WhatsApp</a>';
-  }
-
-  function trackEvent(n, p) {
+    return '<br><br><a href="https://wa.me/558586121078?text=' + encodeURIComponent(t || 'Ola Samuel!') + '" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;text-decoration:none;margin-top:8px;font-size:14px;transition:all .2s;"><i class="fab fa-whatsapp" style="margin-right:6px;"></i> Chamar no WhatsApp</a>';
+  }function trackEvent(n, p) {
     p = p || {};
     if (typeof gtag !== 'undefined') gtag('event', n, p);
   }
@@ -114,7 +112,7 @@ var SMLEngine = (function() {
     docs.push({
       id: 'precos',
       keywords: generateVariations('preco quanto custa valor investimento tabela planos orcamento precos'),
-      resposta: '📋 <b>Precos SML/PN (pagamento unico):</b><br><br>📱 <b>Vitrine Bio:</b><br>🟢 Simples: R$97 (48h)<br>🔵 Premium: R$247 (3-5 dias) ⭐<br>🟣 Empresarial: R$497 (3-5 dias)<br><br>🌐 <b>Sites:</b><br>🎯 Landing: R$550 (72h)<br>📄 2 pags: R$700 (96h)<br>🏢 Institucional: R$1.000 (7 dias)<br>🛒 E-commerce: sob consulta<br><br>✅ Garantia 7 dias • Hospedagem inclusa • 50% inicio + 50% entrega'
+      resposta: '📋 <b>Precos SML/PN (pagamento unico):</b><br><br>📱 <b>Vitrine Bio:</b><br>🟢 Simples: R$ 97,90 (48h)<br>🔵 Premium: R$ 247,90 (3-5 dias) ⭐<br>🟣 Empresarial: R$ 497,90 (3-5 dias)<br><br>🌐 <b>Sites:</b><br>🎯 Landing: R$ 547,90 (72h)<br>📄 2 pags: R$ 697,90 (96h)<br>🏢 Institucional: R$ 997,90 (7 dias)<br>🛒 E-commerce: sob consulta<br><br>✅ Garantia 7 dias • Hospedagem inclusa • 50% inicio + 50% entrega'
     });
     
     docs.push({
@@ -132,7 +130,7 @@ var SMLEngine = (function() {
     docs.push({
       id: 'saudacao',
       keywords: generateVariations('oi ola hey bom dia boa tarde boa noite iae opa fala salve hi hello chat ajuda'),
-      resposta: 'Ola! Sou o assistente da <b>SML/PN</b> — Samuel Pena, Full Stack em Trairi-CE.<br><br>📱 <b>Vitrine Bio</b> a partir de R$97<br>🌐 <b>Sites</b> a partir de R$550<br>🤖 <b>Chat RAG</b> para automatizar atendimento'
+      resposta: 'Ola! Sou o assistente da <b>SML/PN</b> — Samuel Pena, Full Stack em Trairi-CE.<br><br>📱 <b>Vitrine Bio</b> a partir de R$ 97,90<br>🌐 <b>Sites</b> a partir de R$ 547,90<br>🤖 <b>Chat RAG</b> para automatizar atendimento'
     });
     
     docs.push({ id: 'contato', keywords: generateVariations('whatsapp falar conversar ligar telefone contato zap chamar'), resposta: '📞 Vamos conversar pelo WhatsApp?' + wppBtn('Ola Samuel! Quero falar sobre um projeto.') });
