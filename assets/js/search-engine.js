@@ -15,7 +15,6 @@ var SMLEngine = (function() {
   function buildFromPage() {
     docs = [];
     
-    // 1. Cards de serviço
     var cards = document.querySelectorAll('.service-card');
     cards.forEach(function(card) {
       var title = card.querySelector('h3')?.textContent?.trim() || '';
@@ -29,7 +28,6 @@ var SMLEngine = (function() {
       }
     });
     
-    // 2. Features/diferenciais
     var features = document.querySelectorAll('.feature-card');
     features.forEach(function(card) {
       var title = card.querySelector('h3')?.textContent?.trim() || '';
@@ -43,7 +41,6 @@ var SMLEngine = (function() {
       }
     });
     
-    // 3. FAQ
     var faqs = document.querySelectorAll('.faq-item');
     faqs.forEach(function(faq) {
       var q = faq.querySelector('.faq-question')?.textContent?.trim() || '';
@@ -57,7 +54,6 @@ var SMLEngine = (function() {
       }
     });
     
-    // 4. Sobre
     var sobre = document.querySelector('#sobre');
     if (sobre) {
       var sobreText = sobre.textContent?.trim().substring(0, 500) || '';
@@ -68,7 +64,6 @@ var SMLEngine = (function() {
       });
     }
     
-    // 5. Intenções manuais
     docs.push({ id:'precos', keywords:'preco quanto custa valor investimento tabela planos orcamento precos', resposta:'📋 <b>Precos SML/PN:</b><br><br>📱 <b>Vitrine Bio:</b> Simples R$ 97,90 | Premium R$ 247,90 | Empresarial R$ 497,90<br>🌐 <b>Sites:</b> Landing R$ 547,90 | 2 pags R$ 697,90 | Institucional R$ 997,90<br>🛒 <b>E-commerce:</b> sob consulta<br>🤖 <b>Chat RAG:</b> R$ 197,90<br><br>✅ Garantia 7 dias • Hospedagem inclusa' });
     docs.push({ id:'saudacao', keywords:'oi ola hey bom dia boa tarde boa noite iae opa fala salve hi hello', resposta:'Ola! Sou o assistente da <b>SML/PN</b> — Samuel Pena.<br><br>📱 <b>Vitrine Bio</b> a partir de R$ 97,90<br>🌐 <b>Sites</b> a partir de R$ 547,90<br>🤖 <b>Chat RAG</b> — R$ 197,90<br><br>Me conta: qual seu interesse?' });
     docs.push({ id:'portfolio', keywords:'portfolio projetos trabalhos exemplos mostre ver fez criou ja fez', resposta:'📂 <b>Projetos:</b><br>🛒 Amei Cetim <a href="https://ameicetim.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>🏢 Halison Henry <a href="https://halison-henry.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>📱 Vitrine Bio <a href="https://vitrinebio.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>🏫 Colegio Agape <a href="https://colegioagape.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a>' });
@@ -84,7 +79,6 @@ var SMLEngine = (function() {
 
   buildFromPage();
 
-  // ============ BUSCA EXTERNA (Vitrine Bio) ============
   function fetchVitrineMain() {
     fetch('https://vitrinebio.onrender.com/')
       .then(function(r) { return r.text(); })
@@ -100,7 +94,7 @@ var SMLEngine = (function() {
         console.log('📚 Vitrine Bio principal carregada');
       }).catch(function() {});
   }
-  
+
   function fetchShowcase() {
     fetch('https://vitrinebio.onrender.com/showcase.html')
       .then(function(r) { return r.text(); })
@@ -127,7 +121,36 @@ var SMLEngine = (function() {
   fetchVitrineMain();
   fetchShowcase();
 
-  // ============ BUSCA ============
+  function detectIntent(query) {
+    var q = query.toLowerCase();
+    if (typeof window.nlp !== 'undefined') {
+      var doc = window.nlp(q);
+      var verbs = doc.verbs().out('array');
+      var nouns = doc.nouns().out('array');
+      var actionVerbs = ['quero','preciso','gostaria','contratar','fechar','comprar','pedir'];
+      var hasAction = verbs.some(function(v) { return actionVerbs.indexOf(v) !== -1; });
+      if (hasAction) {
+        if (nouns.some(function(n) { return /site|pagina|web|landing/.test(n); })) return 'site';
+        if (nouns.some(function(n) { return /vitrine|bio|instagram|link/.test(n); })) return 'vitrine_bio';
+        if (nouns.some(function(n) { return /loja|ecommerce|vender|produto/.test(n); })) return 'ecommerce';
+      }
+      if (q.match(/quanto|custa|preco|valor|orcamento/)) return 'precos';
+      if (verbs.some(function(v) { return /mostra|ver|exemplo/.test(v); })) return 'portfolio';
+    }
+    if (q.match(/quero|preciso|gostaria|contratar/)) {
+      if (q.match(/site|pagina|web/)) return 'site';
+      if (q.match(/vitrine|bio|instagram/)) return 'vitrine_bio';
+      if (q.match(/loja|ecommerce|vender/)) return 'ecommerce';
+    }
+    if (q.match(/quanto|custa|preco|valor|orcamento/)) return 'precos';
+    if (q.match(/mostra|ver|exemplo|portfolio|projeto|trabalho/)) return 'portfolio';
+    if (q.match(/prazo|demora|entrega|urgente/)) return 'prazos';
+    if (q.match(/garantia|devolucao|reembolso/)) return 'garantia';
+    if (q.match(/pagamento|pagar|cartao|pix/)) return 'pagamento';
+    if (q.match(/whatsapp|falar|contato|chamar/)) return 'contato';
+    return null;
+  }
+
   function fixTypos(text) {
     var fixes = {'char':'chat','prco':'preco','stie':'site','portflio':'portfolio','vitrne':'vitrine','landng':'landing'};
     var words = text.split(' ');
@@ -141,9 +164,19 @@ var SMLEngine = (function() {
 
   function search(query) {
     query = fixTypos(query.toLowerCase().trim());
+    
+    var intentId = detectIntent(query);
+    if (intentId) {
+      for (var i = 0; i < docs.length; i++) {
+        if (docs[i].id === intentId || docs[i].id.indexOf(intentId) !== -1) {
+          trackEvent('chat_intent_' + intentId, { intent: intentId });
+          return docs[i].resposta;
+        }
+      }
+    }
+    
     var qTokens = tokenize(query);
     var bestScore = 0, bestDoc = null;
-    
     for (var i = 0; i < docs.length; i++) {
       var doc = docs[i], score = 0, kTokens = tokenize(doc.keywords);
       if (doc.keywords.indexOf(query) !== -1) score += 30;
