@@ -1,7 +1,6 @@
 var SMLEngine = (function() {
   
   var docs = [];
-  var salesStage = 'inicio';
 
   function wppBtn(t) {
     return '<br><br><a href="https://wa.me/558586121078?text=' + encodeURIComponent(t || 'Ola Samuel!') + '" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;text-decoration:none;font-size:14px;"><i class="fab fa-whatsapp" style="margin-right:6px;"></i> Chamar no WhatsApp</a>';
@@ -12,52 +11,123 @@ var SMLEngine = (function() {
     if (typeof gtag !== 'undefined') gtag('event', n, p);
   }
 
-  // ============ BASE DE CONHECIMENTO MANUAL (MAIS PRECISA) ============
+  // ============ LÊ TUDO DA PÁGINA ============
   function buildFromPage() {
     docs = [];
     
-    // ORDEM IMPORTA: intenções mais específicas primeiro
+    // 1. Cards de serviço
+    var cards = document.querySelectorAll('.service-card');
+    cards.forEach(function(card) {
+      var title = card.querySelector('h3')?.textContent?.trim() || '';
+      var desc = card.querySelector('p')?.textContent?.trim() || '';
+      if (title) {
+        docs.push({
+          id: 'pg_' + title.toLowerCase().replace(/\s+/g,'_'),
+          keywords: (title + ' ' + desc).toLowerCase(),
+          resposta: '<b>' + title + '</b><br>' + desc + wppBtn('Quero saber mais!')
+        });
+      }
+    });
     
-    docs.push({ id:'saudacao', keywords:'oi ola hey bom dia boa tarde boa noite iae opa fala salve hi hello', resposta:'Ola! Sou o assistente da <b>SML/PN</b> — Samuel Pena.<br><br>📱 <b>Vitrine Bio</b> a partir de R$ 97,90<br>🌐 <b>Sites</b> a partir de R$ 547,90<br>🤖 <b>Chat RAG</b> para automatizar atendimento<br><br>Me conta: qual seu interesse?' });
+    // 2. Features/diferenciais
+    var features = document.querySelectorAll('.feature-card');
+    features.forEach(function(card) {
+      var title = card.querySelector('h3')?.textContent?.trim() || '';
+      var desc = card.querySelector('p')?.textContent?.trim() || '';
+      if (title) {
+        docs.push({
+          id: 'ft_' + title.toLowerCase().replace(/\s+/g,'_'),
+          keywords: (title + ' ' + desc).toLowerCase(),
+          resposta: '<b>' + title + '</b><br>' + desc
+        });
+      }
+    });
     
+    // 3. FAQ
+    var faqs = document.querySelectorAll('.faq-item');
+    faqs.forEach(function(faq) {
+      var q = faq.querySelector('.faq-question')?.textContent?.trim() || '';
+      var a = faq.querySelector('.faq-answer')?.textContent?.trim() || '';
+      if (q) {
+        docs.push({
+          id: 'faq_' + q.toLowerCase().replace(/\s+/g,'_').substring(0,30),
+          keywords: q.toLowerCase(),
+          resposta: '<b>' + q + '</b><br>' + a
+        });
+      }
+    });
+    
+    // 4. Sobre
+    var sobre = document.querySelector('#sobre');
+    if (sobre) {
+      var sobreText = sobre.textContent?.trim().substring(0, 500) || '';
+      docs.push({
+        id: 'sobre',
+        keywords: 'quem samuel desenvolvedor dono fundador sobre contato',
+        resposta: sobreText + wppBtn('Quero falar com o Samuel!')
+      });
+    }
+    
+    // 5. Intenções manuais
     docs.push({ id:'precos', keywords:'preco quanto custa valor investimento tabela planos orcamento precos', resposta:'📋 <b>Precos SML/PN:</b><br><br>📱 <b>Vitrine Bio:</b> Simples R$ 97,90 | Premium R$ 247,90 | Empresarial R$ 497,90<br>🌐 <b>Sites:</b> Landing R$ 547,90 | 2 pags R$ 697,90 | Institucional R$ 997,90<br>🛒 <b>E-commerce:</b> sob consulta<br>🤖 <b>Chat RAG:</b> R$ 197,90<br><br>✅ Garantia 7 dias • Hospedagem inclusa' });
-    
-    docs.push({ id:'modelos_bio', keywords:'modelos bio modelos vitrine quais modelos tipos bio exemplos bios showcase', resposta:'📱 <b>Modelos de Vitrine Bio:</b><br><br>🟢 Simples — R$ 97,90 (links essenciais, 48h)<br>🔵 Premium — R$ 247,90 (identidade visual, depoimentos, Pixel) ⭐<br>🟣 Empresarial — R$ 497,90 (galeria, Analytics, urgencia)<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver showcase ao vivo</a>' });
-    
-    docs.push({ id:'vitrine_bio', keywords:'vitrine bio page link bio instagram linktree', resposta:'📱 <b>Vitrine Bio</b> — Pagina profissional para Instagram.<br><br>🟢 Simples: R$ 97,90<br>🔵 Premium: R$ 247,90 ⭐<br>🟣 Empresarial: R$ 497,90<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver modelos</a>' });
-    
-    docs.push({ id:'landing_page', keywords:'landing page pagina venda conversao landing page', resposta:'🎯 <b>Landing Page — R$ 547,90</b><br>Pagina unica de conversao. Hero, servicos, mapa, galeria, WhatsApp Multi. 72h.<br>🔗 <a href="https://colegioagape.onrender.com" target="_blank" style="color:var(--cyan);">Ver exemplo</a>' });
-    
-    docs.push({ id:'institucional', keywords:'site institucional 5 paginas completo empresa clinica negocio corporativo', resposta:'🏢 <b>Site Institucional — R$ 997,90</b><br>Ate 5 paginas. Menu, blog, formulario, WhatsApp Multi. 7 dias.<br>🔗 <a href="https://halison-henry.onrender.com" target="_blank" style="color:var(--cyan);">Ver exemplo</a>' });
-    
-    docs.push({ id:'ecommerce', keywords:'ecommerce e-commerce loja virtual loja online carrinho vender produtos catalogo', resposta:'🛒 <b>E-commerce</b> — Loja virtual com carrinho e WhatsApp. Sob consulta.<br>🔗 <a href="https://ameicetim.onrender.com" target="_blank" style="color:var(--cyan);">Ver exemplo: Amei Cetim</a>' });
-    
-    // SITE - DEVE VIR DEPOIS DOS ESPECÍFICOS
-    docs.push({ id:'site', keywords:'site quero site preciso site criar site fazer site site para web homepage website pagina web', resposta:'🌐 <b>Sites profissionais:</b><br><br>🎯 <b>Landing Page — R$ 547,90</b> (pagina unica, 72h)<br>📄 <b>Site 2 pags — R$ 697,90</b> (landing + extra, 96h)<br>🏢 <b>Institucional — R$ 997,90</b> (ate 5 pags, 7 dias)<br>🛒 <b>E-commerce</b> (sob consulta)<br><br>Qual tipo se encaixa no seu projeto?' });
-    
-    docs.push({ id:'chat_rag', keywords:'chat rag bot assistente virtual ia inteligencia artificial chat inteligente automacao atendimento automatico', resposta:'🤖 <b>Chat RAG Inteligente — R$ 197,90</b><br><br>✅ Responde clientes 24h<br>✅ Treinado com SEU conteudo<br>✅ Integrado ao WhatsApp e GA4<br>✅ Instalacao incluida<br>✅ Pagamento unico, sem mensalidade<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver demonstracao</a>' + wppBtn('Quero Chat RAG no meu site!') });
-    
+    docs.push({ id:'saudacao', keywords:'oi ola hey bom dia boa tarde boa noite iae opa fala salve hi hello', resposta:'Ola! Sou o assistente da <b>SML/PN</b> — Samuel Pena.<br><br>📱 <b>Vitrine Bio</b> a partir de R$ 97,90<br>🌐 <b>Sites</b> a partir de R$ 547,90<br>🤖 <b>Chat RAG</b> — R$ 197,90<br><br>Me conta: qual seu interesse?' });
     docs.push({ id:'portfolio', keywords:'portfolio projetos trabalhos exemplos mostre ver fez criou ja fez', resposta:'📂 <b>Projetos:</b><br>🛒 Amei Cetim <a href="https://ameicetim.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>🏢 Halison Henry <a href="https://halison-henry.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>📱 Vitrine Bio <a href="https://vitrinebio.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a><br>🏫 Colegio Agape <a href="https://colegioagape.onrender.com" target="_blank" style="color:var(--cyan);">Ver</a>' });
-    
-    docs.push({ id:'seo', keywords:'seo google ranquear aparecer busca organico melhorar seo como melhorar trafego trafego organico', resposta:'🔍 <b>SEO Local incluso em todos os planos!</b><br><br>✅ Otimizacao para Google<br>✅ Google Meu Negocio<br>✅ Palavras-chave locais<br>✅ Meta tags e sitemap<br>✅ Performance 95+<br><br>Quer aparecer nas buscas de Trairi e regiao?' + wppBtn('Quero SEO!') });
-    
     docs.push({ id:'contato', keywords:'whatsapp falar conversar ligar telefone contato zap chamar', resposta:'📞 Vamos conversar?' + wppBtn('Ola Samuel!') });
-    docs.push({ id:'sobre', keywords:'quem samuel desenvolvedor dono fundador sobre', resposta:'👨‍💻 <b>Samuel Pena</b> — Full Stack em Trairi-CE.' });
-    docs.push({ id:'prazos', keywords:'prazo demora dias entrega rapido urgente tempo pronto', resposta:'⏱️ <b>Prazos:</b> Bio Simples 48h | Premium 3-5 dias | Landing 72h | 2 pags 96h | Institucional 7 dias' });
     docs.push({ id:'garantia', keywords:'garantia devolucao reembolso 7 dias', resposta:'✅ <b>Garantia de 7 dias.</b> Se nao gostar, devolvo 100%.' });
     docs.push({ id:'pagamento', keywords:'pagamento pagar cartao pix transferencia parcela', resposta:'💳 <b>Pagamento:</b> 50% inicio + 50% entrega. Pix.' });
+    docs.push({ id:'prazos', keywords:'prazo demora dias entrega rapido urgente tempo pronto', resposta:'⏱️ <b>Prazos:</b> Bio Simples 48h | Premium 3-5 dias | Landing 72h | 2 pags 96h | Institucional 7 dias' });
+    docs.push({ id:'modelos_bio', keywords:'modelos bio modelos vitrine quais modelos tipos bio exemplos bios showcase', resposta:'📱 <b>Modelos de Vitrine Bio:</b><br><br>🟢 Simples R$ 97,90<br>🔵 Premium R$ 247,90<br>🟣 Empresarial R$ 497,90<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver showcase</a>' });
+    docs.push({ id:'chat_rag', keywords:'chat rag bot assistente virtual ia inteligencia artificial', resposta:'🤖 <b>Chat RAG — R$ 197,90</b><br>Atendimento 24h treinado com seu conteudo. Integrado WhatsApp e GA4.' + wppBtn('Quero Chat RAG!') });
     
-    console.log('📚 Engine: ' + docs.length + ' intencoes precisas');
+    console.log('📚 Engine: ' + docs.length + ' itens indexados');
   }
-
-  
-    docs.push({ id:'ga4', keywords:'ga4 g4 google analytics analytics o que ga4 o que g4', resposta:'📊 <b>GA4 (Google Analytics 4)</b> — E a ferramenta gratuita do Google que mostra quantas pessoas visitam seu site, de onde elas vem, quais paginas mais acessam e muito mais.<br><br>✅ <b>Em todos os meus sites eu instalo o GA4</b> para voce acompanhar os resultados.<br>✅ O <b>Chat RAG</b> tambem envia eventos para o GA4 — voce ve quantas pessoas perguntaram precos, portfolio, etc.<br><br>🔗 <a href="https://analytics.google.com" target="_blank" style="color:var(--cyan);">Acessar Google Analytics</a>' + wppBtn('Quero GA4 no meu site!') });
-
-  
-    docs.push({ id:'responsivo', keywords:'responsivo mobile celular tablet funciona celular adapta dispositivo', resposta:'📱 <b>Todos os meus sites são 100% responsivos!</b><br><br>✅ Funcionam perfeitamente no celular, tablet e computador<br>✅ Design mobile-first (pensado primeiro para celular)<br>✅ Layout adaptável a qualquer tamanho de tela<br>✅ Imagens otimizadas para carregar rapido no 4G<br>✅ Testado em iOS e Android<br><br>🔗 <a href="https://vitrinebio.onrender.com" target="_blank" style="color:var(--cyan);">Veja no seu celular</a>' + wppBtn('Quero site responsivo!') });
 
   buildFromPage();
 
+  // ============ BUSCA EXTERNA (Vitrine Bio) ============
+  function fetchVitrineMain() {
+    fetch('https://vitrinebio.onrender.com/')
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var text = (doc.body?.innerText || '').substring(0, 2000);
+        var precos = text.match(/R\$\s?[\d,.]+/g) || [];
+        docs.push({
+          id: 'vitrine_main',
+          keywords: 'vitrine bio principal pagina inicial ' + text.substring(0,200).toLowerCase(),
+          resposta: '📱 <b>Vitrine Bio:</b><br><br>' + text.substring(0,400) + '...<br><br>💰 ' + precos.slice(0,3).join(', ') + '<br><br>🔗 <a href="https://vitrinebio.onrender.com/" target="_blank" style="color:var(--cyan);">Acessar</a>' + wppBtn('Quero minha Vitrine Bio!')
+        });
+        console.log('📚 Vitrine Bio principal carregada');
+      }).catch(function() {});
+  }
+  
+  function fetchShowcase() {
+    fetch('https://vitrinebio.onrender.com/showcase.html')
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var titulos = doc.querySelectorAll('h1, h2, h3');
+        var precos = (doc.body?.innerText || '').match(/R\$\s?[\d,.]+/g) || [];
+        var info = [];
+        titulos.forEach(function(t) {
+          var text = t.textContent.trim();
+          if (text && text.length > 5) info.push(text);
+        });
+        if (info.length > 0) {
+          docs.push({
+            id: 'vitrine_showcase',
+            keywords: 'showcase modelos vitrine ' + info.join(' ').toLowerCase(),
+            resposta: '🎨 <b>Showcase Vitrine Bio:</b><br><br>' + info.slice(0,6).map(function(i){return '• '+i;}).join('<br>') + '<br><br>💰 ' + precos.slice(0,3).join(', ') + '<br><br>🔗 <a href="https://vitrinebio.onrender.com/showcase.html" target="_blank" style="color:var(--cyan);">Ver showcase</a>' + wppBtn('Quero igual!')
+          });
+          console.log('📚 Showcase carregado');
+        }
+      }).catch(function() {});
+  }
+
+  fetchVitrineMain();
+  fetchShowcase();
+
+  // ============ BUSCA ============
   function fixTypos(text) {
     var fixes = {'char':'chat','prco':'preco','stie':'site','portflio':'portfolio','vitrne':'vitrine','landng':'landing'};
     var words = text.split(' ');
@@ -76,18 +146,13 @@ var SMLEngine = (function() {
     
     for (var i = 0; i < docs.length; i++) {
       var doc = docs[i], score = 0, kTokens = tokenize(doc.keywords);
-      
-      // Match exato da frase inteira (maior peso)
       if (doc.keywords.indexOf(query) !== -1) score += 30;
-      
-      // Match de tokens
       for (var j = 0; j < qTokens.length; j++) {
         for (var k = 0; k < kTokens.length; k++) {
           if (qTokens[j] === kTokens[k]) score += 10;
           else if (kTokens[k].indexOf(qTokens[j]) !== -1 && qTokens[j].length > 2) score += 5;
         }
       }
-      
       if (score > bestScore) { bestScore = score; bestDoc = doc; }
     }
     
