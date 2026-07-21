@@ -19,12 +19,19 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","description":"Desenvolvimento de sites, landing pages e bio pages. SEO local e chat inteligente RAG.","priceRange":"R$97-R$1000","openingHours":"Mo-Su 08:00-22:00","image":"https://sml-developer.onrender.com/assets/img/og-image.jpg","name":"SML/PN","url":"https://sml-developer.onrender.com","telephone":"+55-85-8612-1078","address":{"@type":"PostalAddress","addressLocality":"Trairi","addressRegion":"CE","addressCountry":"BR"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FHEQRCF4YW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FHEQRCF4YW");</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/fontawesome/all.min.css">
 <style>
-:root{--bg:#060913;--surface:#0B0E14;--surface2:#131620;--cyan:#00f5ff;--magenta:#ff3df7;--text:#E8ECF1;--muted:#8B93A5;--muted2:#5C6478;--border:rgba(255,255,255,0.05);--border2:rgba(255,255,255,0.10);--radius:20px;--font:'Inter',system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',monospace;--maxw:1120px;--ease:cubic-bezier(.22,1,.36,1)}
+:root{
+  --bg:#060913; --surface:#0B0E14; --surface2:#131620;
+  --cyan:#00f5ff; --magenta:#ff3df7; --text:#E8ECF1; --muted:#8B93A5; --muted2:#5C6478;
+  --border:rgba(255,255,255,0.05); --border2:rgba(255,255,255,0.10);
+  --radius:20px; --font:'Inter',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',monospace; --maxw:1120px; --ease:cubic-bezier(.22,1,.36,1);
+}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{margin:0;padding:0;width:100%;max-width:100vw;font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16px}
@@ -32,34 +39,43 @@ a{color:inherit;text-decoration:none}
 p{line-height:1.7}
 ::selection{background:rgba(0,245,255,.25);color:#fff}
 :focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+
 #preloader{position:fixed;inset:0;z-index:9999;background:transparent;display:flex;align-items:center;justify-content:center;pointer-events:none}
 .pulse-circle{width:24px;height:24px;border-radius:50%;background:var(--cyan);box-shadow:0 0 30px rgba(0,245,255,0.8),0 0 60px rgba(0,245,255,0.4);animation:pulse 1.2s ease-out forwards;outline:none;border:none}
 @keyframes pulse{0%{transform:scale(0);opacity:1;background:var(--cyan)}60%{transform:scale(120);opacity:0.95;background:var(--cyan)}100%{transform:scale(120);opacity:0;background:var(--cyan)}}
 #preloader.hide{display:none}
+
 .scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;background:rgba(255,255,255,.04);opacity:0;transition:opacity .3s ease}
 .scroll-progress__bar{height:100%;width:0%;background:linear-gradient(90deg,var(--cyan),var(--magenta))}
+
 #particlesCanvas{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.45;max-width:100vw;overflow:hidden}
+
 .site-nav{position:sticky;top:0;z-index:120;background:rgba(6,9,19,0.45);backdrop-filter:blur(20px) saturate(1.8);-webkit-backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(255,255,255,0.08);box-shadow:0 4px 30px rgba(0,0,0,0.3)}
 .nav-inner{max-width:var(--maxw);margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .logo{font-weight:700;font-size:17px;display:flex;align-items:center;gap:4px}
 .logo-bracket{color:var(--muted);font-weight:400;font-size:18px}
 .logo-slash{color:var(--cyan);font-weight:400;margin:0 1px}
+.logo:hover .logo-slash{filter:drop-shadow(0 0 8px var(--cyan))}
 .nav-links{display:flex;gap:32px;font-size:14.5px;color:var(--muted)}
 .nav-links a{position:relative;padding:4px 0;transition:color .2s}
 .nav-links a:hover{color:var(--text)}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--cyan);border-radius:2px;transition:width .25s var(--ease)}
 .nav-links a:hover::after{width:100%}
 .nav-right{display:flex;align-items:center;gap:14px}
+
 .hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:44px;height:44px;background:transparent;border:none;cursor:pointer;padding:0;z-index:130;gap:7px}
 .hamburger span{display:block;width:26px;height:2.5px;background:var(--text);border-radius:3px;transition:transform .3s cubic-bezier(.68,-.55,.27,1.55),opacity .25s}
 .hamburger.active span:nth-child(1){transform:translateY(9.5px) rotate(45deg)}
 .hamburger.active span:nth-child(2){opacity:0;transform:scale(0)}
 .hamburger.active span:nth-child(3){transform:translateY(-9.5px) rotate(-45deg)}
+
 .mobile-menu{position:fixed;inset:0;z-index:110;background:rgba(6,9,19,.96);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
 .mobile-menu.open{opacity:1;visibility:visible}
 .mobile-nav-links{display:flex;flex-direction:column;gap:36px;text-align:center}
 .mobile-nav-links a{font-size:28px;font-weight:700;transition:color .2s,transform .2s}
 .mobile-nav-links a:hover{color:var(--cyan);transform:scale(1.04)}
+.mobile-nav-links .btn--primary{margin-top:12px;padding:16px 28px;font-size:16px}
+
 .container{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%;box-sizing:border-box}
 .section{padding:96px 0;position:relative;overflow-x:hidden}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--cyan);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
@@ -67,11 +83,14 @@ p{line-height:1.7}
 .section-head{max-width:600px;margin-bottom:48px}
 .section-head h2{font-size:clamp(30px,4.2vw,48px);line-height:1.08;letter-spacing:-.022em;margin:0 0 14px;font-weight:700}
 .section-head p{color:var(--muted);font-size:18px;margin:0}
+
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .18s var(--ease),background .25s,box-shadow .25s;white-space:nowrap;border:1px solid transparent;cursor:pointer}
 .btn--primary{background:linear-gradient(100deg,#00e4ec,#00f5ff 45%,#ff3df7 95%);color:#04111a;box-shadow:0 8px 28px rgba(0,245,255,.16),inset 0 1px 0 rgba(255,255,255,.45)}
 .btn--primary:hover{transform:translateY(-1px);box-shadow:0 12px 36px rgba(0,245,255,.26)}
 .btn--ghost{background:rgba(255,255,255,.025);border-color:var(--border2);color:var(--text)}
 .btn--ghost:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.22)}
+.btn--sm{padding:10px 16px;font-size:13.5px}
+
 .hero{min-height:calc(100svh - 72px);display:flex;align-items:center;overflow:hidden;padding:64px 0 80px;position:relative}
 .hero-grid{text-align:center;max-width:760px;margin:0 auto;width:100%}
 .live-badge{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;color:#c9d4e8;border:1px solid var(--border2);background:rgba(255,255,255,.025);padding:8px 14px;border-radius:999px;margin-bottom:24px}
@@ -85,59 +104,180 @@ p{line-height:1.7}
 .hero-orb--cyan{width:500px;height:500px;background:rgba(0,245,255,.45);top:-80px;right:-100px;animation:orbFloat 20s ease-in-out infinite}
 .hero-orb--magenta{width:420px;height:420px;background:rgba(255,61,247,.38);bottom:-100px;left:-80px;animation:orbFloat 24s ease-in-out infinite reverse}
 @keyframes orbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,30px)}}
+
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.service-card{background:rgba(255,255,255,0.03);backdrop-filter:blur(12px) saturate(1.3);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:28px 26px;transition:border-color .3s,transform .3s var(--ease),box-shadow .3s}
+.service-card{background:rgba(255,255,255,0.03);backdrop-filter:blur(12px) saturate(1.3);-webkit-backdrop-filter:blur(12px) saturate(1.3);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:28px 26px;transition:border-color .3s,transform .3s var(--ease),box-shadow .3s}
 .service-card:hover{border-color:rgba(0,245,255,.25);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.35),0 0 30px rgba(0,245,255,.06)}
 .svc-label{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--cyan);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
 .svc-label i{font-size:16px;width:20px;text-align:center;color:var(--cyan)}
 .service-card h3{margin:0 0 8px;font-size:19px}
 .service-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
-#chatFab{position:fixed;bottom:24px;right:24px;z-index:1001;width:60px;height:60px;border-radius:50%;background:var(--cyan);border:none;cursor:pointer;box-shadow:0 8px 30px rgba(0,245,255,0.3);display:flex;align-items:center;justify-content:center;transition:transform .2s,opacity .3s}
+
+/* CHAT DE IA */
+#chatFab{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;border-radius:50%;background:var(--cyan);border:none;cursor:pointer;box-shadow:0 8px 30px rgba(0,245,255,0.3);display:flex;align-items:center;justify-content:center;transition:transform .2s}
 #chatFab:hover{transform:scale(1.1)}
 #chatFab i{font-size:28px;color:#04111a}
-#chatFab.hidden{opacity:0;pointer-events:none;transform:scale(0.8)}
-#chatOverlay{position:fixed;bottom:96px;right:24px;z-index:1000;width:400px;max-width:calc(100vw - 32px);height:520px;max-height:calc(100vh - 130px);border-radius:20px;border:1px solid rgba(255,255,255,0.12);background:rgba(6,9,19,0.98);backdrop-filter:blur(20px);display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;box-shadow:0 20px 60px rgba(0,0,0,0.5);overflow:hidden}
-#chatOverlay.open{opacity:1;visibility:visible}
-.chat-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border);flex-shrink:0}
-.chat-header h3{font-size:17px;margin:0;display:flex;align-items:center;gap:8px}
+#chatOverlay{position:fixed;bottom:20px;right:20px;z-index:1000;width:380px;max-width:calc(100vw - 40px);height:500px;max-height:calc(100vh - 40px);border-radius:16px;border:1px solid rgba(255,255,255,0.15);background:rgba(6,9,19,0.98);backdrop-filter:blur(20px);display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;box-shadow:0 20px 60px rgba(0,0,0,0.6);overflow:hidden}
+#chatOverlay.open{opacity:1;visibility:visible;overflow:hidden!important}
+.chat-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border)}
+.chat-header h3{font-size:20px;margin:0;display:flex;align-items:center;gap:10px}
 .chat-header h3 i{color:var(--cyan)}
-.chat-close{background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;padding:4px}
-.chat-messages{flex:1;overflow-y:auto;padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-height:0}
-.chat-bubble{max-width:85%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.5;animation:fadeIn .3s ease;word-break:break-word}
+.chat-close{background:none;border:none;color:var(--text);font-size:24px;cursor:pointer}
+.chat-messages{flex:1;overflow-y:auto!important;overflow-x:hidden!important;padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-height:0;overscroll-behavior:contain!important;-webkit-overflow-scrolling:touch!important}
+.chat-bubble{max-width:80%;padding:14px 18px;border-radius:18px;font-size:15px;line-height:1.5;animation:fadeIn .3s ease}
 .chat-bubble.assistant{background:rgba(0,245,255,0.08);align-self:flex-start;border-bottom-left-radius:4px}
 .chat-bubble.user{background:rgba(255,61,247,0.12);align-self:flex-end;border-bottom-right-radius:4px}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.chat-input-area{display:flex;gap:8px;padding:12px 18px;border-top:1px solid var(--border);flex-shrink:0;background:rgba(6,9,19,0.98)}
-.chat-input-area input{flex:1;padding:12px 16px;border-radius:999px;border:1px solid var(--border2);background:rgba(255,255,255,0.05);color:var(--text);font-size:14px;outline:none;min-width:0}
+.chat-input-area{display:flex;gap:12px;padding:20px 24px;border-top:1px solid var(--border);position:sticky;bottom:0;background:rgba(6,9,19,0.98);z-index:1001;padding-bottom:max(20px, env(safe-area-inset-bottom))}
+.chat-input-area input{flex:1;padding:14px 18px;border-radius:999px;border:1px solid var(--border2);background:rgba(255,255,255,0.05);color:var(--text);font-size:15px;outline:none}
 .chat-input-area input:focus{border-color:var(--cyan)}
-.chat-input-area button{width:44px;height:44px;border-radius:50%;background:var(--cyan);border:none;color:#04111a;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s}
-.chat-input-area button:hover{transform:scale(1.05)}
+.chat-input-area button{width:48px;height:48px;border-radius:50%;background:var(--cyan);border:none;color:#04111a;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center}
 .typing-dots{display:flex;gap:4px;padding:8px 14px}
-.typing-dots span{width:7px;height:7px;border-radius:50%;background:var(--muted2);animation:typing 1.4s infinite}
+.typing-dots span{width:8px;height:8px;border-radius:50%;background:var(--muted2);animation:typing 1.4s infinite}
 .typing-dots span:nth-child(2){animation-delay:.2s}
 .typing-dots span:nth-child(3){animation-delay:.4s}
 @keyframes typing{0%,60%,100%{opacity:.4;transform:translateY(0)}30%{opacity:1;transform:translateY(-6px)}}
+
+/* CARROSSÉIS */
+.carousel-full{position:relative;overflow:hidden;width:100%}
+@media(max-width:768px){.carousel-full{overflow:visible}}
+.carousel-track{display:flex;gap:24px;transition:none;will-change:transform}
+@media(max-width:768px){.carousel-track{gap:16px}}
+.proj-card{flex:0 0 340px;border-radius:24px;overflow:visible;border:1px solid var(--border);background:rgba(17,24,47,0.5);backdrop-filter:blur(12px);padding:28px 28px 24px;text-align:center;transition:border-color .3s,transform .3s}
+.proj-card:hover{border-color:var(--cyan);transform:translateY(-4px)}
+.proj-card h3{font-size:24px;margin:0 0 8px}
+.proj-card p{color:var(--muted);font-size:14px;margin:0 auto 16px;max-width:280px;word-wrap:break-word}
+.proj-card .proj-footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-top:12px}
+.proj-card .proj-tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:10.5px;color:#96a6c3;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:5px 10px;border-radius:999px}
+.proj-link{font-weight:600;font-size:14px;color:var(--cyan);display:inline-flex;align-items:center;gap:6px;transition:color .2s}
+.proj-link:hover{color:#fff}
+.proj-dev h3::after{content:" ⏳";font-size:16px}
+
+.dep-card-carousel{flex:0 0 340px;padding:24px;background:rgba(255,255,255,.018);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:18px;overflow:visible}
+.dep-stars{color:#f59e0b;font-size:15px;margin-bottom:8px}
+.dep-card-carousel p{color:var(--muted);font-size:14.5px;line-height:1.6;margin:0 0 12px;word-wrap:break-word}
+.dep-autor{color:var(--text);font-size:13.5px}
+
+/* PARCEIROS */
+.partners-marquee{overflow:hidden;width:100%;padding:20px 0}
+.partners-track{display:flex;gap:40px;animation:marqueeScroll 40s linear infinite;width:max-content}
+.partners-track:hover{animation-play-state:paused}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.partner-item{flex:0 0 auto;text-align:center;padding:8px 12px;background:transparent;border:none;transition:transform .3s,filter .3s}
+.partner-item:hover{transform:translateY(-4px);filter:drop-shadow(0 0 8px var(--cyan))}
+.partner-item i{font-size:38px;color:var(--cyan);margin-bottom:6px;display:block}
+.partner-item span{display:block;font-family:var(--mono);font-size:13px;color:var(--muted)}
+
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:20px}
+.carousel-dot{width:10px;height:10px;border-radius:50%;background:var(--muted2);border:none;cursor:pointer;transition:background .3s}
+.carousel-dot.active{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+
+/* DIFERENCIAIS */
+.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.feature-card{text-align:center;padding:28px 20px;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--radius);transition:border-color .3s,transform .3s}
+.feature-card:hover{border-color:var(--cyan);transform:translateY(-4px)}
+.feature-card i{font-size:32px;color:var(--cyan);margin-bottom:12px}
+.feature-card h3{font-size:17px;margin:0 0 8px}
+.feature-card p{color:var(--muted);font-size:13.5px;margin:0;line-height:1.5}
+
+.timeline-wrap{display:grid;grid-template-columns:130px 1fr;gap:32px;max-width:820px}
+.timeline-rail{position:relative;width:2px;background:var(--border);margin-left:16px;border-radius:2px;min-height:520px}
+.timeline-fill{position:absolute;left:0;top:0;width:100%;height:0%;background:linear-gradient(180deg,var(--cyan),#7d6fff 65%,var(--magenta));border-radius:2px;box-shadow:0 0 20px rgba(0,245,255,.2)}
+.timeline-steps{display:flex;flex-direction:column;gap:60px;padding-top:4px}
+.timeline-step{position:relative;transition:transform .3s}
+.timeline-step:hover{transform:translateX(4px)}
+.t-step-num{font-family:var(--mono);font-size:12.5px;color:#74f7ff;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.t-step-num i{font-size:14px;width:16px;text-align:center}
+.timeline-step h3{margin:0 0 8px;font-size:26px}
+.timeline-step p{margin:0;color:var(--muted);max-width:520px;font-size:16.5px;line-height:1.7}
+.t-dot{position:absolute;left:-44px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid #3b445e;box-shadow:0 0 0 4px rgba(9,13,28,.9);transition:border-color .3s,background .3s,box-shadow .3s}
+.t-dot.active{border-color:var(--cyan);background:var(--cyan);box-shadow:0 0 16px rgba(0,245,255,.45),0 0 0 4px rgba(9,13,28,.9)}
+
+.faq-grid{max-width:760px;margin:0 auto;display:grid;gap:10px}
+.faq-item{background:rgba(255,255,255,.018);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.faq-question{padding:16px 20px;font-weight:600;font-size:15px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-question::-webkit-details-marker{display:none}
+.faq-question::after{content:"+";font-size:20px;color:var(--cyan);flex-shrink:0;margin-left:12px}
+details[open] .faq-question::after{content:"−"}
+.faq-answer{padding:0 20px 16px;color:var(--muted);font-size:14.5px;line-height:1.6}
+
+.sobre-card{display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:start;border:1px solid var(--border);border-radius:24px;padding:32px;max-width:860px;box-shadow:0 20px 60px rgba(0,0,0,.4);background:rgba(255,255,255,0.02);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.avatar{width:180px;aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:transparent;border:none;position:relative}
+.avatar::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 40px 20px #060913;border-radius:16px;pointer-events:none}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.sobre-card h3{margin:0 0 12px;font-size:30px}
+.sobre-card p{margin:0;color:var(--muted);font-size:17px;line-height:1.7}
+.sobre-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.sobre-tags span{font-family:var(--mono);font-size:11px;color:#9fb2cf;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);padding:7px 12px;border-radius:999px}
+.counters-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.counter-item{text-align:center;padding:12px 8px;background:rgba(255,255,255,.02);border-radius:14px;border:1px solid rgba(255,255,255,.04)}
+.counter-num{font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--cyan);line-height:1;margin-bottom:4px;font-family:var(--mono)}
+.counter-label{font-size:10px;color:var(--muted);text-transform:uppercase}
+
+.cta-final{padding:100px 0 96px;text-align:center;background:radial-gradient(700px 420px at 50% 0%,rgba(0,245,255,.06),transparent 70%),radial-gradient(600px 420px at 70% 10%,rgba(255,61,247,.04),transparent 70%);border-top:1px solid rgba(255,255,255,.04)}
+.cta-final h2{font-size:clamp(34px,5.3vw,60px);line-height:1.06;margin:0 0 14px}
+.cta-final p{color:var(--muted);font-size:18px;margin:0 0 28px}
+
 footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#79849d;font-size:14px}
 .footer-inner{max-width:var(--maxw);margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
 .footer-links{display:flex;gap:20px;flex-wrap:wrap}
 .footer-links a{color:#aab5ca;display:inline-flex;align-items:center;gap:6px;transition:color .2s}
 .footer-links a:hover{color:var(--text)}
+.footer-links i{font-size:16px;width:20px;text-align:center}
+
+.cookie-bar{position:fixed;left:16px;right:16px;bottom:16px;max-width:calc(100vw - 32px);z-index:200;background:rgba(12,17,35,.92);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px 20px;display:none;backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.cookie-bar.show{display:block}
+.cookie-inner{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between}
+.cookie-inner p{margin:0;color:var(--muted);font-size:14px}
+.btn-xs{min-height:40px;padding:0 16px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--text)}
+.btn-xs.primary{background:#e9eef8;color:#09111f;border-color:transparent}
+.powered-by{position:fixed;bottom:14px;right:14px;opacity:.18;font-size:.58rem;color:#fff;z-index:999;font-family:var(--mono);pointer-events:none}
+
 @media(max-width:768px){
-  #chatOverlay{position:fixed!important;top:0!important;left:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:100vw!important;max-height:100vh!important;max-height:100dvh!important;border-radius:0!important;border:none!important;z-index:1000!important}
-  #chatFab{width:56px;height:56px;bottom:16px;right:16px}
   .nav-links{display:none}
   .hamburger{display:flex}
   body{font-size:15px}
   .container{padding:0 16px}
   .section{padding:56px 0}
-  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .services-grid,.features-grid{grid-template-columns:repeat(2,1fr)}
+  .timeline-wrap{grid-template-columns:1fr}
+  .timeline-rail{display:none}
+  .t-dot{display:none}
+  #chatOverlay{position:fixed!important;top:0!important;left:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:100vw!important;max-height:100vh!important;max-height:100dvh!important;border-radius:0!important;border:none!important;height:100dvh!important;max-width:100vw!important;max-height:100vh!important;border-radius:0!important;border:none!important;z-index:1000!important}
+  .chat-header{padding:16px 20px!important}
+  .chat-close{font-size:28px!important;padding:8px!important}
+  .chat-messages{padding:16px 20px!important}
+  .chat-input-area{padding:14px 20px!important;padding-bottom:max(14px,env(safe-area-inset-bottom))!important}
+  .counters-row{grid-template-columns:repeat(2,1fr)}
+  .proj-card{flex:0 0 85vw;max-width:380px;margin:0 auto;padding:24px 20px}
+  .dep-card-carousel{flex:0 0 85vw;max-width:380px;margin:0 auto;padding:20px}
   .hero-copy h1{font-size:clamp(34px,8vw,48px)}
   .hero-ctas{flex-direction:column;align-items:stretch}
   .hero-ctas .btn{width:100%;justify-content:center}
-  .footer-inner{flex-direction:column;align-items:flex-start}
+  .avatar{width:160px;border-radius:14px}
+  .avatar::after{border-radius:14px;box-shadow:inset 0 0 30px 15px #060913}
+  .sobre-card{grid-template-columns:1fr;text-align:center}
+  .sobre-card .avatar{margin:0 auto 24px}
+  #chatFab{width:56px;height:56px;bottom:16px;right:16px}
 }
-@media(max-width:640px){.container{padding:0 10px}.section{padding:40px 0}.services-grid{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.live-dot{animation:none}.hero-orb{animation:none}}
+@media(max-width:640px){
+  .container{padding:0 10px}
+  .section{padding:40px 0}
+  .services-grid,.features-grid{grid-template-columns:1fr}
+  .proj-card{flex:0 0 88vw;max-width:350px;margin:0 auto;padding:20px 16px}
+  .dep-card-carousel{flex:0 0 88vw;max-width:350px;margin:0 auto;padding:18px}
+  .avatar{width:140px;border-radius:12px}
+  .avatar::after{border-radius:12px;box-shadow:inset 0 0 25px 12px #060913}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+  .faq-grid{max-width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .live-dot{animation:none}
+  .hero-orb{animation:none}
+  .partners-track{animation:none}
+}
 </style>
 </head>
 <body>
@@ -147,9 +287,10 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
 
 <header class="site-nav">
   <div class="nav-inner">
-    <a class="logo" href="/"><span class="logo-bracket">&lt;</span>SML<span class="logo-slash">/</span>PN<span class="logo-bracket">&gt;</span></a>
-    <nav class="nav-links"><a href="#servicos">Serviços</a><a href="#diferenciais">Diferenciais</a><a href="#processo">Processo</a><a href="#projetos">Projetos</a><a href="#depoimentos">Depoimentos</a><a href="#sobre">Sobre</a></nav>
+    <a class="logo" href="/" aria-label="SML/PN Developer"><span class="logo-bracket">&lt;</span>SML<span class="logo-slash">/</span>PN<span class="logo-bracket">&gt;</span></a>
+    <nav class="nav-links" aria-label="Principal"><a href="#servicos">Serviços</a><a href="#diferenciais">Diferenciais</a><a href="#processo">Processo</a><a href="#projetos">Projetos</a><a href="#depoimentos">Depoimentos</a><a href="#sobre">Sobre</a></nav>
     <div class="nav-right">
+      
       <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -157,7 +298,12 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
 
 <div class="mobile-menu" id="mobileMenu">
   <nav class="mobile-nav-links">
-    <a href="#servicos">Serviços</a><a href="#diferenciais">Diferenciais</a><a href="#processo">Processo</a><a href="#projetos">Projetos</a><a href="#depoimentos">Depoimentos</a><a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#diferenciais">Diferenciais</a>
+    <a href="#processo">Processo</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#sobre">Sobre</a>
     <a href="#" class="btn btn--primary" onclick="document.getElementById('chatFab').click();return false;"><i class="fas fa-comment-dots"></i> Falar pelo Chat</a>
   </nav>
 </div>
@@ -172,8 +318,8 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
         <h1>Sites que vendem.<br>Código que performa.</h1>
         <p class="lead">Web Full Stack. Landing pages, sites institucionais e bio pages premium.</p>
         <div class="hero-ctas">
-          <a href="#" class="btn btn--primary" onclick="document.getElementById('chatFab').click();return false;"><i class="fas fa-comment-dots"></i> Falar pelo Chat</a>
-          <a href="#projetos" class="btn btn--ghost">Ver projetos</a>
+          <a href="#" class="btn btn--primary magnetic js-magnetic" onclick="document.getElementById('chatFab').click();return false;"><i class="fas fa-comment-dots"></i> Falar pelo Chat</a>
+          <a href="#projetos" class="btn btn--ghost magnetic js-magnetic">Ver projetos</a>
         </div>
         <div class="hero-meta">Resposta em até 2h • Orçamento sem compromisso</div>
       </div>
@@ -184,13 +330,13 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
     <div class="container">
       <div class="section-head"><span class="eyebrow">O que eu faço</span><h2>Serviços pensados para converter</h2><p>Do design ao deploy. Foco total em velocidade, SEO e WhatsApp.</p></div>
       <div class="services-grid">
-        <article class="service-card"><div class="svc-label"><i class="fas fa-bolt"></i> Conversão</div><h3>Landing Pages</h3><p>Páginas de alta conversão, rápidas, com copy clara e CTA direto para o WhatsApp. Ideal para vender um serviço ou captar leads. Design exclusivo, mapa, galeria e WhatsApp Multi integrado.</p></article>
-        <article class="service-card"><div class="svc-label"><i class="fas fa-building"></i> Presença</div><h3>Sites Institucionais</h3><p>Sites completos, responsivos e gerenciáveis. Até 5 páginas com menu, blog, formulário e painel para você mesmo atualizar. Pronto para ranquear no Google.</p></article>
-        <article class="service-card"><div class="svc-label"><i class="fas fa-link"></i> Link na Bio</div><h3>Bio Page Pro</h3><p>Bio-link premium para Instagram. Substitui o Linktree com design profissional que converte seguidores em clientes. Leve, rápida e com botão de WhatsApp 1-clique.</p></article>
-        <article class="service-card"><div class="svc-label"><i class="fas fa-robot"></i> IA no Site</div><h3>Chat Inteligente RAG</h3><p>Chat automatizado treinado com o conteúdo do seu site. Responde clientes 24h, sem mensalidade, integrado ao WhatsApp e GA4. Atendimento automático que entende perguntas e converte visitantes. <b>A partir de R$ 197,90.</b></p></article>
-        <article class="service-card"><div class="svc-label"><i class="fas fa-map-marker-alt"></i> Local</div><h3>SEO Local</h3><p>Otimização para aparecer nas buscas do Google na sua região. Configuro Google Meu Negócio, palavras-chave locais, meta tags e sitemap para seu site ranquear.</p></article>
-        <article class="service-card"><div class="svc-label"><i class="fas fa-tachometer-alt"></i> Velocidade</div><h3>Performance</h3><p>95+ no Lighthouse. Seu site carrega em menos de 2 segundos. Imagens otimizadas, Core Web Vitals verdes, hospedagem rápida. Isso melhora o ranking no Google e a experiência do cliente.</p></article>
-        <article class="service-card"><div class="svc-label"><i class="fab fa-whatsapp"></i> WhatsApp</div><h3>Integração WhatsApp</h3><p>Botões flutuantes, pré-mensagens inteligentes, UTM e rastreio de conversão. Seu cliente clica e já vai direto para o WhatsApp com uma mensagem pronta.</p></article>
+        <article class="service-card"><div class="svc-label"><i class="fas fa-bolt"></i> Conversão</div><h3>Landing Pages</h3><p>Páginas de alta conversão, rápidas, com copy clara e CTA direto para o WhatsApp.</p></article>
+        <article class="service-card"><div class="svc-label"><i class="fas fa-building"></i> Presença</div><h3>Sites Institucionais</h3><p>Sites completos, responsivos, gerenciáveis e prontos para ranquear no Google.</p></article>
+        <article class="service-card"><div class="svc-label"><i class="fas fa-link"></i> Link na Bio</div><h3>Bio Page Pro</h3><p>Sua bio-link premium. Leve, linda, com pixels, catálogo e botão de WhatsApp 1-clique. <a href="#" onclick="document.getElementById('chatFab').click();return false;" style="color:var(--cyan);text-decoration:underline;font-weight:500;">Fale pelo Chat</a></p></article>
+        <article class="service-card"><div class="svc-label"><i class="fas fa-robot"></i> IA no Site</div><h3>Chat Inteligente RAG</h3><p>Chat automatizado treinado com o conteúdo do seu site. Responde clientes 24h, sem mensalidade, integrado ao WhatsApp e GA4. <b>A partir de R$ 197,90.</b> <a href="#" onclick="document.getElementById('chatFab').click();return false;" style="color:var(--cyan);text-decoration:underline;font-weight:500;">Quero no meu site</a></p></article>
+        <article class="service-card"><div class="svc-label"><i class="fas fa-map-marker-alt"></i> Local</div><h3>SEO Local</h3><p>Otimização para "perto de mim" em Trairi e região. Google Business, mapas e conteúdo.</p></article>
+        <article class="service-card"><div class="svc-label"><i class="fas fa-tachometer-alt"></i> Velocidade</div><h3>Performance</h3><p>95+ no Lighthouse. Imagens otimizadas, Core Web Vitals verdes, hospedagem rápida.</p></article>
+        <article class="service-card"><div class="svc-label"><i class="fab fa-whatsapp"></i> WhatsApp</div><h3>Integração WhatsApp</h3><p>Botões flutuantes, pré-mensagens inteligentes, UTM e rastreio de conversão.</p></article>
       </div>
     </div>
   </section>
@@ -199,14 +345,14 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
     <div class="container">
       <div class="section-head"><span class="eyebrow">Diferenciais</span><h2>Por que escolher a SML/PN?</h2><p>Cada projeto é pensado para performar, converter e encantar.</p></div>
       <div class="features-grid">
-        <div class="feature-card"><i class="fab fa-whatsapp"></i><h3>WhatsApp Multi</h3><p>Atendimento com múltiplos números e mensagens pré-programadas. Cada serviço pode ter um número diferente.</p></div>
-        <div class="feature-card"><i class="fas fa-map-marked-alt"></i><h3>Mapa Único/Múltiplo</h3><p>Google Maps integrado com um ou vários endereços no seu site.</p></div>
+        <div class="feature-card"><i class="fab fa-whatsapp"></i><h3>WhatsApp Multi</h3><p>Atendimento via WhatsApp com múltiplos números e mensagens pré-programadas. <a href="#" onclick="document.getElementById('chatFab').click();return false;" style="color:var(--cyan);text-decoration:underline;font-weight:500;">Teste aqui</a></p></div>
+        <div class="feature-card"><i class="fas fa-map-marked-alt"></i><h3>Mapa Único/Múltiplo</h3><p>Google Maps integrado com um ou vários endereços.</p></div>
         <div class="feature-card"><i class="fas fa-infinity"></i><h3>Efeitos Infinitos</h3><p>Animações, transições e microinterações que encantam o usuário.</p></div>
-        <div class="feature-card"><i class="fas fa-mobile-alt"></i><h3>Mobile + Desktop</h3><p>Layouts responsivos que funcionam em qualquer dispositivo: celular, tablet, notebook e computador.</p></div>
+        <div class="feature-card"><i class="fas fa-mobile-alt"></i><h3>Mobile + Desktop</h3><p>Layouts responsivos que funcionam perfeitamente em qualquer dispositivo.</p></div>
         <div class="feature-card"><i class="fas fa-palette"></i><h3>Cores do Negócio</h3><p>Identidade visual personalizada com as cores da sua marca.</p></div>
         <div class="feature-card"><i class="fas fa-chart-line"></i><h3>Estrutura de Venda</h3><p>Design pensado para converter visitantes em clientes.</p></div>
         <div class="feature-card"><i class="fas fa-font"></i><h3>Fontes Personalizadas</h3><p>Tipografia exclusiva que reforça a personalidade da sua marca.</p></div>
-        <div class="feature-card"><i class="fas fa-rocket"></i><h3>Performance 95+</h3><p>Sites que carregam rápido, ranqueiam melhor e não fazem o cliente desistir.</p></div>
+        <div class="feature-card"><i class="fas fa-rocket"></i><h3>Performance 95+</h3><p>Otimização de velocidade, SEO e boas práticas de código.</p></div>
       </div>
     </div>
   </section>
@@ -217,11 +363,40 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
       <div class="timeline-wrap">
         <div class="timeline-rail"><div class="timeline-fill" id="timelineFill"></div></div>
         <div class="timeline-steps" id="timelineSteps">
-          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-comments"></i> 01 — Brief</div><h3>Alinhamento</h3><p>Entendo seu negócio, público e objetivo. Você me conta o que precisa e eu sugiro a melhor solução. Definimos oferta, copy e estrutura no WhatsApp em 30 min.</p></div>
-          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-pencil-alt"></i> 02 — Design</div><h3>Layout Profissional</h3><p>Layout mobile-first aprovado por você. Tipografia, cores e hierarquia pensadas para converter. Você aprova antes de eu codificar.</p></div>
-          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-code"></i> 03 — Code</div><h3>Build limpo</h3><p>Código sem gambiarra. Semântico, rápido, acessível. Nada de WordPress ou plugins pesados - código puro que carrega em menos de 2 segundos.</p></div>
-          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-rocket"></i> 04 — Go</div><h3>Publicar</h3><p>Deploy, domínio, analytics e handoff. Seu site no ar, pronto para vender. Configuro Google Analytics e ensino a mexer no painel. Suporte incluso.</p></div>
+          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-comments"></i> 01 — Brief</div><h3>Alinhamento</h3><p>Entendo seu negócio, público e objetivo. Definimos oferta, copy e estrutura no WhatsApp em 30 min.</p></div>
+          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-pencil-alt"></i> 02 — Design</div><h3>Layout Profissional</h3><p>Layout mobile-first aprovado por você. Tipografia, cores e hierarquia pensadas para converter.</p></div>
+          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-code"></i> 03 — Code</div><h3>Build limpo</h3><p>Código sem gambiarra. Semântico, rápido, acessível. SEO local e WhatsApp integrados.</p></div>
+          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-rocket"></i> 04 — Go</div><h3>Publicar</h3><p>Deploy, domínio, analytics e handoff. Seu site no ar, pronto para vender. Suporte 15 dias.</p></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projetos" class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Projetos recentes</span><h2>Trabalhos realizados</h2><p>Arraste ou aguarde o carrossel.</p></div>
+      <div class="carousel-full" id="projetosCarousel">
+        <div class="carousel-track" id="projetosTrack"></div>
+        <div class="carousel-dots" id="projetosDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="depoimentos" class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Depoimentos</span><h2>Quem já trabalhou comigo</h2></div>
+      <div class="carousel-full" id="depoimentosCarousel">
+        <div class="carousel-track" id="depoimentosTrack"></div>
+        <div class="carousel-dots" id="depoimentosDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="parceiros" class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Tecnologias e parceiros</span><h2>Ferramentas que utilizo</h2></div>
+      <div class="partners-marquee">
+        <div class="partners-track" id="partnersTrack"></div>
       </div>
     </div>
   </section>
@@ -234,9 +409,8 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
         <details class="faq-item"><summary class="faq-question">Quanto custa um site?</summary><div class="faq-answer">Landing Page R$ 547,90, Site 2 páginas R$ 697,90, Institucional R$ 997,90. E-commerce sob consulta.</div></details>
         <details class="faq-item"><summary class="faq-question">Quanto tempo leva?</summary><div class="faq-answer">Bio Simples 48h, Landing Page 72h, Site 2 páginas 96h, Institucional 7 dias.</div></details>
         <details class="faq-item"><summary class="faq-question">Tem garantia?</summary><div class="faq-answer">Sim! Garantia de 7 dias. Se não gostar, devolvo 100% do seu dinheiro.</div></details>
-        <details class="faq-item"><summary class="faq-question">O site funciona no celular?</summary><div class="faq-answer">Sim! Todos os meus sites são 100% responsivos. Funcionam no celular, tablet, notebook e computador.</div></details>
         <details class="faq-item"><summary class="faq-question">Posso usar meu domínio?</summary><div class="faq-answer">Sim! Se já tiver, configuro grátis. Se não, registro por R$80.</div></details>
-        <details class="faq-item"><summary class="faq-question">Aparece no Google?</summary><div class="faq-answer">Sim! SEO incluso em todos os planos + Google Meu Negócio configurado.</div></details>
+        <details class="faq-item"><summary class="faq-question">Aparece no Google?</summary><div class="faq-answer">Sim! SEO incluso em todos os planos + Google Meu Negócio.</div></details>
         <details class="faq-item"><summary class="faq-question">Preciso ter textos e fotos?</summary><div class="faq-answer">Não precisa! Posso criar os textos e usar suas redes sociais como referência.</div></details>
         <details class="faq-item"><summary class="faq-question">Como funciona o pagamento?</summary><div class="faq-answer">50% no início e 50% na entrega. Aceito Pix e transferência.</div></details>
       </div>
@@ -250,8 +424,9 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
       <div class="sobre-card" id="sobreCard">
         <div class="avatar"><img src="assets/img/samuel.webp" alt="Samuel Pena"></div>
         <div>
+          <div class="counters-row"><div class="counter-item"><div class="counter-num" data-target="35">0</div><div class="counter-label">Projetos</div></div><div class="counter-item"><div class="counter-num" data-target="99">0</div><div class="counter-label">% Satisfação</div></div><div class="counter-item"><div class="counter-num" data-target="95">0</div><div class="counter-label">Lighthouse</div></div><div class="counter-item"><div class="counter-num" data-target="4">0</div><div class="counter-label">Anos Exp.</div></div></div>
           <h3>Samuel Pena — SML/PN</h3>
-          <p>Sou desenvolvedor Full Stack em Trairi, Ceará. Sites que carregam rápido, ranqueiam bem e convertem no WhatsApp. Foco em negócio real, não em firula. Atendo 100% online para todo o Brasil com mais de 35 projetos entregues.</p>
+          <p>Sou desenvolvedor Full Stack em Trairi, Ceará. Sites que carregam rápido, ranqueiam bem e convertem no WhatsApp. Foco em negócio real, não em firula.</p>
           <div class="sobre-tags"><span>Trairi-CE</span><span>Full Stack</span><span>Lighthouse 95+</span><span>Landing Pages</span><span>SEO Local</span></div>
         </div>
       </div>
@@ -262,7 +437,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
     <div class="container">
       <h2>Pronto para colocar seu site no ar?</h2>
       <p>Me chama no WhatsApp. Respondo rápido e monto um orçamento sem compromisso.</p>
-      <a href="#" class="btn btn--primary" onclick="document.getElementById('chatFab').click();return false;" style="padding:17px 30px;font-size:16.5px"><i class="fas fa-comment-dots"></i> Falar pelo Chat agora</a>
+      <a href="#" class="btn btn--primary magnetic js-magnetic" onclick="document.getElementById('chatFab').click();return false;" style="padding:17px 30px;font-size:16.5px"><i class="fas fa-comment-dots"></i> Falar pelo Chat agora</a>
       <div style="margin-top:16px;color:#6c778d;font-size:14px">Resposta em até 2h • Trairi, Ceará</div>
     </div>
   </section>
@@ -272,25 +447,379 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
   <div class="footer-inner">
     <div>© 2026 SML/PN — Samuel Pena, Trairi, Ceará</div>
     <div class="footer-links">
+      
       <a href="https://instagram.com/sml_developer" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
       <a href="https://github.com/sml-pn" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
     </div>
   </div>
 </footer>
 
-<button id="chatFab" aria-label="Abrir chat"><i class="fas fa-comment-dots"></i></button>
+<div class="cookie-bar" id="cookieBar" role="dialog" aria-label="Cookies">
+  <div class="container cookie-inner"><p>Uso cookies essenciais para medir visitas. Sem rastreamento invasivo.</p><button class="btn-xs primary" id="cookieAccept">Aceitar</button></div>
+</div>
+<div class="powered-by" aria-hidden="true">Powered by SML/PN</div>
+
+<!-- Botão do chat -->
+<button id="chatFab" aria-label="Abrir chat de atendimento"><i class="fas fa-comment-dots"></i></button>
+
+<!-- Overlay do chat -->
 <div id="chatOverlay">
-  <div class="chat-header"><h3><i class="fas fa-robot"></i> Assistente SML/PN</h3><button class="chat-close" id="chatClose">&times;</button></div>
-  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-header">
+    <h3><i class="fas fa-robot"></i> Assistente SML/PN</h3>
+    <button class="chat-close" id="chatClose">&times;</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-bubble assistant">👋 Olá! Sou o assistente virtual da SML/PN. Como posso te ajudar hoje?<br>Pergunte sobre sites, landing pages, bio pages, SEO ou orçamentos.</div>
+  </div>
   <div class="chat-input-area">
     <input type="text" id="chatInput" placeholder="Digite sua mensagem..." autocomplete="off">
     <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  gsap.registerPlugin(ScrollTrigger);
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  (function(){
+    const canvas=document.getElementById('particlesCanvas');if(!canvas||reduceMotion)return;
+    const ctx=canvas.getContext('2d');let w,h,p=[];
+    function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight}
+    resize();window.addEventListener('resize',resize);
+    for(let i=0;i<35;i++)p.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2.2+.8,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,o:Math.random()*.35+.1});
+    function draw(){ctx.clearRect(0,0,w,h);p.forEach(d=>{d.x+=d.vx;d.y+=d.vy;if(d.x<0)d.x=w;if(d.x>w)d.x=0;if(d.y<0)d.y=h;if(d.y>h)d.y=0;ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);ctx.fillStyle=`rgba(0,245,255,${d.o})`;ctx.fill()});requestAnimationFrame(draw)}
+    draw();
+  })();
+
+  window.addEventListener('load',()=>{
+    const pl=document.getElementById('preloader');
+    const circle=document.querySelector('.pulse-circle');
+    if(pl && circle){
+      circle.addEventListener('animationend',()=>{ pl.style.display='none'; pl.remove(); });
+      setTimeout(()=>{ if(pl && pl.parentNode) { pl.style.display='none'; pl.remove(); } },1300);
+    } else if(pl) { pl.style.display='none'; pl.remove(); }
+  });
+
+  const progressBar=document.getElementById('scrollProgressBar');
+  const progressContainer=document.querySelector('.scroll-progress');
+  ScrollTrigger.create({
+    start:0,
+    end:()=>document.documentElement.scrollHeight-window.innerHeight,
+    onUpdate:self=>{
+      const p = self.progress;
+      progressBar.style.width = (p * 100).toFixed(2) + '%';
+      progressContainer.style.opacity = p > 0 ? '1' : '0';
+    }
+  });
+
+  if(!reduceMotion){
+    gsap.utils.toArray('.service-card,.proj-card,.timeline-step,.sobre-card,.faq-item,.feature-card,.partner-item').forEach(el=>{
+      gsap.fromTo(el,{y:40,opacity:0},{y:0,opacity:1,duration:.75,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 84%',toggleActions:'play none none none'}})
+    })
+  }
+
+  document.querySelectorAll('.js-magnetic').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{
+      if(reduceMotion)return;
+      const r=btn.getBoundingClientRect(),x=e.clientX-(r.left+r.width/2),y=e.clientY-(r.top+r.height/2);
+      gsap.to(btn,{x:x*.2,y:y*.25,duration:.35,ease:'power2.out'})
+    });
+    btn.addEventListener('mouseleave',()=>{ gsap.to(btn,{x:0,y:0,duration:.5,ease:'elastic.out(1,.4)'}) })
+  });
+
+  const timelineSteps=document.querySelectorAll('.timeline-step');
+  if(!reduceMotion){
+    gsap.to('#timelineFill',{height:'100%',ease:'none',scrollTrigger:{trigger:'#timelineSteps',start:'top 62%',end:'bottom 60%',scrub:true}});
+    timelineSteps.forEach(step=>{
+      ScrollTrigger.create({
+        trigger:step, start:'top 68%', end:'bottom 40%',
+        onEnter:()=>step.querySelector('.t-dot')?.classList.add('active'),
+        onEnterBack:()=>step.querySelector('.t-dot')?.classList.add('active')
+      })
+    })
+  }else{
+    document.querySelectorAll('.t-dot').forEach(d=>d.classList.add('active'))
+  }
+
+  const counterEls=document.querySelectorAll('.counter-num');
+  if(counterEls.length){
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const el=e.target,t=parseInt(el.dataset.target);let c=0;
+          const iv=setInterval(()=>{
+            c+=t/120;if(c>=t){c=t;clearInterval(iv)}
+            el.textContent=Math.floor(c)+(el.dataset.target==='99'?'%':el.dataset.target==='95'?'+':'')
+          },16);
+          obs.unobserve(el)
+        }
+      })
+    },{threshold:.5});
+    counterEls.forEach(el=>obs.observe(el))
+  }
+
+  if(!reduceMotion&&window.innerWidth>700){
+    gsap.to('#sobreCard',{yPercent:-3,ease:'none',scrollTrigger:{trigger:'#sobre',start:'top bottom',end:'bottom top',scrub:true}})
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href');if(id.length<2)return;
+      const target=document.querySelector(id);
+      if(target){
+        e.preventDefault();
+        window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-80,behavior:reduceMotion?'auto':'smooth'})
+      }
+    })
+  });
+
+  (function(){
+    const bar=document.getElementById('cookieBar'),accept=document.getElementById('cookieAccept');
+    if(!localStorage.getItem('sml_cookie_v8')){ setTimeout(()=>bar.classList.add('show'),800) }
+    accept.addEventListener('click',()=>{
+      localStorage.setItem('sml_cookie_v8','granted');
+      bar.classList.remove('show')
+    })
+  })();
+
+  const hamburger=document.querySelector('.hamburger');
+  const mobileMenu=document.getElementById('mobileMenu');
+  if(hamburger && mobileMenu){
+    hamburger.addEventListener('click',()=>{
+      const isOpen=hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded',isOpen);
+      document.body.style.overflow=isOpen?'hidden':'';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link=>{
+      link.addEventListener('click',()=>{
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow='';
+        hamburger.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+
+  /* === FUNÇÃO REUTILIZÁVEL DE CARROSSEL INFINITO === */
+  function createInfiniteCarousel(trackId, dotsId, items, baseCardWidth, baseGap, direction, intervalTime) {
+    const track = document.getElementById(trackId);
+    const dotsContainer = dotsId ? document.getElementById(dotsId) : null;
+    if (!track) return;
+
+    let cardWidth = baseCardWidth;
+    let gap = baseGap;
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      cardWidth = Math.min(window.innerWidth * 0.85, 380);
+      gap = 16;
+    }
+
+    const step = cardWidth + gap;
+    const totalCards = items.length;
+    const allItems = [...items, ...items, ...items];
+    let position = totalCards * step;
+    if (window.innerWidth <= 768) {
+      const containerWidth = track.parentElement.offsetWidth;
+      position = totalCards * step - (containerWidth - cardWidth) / 2;
+      if (position < 0) position = 0;
+    }
+    let currentIndex = totalCards;
+    let currentDirection = direction;
+    let interval;
+
+    const cardSelector = trackId.includes('projeto') ? '.proj-card' : '.dep-card-carousel';
+
+    allItems.forEach((item, index) => {
+      const card = document.createElement('div');
+      card.className = item.className;
+      card.innerHTML = item.innerHTML;
+      card.style.flex = `0 0 ${cardWidth}px`;
+      track.appendChild(card);
+    });
+
+    track.style.transform = `translateX(-${position}px)`;
+
+    if (dotsContainer) {
+      for (let i = 0; i < totalCards; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Item ${i + 1}`);
+        dot.addEventListener('click', () => {
+          position = totalCards * step + i * step;
+          if (window.innerWidth <= 768) {
+            const containerWidth = track.parentElement.offsetWidth;
+            const offset = (containerWidth - cardWidth) / 2;
+            position = totalCards * step + i * step - offset;
+            if (position < 0) position = 0;
+          }
+          track.style.transition = 'transform 0.5s ease';
+          track.style.transform = `translateX(-${position}px)`;
+          updateDots(i);
+        });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateDots(activeIndex) {
+      if (!dotsContainer) return;
+      const dots = dotsContainer.querySelectorAll('.carousel-dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === activeIndex % totalCards);
+      });
+    }
+
+    function moveCarousel() {
+      currentIndex += currentDirection;
+      if (currentIndex >= totalCards * 2) {
+        currentIndex = totalCards;
+        track.style.transition = 'none';
+        position = currentIndex * step;
+        if (window.innerWidth <= 768) {
+          const containerWidth = track.parentElement.offsetWidth;
+          const offset = (containerWidth - cardWidth) / 2;
+          position = currentIndex * step - offset;
+          if (position < 0) position = 0;
+        }
+        track.style.transform = `translateX(-${position}px)`;
+        currentDirection = -direction;
+        setTimeout(() => {
+          track.style.transition = 'transform 0.5s ease';
+          currentIndex += currentDirection;
+          position = currentIndex * step;
+          if (window.innerWidth <= 768) {
+            const containerWidth = track.parentElement.offsetWidth;
+            const offset = (containerWidth - cardWidth) / 2;
+            position = currentIndex * step - offset;
+            if (position < 0) position = 0;
+          }
+          track.style.transform = `translateX(-${position}px)`;
+          updateDots((currentIndex % totalCards + totalCards) % totalCards);
+        }, 50);
+        return;
+      }
+      if (currentIndex < totalCards) {
+        currentIndex = totalCards * 2 - 1;
+        track.style.transition = 'none';
+        position = currentIndex * step;
+        if (window.innerWidth <= 768) {
+          const containerWidth = track.parentElement.offsetWidth;
+          const offset = (containerWidth - cardWidth) / 2;
+          position = currentIndex * step - offset;
+          if (position < 0) position = 0;
+        }
+        track.style.transform = `translateX(-${position}px)`;
+        currentDirection = -direction;
+        setTimeout(() => {
+          track.style.transition = 'transform 0.5s ease';
+          currentIndex += currentDirection;
+          position = currentIndex * step;
+          if (window.innerWidth <= 768) {
+            const containerWidth = track.parentElement.offsetWidth;
+            const offset = (containerWidth - cardWidth) / 2;
+            position = currentIndex * step - offset;
+            if (position < 0) position = 0;
+          }
+          track.style.transform = `translateX(-${position}px)`;
+          updateDots((currentIndex % totalCards + totalCards) % totalCards);
+        }, 50);
+        return;
+      }
+      track.style.transition = 'transform 0.5s ease';
+      position = currentIndex * step;
+      if (window.innerWidth <= 768) {
+        const containerWidth = track.parentElement.offsetWidth;
+        const offset = (containerWidth - cardWidth) / 2;
+        position = currentIndex * step - offset;
+        if (position < 0) position = 0;
+      }
+      track.style.transform = `translateX(-${position}px)`;
+      updateDots((currentIndex % totalCards + totalCards) % totalCards);
+    }
+
+    interval = setInterval(moveCarousel, intervalTime);
+
+    window.addEventListener('resize', () => {
+      const mobileNow = window.innerWidth <= 768;
+      if (mobileNow) {
+        cardWidth = Math.min(window.innerWidth * 0.85, 380);
+        gap = 16;
+      } else {
+        cardWidth = baseCardWidth;
+        gap = baseGap;
+      }
+      const newStep = cardWidth + gap;
+      track.querySelectorAll(cardSelector).forEach(c => c.style.flex = `0 0 ${cardWidth}px`);
+      const containerWidth = track.parentElement.offsetWidth;
+      position = totalCards * newStep - (containerWidth - cardWidth) / 2;
+      if (position < 0) position = 0;
+      track.style.transition = 'none';
+      track.style.transform = `translateX(-${position}px)`;
+    });
+
+    return interval;
+  }
+
+  const projetosData = [
+    { className: 'proj-card', innerHTML: '<div class="proj-header"><h3>Amei Cetim</h3><p>Site profissional de acessórios de cetim com carrinho, lightbox e finalização via WhatsApp.<br><small style="color:var(--muted)">Projeto de: Rosana</small></p></div><div class="proj-footer"><div class="proj-tags"><span class="tag">E-commerce</span><span class="tag">WhatsApp</span></div><a class="proj-link" href="https://ameicetim.onrender.com" target="_blank"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a></div>' },
+    { className: 'proj-card', innerHTML: '<div class="proj-header"><h3>Halison Henry</h3><p>Site institucional elegante com seções de serviços e CTA direto.</p></div><div class="proj-footer"><div class="proj-tags"><span class="tag">Institucional</span><span class="tag">SEO</span></div><a class="proj-link" href="https://halison-henry.onrender.com/" target="_blank"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a></div>' },
+    { className: 'proj-card', innerHTML: '<div class="proj-header"><h3>Vitrine Bio</h3><p>Bio-link premium para Instagram. Carrega em menos de 0.8s.<br><small style="color:var(--muted)">Projeto de: Samuel CEO</small></p></div><div class="proj-footer" style="flex-wrap:wrap;gap:8px;"><div class="proj-tags"><span class="tag">Bio Page</span><span class="tag">Links</span></div><a class="proj-link" href="https://vitrinebio.onrender.com" target="_blank"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a><a class="btn btn--sm" href="https://wa.me/558586121078?text=Quero%20minha%20Bio%20Page%20como%20a%20Vitrine%20Bio" target="_blank" style="background:var(--cyan);color:#000;font-size:12px;padding:6px 12px;border-radius:999px;font-weight:600;text-decoration:none;white-space:nowrap;">Quero minha Bio</a></div>' },
+    { className: 'proj-card', innerHTML: '<div class="proj-header"><h3>Colégio Centro de Ensino Ágape</h3><p>Landing page otimizada com WebP, menu hambúrguer e integração Google Maps/WhatsApp, focada em conversão e SEO.</p></div><div class="proj-footer"><div class="proj-tags"><span class="tag">Institucional</span><span class="tag">Educação</span></div><a class="proj-link" href="https://colegioagape.onrender.com" target="_blank"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a></div>' },
+    { className: 'proj-card proj-dev', innerHTML: '<div class="proj-header"><h3>Academia FitPro</h3><p>Sistema de gestão para academias. Agendamento, alunos e pagamentos.</p></div><div class="proj-footer"><div class="proj-tags"><span class="tag">SaaS</span><span class="tag">Agendamento</span></div><a class="proj-link" href="#"><i class="fas fa-clock"></i> Em desenvolvimento</a></div>' },
+    { className: 'proj-card proj-dev', innerHTML: '<div class="proj-header"><h3>Advocacia Souza</h3><p>Site institucional para escritório de advocacia. Áreas de atuação e blog jurídico.</p></div><div class="proj-footer"><div class="proj-tags"><span class="tag">Institucional</span><span class="tag">Blog</span></div><a class="proj-link" href="#"><i class="fas fa-clock"></i> Em desenvolvimento</a></div>' }
+  ];
+
+  const depoimentosData = [
+    { className: 'dep-card-carousel', innerHTML: '<div class="dep-stars">★★★★★</div><p>"O Samuel fez um site incrível para minha loja. Rápido, bonito e já está trazendo clientes!"</p><div class="dep-autor"><strong>Maria Silva</strong> · Amei Cetim</div>' },
+    { className: 'dep-card-carousel', innerHTML: '<div class="dep-stars">★★★★★</div><p>"Profissionalismo do início ao fim. Entregou antes do prazo!"</p><div class="dep-autor"><strong>Halison Henry</strong> · Gestor de Tráfego</div>' },
+    { className: 'dep-card-carousel', innerHTML: '<div class="dep-stars">★★★★★</div><p>"Precisei de uma bio page e ele entregou em 2 dias. Meus seguidores adoraram!"</p><div class="dep-autor"><strong>Ana Costa</strong> · Vitrine Bio</div>' },
+    { className: 'dep-card-carousel', innerHTML: '<div class="dep-stars">★★★★★</div><p>"Atendimento rápido e resultado acima do esperado. Super recomendo!"</p><div class="dep-autor"><strong>Carlos Eduardo</strong> · Loja Virtual</div>' },
+    { className: 'dep-card-carousel', innerHTML: '<div class="dep-stars">★★★★★</div><p>"Site lindo, rápido e já está na primeira página do Google!"</p><div class="dep-autor"><strong>Fernanda Lima</strong> · Clínica Sorriso</div>' },
+    { className: 'dep-card-carousel', innerHTML: '<div class="dep-stars">★★★★★</div><p>"Profissional dedicado e muito criativo. Meu site ficou perfeito."</p><div class="dep-autor"><strong>Ricardo Alves</strong> · Construtora</div>' }
+  ];
+
+  const parceiros = [
+    { icon: 'fas fa-cloud', name: 'Render' },
+    { icon: 'fab fa-github', name: 'GitHub' },
+    { icon: 'fas fa-infinity', name: 'Vercel' },
+    { icon: 'fab fa-google', name: 'Google' },
+    { icon: 'fab fa-aws', name: 'AWS' },
+    { icon: 'fas fa-cloud-upload-alt', name: 'Cloudflare' },
+    { icon: 'fab fa-html5', name: 'HTML5' },
+    { icon: 'fab fa-css3-alt', name: 'CSS3' },
+    { icon: 'fab fa-js-square', name: 'JavaScript' },
+    { icon: 'fab fa-react', name: 'React' },
+    { icon: 'fab fa-python', name: 'Python' },
+    { icon: 'fab fa-node-js', name: 'Node.js' },
+    { icon: 'fas fa-database', name: 'PostgreSQL' },
+    { icon: 'fab fa-figma', name: 'Figma' },
+    { icon: 'fas fa-shield-alt', name: 'SSL/HTTPS' },
+    { icon: 'fas fa-search', name: 'SEO' },
+    { icon: 'fas fa-code', name: 'TypeScript' },
+    { icon: 'fas fa-wind', name: 'Tailwind CSS' },
+  ];
+
+  const trackParceiros = document.getElementById('partnersTrack');
+  if (trackParceiros) {
+    const itemsHTML = parceiros.map(p => `<div class="partner-item"><i class="${p.icon}"></i><span>${p.name}</span></div>`).join('');
+    trackParceiros.innerHTML = itemsHTML + itemsHTML;
+  }
+
+  createInfiniteCarousel('projetosTrack', 'projetosDots', projetosData, 340, 24, 1, 4000);
+  createInfiniteCarousel('depoimentosTrack', 'depoimentosDots', depoimentosData, 340, 24, -1, 3500);
+
+  
+  chatClose.addEventListener('click', () => { chatOverlay.classList.remove('open'); });
+  chatSend.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
+});
+</script>
 <script src="assets/js/lib/compromise.min.js"></script>
 <script src="assets/js/auto-index.js"></script>
 <script src="assets/js/search-engine.js"></script>
-<script src="assets/js/chat.js"></script>
+<script src="assets/js/chat.js" defer></script>
 </body>
 </html>
