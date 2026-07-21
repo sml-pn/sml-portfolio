@@ -1,0 +1,149 @@
+{
+  "faq": [
+    {
+      "id": "saudacao",
+      "perguntas": ["oi", "ola", "hey", "bom dia", "boa tarde", "boa noite", "iae", "opa", "fala", "salve", "hi", "hello"],
+      "resposta": "Olá! Sou o assistente virtual da SML/PN — Samuel Pena, desenvolvedor Full Stack em Trairi-CE.\n\n📱 Vitrine Bio a partir de R$ 97,90\n🌐 Sites a partir de R$ 547,90\n🤖 Chat RAG — R$ 197,90\n\nNo que posso te ajudar?"
+    },
+    {
+      "id": "precos_geral",
+      "perguntas": ["quanto custa", "preco", "valores", "tabela de precos", "orcamento", "investimento", "custa", "taxa", "cobrar"],
+      "resposta": "📋 Preços SML/PN (pagamento único):\n\n📱 Vitrine Bio:\n🟢 Simples: R$ 97,90 (48h)\n🔵 Premium: R$ 247,90 (3-5 dias) ⭐\n🟣 Empresarial: R$ 497,90 (3-5 dias)\n\n🌐 Sites:\n🎯 Landing Page: R$ 547,90 (72h)\n📄 Site 2 páginas: R$ 697,90 (96h)\n🏢 Institucional: R$ 997,90 (7 dias)\n🛒 E-commerce: sob consulta\n🤖 Chat RAG: R$ 197,90\n\n✅ Garantia 7 dias • Hospedagem inclusa • 50% início + 50% entrega"
+    },
+    {
+      "id": "vitrine_bio",
+      "perguntas": ["o que e vitrine bio", "vitrine bio", "bio page", "link na bio", "linktree", "pagina para instagram"],
+      "resposta": "📱 A Vitrine Bio é uma página profissional para substituir o link da bio do Instagram. Converte 3x mais que Linktree!\n\n✅ Design profissional personalizado\n✅ Carrega em menos de 0.8s\n✅ Botão WhatsApp 1-clique\n✅ +2.847 bios entregues com nota 4.9/5\n\n3 planos disponíveis:\n🟢 Simples: R$ 97,90\n🔵 Premium: R$ 247,90 (mais vendido)\n🟣 Empresarial: R$ 497,90"
+    },
+    {
+      "id": "vitrine_simples",
+      "perguntas": ["vitrine simples", "bio simples", "plano simples", "bio barata", "bio 97", "plano mais barato"],
+      "resposta": "🟢 Bio Simples — R$ 97,90 (20% OFF de R$121)\n\n✅ Links essenciais\n✅ Design clean mobile-first\n✅ Entrega em 48h\n✅ Hospedagem 1 ano inclusa\n✅ 1 ajuste grátis por mês\n\nIdeal para começar com profissionalismo!"
+    },
+    {
+      "id": "vitrine_premium",
+      "perguntas": ["vitrine premium", "bio premium", "plano premium", "bio 247", "mais popular", "melhor plano"],
+      "resposta": "🔵 Bio Premium — R$ 247,90 (20% OFF de R$309) ⭐ MAIS VENDIDO\n\n✅ Tudo do Simples\n✅ Identidade visual personalizada\n✅ Seção de depoimentos\n✅ Mapa de localização\n✅ Botão WhatsApp otimizado\n✅ Pixel Facebook/Google\n✅ 3 ajustes grátis por mês\n✅ Entrega em 3-5 dias"
+    },
+    {
+      "id": "vitrine_empresarial",
+      "perguntas": ["vitrine empresarial", "bio empresarial", "plano empresarial", "bio 497", "plano completo", "bio completa"],
+      "resposta": "🟣 Bio Empresarial — R$ 497,90 (20% OFF de R$621)\n\n✅ Tudo do Premium\n✅ Galeria de fotos/produtos\n✅ Google Analytics integrado\n✅ Contador de urgência\n✅ Animações premium\n✅ Suporte prioritário 30 dias\n✅ 5 ajustes grátis por mês\n✅ Entrega em 3-5 dias"
+    },
+    {
+      "id": "vitrine_prazo",
+      "perguntas": ["prazo bio", "tempo bio", "quanto tempo vitrine", "demora bio", "entrega bio"],
+      "resposta": "⏱️ Prazos da Vitrine Bio:\n\n🟢 Simples: até 48h úteis\n🔵 Premium: 3-5 dias úteis\n🟣 Empresarial: 3-5 dias úteis\n\nApós envio do material (logo, fotos, textos, links)."
+    },
+    {
+      "id": "vitrine_alteracoes",
+      "perguntas": ["alterar bio", "mudar bio", "atualizar vitrine", "ajuste bio", "modificar bio", "trocar link bio"],
+      "resposta": "🛠️ Ajustes na Vitrine Bio:\n\n🟢 Simples: 1 ajuste grátis/mês (extra: R$19 cada)\n🔵 Premium: 3 ajustes grátis/mês (extra: R$15 cada)\n🟣 Empresarial: 5 ajustes grátis/mês (extra: R$12 cada)\n\n⚠️ Mudanças estruturais (nova seção, redesign) são orçadas separadamente."
+    },
+    {
+      "id": "vitrine_mensalidade",
+      "perguntas": ["mensalidade bio", "pagar mensal", "custo mensal vitrine", "taxa mensal", "renovacao bio"],
+      "resposta": "✅ Não tem mensalidade! Pagamento único.\n\n📱 Hospedagem inclusa no 1º ano.\n🔄 Renovação opcional de apenas R$49/ano após o primeiro ano.\n\nSem pegadinhas, sem cobranças surpresa!"
+    },
+    {
+      "id": "vitrine_onde_usar",
+      "perguntas": ["onde usar bio", "onde colocar vitrine", "funciona onde", "link serve para"],
+      "resposta": "📱 Você pode usar sua Vitrine Bio em:\n\n✅ Instagram (link da bio)\n✅ TikTok\n✅ YouTube\n✅ WhatsApp\n✅ Cartão digital\n✅ QR Code\n\nFunciona em qualquer lugar que aceite um link!"
+    },
+    {
+      "id": "vitrine_linktree",
+      "perguntas": ["tenho linktree", "migrar linktree", "trocar linktree", "substituir linktree", "ja tenho linktree"],
+      "resposta": "✅ Perfeito! Migramos seus links do Linktree e melhoramos 10x o visual sem você perder nada.\n\nSua nova bio fica muito mais profissional, rápida e focada em converter cliques em clientes no WhatsApp."
+    },
+    {
+      "id": "vitrine_textos",
+      "perguntas": ["faz os textos", "cria copy", "escreve bio", "textos bio", "copy bio", "preciso escrever"],
+      "resposta": "✅ Sim! Otimizamos sua copy para conversão baseado no seu nicho.\n\nVocê só precisa enviar:\n📸 Logo e fotos\n📝 Informações básicas do seu negócio\n🔗 Links que quer incluir\n\nO resto a gente faz!"
+    },
+    {
+      "id": "landing_page",
+      "perguntas": ["landing page", "pagina de venda", "pagina unica", "landing", "pagina de conversao"],
+      "resposta": "🎯 Landing Page — R$ 547,90\n\n✅ Página única focada em conversão\n✅ Design exclusivo\n✅ Hero, serviços, diferenciais\n✅ Mapa de localização\n✅ Galeria de imagens\n✅ WhatsApp Multi (até 3 números)\n✅ Formulário de contato\n✅ SEO incluso\n✅ Entrega em 72h\n\nIdeal para vender um serviço ou captar leads!"
+    },
+    {
+      "id": "institucional",
+      "perguntas": ["site institucional", "site empresa", "site completo", "site 5 paginas", "institucional"],
+      "resposta": "🏢 Site Institucional — R$ 997,90\n\n✅ Até 5 páginas (Home, Sobre, Serviços, Contato, Blog)\n✅ Menu de navegação\n✅ Formulário de contato\n✅ Mapa e galeria\n✅ WhatsApp Multi\n✅ SEO em todas as páginas\n✅ Design 100% personalizado\n✅ Entrega em 7 dias"
+    },
+    {
+      "id": "ecommerce",
+      "perguntas": ["ecommerce", "loja virtual", "loja online", "carrinho", "vender online", "catalogo"],
+      "resposta": "🛒 E-commerce / Loja Virtual\n\n✅ Vitrine de produtos\n✅ Carrinho de compras\n✅ Checkout via WhatsApp\n✅ Integração Mercado Pago (adicional)\n✅ Design responsivo\n\n💰 Valor sob consulta (depende do número de produtos)\n\n🔗 Exemplo: Amei Cetim — ameicetim.onrender.com"
+    },
+    {
+      "id": "chat_rag",
+      "perguntas": ["chat rag", "chat inteligente", "bot", "ia", "inteligencia artificial", "assistente virtual", "automacao atendimento"],
+      "resposta": "🤖 Chat RAG Inteligente — R$ 197,90\n\n✅ Atendimento 24h automatizado\n✅ Treinado com SEU conteúdo\n✅ Responde clientes automaticamente\n✅ Integrado ao WhatsApp e GA4\n✅ Pagamento único, sem mensalidade\n\nIdeal para sites e bios que querem converter mais!"
+    },
+    {
+      "id": "seo",
+      "perguntas": ["seo", "google", "ranquear", "aparecer no google", "busca", "primeira pagina", "indexar"],
+      "resposta": "🔍 SEO incluso em todos os planos!\n\n✅ Otimização para Google\n✅ Google Meu Negócio configurado\n✅ Palavras-chave estratégicas\n✅ Meta tags e sitemap\n✅ Performance 95+ (melhor ranking)\n\nSeu site pronto para aparecer nas buscas!"
+    },
+    {
+      "id": "responsivo",
+      "perguntas": ["responsivo", "mobile", "celular", "tablet", "pc", "desktop", "computador", "notebook", "funciona no celular", "serve no celular", "tela qualquer"],
+      "resposta": "📱 Todos os meus sites são 100% responsivos!\n\n✅ Funcionam no celular, tablet, notebook e computador\n✅ Design mobile-first (pensado primeiro para celular)\n✅ Layout adaptável a qualquer tamanho de tela\n✅ Imagens otimizadas para 4G/5G\n✅ Testado em iOS e Android"
+    },
+    {
+      "id": "gerenciavel",
+      "perguntas": ["gerenciavel", "administrar", "painel", "dashboard", "controle", "atualizar sozinho", "mexer sozinho"],
+      "resposta": "📝 Sites gerenciáveis = você mesmo atualiza sem programador!\n\n✅ Alterar textos e imagens\n✅ Adicionar produtos/serviços\n✅ Trocar fotos da galeria\n✅ Atualizar preços e promoções\n✅ Tudo por um painel simples e intuitivo"
+    },
+    {
+      "id": "prazo",
+      "perguntas": ["prazo", "demora", "entrega", "tempo", "dias", "urgente", "quando fica pronto", "agilidade"],
+      "resposta": "⏱️ Prazos de entrega:\n\n📱 Bio Simples: 48h\n📱 Bio Premium/Empresarial: 3-5 dias\n🎯 Landing Page: 72h\n📄 Site 2 páginas: 96h\n🏢 Institucional: 7 dias\n🛒 E-commerce: sob consulta"
+    },
+    {
+      "id": "garantia",
+      "perguntas": ["garantia", "devolucao", "reembolso", "nao gostar", "arrepender", "7 dias", "dinheiro volta", "seguro", "confiavel"],
+      "resposta": "✅ Garantia Incondicional de 7 Dias!\n\nSe não amar, se não ver mais cliques, se não ficar 10x mais profissional... devolvo 100% do seu investimento. Simples assim. O risco é todo meu!"
+    },
+    {
+      "id": "pagamento",
+      "perguntas": ["pagamento", "pagar", "cartao", "pix", "transferencia", "parcela", "sinal", "forma", "como paga"],
+      "resposta": "💳 Forma de pagamento:\n\n✅ 50% no início\n✅ 50% na entrega (após aprovar)\n✅ Aceito Pix e transferência\n✅ Pagamento único, sem mensalidades!"
+    },
+    {
+      "id": "dominio",
+      "perguntas": ["dominio", "url", "www", "dns", "com.br", "registro", "dominio proprio"],
+      "resposta": "🌐 Sobre domínio:\n\n✅ Já tem? Configuro GRÁTIS!\n✅ Não tem? Registro por R$80\n✅ Pode usar subdomínio gratuito também"
+    },
+    {
+      "id": "hospedagem",
+      "perguntas": ["hospedagem", "hospedar", "servidor", "site ar", "publicar", "online", "fica no ar"],
+      "resposta": "✅ Hospedagem inclusa em todos os planos!\n\nSeu site fica no ar 24h por dia, sem custo mensal. Pagamento único."
+    },
+    {
+      "id": "processo",
+      "perguntas": ["como funciona", "processo", "etapas", "metodo", "passo a passo", "fluxo", "trabalho"],
+      "resposta": "🔄 Processo em 4 etapas:\n\n1️⃣ Brief — Entendo seu negócio e objetivos (WhatsApp, 30min)\n2️⃣ Design — Layout mobile-first aprovado por você\n3️⃣ Code — Código limpo, rápido, com SEO e WhatsApp\n4️⃣ Go — Deploy, domínio e site no ar!\n\n✅ Garantia 7 dias • Suporte incluso"
+    },
+    {
+      "id": "sobre",
+      "perguntas": ["quem e voce", "samuel", "desenvolvedor", "dono", "fundador", "quem faz", "sobre voce"],
+      "resposta": "👨‍💻 Samuel Pena — Desenvolvedor Full Stack em Trairi-CE.\n\n✅ +35 projetos entregues\n✅ 99% satisfação\n✅ Lighthouse 95+\n✅ 4 anos de experiência\n\nCrio sites rápidos, que ranqueiam bem e convertem no WhatsApp.\n\n📸 Instagram: @sml_developer\n💻 GitHub: sml-pn"
+    },
+    {
+      "id": "contato",
+      "perguntas": ["whatsapp", "falar", "conversar", "ligar", "telefone", "contato", "zap", "chamar", "humano", "pessoa", "atendente"],
+      "resposta": "📞 Vamos conversar no WhatsApp?\n\nRespondo em até 2h!\nOrçamento sem compromisso.\n\n📸 Instagram: @sml_developer\n💻 GitHub: sml-pn"
+    },
+    {
+      "id": "projetos",
+      "perguntas": ["portfolio", "projetos", "trabalhos", "exemplos", "mostra", "ver", "fez", "criou", "ja fez"],
+      "resposta": "📂 Projetos entregues:\n\n🛒 Amei Cetim — E-commerce com carrinho\n🔗 ameicetim.onrender.com\n\n🏢 Halison Henry — Site institucional\n🔗 halison-henry.onrender.com\n\n📱 Vitrine Bio — Bio Premium\n🔗 vitrinebio.onrender.com\n\n🏫 Colégio Ágape — Landing Page\n🔗 colegioagape.onrender.com\n\n⏳ Academia FitPro e Advocacia Souza — Em desenvolvimento"
+    },
+    {
+      "id": "diferenciais",
+      "perguntas": ["diferencial", "vantagem", "por que escolher", "diferente", "por que voce"],
+      "resposta": "✨ Diferenciais SML/PN:\n\n✅ WhatsApp Multi (até 3 números)\n✅ Mapa de localização\n✅ Efeitos e animações profissionais\n✅ Mobile + Desktop responsivo\n✅ Cores personalizadas da marca\n✅ Fontes exclusivas\n✅ Performance 95+\n✅ SEO Local incluso\n✅ Hospedagem inclusa\n✅ Garantia de 7 dias\n✅ Pagamento único sem mensalidade"
+    }
+  ]
+}
