@@ -48,7 +48,7 @@ var SMLEngine = (function() {
         docs.push({
           id: 'faq_' + q.toLowerCase().replace(/\s+/g,'_').substring(0,30),
           keywords: q.toLowerCase(),
-          resposta: '<b>' + q + '</b><br>' + a
+          resposta: a
         });
       }
     });

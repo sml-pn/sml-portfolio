@@ -291,9 +291,16 @@
         "dns",
         "com.br",
         "registro",
-        "dominio proprio"
+        "dominio proprio",
+        "comprar dominio",
+        "hostgator",
+        "godaddy",
+        "registro.br",
+        "qual dominio",
+        "domino gratis",
+        "subdominio"
       ],
-      "resposta": "🌐 Sobre domínio:\n\n✅ Já tem? Configuro GRÁTIS!\n✅ Não tem? Registro por R$80\n✅ Pode usar subdomínio gratuito também"
+      "resposta": "🌐 Sobre domínio:\n\n✅ Grátis: Você pode usar um subdomínio do Render (ex: seuprojeto.onrender.com). Já está incluso no plano!\n\n✅ Domínio próprio: Se quiser um domínio .com.br ou .com, você compra onde preferir (HostGator, Registro.br, GoDaddy) e eu configuro o DNS por R$ 80."
     },
     {
       "id": "hospedagem",
