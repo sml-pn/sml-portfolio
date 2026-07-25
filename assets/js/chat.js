@@ -17,9 +17,7 @@
   }
 
   function getConversationSummary() {
-    if (conversationHistory.length === 0) {
-      return 'Ola Samuel! Um cliente abriu o chat no site SML/PN.';
-    }
+    if (conversationHistory.length === 0) return 'Ola Samuel! Um cliente abriu o chat no site SML/PN.';
     var msg = 'Ola Samuel! Cliente veio pelo chat SML/PN. ';
     if (userInterests.length > 0) msg += 'Interesse em ' + userInterests.join(', ') + '. ';
     msg += 'Gostaria de tirar mais duvidas.';
@@ -30,7 +28,8 @@
     var interests = {
       'vitrine':'Vitrine Bio','preco':'Precos','landing':'Landing Page',
       'site':'Site','ecommerce':'E-commerce','loja':'E-commerce',
-      'chat':'Chat RAG','manutencao':'Manutencao','portfolio':'Portfolio','modelo':'Vitrine Bio'
+      'chat':'Chat RAG','manutencao':'Manutencao','portfolio':'Portfolio',
+      'modelo':'Vitrine Bio','institucional':'Site Institucional'
     };
     var lower = text.toLowerCase();
     for (var key in interests) {
@@ -75,7 +74,7 @@
   function sendMessage() {
     var text = chatInput.value.trim();
     if (!text) return;
-    if (text.length > 500) { addBubble("Mensagem muito longa!", 'assistant'); return; }
+    if (text.length > 500) { addBubble("Mensagem muito longa! Resuma.", 'assistant'); return; }
     addBubble(text, 'user');
     trackEvent('chat_message', { message_length: text.length });
     chatInput.value = ''; chatInput.focus();

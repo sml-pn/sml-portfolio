@@ -31,7 +31,7 @@
         "taxa",
         "cobrar"
       ],
-      "resposta": "📋 Preços SML/PN (pagamento único):\n\n📱 Vitrine Bio:\n🟢 Simples: R$ 97,90 (48h)\n🔵 Premium: R$ 247,90 (3-5 dias) ⭐\n🟣 Empresarial: R$ 497,90 (3-5 dias)\n\n🌐 Sites:\n🎯 Landing Page: R$ 547,90 (72h)\n📄 Site 2 páginas: R$ 697,90 (96h)\n🏢 Institucional: R$ 997,90 (7 dias)\n🛒 E-commerce: sob consulta\n🤖 Chat RAG: R$ 197,90\n\n✅ Garantia 7 dias • Hospedagem inclusa • 50% início + 50% entrega"
+      "resposta": "📋 Preços SML/PN (pagamento único):\n\n📱 Vitrine Bio:\n🟢 Simples: R$ 97,90 (72h / 3 dias úteis)\n🔵 Premium: R$ 247,90 (3-5 dias) ⭐\n🟣 Empresarial: R$ 497,90 (3-5 dias)\n\n🌐 Sites:\n🎯 Landing Page: R$ 547,90 (5 dias úteis)\n📄 Site 2 páginas: R$ 697,90 (6 dias úteis)\n🏢 Institucional: R$ 997,90 (9 dias úteis)\n🛒 E-commerce: sob consulta\n🤖 Chat RAG: R$ 197,90\n\n✅ Garantia 7 dias • Hospedagem Render inclusa • 50% início + 50% entrega\n\n🌐 Domínio próprio: configuração de DNS por R$ 83,00 (domínio comprado por você)"
     },
     {
       "id": "vitrine_bio",
@@ -55,7 +55,7 @@
         "bio 97",
         "plano mais barato"
       ],
-      "resposta": "🟢 Bio Simples — R$ 97,90 (20% OFF de R$121)\n\n✅ Links essenciais\n✅ Design clean mobile-first\n✅ Entrega em 48h\n✅ Hospedagem 1 ano inclusa\n✅ 1 ajuste grátis por mês\n\nIdeal para começar com profissionalismo!"
+      "resposta": "🟢 Bio Simples — R$ 97,90 (20% OFF de R$121)\n\n✅ Links essenciais\n✅ Design clean mobile-first\n✅ Entrega em 72h (3 dias úteis)\n✅ Hospedagem 1 ano inclusa\n✅ 1 ajuste grátis por mês\n\nIdeal para começar com profissionalismo!"
     },
     {
       "id": "vitrine_premium",
@@ -90,7 +90,7 @@
         "demora bio",
         "entrega bio"
       ],
-      "resposta": "⏱️ Prazos da Vitrine Bio:\n\n🟢 Simples: até 48h úteis\n🔵 Premium: 3-5 dias úteis\n🟣 Empresarial: 3-5 dias úteis\n\nApós envio do material (logo, fotos, textos, links)."
+      "resposta": "⏱️ Prazos da Vitrine Bio:\n\n🟢 Simples: até 72h (3 dias úteis) úteis\n🔵 Premium: 3-5 dias úteis\n🟣 Empresarial: 3-5 dias úteis\n\nApós envio do material (logo, fotos, textos, links)."
     },
     {
       "id": "vitrine_alteracoes",
@@ -113,7 +113,7 @@
         "taxa mensal",
         "renovacao bio"
       ],
-      "resposta": "✅ Não tem mensalidade! Pagamento único.\n\n📱 Hospedagem inclusa no 1º ano.\n🔄 Renovação opcional de apenas R$49/ano após o primeiro ano.\n\nSem pegadinhas, sem cobranças surpresa!"
+      "resposta": "✅ Não tem mensalidade! Pagamento único.\n\n📱 Hospedagem Render inclusa no 1º ano.\n🔄 Renovação opcional de apenas R$49/ano após o primeiro ano.\n\nSem pegadinhas, sem cobranças surpresa!"
     },
     {
       "id": "vitrine_onde_usar",
@@ -157,18 +157,7 @@
         "landing",
         "pagina de conversao"
       ],
-      "resposta": "🎯 Landing Page — R$ 547,90\n\n✅ Página única focada em conversão\n✅ Design exclusivo\n✅ Hero, serviços, diferenciais\n✅ Mapa de localização\n✅ Galeria de imagens\n✅ WhatsApp Multi (até 3 números)\n✅ Formulário de contato\n✅ SEO incluso\n✅ Entrega em 72h\n\nIdeal para vender um serviço ou captar leads!"
-    },
-    {
-      "id": "institucional",
-      "perguntas": [
-        "site institucional",
-        "site empresa",
-        "site completo",
-        "site 5 paginas",
-        "institucional"
-      ],
-      "resposta": "🏢 Site Institucional — R$ 997,90\n\n✅ Até 5 páginas (Home, Sobre, Serviços, Contato, Blog)\n✅ Menu de navegação\n✅ Formulário de contato\n✅ Mapa e galeria\n✅ WhatsApp Multi\n✅ SEO em todas as páginas\n✅ Design 100% personalizado\n✅ Entrega em 7 dias"
+      "resposta": "🎯 Landing Page\n\n💰 Valor: R$ 547,90 (Hospedagem Render inclusa)\n⏱️ Entrega: 5 dias úteis\n📱 1 página completa (hero, serviços, mapa, galeria, WhatsApp)\n\n🌐 Com domínio próprio: + R$ 83,90 — Total: R$ 631,90\n\n✅ Garantia 7 dias • 50% início + 50% entrega"
     },
     {
       "id": "ecommerce",
@@ -180,7 +169,7 @@
         "vender online",
         "catalogo"
       ],
-      "resposta": "🛒 E-commerce / Loja Virtual\n\n✅ Vitrine de produtos\n✅ Carrinho de compras\n✅ Checkout via WhatsApp\n✅ Integração Mercado Pago (adicional)\n✅ Design responsivo\n\n💰 Valor sob consulta (depende do número de produtos)\n\n🔗 Exemplo: Amei Cetim — ameicetim.onrender.com"
+      "resposta": "🛒 E-commerce / Loja Virtual\n\n💰 Valor: sob consulta (depende do número de produtos)\n📱 Vitrine de produtos + carrinho + checkout WhatsApp\n🔗 Exemplo: Amei Cetim — ameicetim.onrender.com\n\n✅ Garantia 7 dias • Hospedagem Render inclusa • 50% início + 50% entrega"
     },
     {
       "id": "chat_rag",
@@ -250,7 +239,7 @@
         "quando fica pronto",
         "agilidade"
       ],
-      "resposta": "⏱️ Prazos de entrega:\n\n📱 Bio Simples: 48h\n📱 Bio Premium/Empresarial: 3-5 dias\n🎯 Landing Page: 72h\n📄 Site 2 páginas: 96h\n🏢 Institucional: 7 dias\n🛒 E-commerce: sob consulta"
+      "resposta": "⏱️ Prazos de entrega:\n\n📱 Bio Simples: 5 dias úteis (3 dias úteis)\n📱 Bio Premium/Empresarial: 3-5 dias\n🎯 Landing Page: 5 dias úteis\n📄 Site 2 páginas: 6 dias úteis\n🏢 Institucional: 9 dias úteis\n🛒 E-commerce: sob consulta"
     },
     {
       "id": "garantia",
@@ -265,7 +254,7 @@
         "seguro",
         "confiavel"
       ],
-      "resposta": "✅ Garantia Incondicional de 7 Dias!\n\nSe não amar, se não ver mais cliques, se não ficar 10x mais profissional... devolvo 100% do seu investimento. Simples assim. O risco é todo meu!"
+      "resposta": "✅ Garantia de 7 dias. Se não gostar do resultado, devolvo 100% do seu dinheiro. O risco é todo meu!"
     },
     {
       "id": "pagamento",
@@ -300,7 +289,7 @@
         "domino gratis",
         "subdominio"
       ],
-      "resposta": "🌐 Sobre domínio:\n\n✅ Grátis: Você pode usar um subdomínio do Render (ex: seuprojeto.onrender.com). Já está incluso no plano!\n\n✅ Domínio próprio: Se quiser um domínio .com.br ou .com, você compra onde preferir (HostGator, Registro.br, GoDaddy) e eu configuro o DNS por R$ 80."
+      "resposta": "🌐 Sobre domínio:\n\n✅ Grátis: Você pode usar um subdomínio do Render (ex: seuprojeto.onrender.com). Já está incluso no plano!\n\n✅ Domínio próprio: Se quiser um domínio .com.br ou .com, você compra onde preferir (HostGator, Registro.br, GoDaddy) e eu configuro o DNS por R$ 83,90."
     },
     {
       "id": "hospedagem",
@@ -313,7 +302,7 @@
         "online",
         "fica no ar"
       ],
-      "resposta": "✅ Hospedagem inclusa em todos os planos!\n\nSeu site fica no ar 24h por dia, sem custo mensal. Pagamento único."
+      "resposta": "✅ Hospedagem Render inclusa em todos os planos!\n\nSeu site fica no ar 24h por dia, sem custo mensal. Pagamento único."
     },
     {
       "id": "processo",
@@ -382,7 +371,54 @@
         "diferente",
         "por que voce"
       ],
-      "resposta": "✨ Diferenciais SML/PN:\n\n✅ WhatsApp Multi (até 3 números)\n✅ Mapa de localização\n✅ Efeitos e animações profissionais\n✅ Mobile + Desktop responsivo\n✅ Cores personalizadas da marca\n✅ Fontes exclusivas\n✅ Performance 95+\n✅ SEO Local incluso\n✅ Hospedagem inclusa\n✅ Garantia de 7 dias\n✅ Pagamento único sem mensalidade"
+      "resposta": "✨ Diferenciais SML/PN:\n\n✅ WhatsApp Multi (até 3 números)\n✅ Mapa de localização\n✅ Efeitos e animações profissionais\n✅ Mobile + Desktop responsivo\n✅ Cores personalizadas da marca\n✅ Fontes exclusivas\n✅ Performance 95+\n✅ SEO Local incluso\n✅ Hospedagem Render inclusa\n✅ Garantia de 7 dias\n✅ Pagamento único sem mensalidade"
+    },
+    {
+      "id": "landing_dominio",
+      "perguntas": [
+        "landing page com dominio",
+        "landing com dominio proprio",
+        "pagina com dominio",
+        "site com dominio",
+        "quanto custa landing com dominio",
+        "landing page dominio",
+        "site dominio proprio preco",
+        "pagina dominio proprio valor"
+      ],
+      "resposta": "🎯 Landing Page + Domínio Próprio: R$ 631,90\n\n📱 Landing Page: R$ 547,90 (5 dias úteis)\n🌐 Configuração de domínio: R$ 83,90\n\n✅ Total: R$ 631,90\n\nO domínio (.com.br, .com) você compra onde preferir (HostGator, Registro.br) e eu configuro o DNS para apontar para o seu site.\n\n✅ Garantia de 7 dias • 50% início + 50% entrega"
+    },
+    {
+      "id": "site2_dominio",
+      "perguntas": [
+        "site 2 paginas com dominio",
+        "duas paginas com dominio proprio",
+        "site duas paginas dominio",
+        "quanto custa site 2 paginas com dominio",
+        "site com 2 paginas e dominio",
+        "duas paginas e dominio"
+      ],
+      "resposta": "📄 Site 2 Páginas + Domínio Próprio: R$ 777,90\n\n📄 Site 2 páginas: R$ 697,90 (6 dias úteis)\n🌐 Configuração de domínio: R$ 83,90\n\n✅ Total: R$ 777,90\n\nO domínio (.com.br, .com) você compra onde preferir (HostGator, Registro.br) e eu configuro o DNS para apontar para o seu site.\n\n✅ Garantia de 7 dias • 50% início + 50% entrega"
+    },
+    {
+      "id": "institucional",
+      "perguntas": [
+        "institucional",
+        "site institucional",
+        "site empresa",
+        "site completo",
+        "5 paginas",
+        "1000",
+        "pagina institucional",
+        "plano institucional",
+        "quantas paginas tem o institucional",
+        "o que inclui o site institucional",
+        "institucional tem blog",
+        "preco do institucional",
+        "valor institucional",
+        "preco de pagina institucional",
+        "quanto custa o institucional"
+      ],
+      "resposta": "🏢 Site Institucional\n\n💰 Valor: R$ 997,90 (Hospedagem Render inclusa)\n⏱️ Entrega: 9 dias úteis\n📱 Até 5 páginas (Home, Sobre, Serviços, Contato, Blog)\n✅ Painel de administração incluso\n✅ SEO em todas as páginas\n✅ Blog incluso\n\n🌐 Com domínio próprio: + R$ 83,90 — Total: R$ 1.081,90\n\n✅ Garantia 7 dias • 50% início + 50% entrega"
     }
   ]
 }
