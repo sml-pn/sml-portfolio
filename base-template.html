@@ -24,8 +24,6 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-FHEQRCF4YW");</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/fontawesome/all.min.css">
-  <link rel="stylesheet" href="assets/css/nav.css">
-  <link rel="stylesheet" href="assets/css/chat.css">
 <style>
 :root{
   --bg:#060913; --surface:#0B0E14; --surface2:#131620;
@@ -51,6 +49,32 @@ p{line-height:1.7}
 .scroll-progress__bar{height:100%;width:0%;background:linear-gradient(90deg,var(--cyan),var(--magenta))}
 
 #particlesCanvas{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.45;max-width:100vw;overflow:hidden}
+
+.site-nav{position:sticky;top:0;z-index:120;background:rgba(6,9,19,0.45);backdrop-filter:blur(20px) saturate(1.8);-webkit-backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(255,255,255,0.08);box-shadow:0 4px 30px rgba(0,0,0,0.3)}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-weight:700;font-size:17px;display:flex;align-items:center;gap:4px}
+.logo-bracket{color:var(--muted);font-weight:400;font-size:18px}
+.logo-slash{color:var(--cyan);font-weight:400;margin:0 1px}
+.logo:hover .logo-slash{filter:drop-shadow(0 0 8px var(--cyan))}
+.nav-links{display:flex;gap:32px;font-size:14.5px;color:var(--muted)}
+.nav-links a{position:relative;padding:4px 0;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--cyan);border-radius:2px;transition:width .25s var(--ease)}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:14px}
+
+.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:44px;height:44px;background:transparent;border:none;cursor:pointer;padding:0;z-index:130;gap:7px}
+.hamburger span{display:block;width:26px;height:2.5px;background:var(--text);border-radius:3px;transition:transform .3s cubic-bezier(.68,-.55,.27,1.55),opacity .25s}
+.hamburger.active span:nth-child(1){transform:translateY(9.5px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0;transform:scale(0)}
+.hamburger.active span:nth-child(3){transform:translateY(-9.5px) rotate(-45deg)}
+
+.mobile-menu{position:fixed;inset:0;z-index:110;background:rgba(6,9,19,.96);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.mobile-menu.open{opacity:1;visibility:visible}
+.mobile-nav-links{display:flex;flex-direction:column;gap:36px;text-align:center}
+.mobile-nav-links a{font-size:28px;font-weight:700;transition:color .2s,transform .2s}
+.mobile-nav-links a:hover{color:var(--cyan);transform:scale(1.04)}
+.mobile-nav-links .btn--primary{margin-top:12px;padding:16px 28px;font-size:16px}
 
 .container{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%;box-sizing:border-box}
 .section{padding:96px 0;position:relative;overflow-x:hidden}
@@ -88,6 +112,31 @@ p{line-height:1.7}
 .svc-label i{font-size:16px;width:20px;text-align:center;color:var(--cyan)}
 .service-card h3{margin:0 0 8px;font-size:19px}
 .service-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
+
+/* CHAT DE IA */
+#chatFab{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;border-radius:50%;background:var(--cyan);border:none;cursor:pointer;box-shadow:0 8px 30px rgba(0,245,255,0.3);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+#chatFab:hover{transform:scale(1.1)}
+#chatFab i{font-size:28px;color:#04111a}
+#chatOverlay{position:fixed;bottom:20px;right:20px;z-index:1000;width:380px;max-width:calc(100vw - 40px);height:500px;max-height:calc(100vh - 40px);border-radius:16px;border:1px solid rgba(255,255,255,0.15);background:rgba(6,9,19,0.98);backdrop-filter:blur(20px);display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;box-shadow:0 20px 60px rgba(0,0,0,0.6);overflow:hidden}
+#chatOverlay.open{opacity:1;visibility:visible;overflow:hidden!important}
+.chat-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border)}
+.chat-header h3{font-size:20px;margin:0;display:flex;align-items:center;gap:10px}
+.chat-header h3 i{color:var(--cyan)}
+.chat-close{background:none;border:none;color:var(--text);font-size:24px;cursor:pointer}
+.chat-messages{flex:1;overflow-y:auto!important;overflow-x:hidden!important;padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-height:0;overscroll-behavior:contain!important;-webkit-overflow-scrolling:touch!important}
+.chat-bubble{max-width:80%;padding:14px 18px;border-radius:18px;font-size:15px;line-height:1.5;animation:fadeIn .3s ease}
+.chat-bubble.assistant{background:rgba(0,245,255,0.08);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-bubble.user{background:rgba(255,61,247,0.12);align-self:flex-end;border-bottom-right-radius:4px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.chat-input-area{display:flex;gap:12px;padding:20px 24px;border-top:1px solid var(--border);position:sticky;bottom:0;background:rgba(6,9,19,0.98);z-index:1001;padding-bottom:max(20px, env(safe-area-inset-bottom))}
+.chat-input-area input{flex:1;padding:14px 18px;border-radius:999px;border:1px solid var(--border2);background:rgba(255,255,255,0.05);color:var(--text);font-size:15px;outline:none}
+.chat-input-area input:focus{border-color:var(--cyan)}
+.chat-input-area button{width:48px;height:48px;border-radius:50%;background:var(--cyan);border:none;color:#04111a;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center}
+.typing-dots{display:flex;gap:4px;padding:8px 14px}
+.typing-dots span{width:8px;height:8px;border-radius:50%;background:var(--muted2);animation:typing 1.4s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes typing{0%,60%,100%{opacity:.4;transform:translateY(0)}30%{opacity:1;transform:translateY(-6px)}}
 
 /* CARROSSÉIS */
 .carousel-full{position:relative;overflow:hidden;width:100%}
@@ -186,6 +235,8 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
 .powered-by{position:fixed;bottom:14px;right:14px;opacity:.18;font-size:.58rem;color:#fff;z-index:999;font-family:var(--mono);pointer-events:none}
 
 @media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
   body{font-size:15px}
   .container{padding:0 16px}
   .section{padding:56px 0}
@@ -233,189 +284,34 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:30px 0 42px;color:#798
 <div id="preloader" aria-hidden="true"><div class="pulse-circle"></div></div>
 <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" id="scrollProgressBar"></div></div>
 <canvas id="particlesCanvas" aria-hidden="true"></canvas>
-<!-- ====== BARRA DE NAVEGAÇÃO (COMPONENTE COMPARTILHADO) ====== -->
-<header class="nav-bar">
+
+<header class="site-nav">
   <div class="nav-inner">
-    <a class="nav-logo" href="/"><span class="nav-logo-bracket">&lt;</span>SML<span class="nav-logo-slash">/</span>PN<span class="nav-logo-bracket">&gt;</span></a>
-    <nav class="nav-links">
-      <a href="/">Home</a>
-      <a href="precos.html">Preços</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#diferenciais">Diferenciais</a>
-      <a href="#processo">Processo</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#depoimentos">Depoimentos</a>
-      <a href="#sobre">Sobre</a>
-    </nav>
-    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <a class="logo" href="/" aria-label="SML/PN Developer"><span class="logo-bracket">&lt;</span>SML<span class="logo-slash">/</span>PN<span class="logo-bracket">&gt;</span></a>
+    <nav class="nav-links" aria-label="Principal"><a href="precos.html">Preços</a>
+<a href="#servicos">Serviços</a><a href="#diferenciais">Diferenciais</a><a href="#processo">Processo</a><a href="#projetos">Projetos</a><a href="#depoimentos">Depoimentos</a><a href="#sobre">Sobre</a></nav>
+    <div class="nav-right">
+      
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
-<div class="nav-mobile-menu">
-  <nav class="nav-mobile-links">
-    <a href="/">Home</a>
+
+<div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-nav-links">
     <a href="precos.html">Preços</a>
-    <a href="#servicos">Serviços</a>
+<a href="#servicos">Serviços</a>
     <a href="#diferenciais">Diferenciais</a>
     <a href="#processo">Processo</a>
     <a href="#projetos">Projetos</a>
     <a href="#depoimentos">Depoimentos</a>
     <a href="#sobre">Sobre</a>
+    <a href="#" class="btn btn--primary" onclick="document.getElementById('chatFab').click();return false;"><i class="fas fa-comment-dots"></i> Falar pelo Chat</a>
   </nav>
 </div>
-<!-- ====== FIM DA BARRA DE NAVEGAÇÃO ====== -->
+
 <main>
-  <section id="hero" class="hero">
-    <div class="hero-orb hero-orb--cyan" aria-hidden="true"></div>
-    <div class="hero-orb hero-orb--magenta" aria-hidden="true"></div>
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <div class="live-badge"><span class="live-dot"></span> Online agora • Trairi-CE</div>
-        <h1>Sites que vendem.<br>Código que performa.</h1>
-        <p class="lead">Web Full Stack. Landing pages, sites institucionais e bio pages premium.</p>
-        <div class="hero-ctas">
-          <a href="#" class="btn btn--primary magnetic js-magnetic" onclick="document.getElementById('chatFab').click();return false;"><i class="fas fa-comment-dots"></i> Falar pelo Chat</a>
-          <a href="#projetos" class="btn btn--ghost magnetic js-magnetic">Ver projetos</a>
-        </div>
-        <div class="hero-meta">Resposta em até 2h • Orçamento sem compromisso</div>
-      </div>
-    </div>
-  </section>
-
-  
-  <div style="text-align:center;padding:20px 0 0;background:transparent">
-    <a href="precos.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);padding:12px 24px;border-radius:999px;color:var(--cyan);font-weight:600;text-decoration:none;transition:all .2s">
-      <i class="fas fa-tag"></i> Confira todos os preços
-    </a>
-  </div>
-
-  <section id="servicos" class="section">
-    <div class="container">
-      <div class="section-head"><span class="eyebrow">O que eu faço</span><h2>Serviços pensados para converter</h2><p>Do design ao deploy. Foco total em velocidade, SEO e WhatsApp.</p></div>
-      <div class="services-grid">
-        <article class="service-card"><div class="svc-label"><i class="fas fa-bolt"></i> Conversão</div><h3>Landing Pages</h3><p>Páginas de alta conversão, rápidas, com texto persuasivo e botão de ação direta (CTA) para o WhatsApp.</p></article>
-        <article class="service-card"><div class="svc-label"><i class="fas fa-building"></i> Presença</div><h3>Sites Institucionais</h3><p>Sites completos, responsivos, gerenciáveis e prontos para ranquear no Google.</p></article>
-        <article class="service-card"><div class="svc-label"><i class="fas fa-link"></i> Link na Bio</div><h3>Bio Page Pro</h3><p>Sua bio-link premium. Leve, linda, com código de rastreamento (Pixel), catálogo e botão de WhatsApp 1-clique. <a href="#" onclick="document.getElementById('chatFab').click();return false;" style="color:var(--cyan);text-decoration:underline;font-weight:500;">Fale pelo Chat</a></p></article>
-        <article class="service-card"><div class="svc-label"><i class="fas fa-robot"></i> IA no Site</div><h3>Chat Inteligente RAG</h3><p>Demonstração interativa no site: um assistente virtual treinado com o conteúdo da sua página. Responde dúvidas dos visitantes automaticamente, 24h por dia. Gera relatórios no Google Analytics 4. <b>A partir de R$ 197,90.</b> <a href="#" onclick="document.getElementById('chatFab').click();return false;" style="color:var(--cyan);text-decoration:underline;font-weight:500;">Teste o chat agora</a></p></article>
-        <article class="service-card"><div class="svc-label"><i class="fas fa-map-marker-alt"></i> Local</div><h3>SEO Local</h3><p>Otimização para aparecer nas buscas do Google na sua região ("perto de mim"). Configuração do Google Meu Negócio (perfil da empresa no Google), mapas e conteúdo.</p></article>
-        <article class="service-card"><div class="svc-label"><i class="fas fa-tachometer-alt"></i> Velocidade</div><h3>Performance</h3><p>Nota 95+ no Lighthouse (ferramenta de qualidade do Google). Imagens otimizadas, métricas de velocidade no verde, hospedagem rápida.</p></article>
-        <article class="service-card"><div class="svc-label"><i class="fas fa-envelope"></i> Comunicação</div><h3>E-mail Profissional</h3><p>Dois tipos de configuração: <b>Google Workspace</b> (contas individuais com senhas próprias e domínio personalizado) ou <b>Gmail Compartilhado</b> (uma conta para toda a equipe, cada um com sua assinatura). </p></article>
-        <article class="service-card"><div class="svc-label"><i class="fab fa-whatsapp"></i> WhatsApp</div><h3>Integração WhatsApp</h3><p>Botões flutuantes, mensagens prontas, rastreamento de origem do cliente (UTM) e relatórios de conversão.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section id="diferenciais" class="section">
-    <div class="container">
-      <div class="section-head"><span class="eyebrow">Diferenciais</span><h2>Por que escolher a SML/PN?</h2><p>Cada projeto é pensado para performar, converter e encantar.</p></div>
-      <div class="features-grid">
-        <div class="feature-card"><i class="fab fa-whatsapp"></i><h3>WhatsApp Multi</h3><p>Vários números de WhatsApp no mesmo botão. O cliente clica, vê a lista de contatos e escolhe com quem quer falar. Ideal para empresas com múltiplos vendedores ou setores de atendimento.</p></div>
-        <div class="feature-card"><i class="fas fa-map-marked-alt"></i><h3>Mapa Único/Múltiplo</h3><p>Google Maps integrado com um ou vários endereços.</p></div>
-        <div class="feature-card"><i class="fas fa-infinity"></i><h3>Efeitos Infinitos</h3><p>Animações, transições e microinterações que encantam o usuário.</p></div>
-        <div class="feature-card"><i class="fas fa-mobile-alt"></i><h3>Mobile + Desktop</h3><p>Layouts responsivos que funcionam perfeitamente em qualquer dispositivo.</p></div>
-        <div class="feature-card"><i class="fas fa-palette"></i><h3>Cores do Negócio</h3><p>Identidade visual personalizada com as cores da sua marca.</p></div>
-        <div class="feature-card"><i class="fas fa-chart-line"></i><h3>Estrutura de Venda</h3><p>Design pensado para converter visitantes em clientes.</p></div>
-        <div class="feature-card"><i class="fas fa-font"></i><h3>Fontes Personalizadas</h3><p>Tipografia exclusiva que reforça a personalidade da sua marca.</p></div>
-        <div class="feature-card"><i class="fas fa-rocket"></i><h3>Performance 95+</h3><p>Otimização de velocidade, SEO e boas práticas de código.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="processo" class="section">
-    <div class="container">
-      <div class="section-head"><span class="eyebrow">Como funciona</span><h2>Processo claro, do alinhamento ao ar</h2><p>Sem enrolação. 4 etapas bem definidas.</p></div>
-      <div class="timeline-wrap">
-        <div class="timeline-rail"><div class="timeline-fill" id="timelineFill"></div></div>
-        <div class="timeline-steps" id="timelineSteps">
-          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-comments"></i> 01 — Brief</div><h3>Alinhamento</h3><p>Entendo seu negócio, público e objetivo. Definimos oferta, copy e estrutura no WhatsApp em 30 min.</p></div>
-          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-pencil-alt"></i> 02 — Design</div><h3>Layout Profissional</h3><p>Layout mobile-first aprovado por você. Tipografia, cores e hierarquia pensadas para converter.</p></div>
-          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-code"></i> 03 — Code</div><h3>Build limpo</h3><p>Código sem gambiarra. Semântico, rápido, acessível. SEO local e WhatsApp integrados.</p></div>
-          <div class="timeline-step"><div class="t-dot"></div><div class="t-step-num"><i class="fas fa-rocket"></i> 04 — Go</div><h3>Publicar</h3><p>Deploy, domínio, analytics e handoff. Seu site no ar, pronto para vender. Suporte 15 dias.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projetos" class="section">
-    <div class="container">
-      <div class="section-head"><span class="eyebrow">Projetos recentes</span><h2>Trabalhos realizados</h2><p>Arraste ou aguarde o carrossel.</p></div>
-      <div class="carousel-full" id="projetosCarousel">
-        <div class="carousel-track" id="projetosTrack"></div>
-        <div class="carousel-dots" id="projetosDots"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="depoimentos" class="section">
-    <div class="container">
-      <div class="section-head"><span class="eyebrow">Depoimentos</span><h2>Quem já trabalhou comigo</h2></div>
-      <div class="carousel-full" id="depoimentosCarousel">
-        <div class="carousel-track" id="depoimentosTrack"></div>
-        <div class="carousel-dots" id="depoimentosDots"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="parceiros" class="section">
-    <div class="container">
-      <div class="section-head"><span class="eyebrow">Tecnologias e parceiros</span><h2>Ferramentas que utilizo</h2></div>
-      <div class="partners-marquee">
-        <div class="partners-track" id="partnersTrack"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" class="section" style="padding-top:38px">
-    <div class="container">
-      <div class="section-head"><span class="eyebrow">Dúvidas</span><h2>Perguntas frequentes</h2></div>
-      <div class="faq-grid">
-        <details class="faq-item"><summary class="faq-question">Quanto custa uma Vitrine Bio?</summary><div class="faq-answer">Simples R$ 97,90, Premium R$ 247,90, Empresarial R$ 497,90. Pagamento único!</div></details>
-        <details class="faq-item"><summary class="faq-question">Quanto custa um site?</summary><div class="faq-answer">Landing Page R$ 549,90, Site 2 páginas R$ 689,90, Institucional R$ 997,90. E-commerce sob consulta.</div></details>
-        <details class="faq-item"><summary class="faq-question">Quanto tempo leva?</summary><div class="faq-answer">Bio Simples 72h (3 dias úteis), Landing Page 5 dias úteis, Site 2 páginas 6 dias úteis, Institucional 9 dias úteis.</div></details>
-        <details class="faq-item"><summary class="faq-question">Tem garantia?</summary><div class="faq-answer">Sim! Garantia de 7 dias. Se não gostar, devolvo 100% do seu dinheiro.</div></details>
-        <details class="faq-item"><summary class="faq-question">Posso usar meu domínio próprio?</summary><div class="faq-answer">Sim! Você pode usar o subdomínio gratuito do Render (plataforma de hospedagem gratuita para sites) — ex: seuprojeto.onrender.com — que já está incluso no plano. Se quiser um domínio próprio (.com.br, .com), você compra onde preferir (HostGator, Registro.br) e eu configuro o DNS por R$ 79,90</div></details>
-        <details class="faq-item"><summary class="faq-question">Aparece no Google?</summary><div class="faq-answer">Sim! SEO incluso em todos os planos + Google Meu Negócio.</div></details>
-        <details class="faq-item"><summary class="faq-question">Preciso ter textos e fotos?</summary><div class="faq-answer">Não precisa! Posso criar os textos e usar suas redes sociais como referência.</div></details>
-        <details class="faq-item"><summary class="faq-question">Como funciona o pagamento?</summary><div class="faq-answer">50% no início e 50% na entrega. Aceito Pix e transferência.</div></details>
-      
-      <div style="margin-top:40px">
-        <div class="section-head"><span class="eyebrow">E-mail Profissional</span><h2>Configuração de E‑mail para sua Equipe</h2></div>
-        <div class="faq-grid">
-          <details class="faq-item"><summary class="faq-question">Quais serviços de e‑mail você oferece?</summary><div class="faq-answer">Ofereço dois serviços com níveis de segurança diferentes:<br><br>📧 <b>Gmail Compartilhado — R$ 79,90</b><br>✅ Uma conta Gmail para toda a equipe<br>✅ Cada funcionário cria sua própria assinatura (aparece no e-mail)<br>✅ Configurado em 2 dias úteis<br>✅ Sem custo mensal<br>⚠️ <b>Atenção:</b> todos usam a <b>mesma senha</b> — menos seguro<br>⚠️ E‑mail @gmail.com (menos profissional)<br><br>📧 <b>Google Workspace — R$ 299,90</b><br>✅ E‑mail com seu domínio (ex: contato@seunegocio.com.br)<br>✅ <b>Cada funcionário tem sua própria senha</b> — muito mais seguro<br>✅ Até 6 contas individuais e independentes<br>✅ Calendário, Drive e Meet compartilhados<br>✅ Relatórios de auditoria<br>⏱️ Configurado em 3 dias úteis<br>⚠️ Requer domínio próprio (.com.br ou .com)<br>⚠️ Custo mensal do Google Workspace a partir de R$ 32,72 por usuário/mês (plano anual). Veja os preços oficiais: https://workspace.google.com/intl/pt-BR/pricing.html<br><br>🔒 <b>Resumo:</b> O Gmail Compartilhado divide a mesma senha entre todos. O Google Workspace dá uma senha exclusiva para cada pessoa — ideal para empresas que prezam pela segurança.</div></details>
-          <details class="faq-item"><summary class="faq-question">Posso começar com Gmail Compartilhado e depois migrar para Google Workspace?</summary><div class="faq-answer">Sim! É possível começar com o Gmail Compartilhado (mais barato e rápido) e, quando o negócio crescer, migrar para o Google Workspace. Nesse caso, a configuração do Workspace terá um novo custo.</div></details>
-          <details class="faq-item"><summary class="faq-question">Preciso ter um domínio próprio para usar o Google Workspace?</summary><div class="faq-answer">Sim. O Google Workspace exige um domínio próprio (.com.br, .com, etc.). Se você ainda não tem, pode adquiri‑lo em plataformas como Registro.br (~R$ 40/ano) ou HostGator. Eu configuro o DNS do domínio para o Google Workspace.</div></details>
-          <details class="faq-item"><summary class="faq-question">Quanto custa a mensalidade do Google Workspace?</summary><div class="faq-answer">O plano Starter custa a partir de R$ 32,72 por usuário/mês (plano anual). Veja os preços oficiais: https://workspace.google.com/intl/pt-BR/pricing.html Para uma equipe de 6 pessoas (1 conta principal + 5 funcionários), o custo mensal fica em torno de R$ 196. Esse valor é pago diretamente ao Google.</div></details>
-          <details class="faq-item"><summary class="faq-question">O que está incluso no serviço de configuração?</summary><div class="faq-answer">✅ Criação da(s) conta(s)<br>✅ Configuração de assinaturas personalizadas<br>✅ No caso do Google Workspace: verificação de domínio, registros MX, criação de contas e delegação de acesso<br>✅ Suporte básico por 7 dias após a configuração<br><br>O valor é pela mão de obra; não inclui mensalidades nem compra de domínio.</div></details>
-        </div>
-      </div>
-
-    </div>
-      <div style="text-align:center;margin-top:28px"><a href="#" class="btn btn--primary" onclick="document.getElementById('chatFab').click();return false;"><i class="fas fa-comment-dots"></i> Ficou com dúvida? Fale pelo Chat</a></div>
-    </div>
-  </section>
-
-  <section id="sobre" class="section" style="padding-top:38px">
-    <div class="container">
-      <div class="section-head"><span class="eyebrow">Quem faz</span><h2>Olá, sou Samuel Pena</h2></div>
-      <div class="sobre-card" id="sobreCard">
-        <div class="avatar"><img src="assets/img/samuel.webp" alt="Samuel Pena"></div>
-        <div>
-          <div class="counters-row"><div class="counter-item"><div class="counter-num" data-target="35">0</div><div class="counter-label">Projetos</div></div><div class="counter-item"><div class="counter-num" data-target="99">0</div><div class="counter-label">% Satisfação</div></div><div class="counter-item"><div class="counter-num" data-target="95">0</div><div class="counter-label">Lighthouse</div></div><div class="counter-item"><div class="counter-num" data-target="4">0</div><div class="counter-label">Anos Exp.</div></div></div>
-          <h3>Samuel Pena — SML/PN</h3>
-          <p>Sou desenvolvedor Full Stack em Trairi, Ceará. Sites que carregam rápido, ranqueiam bem e convertem no WhatsApp. Foco em negócio real, não em firula.</p>
-          <div class="sobre-tags"><span>Trairi-CE</span><span>Full Stack</span><span>Lighthouse 95+</span><span>Landing Pages</span><span>SEO Local</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-final" id="contato">
-    <div class="container">
-      <h2>Pronto para colocar seu site no ar?</h2>
-      <p>Me chama no WhatsApp. Respondo rápido e monto um orçamento sem compromisso.</p>
-      <a href="#" class="btn btn--primary magnetic js-magnetic" onclick="document.getElementById('chatFab').click();return false;" style="padding:17px 30px;font-size:16.5px"><i class="fas fa-comment-dots"></i> Falar pelo Chat agora</a>
-      <div style="margin-top:16px;color:#6c778d;font-size:14px">Resposta em até 2h • Trairi, Ceará</div>
-    </div>
-  </section>
+  <!-- CONTEÚDO AQUI -->
 </main>
 
 
@@ -563,6 +459,24 @@ document.addEventListener('DOMContentLoaded', function() {
     })
   })();
 
+  const hamburger=document.querySelector('.hamburger');
+  const mobileMenu=document.getElementById('mobileMenu');
+  if(hamburger && mobileMenu){
+    hamburger.addEventListener('click',()=>{
+      const isOpen=hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded',isOpen);
+      document.body.style.overflow=isOpen?'hidden':'';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link=>{
+      link.addEventListener('click',()=>{
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow='';
+        hamburger.setAttribute('aria-expanded','false');
+      });
+    });
+  }
 
   /* === FUNÇÃO REUTILIZÁVEL DE CARROSSEL INFINITO === */
   function createInfiniteCarousel(trackId, dotsId, items, baseCardWidth, baseGap, direction, intervalTime) {
@@ -781,6 +695,5 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="assets/js/auto-index.js"></script>
 <script src="assets/js/search-engine.js"></script>
 <script src="assets/js/chat.js" defer></script>
-  <script src="assets/js/nav.js"></script>
 </body>
 </html>

@@ -1,0 +1,33 @@
+/* ============ ESTILOS DA PÁGINA DE PREÇOS ============ */
+/* Este arquivo NÃO contém regras para body/html - apenas para o conteúdo */
+:root {
+  --bg: #060913; --surface: #0B0E14; --surface2: #131620;
+  --cyan: #00f5ff; --magenta: #ff3df7; --text: #E8ECF1; --muted: #8B93A5; --muted2: #5C6478;
+  --border: rgba(255,255,255,0.06); --border2: rgba(255,255,255,0.10);
+  --radius: 16px; --font: 'Inter', system-ui, sans-serif; --maxw: 1060px;
+}
+.conteudo-precos { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
+.conteudo-precos header { text-align: center; padding: 48px 0 36px; }
+.conteudo-precos header h1 { font-size: clamp(32px, 6vw, 48px); color: var(--cyan); margin-bottom: 8px; }
+.conteudo-precos header p { color: var(--muted); font-size: 18px; max-width: 600px; margin: 0 auto; }
+.card { display: flex; align-items: stretch; gap: 32px; padding: 0; margin: 28px 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color .3s; min-height: 300px; }
+.card:hover { border-color: var(--cyan); }
+.card.reverse { flex-direction: row-reverse; }
+.card-img { flex: 0 0 42%; background: var(--surface2); display: flex; align-items: center; justify-content: center; min-height: 300px; }
+.card-img .placeholder { text-align: center; color: var(--muted2); font-size: 14px; padding: 20px; }
+.card-content { flex: 1; padding: 28px; display: flex; flex-direction: column; justify-content: center; }
+.card-content h2 { font-size: 22px; color: #fff; margin-bottom: 8px; }
+.card-content h3 { font-size: 17px; color: var(--cyan); margin: 12px 0 6px; }
+.card-content p { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+.card-content .price { font-size: 22px; font-weight: 700; color: var(--cyan); margin: 8px 0; }
+.card-content .note { font-size: 12px; color: var(--muted2); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
+.comparativo { margin: 28px 0; padding: 24px; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius); }
+.comparativo h3 { color: #fff; margin-bottom: 12px; font-size: 18px; }
+.comparativo table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.comparativo td, .comparativo th { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+.comparativo th { color: var(--cyan); font-weight: 600; }
+.comparativo td { color: var(--muted); }
+.cta { text-align: center; margin: 36px 0; }
+.cta .btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(100deg, #00e4ec, #00f5ff 45%, #ff3df7 95%); color: #04111a; padding: 14px 28px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 16px; transition: transform .2s; box-shadow: 0 8px 28px rgba(0,245,255,0.2); }
+.cta .btn:hover { transform: translateY(-2px); }
+@media(max-width: 768px) { .card, .card.reverse { flex-direction: column; min-height: auto; } .card-img { flex: none; min-height: 200px; } .card-content { padding: 20px; } }
