@@ -89,3 +89,27 @@
   chatSend.addEventListener('click', sendMessage);
   chatInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') sendMessage(); });
 })();
+
+// Persistência entre páginas (adicionado com segurança)
+(function() {
+  var ov = document.getElementById('chatOverlay');
+  var fab = document.getElementById('chatFab');
+  var close = document.getElementById('chatClose');
+  if (!ov || !fab) return;
+
+  // Restaurar estado ao carregar
+  if (sessionStorage.getItem('chatOpen') === 'true') {
+    ov.classList.add('open');
+    fab.classList.add('hidden');
+  }
+
+  // Salvar estado ao interagir
+  fab.addEventListener('click', function() {
+    sessionStorage.setItem('chatOpen', 'true');
+  });
+  if (close) {
+    close.addEventListener('click', function() {
+      sessionStorage.setItem('chatOpen', 'false');
+    });
+  }
+})();
