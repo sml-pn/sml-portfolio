@@ -1,7 +1,6 @@
 var SMLEngine = (function() {
   var docs = [];
   var isLoaded = false;
-  var lastService = null;
 
   function loadKnowledge() {
     fetch('/api/knowledge.json')
@@ -20,15 +19,15 @@ var SMLEngine = (function() {
           console.log('📚 Knowledge carregado: ' + docs.length + ' intenções.');
         }
       })
-      .catch(function(err) {
-        console.warn('⚠️ knowledge.json indisponível, usando fallback. Erro:', err);
+      .catch(function() {
+        console.warn('⚠️ knowledge.json indisponível. Usando fallback.');
         buildFallback();
       });
   }
 
   function buildFallback() {
     docs = [
-      { id:'saudacao', keywords:'oi ola', resposta:'<b>Olá!</b> Sou o assistente da SML/PN.<br>Como posso ajudar?<br><br><a href="https://wa.me/558586121078" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:12px 20px;border-radius:999px;font-weight:600;text-decoration:none;"><i class="fab fa-whatsapp"></i> WhatsApp</a>' },
+      { id:'saudacao', keywords:'oi ola', resposta:'<b>Olá!</b> Sou o assistente da SML/PN.<br>Como posso ajudar?' },
       { id:'precos', keywords:'preco', resposta:'<b>Preços:</b><br>Landing Page R$549,90<br>Site Institucional R$997,90<br>Bio a partir de R$97,90' }
     ];
     isLoaded = true;
@@ -39,7 +38,7 @@ var SMLEngine = (function() {
   }
 
   function fixTypos(text) {
-    var fixes = {'char':'chat','prco':'preco','stie':'site','portflio':'portfolio','vitrne':'vitrine','landng':'landing','bill':'bio','celular':'mobile'};
+    var fixes = {'char':'chat','prco':'preco','stie':'site','portflio':'portfolio','vitrne':'vitrine','landng':'landing','bill':'bio','celular':'mobile','responsiva':'responsivo','gerenciavei':'gerenciavel','institucional':'institucional'};
     return text.split(' ').map(function(w){ return fixes[w] || w; }).join(' ');
   }
 
@@ -55,32 +54,7 @@ var SMLEngine = (function() {
 
     var qTokens = tokenize(query);
     var bestScore = 0, bestDoc = null;
-    var q = query;
 
-    // Se o usuário respondeu afirmativamente e temos contexto
-    var isAffirmative = /^(sim|quero|sim, quero|quero sim|sim quero|com certeza|claro|pode ser|ok|yes|yep)/i.test(query);
-    if (isAffirmative && lastService) {
-      for (var i = 0; i < docs.length; i++) {
-        if (docs[i].id === lastService) {
-          trackEvent('chat_context_continue', { intent: lastService });
-          var resp = docs[i].resposta;
-          lastService = null;
-          return resp;
-        }
-      }
-    }
-
-    // Prioridade para "chat" relacionado a Chat RAG
-    if (q.match(/chat/) && !q.match(/whatsapp|falar|contato|zap|chamar/)) {
-      var chatDoc = docs.find(function(d) { return d.id === 'chat_rag'; });
-      if (chatDoc) {
-        lastService = 'chat_rag';
-        trackEvent('chat_intent_chat_rag', { intent: 'chat_rag' });
-        return chatDoc.resposta;
-      }
-    }
-
-    // Busca normal por palavras-chave
     for (var i = 0; i < docs.length; i++) {
       var doc = docs[i], score = 0, kTokens = tokenize(doc.keywords);
       if (doc.keywords.indexOf(query) !== -1) score += 40;
@@ -90,17 +64,15 @@ var SMLEngine = (function() {
           else if (kTokens[k].indexOf(qTokens[j]) !== -1 && qTokens[j].length > 2) score += 7;
         }
       }
-      if (doc.id === query || query.indexOf(doc.id) !== -1) score += 50;
       if (score > bestScore) { bestScore = score; bestDoc = doc; }
     }
 
     if (bestDoc && bestScore > 5) {
-      lastService = bestDoc.id;
       trackEvent('chat_intent', { intent: bestDoc.id });
       return bestDoc.resposta;
     }
 
-    return '🤔 <b>Não entendi completamente.</b><br><br>Mas posso ajudar com preços, prazos ou detalhes de qualquer serviço! Me diga qual é a sua dúvida.<br><br><a href="https://wa.me/558586121078?text=Olá, tenho uma dúvida!" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:14px 24px;border-radius:999px;font-weight:600;text-decoration:none;font-size:15px;margin-top:8px;"><i class="fab fa-whatsapp"></i> Chamar no WhatsApp</a>';
+    return '🤔 <b>Não encontrei uma resposta específica.</b><br><br>Que tal falar diretamente comigo no WhatsApp?<br><br><a href="https://wa.me/558586121078?text=Olá, tenho uma dúvida!" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;text-decoration:none;font-size:14px;"><i class="fab fa-whatsapp"></i> Chamar no WhatsApp</a>';
   }
 
   loadKnowledge();

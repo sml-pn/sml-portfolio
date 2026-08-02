@@ -42,15 +42,8 @@
   function addBubble(text, type) {
     var b = document.createElement('div');
     b.className = 'chat-bubble ' + type;
-    if (type === 'user') {
-      b.textContent = text;
-      conversationHistory.push({type:'user',text:text});
-      detectInterest(text);
-    } else {
-      // Converte quebras de linha literais (\n) em <br>
-      b.innerHTML = text.replace(/\\n/g, '<br>');
-      conversationHistory.push({type:'assistant',text:text});
-    }
+    if (type === 'user') { b.textContent = text; conversationHistory.push({type:'user',text:text}); detectInterest(text); }
+    else { b.innerHTML = text; conversationHistory.push({type:'assistant',text:text}); }
     chatMessages.appendChild(b);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
@@ -64,9 +57,18 @@
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  function removeTyping() {
-    var t = document.getElementById('typingIndicator');
-    if(t) t.remove();
+  function removeTyping() { var t = document.getElementById('typingIndicator'); if(t) t.remove(); }
+
+  function botReply(msg) {
+    showTyping();
+    setTimeout(function() {
+      removeTyping();
+      var resp = (typeof SMLEngine !== 'undefined') ? SMLEngine.search(msg) : null;
+      if (resp) { addBubble(resp, 'assistant'); }
+      else {
+        addBubble('Desculpe, nao entendi. Posso ajudar com precos, planos ou portfolio.<br><br><a href="https://wa.me/558586121078?text=' + encodeURIComponent(getConversationSummary()) + '" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:14px 24px;border-radius:999px;font-weight:600;text-decoration:none;margin-top:8px;font-size:15px;"><i class="fab fa-whatsapp"></i> Chamar no WhatsApp</a>', 'assistant');
+      }
+    }, 500 + Math.random() * 800);
   }
 
   function sendMessage() {
@@ -76,17 +78,7 @@
     addBubble(text, 'user');
     trackEvent('chat_message', { message_length: text.length });
     chatInput.value = ''; chatInput.focus();
-
-    showTyping();
-    setTimeout(function() {
-      removeTyping();
-      var resp = (typeof SMLEngine !== 'undefined') ? SMLEngine.search(text) : null;
-      if (resp) {
-        addBubble(resp, 'assistant');
-      } else {
-        addBubble('Desculpe, ocorreu um erro. Tente novamente ou fale diretamente no WhatsApp.<br><br><a href="https://wa.me/558586121078?text=' + encodeURIComponent(getConversationSummary()) + '" target="_blank" style="display:inline-block;background:#25D366;color:#fff;padding:14px 24px;border-radius:999px;font-weight:600;text-decoration:none;margin-top:8px;font-size:15px;"><i class="fab fa-whatsapp"></i> Chamar no WhatsApp</a>', 'assistant');
-      }
-    }, 500 + Math.random() * 800);
+    botReply(text);
   }
 
   function openChat() { chatOverlay.classList.add('open'); chatFab.classList.add('hidden'); chatInput.focus(); trackEvent('chat_open'); }

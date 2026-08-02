@@ -1,0 +1,174 @@
+{
+  "faq": [
+    {
+      "id": "saudacao",
+      "perguntas": ["oi", "ola", "hey", "bom dia", "boa tarde", "boa noite", "iae", "opa", "fala", "salve", "hi", "hello"],
+      "resposta": "👋 <b>Olá!</b> Sou o assistente virtual da SML/PN — Samuel Pena.<br><br>📱 <b>Vitrine Bio</b> a partir de R$ 97,90<br>🌐 <b>Sites</b> a partir de R$ 549,90<br>🤖 <b>Chat RAG</b> — R$ 197,90<br><br>No que posso te ajudar? 😊"
+    },
+    {
+      "id": "servicos_gerais",
+      "perguntas": ["servicos", "o que voce faz", "trabalhos", "o que oferece", "quais servicos", "que voce faz"],
+      "resposta": "<b>🚀 Serviços SML/PN:</b><br><br>📱 <b>Vitrine Bio</b> — a partir de R$ 97,90<br>🎯 <b>Landing Page</b> — R$ 549,90<br>🏢 <b>Site Institucional</b> (10 páginas) — R$ 997,90<br>🛒 <b>E-commerce</b> — sob consulta<br>📧 <b>Assinatura de E-mail</b> — R$ 79,90<br>📧 <b>Google Workspace</b> — R$ 299,90<br>🤖 <b>Chat RAG</b> — R$ 197,90<br><br>💡 <b>Diferenciais:</b> responsivo, SEO local, performance 95+, garantia de 7 dias.<br><br>Qual deles você gostaria de saber mais?"
+    },
+    {
+      "id": "precos_geral",
+      "perguntas": ["quanto custa", "preco", "valores", "tabela de precos", "orcamento", "investimento", "custa", "taxa", "cobrar"],
+      "resposta": "📋 <b>Preços SML/PN (pagamento único):</b><br><br>📱 <b>Vitrine Bio:</b><br>🟢 Simples: R$ 97,90 (3 dias)<br>🔵 Premium: R$ 247,90 (5-7 dias) ⭐<br>🟣 Empresarial: R$ 497,90 (5-7 dias)<br><br>🌐 <b>Sites:</b><br>🎯 Landing Page: R$ 549,90 (5 dias)<br>🏢 Site Institucional: R$ 997,90 (7 dias, 10 páginas)<br>🛒 E-commerce: sob consulta<br>🤖 Chat RAG: R$ 197,90<br><br>📧 <b>E-mail:</b><br>Assinatura de E-mail: R$ 79,90<br>Google Workspace: R$ 299,90<br>🌐 <b>Domínio próprio:</b> configuração DNS R$ 79,90 (domínio comprado à parte)<br><br>✅ Garantia 7 dias • 50% início + 50% entrega"
+    },
+    {
+      "id": "landing_page",
+      "perguntas": ["landing page", "pagina de venda", "pagina unica", "landing", "pagina de conversao"],
+      "resposta": "🎯 <b>Landing Page</b><br><br>💰 <b>Valor:</b> R$ 549,90 (Hospedagem Render inclusa)<br>⏱️ <b>Entrega:</b> 5 dias úteis<br>📱 1 página completa (hero, serviços, galeria, WhatsApp)<br><br>🌐 Com domínio próprio: + R$ 79,90 — Total: R$ 629,80<br><br>✅ Garantia 7 dias • 50% início + 50% entrega"
+    },
+    {
+      "id": "institucional",
+      "perguntas": ["institucional", "site institucional", "site empresa", "site completo", "5 paginas", "1000", "pagina institucional", "plano institucional", "quantas paginas tem o institucional", "o que inclui o site institucional", "institucional tem blog", "preco do institucional", "valor institucional", "preco de pagina institucional", "quanto custa o institucional"],
+      "resposta": "🏢 <b>Site Institucional (Múltiplas Páginas)</b><br><br>💰 <b>Valor:</b> R$ 997,90 (Hospedagem Render inclusa)<br>⏱️ <b>Entrega:</b> 7 dias úteis<br>📱 10 páginas: Inicial, Sobre, Serviços, Portfólio, Blog, Galeria, FAQ, Contato, Política de Privacidade, Termos de Uso<br>✅ Site responsivo • Hospedagem gratuita<br><br>🌐 Com domínio próprio: + R$ 79,90 — Total: R$ 1.077,80<br><br>✅ Garantia 7 dias • 50% início + 50% entrega"
+    },
+    {
+      "id": "ecommerce",
+      "perguntas": ["ecommerce", "loja virtual", "loja online", "carrinho", "vender online", "catalogo"],
+      "resposta": "🛒 <b>E-commerce / Loja Virtual</b><br><br>💰 <b>Valor:</b> sob consulta (depende do número de produtos)<br>📱 Vitrine de produtos + carrinho + checkout WhatsApp<br>🔗 Exemplo: <b>Amei Cetim</b> — ameicetim.onrender.com<br><br>✅ Garantia 7 dias • Hospedagem Render inclusa • 50% início + 50% entrega"
+    },
+    {
+      "id": "vitrine_bio",
+      "perguntas": ["o que e vitrine bio", "vitrine bio", "bio page", "link na bio", "linktree", "pagina para instagram"],
+      "resposta": "📱 <b>Vitrine Bio</b> — Link da Bio Profissional<br><br>🟢 <b>Simples:</b> R$ 97,90 (3 dias)<br>🔵 <b>Premium:</b> R$ 247,90 (5-7 dias) ⭐ MAIS VENDIDO<br>🟣 <b>Empresarial:</b> R$ 497,90 (5-7 dias)<br><br>✅ +2.847 bios entregues<br>✅ Garantia 7 dias<br>✅ Pagamento único"
+    },
+    {
+      "id": "vitrine_simples",
+      "perguntas": ["vitrine simples", "bio simples", "plano simples", "bio barata", "bio 97", "plano mais barato"],
+      "resposta": "🟢 <b>Bio Simples — R$ 97,90</b><br><br>✅ Links essenciais<br>✅ Design clean mobile-first<br>✅ Entrega em 72h (3 dias úteis)<br>✅ Hospedagem Render inclusa<br>✅ 1 ajuste grátis por mês<br><br>Ideal para começar com profissionalismo!"
+    },
+    {
+      "id": "vitrine_premium",
+      "perguntas": ["vitrine premium", "bio premium", "plano premium", "bio 247", "mais popular", "melhor plano"],
+      "resposta": "🔵 <b>Bio Premium — R$ 247,90</b> ⭐ MAIS VENDIDO<br><br>✅ Tudo do Simples<br>✅ Identidade visual personalizada<br>✅ Seção de depoimentos<br>✅ Mapa de localização<br>✅ Botão WhatsApp otimizado<br>✅ Pixel Facebook/Google<br>✅ 3 ajustes grátis por mês<br>✅ Entrega em 5-7 dias úteis"
+    },
+    {
+      "id": "vitrine_empresarial",
+      "perguntas": ["vitrine empresarial", "bio empresarial", "plano empresarial", "bio 497", "plano completo", "bio completa"],
+      "resposta": "🟣 <b>Bio Empresarial — R$ 497,90</b><br><br>✅ Tudo do Premium<br>✅ Galeria de fotos/produtos<br>✅ Google Analytics integrado<br>✅ Contador de urgência<br>✅ Animações premium<br>✅ Suporte prioritário 30 dias<br>✅ 5 ajustes grátis por mês<br>✅ Entrega em 5-7 dias úteis"
+    },
+    {
+      "id": "vitrine_prazo",
+      "perguntas": ["prazo bio", "tempo bio", "quanto tempo vitrine", "demora bio", "entrega bio"],
+      "resposta": "⏱️ <b>Prazos da Vitrine Bio:</b><br><br>🟢 Simples: até 72h (3 dias úteis)<br>🔵 Premium: 5-7 dias úteis<br>🟣 Empresarial: 5-7 dias úteis<br><br>Após envio do material (logo, fotos, textos, links)."
+    },
+    {
+      "id": "vitrine_alteracoes",
+      "perguntas": ["alterar bio", "mudar bio", "atualizar vitrine", "ajuste bio", "modificar bio", "trocar link bio"],
+      "resposta": "🛠️ <b>Ajustes na Vitrine Bio:</b><br><br>🟢 Simples: 1 ajuste grátis/mês (extra: R$19 cada)<br>🔵 Premium: 3 ajustes grátis/mês (extra: R$15 cada)<br>🟣 Empresarial: 5 ajustes grátis/mês (extra: R$12 cada)<br><br>⚠️ Mudanças estruturais (nova seção, redesign) são orçadas separadamente."
+    },
+    {
+      "id": "vitrine_mensalidade",
+      "perguntas": ["mensalidade bio", "pagar mensal", "custo mensal vitrine", "taxa mensal", "renovacao bio"],
+      "resposta": "✅ <b>Não tem mensalidade!</b> Pagamento único.<br><br>📱 Hospedagem inclusa no 1º ano.<br>🔄 Renovação opcional de apenas R$49/ano após o primeiro ano.<br><br>Sem pegadinhas, sem cobranças surpresa!"
+    },
+    {
+      "id": "vitrine_onde_usar",
+      "perguntas": ["onde usar bio", "onde colocar vitrine", "funciona onde", "link serve para"],
+      "resposta": "📱 Você pode usar sua <b>Vitrine Bio</b> em:<br><br>✅ Instagram (link da bio)<br>✅ TikTok<br>✅ YouTube<br>✅ WhatsApp<br>✅ Cartão digital<br>✅ QR Code<br><br>Funciona em qualquer lugar que aceite um link!"
+    },
+    {
+      "id": "vitrine_linktree",
+      "perguntas": ["tenho linktree", "migrar linktree", "trocar linktree", "substituir linktree", "ja tenho linktree"],
+      "resposta": "✅ Perfeito! Migramos seus links do Linktree e melhoramos 10x o visual sem você perder nada.<br><br>Sua nova bio fica muito mais profissional, rápida e focada em converter cliques em clientes no WhatsApp."
+    },
+    {
+      "id": "vitrine_textos",
+      "perguntas": ["faz os textos", "cria copy", "escreve bio", "textos bio", "copy bio", "preciso escrever"],
+      "resposta": "✅ Sim! Otimizamos sua copy para conversão baseado no seu nicho.<br><br>Você só precisa enviar:<br>📸 Logo e fotos<br>📝 Informações básicas do seu negócio<br>🔗 Links que quer incluir<br><br>O resto a gente faz!"
+    },
+    {
+      "id": "assinatura_email",
+      "perguntas": ["assinatura de email", "email personalizada", "assinatura profissional", "criar assinatura"],
+      "resposta": "📧 <b>Assinatura de E-mail Profissional — R$ 79,90</b> (criação única)<br><br>✅ Nome, cargo, logotipo, telefone, WhatsApp, e-mail, site, redes sociais<br>✅ Transmite credibilidade e profissionalismo<br><br>💡 <b>Google Workspace</b> (e-mail com domínio próprio): configuração completa por <b>R$ 299,90</b> (mensalidade do Google à parte)."
+    },
+    {
+      "id": "email_workspace",
+      "perguntas": ["google workspace", "email profissional", "email com dominio proprio", "workspace"],
+      "resposta": "📧 <b>Google Workspace (E-mail Profissional) — R$ 299,90</b> (configuração única)<br><br>✅ E-mail com seu domínio (ex: contato@suaempresa.com.br)<br>✅ Até 6 contas individuais com senhas próprias<br>✅ Calendário, Drive e Meet compartilhados<br>✅ Segurança e auditoria<br>⏱️ Configurado em 3 dias úteis<br><br>⚠️ Requer domínio próprio (.com.br ou .com)<br>⚠️ Custo mensal do Google Workspace a partir de R$ 32,72 por usuário/mês (plano anual). Veja em: <a href='https://workspace.google.com/intl/pt-BR/pricing.html'>Google Workspace</a>"
+    },
+    {
+      "id": "dominio_proprio",
+      "perguntas": ["dominio proprio", "comprar dominio", "configurar dominio", "dns", "dominio"],
+      "resposta": "🌐 <b>Domínio Próprio Profissional</b><br><br>💰 <b>Valor da configuração:</b> R$ 79,90 (pagamento único)<br>📱 Você adquire o domínio (ex: www.suaempresa.com.br) em plataformas como Registro.br (~R$ 40/ano)<br>🔧 Eu configuro o DNS para conectar seu domínio ao site<br><br>⚠️ Os R$ 79,90 são apenas pela configuração. O domínio é comprado por você à parte."
+    },
+    {
+      "id": "chat_rag",
+      "perguntas": ["chat rag", "chat inteligente", "bot", "ia", "inteligencia artificial", "assistente virtual", "automacao atendimento"],
+      "resposta": "🤖 <b>Chat RAG Inteligente — R$ 197,90</b><br><br>✅ Atendimento 24h automatizado<br>✅ Treinado com SEU conteúdo<br>✅ Responde clientes automaticamente<br>✅ Integrado ao WhatsApp e GA4<br>✅ Pagamento único, sem mensalidade<br><br>💡 <b>Exemplo:</b> este chat que você está usando agora é um Chat RAG! Ele foi treinado com o conteúdo do site SML/PN e responde automaticamente sobre todos os serviços.<br><br>Quer um igual para o seu site?"
+    },
+    {
+      "id": "seo",
+      "perguntas": ["seo", "google", "ranquear", "aparecer no google", "busca", "primeira pagina", "indexar"],
+      "resposta": "🔍 <b>SEO incluso em todos os planos!</b><br><br>✅ Otimização para Google<br>✅ Google Meu Negócio configurado<br>✅ Palavras-chave estratégicas<br>✅ Meta tags e sitemap<br>✅ Performance 95+ (melhor ranking)<br><br>Seu site pronto para aparecer nas buscas!"
+    },
+    {
+      "id": "responsivo",
+      "perguntas": ["responsivo", "mobile", "celular", "tablet", "pc", "desktop", "computador", "notebook", "funciona no celular", "serve no celular", "tela qualquer"],
+      "resposta": "📱 <b>Todos os meus sites são 100% responsivos!</b><br><br>✅ Funcionam no celular, tablet, notebook e computador<br>✅ Design mobile-first (pensado primeiro para celular)<br>✅ Layout adaptável a qualquer tamanho de tela<br>✅ Imagens otimizadas para 4G/5G<br>✅ Testado em iOS e Android"
+    },
+    {
+      "id": "gerenciavel",
+      "perguntas": ["gerenciavel", "administrar", "painel", "dashboard", "controle", "atualizar sozinho", "mexer sozinho"],
+      "resposta": "📝 <b>Sites gerenciáveis</b> = você mesmo atualiza sem programador!<br><br>✅ Alterar textos e imagens<br>✅ Adicionar produtos/serviços<br>✅ Trocar fotos da galeria<br>✅ Atualizar preços e promoções<br>✅ Tudo por um painel simples e intuitivo"
+    },
+    {
+      "id": "prazo",
+      "perguntas": ["prazo", "demora", "entrega", "tempo", "dias", "urgente", "quando fica pronto", "agilidade"],
+      "resposta": "⏱️ <b>Prazos de entrega:</b><br><br>📱 Bio Simples: 3 dias úteis<br>📱 Bio Premium/Empresarial: 5-7 dias<br>🎯 Landing Page: 5 dias úteis<br>🏢 Site Institucional: 7 dias úteis<br>🛒 E-commerce: sob consulta"
+    },
+    {
+      "id": "garantia",
+      "perguntas": ["garantia", "devolucao", "reembolso", "nao gostar", "arrepender", "7 dias", "dinheiro volta", "seguro", "confiavel"],
+      "resposta": "✅ <b>Garantia de 7 dias.</b> Se não gostar do resultado, devolvo 100% do seu dinheiro. O risco é todo meu!"
+    },
+    {
+      "id": "pagamento",
+      "perguntas": ["pagamento", "pagar", "cartao", "pix", "transferencia", "parcela", "sinal", "forma", "como paga"],
+      "resposta": "💳 <b>Forma de pagamento:</b><br><br>✅ 50% no início<br>✅ 50% na entrega (após aprovar)<br>✅ Aceito Pix e transferência<br>✅ Pagamento único, sem mensalidades!"
+    },
+    {
+      "id": "hospedagem",
+      "perguntas": ["hospedagem", "hospedar", "servidor", "site ar", "publicar", "online", "fica no ar"],
+      "resposta": "✅ <b>Hospedagem Render inclusa</b> em todos os planos!<br><br>Seu site fica no ar 24h por dia, sem custo mensal. Pagamento único."
+    },
+    {
+      "id": "processo",
+      "perguntas": ["como funciona", "processo", "etapas", "metodo", "passo a passo", "fluxo", "trabalho"],
+      "resposta": "🔄 <b>Processo em 4 etapas:</b><br><br>1️⃣ <b>Brief</b> — Entendo seu negócio e objetivos (WhatsApp, 30min)<br>2️⃣ <b>Design</b> — Layout mobile-first aprovado por você<br>3️⃣ <b>Code</b> — Código limpo, rápido, com SEO e WhatsApp<br>4️⃣ <b>Go</b> — Deploy, domínio e site no ar!<br><br>✅ Garantia 7 dias • Suporte incluso"
+    },
+    {
+      "id": "sobre",
+      "perguntas": ["quem e voce", "samuel", "desenvolvedor", "dono", "fundador", "quem faz", "sobre voce"],
+      "resposta": "👨‍💻 <b>Samuel Pena</b> — Desenvolvedor Full Stack em Trairi-CE.<br><br>✅ +35 projetos entregues<br>✅ 99% satisfação<br>✅ Lighthouse 95+<br>✅ 4 anos de experiência<br><br>Crio sites rápidos, que ranqueiam bem e convertem no WhatsApp.<br><br>📸 Instagram: <b>@sml_developer</b><br>💻 GitHub: <b>sml-pn</b>"
+    },
+    {
+      "id": "instagram_social",
+      "perguntas": ["instagram", "rede social", "sml_developer", "instagram samuel", "qual o instagram"],
+      "resposta": "📸 Meu Instagram profissional é <b>@sml_developer</b>.<br>Lá você encontra exemplos de projetos, depoimentos e novidades.<br><br>Me siga por lá também! 😊"
+    },
+    {
+      "id": "contato",
+      "perguntas": ["whatsapp", "falar", "conversar", "ligar", "telefone", "contato", "zap", "chamar", "humano", "pessoa", "atendente"],
+      "resposta": "📞 <b>Vamos conversar no WhatsApp?</b><br><br>Respondo em até 2h!<br>Orçamento sem compromisso.<br><br>📸 Instagram: @sml_developer<br>💻 GitHub: sml-pn"
+    },
+    {
+      "id": "projetos",
+      "perguntas": ["portfolio", "projetos", "trabalhos", "exemplos", "mostra", "ver", "fez", "criou", "ja fez"],
+      "resposta": "📂 <b>Projetos entregues:</b><br><br>🛒 <b>Amei Cetim</b> — E-commerce com carrinho<br>🔗 ameicetim.onrender.com<br><br>🏢 <b>Halison Henry</b> — Site institucional<br>🔗 halison-henry.onrender.com<br><br>📱 <b>Vitrine Bio</b> — Bio Premium<br>🔗 vitrinebio.onrender.com<br><br>🏫 <b>Colégio Ágape</b> — Landing Page<br>🔗 colegioagape.onrender.com<br><br>⏳ Academia FitPro e Advocacia Souza — Em desenvolvimento"
+    },
+    {
+      "id": "diferenciais",
+      "perguntas": ["diferencial", "vantagem", "por que escolher", "diferente", "por que voce"],
+      "resposta": "✨ <b>Diferenciais SML/PN:</b><br><br>✅ WhatsApp Multi (até 3 números)<br>✅ Mapa de localização<br>✅ Efeitos e animações profissionais<br>✅ Mobile + Desktop responsivo<br>✅ Cores personalizadas da marca<br>✅ Fontes exclusivas<br>✅ Performance 95+<br>✅ SEO Local incluso<br>✅ Hospedagem Render inclusa<br>✅ Garantia de 7 dias<br>✅ Pagamento único sem mensalidade"
+    },
+    {
+      "id": "landing_dominio",
+      "perguntas": ["landing page com dominio", "landing com dominio proprio", "pagina com dominio", "site com dominio", "quanto custa landing com dominio", "landing page dominio", "site dominio proprio preco", "pagina dominio proprio valor"],
+      "resposta": "🎯 <b>Landing Page + Domínio Próprio: R$ 629,80</b><br><br>📱 Landing Page: R$ 549,90 (5 dias úteis)<br>🌐 Configuração de domínio: R$ 79,90<br><br>✅ Total: R$ 629,80<br><br>O domínio (.com.br, .com) você compra onde preferir (HostGator, Registro.br) e eu configuro o DNS para apontar para o seu site.<br><br>✅ Garantia de 7 dias • 50% início + 50% entrega"
+    }
+  ]
+}

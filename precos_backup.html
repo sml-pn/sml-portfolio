@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviços e Preços — SML/PN | Samuel Pena</title>
+<meta name="description" content="Página completa de serviços SML/PN: Landing Pages, Sites Multipágina, E-mail Profissional e Domínio Próprio.">
+<link rel="stylesheet" href="assets/fontawesome/all.min.css">
+<link rel="stylesheet" href="assets/css/nav.css">
+  <link rel="stylesheet" href="assets/css/chat.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<style>
+:root { --maxw:1120px; --bg: #060913; --surface: #0B0E14; --surface2: #131620;
+  --cyan: #00f5ff; --magenta: #ff3df7; --text: #E8ECF1; --muted: #8B93A5; --muted2: #5C6478;
+  --border: rgba(255,255,255,0.06); --border2: rgba(255,255,255,0.10);
+  --radius: 16px; --font: 'Inter', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0 }
+body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; padding: 0 }
+.container { max-width: var(--maxw); margin: 0 auto }
+.page-header { text-align: center; padding: 48px 0 36px }
+.page-header h1 { font-size: clamp(32px, 6vw, 48px); color: var(--cyan); margin-bottom: 8px }
+.page-header p { color: var(--muted); font-size: 18px; max-width: 600px; margin: 0 auto }
+.card { display: flex; align-items: stretch; gap: 32px; padding: 0; margin: 28px 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color .3s; min-height: 300px }
+.card:hover { border-color: var(--cyan) }
+.card.reverse { flex-direction: row-reverse }
+.card-img { flex: 0 0 42%; background: var(--surface2); display: flex; align-items: center; justify-content: center; min-height: 300px }
+.card-img .placeholder { text-align: center; color: var(--muted2); font-size: 14px; padding: 20px }
+.card-content { flex: 1; padding: 28px; display: flex; flex-direction: column; justify-content: center }
+.card-content h2 { font-size: 22px; color: #fff; margin-bottom: 8px }
+.card-content h3 { font-size: 17px; color: var(--cyan); margin: 12px 0 6px }
+.card-content p { color: var(--muted); font-size: 14px; margin-bottom: 8px }
+.card-content .price { font-size: 22px; font-weight: 700; color: var(--cyan); margin: 8px 0 }
+.card-content .note { font-size: 12px; color: var(--muted2); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border) }
+.comparativo { margin: 28px 0; padding: 24px; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--radius) }
+.comparativo h3 { color: #fff; margin-bottom: 12px; font-size: 18px }
+.comparativo table { width: 100%; border-collapse: collapse; font-size: 13px }
+.comparativo td, .comparativo th { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left }
+.comparativo th { color: var(--cyan); font-weight: 600 }
+.comparativo td { color: var(--muted) }
+.cta { text-align: center; margin: 36px 0 }
+.cta .btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(100deg, #00e4ec, #00f5ff 45%, #ff3df7 95%); color: #04111a; padding: 14px 28px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 16px; transition: transform .2s; box-shadow: 0 8px 28px rgba(0,245,255,0.2) }
+.cta .btn:hover { transform: translateY(-2px) }
+footer { border-top: 1px solid rgba(255,255,255,.05); padding: 30px 0 42px; color: #79849d; font-size: 14px }
+.footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap }
+.footer-links a { color: #aab5ca; display: inline-flex; align-items: center; gap: 6px; transition: color .2s; text-decoration: none }
+.footer-links a:hover { color: var(--text) }
+@media(max-width: 768px) { .card, .card.reverse { flex-direction: column; min-height: auto } .card-img { flex: none; min-height: 200px } .card-content { padding: 20px } }
+</style>
+</head>
+<body style="padding-top: 80px;">
+<header class="nav-bar" style="top: 12px !important; backdrop-filter: blur(25px) saturate(1.8) !important; -webkit-backdrop-filter: blur(25px) saturate(1.8) !important; border-radius: 50px !important; background: rgba(6,9,19,0.35) !important; z-index: 120 !important; max-width: 1060px !important; margin: 0 auto !important; border: 1px solid rgba(255,255,255,0.10) !important; box-shadow: 0 8px 32px rgba(0,0,0,0.4) !important;">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><span class="nav-logo-bracket">&lt;</span>SML<span class="nav-logo-slash">/</span>PN<span class="nav-logo-bracket">&gt;</span></a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="precos.html">Preços</a>
+      <a href="/#servicos">Serviços</a>
+      <a href="/#diferenciais">Diferenciais</a>
+      <a href="/#processo">Processo</a>
+      <a href="/#projetos">Projetos</a>
+      <a href="/#depoimentos">Depoimentos</a>
+      <a href="/#sobre">Sobre</a>
+    </nav>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="nav-mobile-menu">
+  <nav class="nav-mobile-links">
+    <a href="/">Home</a>
+    <a href="precos.html">Preços</a>
+    <a href="/#servicos">Serviços</a>
+    <a href="/#diferenciais">Diferenciais</a>
+    <a href="/#processo">Processo</a>
+    <a href="/#projetos">Projetos</a>
+    <a href="/#depoimentos">Depoimentos</a>
+    <a href="/#sobre">Sobre</a>
+  </nav>
+</div>
+
+<div class="container">
+  <header class="page-header">
+    <h1>Soluções Digitais Profissionais</h1>
+  <div class="card reverse">
+    <div class="card-img"><div class="placeholder">Espaço para imagem: Landing Page</div></div>
+    <div class="card-content">
+        <h2>Landing Page</h2>
+        <p>Página única desenvolvida para apresentar seu negócio, captar contatos e gerar vendas (conversão de visitantes em clientes).</p>
+        <p><strong>Aplicação (para quem é)</strong><br>Prestadores de serviços, autônomos, campanhas de anúncios e lançamentos de produtos.</p>
+        <p><strong>O que inclui (funcionalidades)</strong><br>Banner principal, seção de serviços, galeria, depoimentos, FAQ, formulário de contato, botão do WhatsApp, redes sociais. Site responsivo (funciona em computador, tablet e celular) com hospedagem gratuita.</p>
+        <p><strong>Prazo (tempo de entrega)</strong><br>Até 5 dias úteis.</p>
+        <div class="price">R$ 549,90</div>
+        <div class="note">Domínio próprio: + R$ 79,90 (configuração de DNS para personalizar o endereço do site)</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-img"><div class="placeholder">Espaço para imagem: Site Multipágina</div></div>
+    <div class="card-content">
+        <h2>Site Institucional (Múltiplas Páginas)</h2>
+        <p>Site completo com várias páginas para apresentar sua empresa de forma organizada e profissional (ideal para negócios que precisam de presença digital robusta).</p>
+        <p><strong>Aplicação (para quem é)</strong><br>Empresas, clínicas, escolas, restaurantes, escritórios.</p>
+        <p><strong>O que inclui (funcionalidades)</strong><br>Página Inicial, Sobre, Serviços, Portfólio, Blog, Galeria, FAQ, Contato, Política de Privacidade, Termos de Uso. Site responsivo com hospedagem gratuita.</p>
+        <p><strong>Prazo (tempo de entrega)</strong><br>Até 6 dias úteis.</p>
+        <div class="price">R$ 689,90</div>
+        <div class="note">Domínio próprio: + R$ 79,90 (configuração de DNS)</div>
+    </div>
+  </div>
+
+  <div class="comparativo">
+    <h3>Comparativo: Landing Page vs. Site Multipágina</h3>
+    <table>
+      <tr><th></th><th>Landing Page</th><th>Site Multipágina</th></tr>
+      <tr><td>Preço</td><td>R$ 549,90</td><td>R$ 689,90</td></tr>
+      <tr><td>Páginas</td><td>1</td><td>Múltiplas independentes</td></tr>
+      <tr><td>Ideal para</td><td>Campanhas e lançamentos</td><td>Empresas com vários serviços</td></tr>
+      <tr><td>Foco</td><td>Conversão</td><td>Organização e profissionalismo</td></tr>
+    </table>
+    <p style="color:var(--muted);font-size:12px;margin-top:10px;text-align:center">Landing Page para foco em conversão. Site Multipágina para conteúdo organizado e presença profissional.</p>
+  </div>
+
+  <div class="card reverse">
+    <div class="card-img"><div class="placeholder">Espaço para imagem: Vitrine Bio</div></div>
+    <div class="card-content">
+        <h2>Vitrine Bio (Link da Bio do Instagram)</h2>
+        <p>Página profissional para substituir o link da bio do Instagram, convertendo seguidores em clientes (até 3x mais conversão que Linktree).</p>
+        <p><strong>Planos (valores e prazos)</strong><br>Simples — R$ 97,90 (3 dias)<br>Premium — R$ 247,90 (5-7 dias)<br>Empresarial — R$ 497,90 (5-7 dias)</p>
+        <div class="price">A partir de R$ 97,90</div>
+        <div class="note">+2.800 bios entregues — Garantia de 7 dias — Pagamento único</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-img"><div class="placeholder">Espaço para imagem: E-commerce</div></div>
+    <div class="card-content">
+        <h2>E-commerce (Loja Virtual)</h2>
+        <p>Sistema completo para venda de produtos pela internet (vitrine, carrinho, checkout e gestão de pedidos).</p>
+        <p><strong>Pode incluir</strong><br>Catálogo de produtos, carrinho de compras, checkout via WhatsApp, gestão de pedidos.</p>
+        <div class="price">Sob consulta</div>
+        <div class="note">Valor depende do número de produtos e funcionalidades. Exemplo: <a href="https://ameicetim.onrender.com" target="_blank" style="color:var(--cyan)">Amei Cetim</a>.</div>
+    </div>
+  </div>
+
+  <div class="card reverse">
+    <div class="card-img"><div class="placeholder">Espaço para imagem: Assinatura de E-mail</div></div>
+    <div class="card-content">
+        <h2>Assinatura de E-mail Profissional</h2>
+        <p>Criação de assinatura personalizada para o final dos e-mails, reforçando a identidade da marca e transmitindo credibilidade (apenas a assinatura, sem configurar o e-mail).</p>
+        <p><strong>O que inclui</strong><br>Nome, cargo, logotipo, telefone, WhatsApp, e-mail, site, redes sociais.</p>
+        <div class="price">R$ 79,90</div>
+        <div class="note">Pagamento único. Se já tem Google Workspace e só precisa da assinatura, paga apenas R$ 79,90.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-img"><div class="placeholder">Espaço para imagem: E-mail Compartilhado</div></div>
+    <div class="card-content">
+        <h2>E-mail Corporativo — Compartilhado</h2>
+        <p>Uma única conta de e-mail para toda a equipe, com assinaturas individuais. Ideal para pequenas empresas que querem começar com baixo custo (sem mensalidade).</p>
+        <p><strong>O que inclui</strong><br>Configuração do e-mail, até 10 assinaturas personalizadas.</p>
+        <div class="price">R$ 79,90</div>
+        <div class="note">Todos usam o mesmo login e senha — menos seguro, mais econômico.</div>
+    </div>
+  </div>
+  <div class="comparativo">
+    <h3>Comparativo: E-mail Compartilhado vs. Google Workspace</h3>
+    <table>
+      <tr><th></th><th>E-mail Compartilhado</th><th>Google Workspace</th></tr>
+      <tr><td>Mensalidade</td><td>Gratuito</td><td>A partir de R$ 32,72/usuário/mês (plano anual)</td></tr>
+      <tr><td>Contas</td><td>Uma para toda a equipe</td><td>Individual por colaborador</td></tr>
+      <tr><td>Segurança</td><td>Menor</td><td>Maior</td></tr>
+      <tr><td>Configuração</td><td>R$ 79,90</td><td>R$ 299,90</td></tr>
+    </table>
+  </div>
+
+  <div class="comparativo" style="padding:28px">
+    <h3 style="font-size:20px;margin-bottom:16px">Domínio Próprio Profissional</h3>
+    <h4 style="color:var(--cyan);margin-bottom:8px">O que é um domínio?</h4>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:12px">O domínio é o endereço exclusivo da sua empresa na internet (ex: www.suaempresa.com.br). Transmite credibilidade e profissionalismo.</p>
+    <h4 style="color:var(--cyan);margin-bottom:8px">Render (hospedagem) vs. Domínio (endereço)</h4>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:6px">Render: Onde o site fica armazenado. Plataforma gratuita já inclusa em todos os planos.</p>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:12px">Domínio próprio: Endereço personalizado que você compra por fora.</p>
+    <h4 style="color:var(--cyan);margin-bottom:8px">Como funciona?</h4>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:6px">1. Você adquire o domínio em plataformas como Registro.br (~R$ 40/ano).</p>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:12px">2. Eu configuro o DNS para conectar seu domínio ao site.</p>
+    <div class="price">R$ 79,90</div>
+    <div class="note">Valor único pela configuração de DNS. O domínio é adquirido por você à parte.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-img"><div class="placeholder">Espaço para imagem: Chat RAG</div></div>
+    <div class="card-content">
+        <h2>Assistente Virtual Inteligente (Chat RAG)</h2>
+        <p>Atendimento automático 24h treinado com o conteúdo do seu site (tecnologia RAG — Retrieval-Augmented Generation). Responde clientes, entende perguntas e gera relatórios.</p>
+        <p><strong>O que inclui</strong><br>Treinamento com o conteúdo do site, integração com WhatsApp, relatórios e estatísticas no Google Analytics.</p>
+        <div class="price">R$ 197,90</div>
+        <div class="note">Pagamento único, sem mensalidade.</div>
+    </div>
+  </div>
+
+  <div class="comparativo">
+    <h3>Resumo: Qual Solução é Ideal para Você?</h3>
+    <table>
+      <tr><td>Landing Page</td><td>Para campanhas e lançamentos com foco em conversão.</td></tr>
+      <tr><td>Site Multipágina</td><td>Para empresas com vários serviços e conteúdo organizado.</td></tr>
+      <tr><td>E-mail Compartilhado</td><td>Gratuito, uma conta para a equipe com assinaturas individuais.</td></tr>
+      <tr><td>Google Workspace</td><td>Contas individuais, mais segurança e integração Google.</td></tr>
+      <tr><td>Domínio Próprio</td><td>Identidade digital exclusiva. Você adquire, eu configuro.</td></tr>
+    </table>
+  </div>
+
+  <div class="cta">
+    <a href="https://wa.me/558586121078" target="_blank" class="btn">Falar no WhatsApp</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 SML/PN — Samuel Pena, Trairi, Ceará</div>
+    <div class="footer-links">
+      <a href="https://instagram.com/sml_developer" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://github.com/sml-pn" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/nav.js"></script>
+  <script src="assets/js/lib/compromise.min.js"></script>
+  <script src="assets/js/auto-index.js"></script>
+  <script src="assets/js/search-engine.js"></script>
+  <script src="assets/js/chat.js" defer></script>
+  <!-- Botão do chat -->
+  <button id="chatFab" aria-label="Abrir chat de atendimento"><i class="fas fa-comment-dots"></i></button>
+  <!-- Overlay do chat -->
+  <div id="chatOverlay">
+    <div class="chat-header">
+      <h3><i class="fas fa-robot"></i> Assistente SML/PN</h3>
+      <button class="chat-close" id="chatClose">&times;</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-bubble assistant">👋 Olá! Sou o assistente virtual da SML/PN. Como posso te ajudar hoje?<br>Pergunte sobre sites, landing pages, bio pages, SEO ou orçamentos.</div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" placeholder="Digite sua mensagem..." autocomplete="off">
+      <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</body>
+</html>
