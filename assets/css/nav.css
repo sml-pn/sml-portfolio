@@ -83,6 +83,7 @@
 .nav-hamburger.active span:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg) !important; }
 .nav-mobile-menu {
   position: fixed !important;
+  top: 80px !important;
   inset: 0 !important;
   z-index: 110 !important;
   background: rgba(6, 9, 19, 0.96) !important;
@@ -98,7 +99,7 @@
 .nav-mobile-links {
   display: flex !important;
   flex-direction: column !important;
-  gap: 36px !important;
+  gap: 22px !important;
   text-align: center !important;
 }
 .nav-mobile-links a {
