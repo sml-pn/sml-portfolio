@@ -113,8 +113,8 @@ p{line-height:1.7}
 /* PARCEIROS */
 .partners-marquee{overflow:hidden;width:100%;padding:20px 0}
 .partners-track{display:flex;gap:40px;animation:marqueeScroll 40s linear infinite;width:max-content}
-.partners-track:hover{animation-play-state:paused}
-@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.partners-track:hover{animation-play-state:running}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.partners-track{animation:marqueeScroll 40s linear infinite!important;width:max-content}
 .partner-item{flex:0 0 auto;text-align:center;padding:8px 12px;background:transparent;border:none;transition:transform .3s,filter .3s}
 .partner-item:hover{transform:translateY(-4px);filter:drop-shadow(0 0 8px var(--cyan))}
 .partner-item i{font-size:38px;color:var(--cyan);margin-bottom:6px;display:block}
